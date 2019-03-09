@@ -17,14 +17,11 @@ namespace DM
     public partial class Form3 : Form
     {
         GlobalKeyboardHook gHook;
-        //RegistryKey r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
         List<String> fileNames = new List<String>();
         List<String> filePaths = new List<String>();
         List<bool> played = new List<bool>(); 
         String[] tempFileNames;
         String[] tempFilePaths;
-        //WMPLib.WindowsMediaPlayer wmplayer;
-        //WMPLib.IWMPPlaylist playlist;
         Random rd;
         bool prev = false;
         int last = 0;
@@ -32,11 +29,8 @@ namespace DM
         RegistryKey r;
         public Form3()
         {
-            InitializeComponent();
-            
+            InitializeComponent();        
             StartPosition = FormStartPosition.CenterScreen;
-            //wmplayer = new WMPLib.WindowsMediaPlayer();
-            //playlist = axWindowsMediaPlayer1.playlistCollection.newPlaylist("Unsaved Playlist");
             rd = new Random();
             listBox1.AllowDrop = true;
             listBox1.DragEnter += new DragEventHandler(listBox1_DragEnter);
@@ -62,9 +56,7 @@ namespace DM
                 }
             }
             r.Close();
-            
-
-
+            r.Dispose();
         }
 
         private void listBox1_DragDrop(object sender, DragEventArgs e)
@@ -97,7 +89,6 @@ namespace DM
                 e.Effect = DragDropEffects.All;
         }
 
-       
         private void Form3_Resize(object sender, EventArgs e)
         {
             if (FormWindowState.Minimized == WindowState)
@@ -107,15 +98,11 @@ namespace DM
             }
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
+           
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Music (*.mp3)|*.mp3";
+            of.Filter = "Audio Files (*.mp3, *.m4a, *.aac, *.wma, *.wav)|*.mp3;*.m4a;*.aac;*.wma;*.wav|All files (*.*)|*.*";
             of.CheckFileExists = true;
             of.CheckPathExists = true;
             of.Multiselect = true;
@@ -132,9 +119,7 @@ namespace DM
                         fileNames.Add(tempFileNames[i]);
                         filePaths.Add(tempFilePaths[i]);
                         played.Add(false);
-                        listBox1.Items.Add(tempFileNames[i]);
-                        //WMPLib.IWMPMedia media = axWindowsMediaPlayer1.newMedia(tempFilePaths[i]);
-                        //playlist.appendItem(media);
+                        listBox1.Items.Add(tempFileNames[i]);                        
                     }
                     if (checkBox2.Checked)
                         listBox1.SelectedIndex = rd.Next(0, listBox1.Items.Count - 1);
@@ -153,20 +138,14 @@ namespace DM
                             filePaths.Add(tempFilePaths[i]);
                             played.Add(false);
                             listBox1.Items.Add(tempFileNames[i]);
-                            //WMPLib.IWMPMedia media = axWindowsMediaPlayer1.newMedia(tempFilePaths[i]);
-                            //playlist.appendItem(media);
                         }
                     }
                 }
-                //axWindowsMediaPlayer1.currentPlaylist = playlist;
-                
             }
-            
-            //wmplayer.currentPlaylist = playlist;
-            //wmplayer.settings.setMode("shuffle", true);
-            //wmplayer.controls.play();
+            of.Dispose();
         }
 
+       
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
         {
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
@@ -184,30 +163,22 @@ namespace DM
                 r.DeleteValue("Repeat", false);
             }
             r.Close();
+            r.Dispose();
             gHook.unhook();
         }
-        private void listBox1_DoubleClick(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if(listBox1.SelectedIndex)
-            //if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPlaying)
             if (listBox1.SelectedItem != null )
-                axWindowsMediaPlayer1.URL = filePaths[listBox1.SelectedIndex];
-            
+                axWindowsMediaPlayer1.URL = filePaths[listBox1.SelectedIndex];    
         }
 
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
             if (axWindowsMediaPlayer1.playState == WMPLib.WMPPlayState.wmppsMediaEnded)
             {
-                
                 timer1.Interval = 100;
-                timer1.Enabled = true;
-                //played[i++] = listBox1.SelectedIndex;
+                timer1.Enabled = true;            
                 played[listBox1.SelectedIndex] = true;
                 last = listBox1.SelectedIndex; 
             }
@@ -215,8 +186,7 @@ namespace DM
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
-            
+        {  
             if (listBox1.Items.Count > 1)
             {
                 if (prev == true && checkBox1.Checked != true)
@@ -275,13 +245,10 @@ namespace DM
             }
             else
             {
-
                 if (listBox1.Items.Count == 1)
                     if (checkBox1.Checked)
                         axWindowsMediaPlayer1.URL = filePaths[listBox1.SelectedIndex];
                 timer1.Enabled = false;
-                //axWindowsMediaPlayer1.URL = listBox1.Items[0].ToString();
-
             }
             
         }
@@ -293,7 +260,6 @@ namespace DM
                 if (played[i] != true)
                     count++;
             return count;
-
         } 
 
         private int GetLast()
@@ -304,12 +270,7 @@ namespace DM
             return -1;
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            label5.Text = DateTime.Now.ToString();
-            
-        }
-
+        
         private void Form3_Load(object sender, EventArgs e)
         {
             gHook = new GlobalKeyboardHook();
@@ -317,12 +278,10 @@ namespace DM
             foreach (Keys key in Enum.GetValues(typeof(Keys)))
                 gHook.HookedKeys.Add(key);
             gHook.hook();
-
         }
-       
+
         private void gHook_Keydown(object sender, KeyEventArgs e)
         {
-
             if (e.KeyValue == 0xB3)
             {
                 button4_Click(null, null);
@@ -334,8 +293,7 @@ namespace DM
             else if (e.KeyValue == 0xB1)
             {
                 button2_Click(null, null);
-            }
-            //MessageBox.Show(((char)e.KeyValue).ToString());
+            }       
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -380,6 +338,7 @@ namespace DM
         private void label2_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)

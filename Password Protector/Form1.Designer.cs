@@ -51,8 +51,6 @@
             this.cPUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rAMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dISKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,6 +59,13 @@
             this.lockLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lockClockLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideTrayIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clockTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shortexcludeSecondToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.longToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.setToDefaultToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.colorToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,30 +94,16 @@
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lockToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
-            this.contextMenuStripMail = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.openMailboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.defaultToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.fontToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.setToDefaultToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.lockToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.clockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clockTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.timeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.longToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shortexcludeSecondToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customizeFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customizeFontToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.customizeFontToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.customizeFontToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripRam.SuspendLayout();
             this.contextMenuStripMain.SuspendLayout();
             this.contextMenuStripClock.SuspendLayout();
             this.contextMenuStripDisk.SuspendLayout();
             this.contextMenuStripCpu.SuspendLayout();
-            this.contextMenuStripMail.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -152,16 +143,16 @@
             // fontToolStripMenuItem2
             // 
             this.fontToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customizeFontToolStripMenuItem2,
             this.setToDefaultToolStripMenuItem2});
             this.fontToolStripMenuItem2.Name = "fontToolStripMenuItem2";
-            this.fontToolStripMenuItem2.Size = new System.Drawing.Size(112, 22);
+            this.fontToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.fontToolStripMenuItem2.Text = "Font";
-            this.fontToolStripMenuItem2.Click += new System.EventHandler(this.fontToolStripMenuItem2_Click);
             // 
             // setToDefaultToolStripMenuItem2
             // 
             this.setToDefaultToolStripMenuItem2.Name = "setToDefaultToolStripMenuItem2";
-            this.setToDefaultToolStripMenuItem2.Size = new System.Drawing.Size(144, 22);
+            this.setToDefaultToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.setToDefaultToolStripMenuItem2.Text = "Set to default";
             this.setToDefaultToolStripMenuItem2.Click += new System.EventHandler(this.setToDefaultToolStripMenuItem2_Click);
             // 
@@ -206,11 +197,10 @@
             this.backgroundToolStripMenuItem,
             this.toolStripSeparator7,
             this.systemWatcherToolStripMenuItem,
-            this.gmailToolStripMenuItem,
             this.toolStripSeparator4,
             this.exitToolStripMenuItem});
             this.contextMenuStripMain.Name = "contextMenuStrip1";
-            this.contextMenuStripMain.Size = new System.Drawing.Size(203, 176);
+            this.contextMenuStripMain.Size = new System.Drawing.Size(203, 154);
             // 
             // aboutToolStripMenuItem
             // 
@@ -300,25 +290,6 @@
             this.dISKToolStripMenuItem.Text = "DISK";
             this.dISKToolStripMenuItem.Click += new System.EventHandler(this.dISKToolStripMenuItem_Click);
             // 
-            // gmailToolStripMenuItem
-            // 
-            this.gmailToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showToolStripMenuItem});
-            this.gmailToolStripMenuItem.Name = "gmailToolStripMenuItem";
-            this.gmailToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.gmailToolStripMenuItem.Text = "Gmail";
-            this.gmailToolStripMenuItem.ToolTipText = "Login your gmail account";
-            this.gmailToolStripMenuItem.Click += new System.EventHandler(this.gmailToolStripMenuItem_Click);
-            // 
-            // showToolStripMenuItem
-            // 
-            this.showToolStripMenuItem.Checked = true;
-            this.showToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.showToolStripMenuItem.Text = "Show";
-            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -391,14 +362,73 @@
             this.hideTrayIconToolStripMenuItem.Text = "Hide Tray Icon";
             this.hideTrayIconToolStripMenuItem.Click += new System.EventHandler(this.hideTrayIconToolStripMenuItem_Click);
             // 
+            // clockToolStripMenuItem
+            // 
+            this.clockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clockTypeToolStripMenuItem,
+            this.timeToolStripMenuItem});
+            this.clockToolStripMenuItem.Name = "clockToolStripMenuItem";
+            this.clockToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.clockToolStripMenuItem.Text = "Clock";
+            // 
+            // clockTypeToolStripMenuItem
+            // 
+            this.clockTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hToolStripMenuItem,
+            this.hToolStripMenuItem1});
+            this.clockTypeToolStripMenuItem.Name = "clockTypeToolStripMenuItem";
+            this.clockTypeToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.clockTypeToolStripMenuItem.Text = "Clock Type";
+            // 
+            // hToolStripMenuItem
+            // 
+            this.hToolStripMenuItem.Name = "hToolStripMenuItem";
+            this.hToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.hToolStripMenuItem.Text = "12H";
+            this.hToolStripMenuItem.Click += new System.EventHandler(this.hToolStripMenuItem_Click);
+            // 
+            // hToolStripMenuItem1
+            // 
+            this.hToolStripMenuItem1.Checked = true;
+            this.hToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hToolStripMenuItem1.Name = "hToolStripMenuItem1";
+            this.hToolStripMenuItem1.Size = new System.Drawing.Size(95, 22);
+            this.hToolStripMenuItem1.Text = "24H";
+            this.hToolStripMenuItem1.Click += new System.EventHandler(this.hToolStripMenuItem1_Click);
+            // 
+            // timeToolStripMenuItem
+            // 
+            this.timeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.shortexcludeSecondToolStripMenuItem,
+            this.longToolStripMenuItem});
+            this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
+            this.timeToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.timeToolStripMenuItem.Text = "Time";
+            // 
+            // shortexcludeSecondToolStripMenuItem
+            // 
+            this.shortexcludeSecondToolStripMenuItem.Checked = true;
+            this.shortexcludeSecondToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.shortexcludeSecondToolStripMenuItem.Name = "shortexcludeSecondToolStripMenuItem";
+            this.shortexcludeSecondToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.shortexcludeSecondToolStripMenuItem.Text = "Short (exclude second)";
+            this.shortexcludeSecondToolStripMenuItem.Click += new System.EventHandler(this.shortexcludeSecondToolStripMenuItem_Click);
+            // 
+            // longToolStripMenuItem
+            // 
+            this.longToolStripMenuItem.Name = "longToolStripMenuItem";
+            this.longToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.longToolStripMenuItem.Text = "Long (include second)";
+            this.longToolStripMenuItem.Click += new System.EventHandler(this.longToolStripMenuItem_Click);
+            // 
             // fontToolStripMenuItem4
             // 
             this.fontToolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customizeFontToolStripMenuItem3,
             this.setToDefaultToolStripMenuItem3});
             this.fontToolStripMenuItem4.Name = "fontToolStripMenuItem4";
             this.fontToolStripMenuItem4.Size = new System.Drawing.Size(195, 22);
             this.fontToolStripMenuItem4.Text = "Font";
-            this.fontToolStripMenuItem4.Click += new System.EventHandler(this.fontToolStripMenuItem4_Click);
             // 
             // setToDefaultToolStripMenuItem3
             // 
@@ -520,11 +550,11 @@
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customizeFontToolStripMenuItem1,
             this.setToDefaultToolStripMenuItem});
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fontToolStripMenuItem.Text = "Font";
-            this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
             // setToDefaultToolStripMenuItem
             // 
@@ -587,7 +617,7 @@
             // defaultToolStripMenuItem
             // 
             this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.defaultToolStripMenuItem.Text = "Default";
             this.defaultToolStripMenuItem.ToolTipText = "Reset location of this text";
             this.defaultToolStripMenuItem.Click += new System.EventHandler(this.defaultToolStripMenuItem_Click);
@@ -595,23 +625,23 @@
             // fontToolStripMenuItem1
             // 
             this.fontToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customizeFontToolStripMenuItem,
             this.setToDefaultToolStripMenuItem1});
             this.fontToolStripMenuItem1.Name = "fontToolStripMenuItem1";
-            this.fontToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
+            this.fontToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.fontToolStripMenuItem1.Text = "Font";
-            this.fontToolStripMenuItem1.Click += new System.EventHandler(this.fontToolStripMenuItem1_Click);
             // 
             // setToDefaultToolStripMenuItem1
             // 
             this.setToDefaultToolStripMenuItem1.Name = "setToDefaultToolStripMenuItem1";
-            this.setToDefaultToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.setToDefaultToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
             this.setToDefaultToolStripMenuItem1.Text = "Set to default";
             this.setToDefaultToolStripMenuItem1.Click += new System.EventHandler(this.setToDefaultToolStripMenuItem1_Click);
             // 
             // colorToolStripMenuItem
             // 
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.colorToolStripMenuItem.Text = "Color";
             this.colorToolStripMenuItem.ToolTipText = "Select your color";
             this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
@@ -621,7 +651,7 @@
             this.lockToolStripMenuItem1.Checked = true;
             this.lockToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.lockToolStripMenuItem1.Name = "lockToolStripMenuItem1";
-            this.lockToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
+            this.lockToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.lockToolStripMenuItem1.Text = "Lock";
             this.lockToolStripMenuItem1.ToolTipText = "Lock location of this text";
             this.lockToolStripMenuItem1.Click += new System.EventHandler(this.lockToolStripMenuItem1_Click);
@@ -629,97 +659,9 @@
             // closeToolStripMenuItem2
             // 
             this.closeToolStripMenuItem2.Name = "closeToolStripMenuItem2";
-            this.closeToolStripMenuItem2.Size = new System.Drawing.Size(112, 22);
+            this.closeToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem2.Text = "Hide";
             this.closeToolStripMenuItem2.Click += new System.EventHandler(this.closeToolStripMenuItem2_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ContextMenuStrip = this.contextMenuStripMail;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(155, 97);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Mail:";
-            this.label5.DoubleClick += new System.EventHandler(this.label5_DoubleClick);
-            this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label5_MouseDown);
-            this.label5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label5_MouseMove);
-            // 
-            // contextMenuStripMail
-            // 
-            this.contextMenuStripMail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openMailboxToolStripMenuItem,
-            this.stopConnectionToolStripMenuItem,
-            this.defaultToolStripMenuItem3,
-            this.fontToolStripMenuItem3,
-            this.colorToolStripMenuItem5,
-            this.lockToolStripMenuItem4,
-            this.closeToolStripMenuItem3});
-            this.contextMenuStripMail.Name = "contextMenuStripMail";
-            this.contextMenuStripMail.Size = new System.Drawing.Size(164, 158);
-            // 
-            // openMailboxToolStripMenuItem
-            // 
-            this.openMailboxToolStripMenuItem.Name = "openMailboxToolStripMenuItem";
-            this.openMailboxToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.openMailboxToolStripMenuItem.Text = "Open Mailbox";
-            this.openMailboxToolStripMenuItem.Click += new System.EventHandler(this.gmailToolStripMenuItem_Click);
-            // 
-            // stopConnectionToolStripMenuItem
-            // 
-            this.stopConnectionToolStripMenuItem.Name = "stopConnectionToolStripMenuItem";
-            this.stopConnectionToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.stopConnectionToolStripMenuItem.Text = "Stop Connection";
-            this.stopConnectionToolStripMenuItem.Click += new System.EventHandler(this.stopConnectionToolStripMenuItem_Click);
-            // 
-            // defaultToolStripMenuItem3
-            // 
-            this.defaultToolStripMenuItem3.Name = "defaultToolStripMenuItem3";
-            this.defaultToolStripMenuItem3.Size = new System.Drawing.Size(163, 22);
-            this.defaultToolStripMenuItem3.Text = "Default";
-            this.defaultToolStripMenuItem3.Click += new System.EventHandler(this.defaultToolStripMenuItem3_Click);
-            // 
-            // fontToolStripMenuItem3
-            // 
-            this.fontToolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setToDefaultToolStripMenuItem4});
-            this.fontToolStripMenuItem3.Name = "fontToolStripMenuItem3";
-            this.fontToolStripMenuItem3.Size = new System.Drawing.Size(163, 22);
-            this.fontToolStripMenuItem3.Text = "Font";
-            this.fontToolStripMenuItem3.Click += new System.EventHandler(this.fontToolStripMenuItem3_Click);
-            // 
-            // setToDefaultToolStripMenuItem4
-            // 
-            this.setToDefaultToolStripMenuItem4.Name = "setToDefaultToolStripMenuItem4";
-            this.setToDefaultToolStripMenuItem4.Size = new System.Drawing.Size(144, 22);
-            this.setToDefaultToolStripMenuItem4.Text = "Set to default";
-            this.setToDefaultToolStripMenuItem4.Click += new System.EventHandler(this.setToDefaultToolStripMenuItem4_Click);
-            // 
-            // colorToolStripMenuItem5
-            // 
-            this.colorToolStripMenuItem5.Name = "colorToolStripMenuItem5";
-            this.colorToolStripMenuItem5.Size = new System.Drawing.Size(163, 22);
-            this.colorToolStripMenuItem5.Text = "Color";
-            this.colorToolStripMenuItem5.Click += new System.EventHandler(this.colorToolStripMenuItem5_Click);
-            // 
-            // lockToolStripMenuItem4
-            // 
-            this.lockToolStripMenuItem4.Checked = true;
-            this.lockToolStripMenuItem4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.lockToolStripMenuItem4.Name = "lockToolStripMenuItem4";
-            this.lockToolStripMenuItem4.Size = new System.Drawing.Size(163, 22);
-            this.lockToolStripMenuItem4.Text = "Lock";
-            this.lockToolStripMenuItem4.Click += new System.EventHandler(this.lockToolStripMenuItem4_Click);
-            // 
-            // closeToolStripMenuItem3
-            // 
-            this.closeToolStripMenuItem3.Name = "closeToolStripMenuItem3";
-            this.closeToolStripMenuItem3.Size = new System.Drawing.Size(163, 22);
-            this.closeToolStripMenuItem3.Text = "Hide";
-            this.closeToolStripMenuItem3.Click += new System.EventHandler(this.closeToolStripMenuItem3_Click);
             // 
             // notifyIcon1
             // 
@@ -728,66 +670,34 @@
             this.notifyIcon1.Text = "RamC";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
-            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // clockToolStripMenuItem
+            // customizeFontToolStripMenuItem
             // 
-            this.clockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clockTypeToolStripMenuItem,
-            this.timeToolStripMenuItem});
-            this.clockToolStripMenuItem.Name = "clockToolStripMenuItem";
-            this.clockToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.clockToolStripMenuItem.Text = "Clock";
+            this.customizeFontToolStripMenuItem.Name = "customizeFontToolStripMenuItem";
+            this.customizeFontToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.customizeFontToolStripMenuItem.Text = "Customize font";
+            this.customizeFontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem1_Click);
             // 
-            // clockTypeToolStripMenuItem
+            // customizeFontToolStripMenuItem1
             // 
-            this.clockTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hToolStripMenuItem,
-            this.hToolStripMenuItem1});
-            this.clockTypeToolStripMenuItem.Name = "clockTypeToolStripMenuItem";
-            this.clockTypeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clockTypeToolStripMenuItem.Text = "Clock Type";
+            this.customizeFontToolStripMenuItem1.Name = "customizeFontToolStripMenuItem1";
+            this.customizeFontToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.customizeFontToolStripMenuItem1.Text = "Customize font";
+            this.customizeFontToolStripMenuItem1.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
-            // hToolStripMenuItem
+            // customizeFontToolStripMenuItem2
             // 
-            this.hToolStripMenuItem.Name = "hToolStripMenuItem";
-            this.hToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hToolStripMenuItem.Text = "12H";
-            this.hToolStripMenuItem.Click += new System.EventHandler(this.hToolStripMenuItem_Click);
+            this.customizeFontToolStripMenuItem2.Name = "customizeFontToolStripMenuItem2";
+            this.customizeFontToolStripMenuItem2.Size = new System.Drawing.Size(155, 22);
+            this.customizeFontToolStripMenuItem2.Text = "Customize font";
+            this.customizeFontToolStripMenuItem2.Click += new System.EventHandler(this.fontToolStripMenuItem2_Click);
             // 
-            // hToolStripMenuItem1
+            // customizeFontToolStripMenuItem3
             // 
-            this.hToolStripMenuItem1.Checked = true;
-            this.hToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.hToolStripMenuItem1.Name = "hToolStripMenuItem1";
-            this.hToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.hToolStripMenuItem1.Text = "24H";
-            this.hToolStripMenuItem1.Click += new System.EventHandler(this.hToolStripMenuItem1_Click);
-            // 
-            // timeToolStripMenuItem
-            // 
-            this.timeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.shortexcludeSecondToolStripMenuItem,
-            this.longToolStripMenuItem});
-            this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
-            this.timeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.timeToolStripMenuItem.Text = "Time";
-            // 
-            // longToolStripMenuItem
-            // 
-            this.longToolStripMenuItem.Name = "longToolStripMenuItem";
-            this.longToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.longToolStripMenuItem.Text = "Long (include second)";
-            this.longToolStripMenuItem.Click += new System.EventHandler(this.longToolStripMenuItem_Click);
-            // 
-            // shortexcludeSecondToolStripMenuItem
-            // 
-            this.shortexcludeSecondToolStripMenuItem.Checked = true;
-            this.shortexcludeSecondToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.shortexcludeSecondToolStripMenuItem.Name = "shortexcludeSecondToolStripMenuItem";
-            this.shortexcludeSecondToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.shortexcludeSecondToolStripMenuItem.Text = "Short (exclude second)";
-            this.shortexcludeSecondToolStripMenuItem.Click += new System.EventHandler(this.shortexcludeSecondToolStripMenuItem_Click);
+            this.customizeFontToolStripMenuItem3.Name = "customizeFontToolStripMenuItem3";
+            this.customizeFontToolStripMenuItem3.Size = new System.Drawing.Size(155, 22);
+            this.customizeFontToolStripMenuItem3.Text = "Customize font";
+            this.customizeFontToolStripMenuItem3.Click += new System.EventHandler(this.fontToolStripMenuItem4_Click);
             // 
             // Form1
             // 
@@ -795,7 +705,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(244, 171);
             this.ContextMenuStrip = this.contextMenuStripClock;
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -820,7 +729,6 @@
             this.contextMenuStripClock.ResumeLayout(false);
             this.contextMenuStripDisk.ResumeLayout(false);
             this.contextMenuStripCpu.ResumeLayout(false);
-            this.contextMenuStripMail.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -838,8 +746,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem gmailToolStripMenuItem;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripCpu;
         private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripDisk;
@@ -852,13 +758,9 @@
         private System.Windows.Forms.ToolStripMenuItem lockToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem lockToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem lockToolStripMenuItem3;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripMail;
-        private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem lockToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
@@ -876,28 +778,22 @@
         private System.Windows.Forms.ToolStripMenuItem dISKToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem lockLocationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem strokeColorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openMailboxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem blurAmountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem blur3tools;
         private System.Windows.Forms.ToolStripMenuItem blur5tools;
         private System.Windows.Forms.ToolStripMenuItem blur7tools;
         private System.Windows.Forms.ToolStripMenuItem blur9tools;
         private System.Windows.Forms.ToolStripMenuItem lockClockLocationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopConnectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem setToDefaultToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setToDefaultToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem setToDefaultToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem setToDefaultToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem setToDefaultToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem clockToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clockTypeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hToolStripMenuItem;
@@ -905,7 +801,10 @@
         private System.Windows.Forms.ToolStripMenuItem timeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shortexcludeSecondToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem longToolStripMenuItem;
-
+        private System.Windows.Forms.ToolStripMenuItem customizeFontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customizeFontToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem customizeFontToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem customizeFontToolStripMenuItem3;
     }
 }
 

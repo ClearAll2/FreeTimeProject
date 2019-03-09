@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using System.Media;
 using System.Diagnostics;
 
 namespace RamC
@@ -14,6 +15,7 @@ namespace RamC
     partial class AboutBox1 : Form
     {
         BackgroundWorker bw;
+        SoundPlayer sp;
         public AboutBox1()
         {
             InitializeComponent();
@@ -27,7 +29,30 @@ namespace RamC
 
             bw = new BackgroundWorker();
             bw.DoWork += bw_DoWork;
+
+            this.VisibleChanged += AboutBox1_VisibleChanged;
             
+        }
+
+        private void AboutBox1_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                try
+                {
+                    sp = new SoundPlayer(Application.StartupPath + "\\about.wav");
+                    sp.Play();
+                }
+                catch
+                {
+                    return;
+                }
+            }
+            else
+            {
+                sp.Stop();
+                sp.Dispose();
+            }
         }
 
         void bw_DoWork(object sender, DoWorkEventArgs e)

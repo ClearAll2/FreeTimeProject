@@ -419,6 +419,9 @@
         7w1pE+jx3i3TxuZ9m3yyTjbnOcgetY1q1N0pJPoz0Msy3FQx9CUo6Kceq7rzP//Z
 </value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAcAEBAAAAAAIABoBAAAdgAAABgYAAAAACAAiAkAAN4EAAAgIAAAAAAgAKgQAABmDgAAMDAAAAAA

@@ -40,16 +40,12 @@ namespace DM
             type = Glob.Type;
             Size = Glob.Size;
             path = Glob.Path;
-            //pics = new CFlake[amount];
             pictureBox1.Hide();
             pictureBox2.Hide();
             pictureBox3.Hide();
             pictureBox4.Hide();
             pictureBox5.Hide();
-            timer1.Interval = rnd.Next(40, 55);
-            
-            
-            
+            timer1.Interval = rnd.Next(40, 55);   
         }
         protected override CreateParams CreateParams
         {
@@ -73,17 +69,12 @@ namespace DM
                 }
                 else
                 {
-                    Glob.Type = 1;
-                    //timer1.Stop();
+                    Glob.Type = 1;                   
                     MessageBox.Show("Can not find your picture!!?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //this.Dispose();
-                    //this.Close();
-
-                    //return;
-                }
-                
+                }     
             }
             r1.Close();
+            r1.Dispose();
             for (int i = 0; i < amount; i++)
             {
                 CFlake pic = new CFlake();
@@ -179,7 +170,6 @@ namespace DM
                
                 
             }
-            //pic.Image = global::Desktop_Magic.Properties.Resources.flake;
             pic.Position = new System.Drawing.Point(rnd.Next(screenWidth), rnd.Next(-15, -10));
             int sign = rnd.Next(2) == 0 ? -1 : 1;
             pic.Direction = rnd.Next(10) * sign;
@@ -204,7 +194,6 @@ namespace DM
             }
             else if (type == 3)
             {
-                //pic.Image = pictureBox4.Image;
                 size = rnd.Next(Glob.Size) + 5;
                 pic.Size = new System.Drawing.Size(size, size);
             }
@@ -238,7 +227,6 @@ namespace DM
                 {
                     if (File.Exists(Glob.Path) && pictureBox4.Image != null)
                     {
-                        //pictureBox4.Image = Image.FromFile(Glob.Path);
                         pic.Image = pictureBox4.Image;
                         size = rnd.Next(Glob.Size) + 5;
                         pic.Size = new System.Drawing.Size(size, size);
@@ -268,7 +256,6 @@ namespace DM
                 }
                 
             }
-            //pic.Image = global::Desktop_Magic.Properties.Resources.flake;
             pic.Position = new System.Drawing.Point(rnd.Next(screenWidth), rnd.Next(-15, -10));
             int sign = rnd.Next(2) == 0 ? -1 : 1;
             pic.Direction = rnd.Next(10) * sign;
@@ -283,16 +270,11 @@ namespace DM
             if (pics.Count != Glob.Amount || type != Glob.Type || path != Glob.Path)
             {  
                 g = this.CreateGraphics();
-                screenHeight = Screen.PrimaryScreen.Bounds.Height;
-                screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
-                //g.Clear(this.BackColor);
                 for (int i = 0; i < pics.Count; i++)
                 {
-                    // Xóa đi bông tuyết ở vị trí cũ
-                    g.FillRectangle(SystemBrushes.Control, pics[i].Bounds);
+                    g.FillRectangle(SystemBrushes.Control, pics[i].Bounds); 
                 }
                 pics.Clear();
-                //pictureBox4.Image = Image.FromFile(Glob.Path);
                 g.Dispose();
                 for (int i=0;i<Glob.Amount;i++)
                 {
@@ -300,7 +282,6 @@ namespace DM
                     pics.Add(pic);
                     CreateFlake(pic);
                 }
-                
             }
             
         }
@@ -313,13 +294,9 @@ namespace DM
             g = this.CreateGraphics();
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
             screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
-            //g.Clear(this.BackColor);
             for (int i = 0; i < pics.Count; i++)
-            {
-                // Xóa đi bông tuyết ở vị trí cũ
+            {             
                 g.FillRectangle(SystemBrushes.Control, pics[i].Bounds);
-
-                // Nếu bông tuyết ra khỏi màn hình thì tạo lại các giá trị mới
                 if (pics[i].Top > screenHeight || pics[i].Right < 0 || pics[i].Left > screenWidth)
                 {
                     RecreateFlake(pics[i]);
@@ -343,58 +320,20 @@ namespace DM
                             pics[i].Image = pictureBox3.Image;
                     }
                 }
-                //else if (type == 2)
-                //{
-                //    pics[i].Image = pictureBox2.Image;
-                //}
-                //else
-                //    if (Glob.Custom == true)
-                //    {
-                //        if (File.Exists(Glob.Path))
-                //        {
-                //            pictureBox4.Image = Image.FromFile(Glob.Path);
-                //            pics[i].Image = pictureBox4.Image;
-                //        }
-                //        else
-                //        {
-                //            timer1.Stop();
-                //            MessageBox.Show("Cannot file your picture!!?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //            this.Dispose();
-                //            this.Close();
-                //            return;
-                //        }
-                //    }
                 pics[i].Speed = number;
-                // Cập nhật vị trí mới cho bông tuyết
                 x = pics[i].Position.X;
                 y = pics[i].Position.Y;
 
                 x = x + pics[i].Direction + speed;
                 y = y + pics[i].Speed;
-
                 //new point
                 p.X = x;
                 p.Y = y;
-
                 pics[i].Position = p;
-
-                // Vẽ bông tuyết lên form
                 if (pics[i].Image != null)
                     g.DrawImage(pics[i].Image, pics[i].Bounds);
             }
             g.Dispose();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //MessageBox.Show("Desktop Magic has been closed", "Info");
-            Application.Exit();
-        }
-
+        } 
     }
 }

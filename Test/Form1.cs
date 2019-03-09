@@ -25,7 +25,7 @@ namespace Test
         RegistryKey r;
         AboutBox2 ab = new AboutBox2();
         Form2 f;
-        string [] keyswords = {"public", "private", "protected", "class", "namespace", "string", "char", "int", "float", "double", "void", "#include", "using", "const", "for", "do", "while", "#define", "if", "else", "return", "struct", "auto", "break", "case", "continue", "default", "do", "enum", "extern", "goto", "long", "register", "short", "sizeof", "static", "switch", "typedef", "union", "unsigned", "volatile"};
+        
         public Form1()
         {
             InitializeComponent();
@@ -106,8 +106,11 @@ namespace Test
                 {
                     
                     fileName = docPath[0];          //do not delete this
-                    OpenFile(docPath[0]);
-                    saved = true;   
+                    if (OpenFile(docPath[0]) == true)
+                    {
+                        saved = true;
+                    }
+                      
                 }
             }
            
@@ -119,22 +122,34 @@ namespace Test
         {
             if (Program.FileName != "")
             {
-                OpenFile(Program.FileName);
-                opened = true;
-                filePath = Program.FileName;
-                fileName = filePath;
-                trueName = fileName.Substring(fileName.LastIndexOf("\\")+1);
-                this.Text = trueName  + " - SNote";
+                if (OpenFile(Program.FileName) == true)
+                {
+                    opened = true;
+                    filePath = Program.FileName;
+                    fileName = filePath;
+                    trueName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
+                    this.Text = trueName + " - SNote";
+                }
             }
             
         }
 
        
 
-        private void OpenFile(string fileName2)
+        private bool OpenFile(string fileName2)
         {
-            FileStream fs = new FileStream(fileName2, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(fs);
+            FileStream fs;
+            StreamReader sr;
+            try
+            {
+                fs = new FileStream(fileName2, FileMode.Open, FileAccess.Read);
+                sr = new StreamReader(fs);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             richTextBox1.Text = sr.ReadToEnd();
             sr.Close();
             fs.Close();
@@ -152,15 +167,7 @@ namespace Test
             else
                 richTextBox1.ReadOnly = false;
 
-            /*
-            if (Path.GetExtension(fileName) == ".c")
-            {
-                for (int i = 0; i < keyswords.Length; i++)
-                {
-                    FindKeyWords(richTextBox1, keyswords[i], true, true, false);
-                }
-                saved = true;
-            }*/
+            return true;
             
         }
 
@@ -188,9 +195,12 @@ namespace Test
                 
                 filePath = op.FileName;
                 fileName = filePath;
-                OpenFile(filePath);
-                trueName = fileName.Substring(fileName.LastIndexOf("\\")+1);
-                this.Text = trueName + " - SNote";
+
+                if (OpenFile(filePath) == true)
+                {
+                    trueName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
+                    this.Text = trueName + " - SNote";
+                }
 
             }
             else
@@ -214,11 +224,18 @@ namespace Test
                 {
                     filePath = sf.FileName;
                     fileName = filePath;
-                    File.WriteAllText(filePath, richTextBox1.Text);
-                    saved = true;
-                    trueName = filePath.Substring(filePath.LastIndexOf("\\")+1);
-                    this.Text = trueName + " - SNote";
-                    opened = true;
+                    try
+                    {
+                        File.WriteAllText(filePath, richTextBox1.Text);
+                        saved = true;
+                        trueName = filePath.Substring(filePath.LastIndexOf("\\") + 1);
+                        this.Text = trueName + " - SNote";
+                        opened = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -230,8 +247,15 @@ namespace Test
                     MessageBox.Show(fileName + " is read only!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                File.WriteAllText(fileName, richTextBox1.Text);
-                saved = true;
+                try
+                {
+                    File.WriteAllText(fileName, richTextBox1.Text);
+                    saved = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             
         }
@@ -245,9 +269,16 @@ namespace Test
             if (sf.ShowDialog() == DialogResult.OK)
             {
                 filePath = sf.FileName;
-                
-                File.WriteAllText(filePath, richTextBox1.Text);
-                saved = false;
+
+                try
+                {
+                    File.WriteAllText(filePath, richTextBox1.Text);
+                    saved = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -351,15 +382,28 @@ namespace Test
                         if (sf.ShowDialog() == DialogResult.OK)
                         {
                             filePath = sf.FileName;
-                            
-                            File.WriteAllText(filePath, richTextBox1.Text);
+                            try
+                            {
+                                File.WriteAllText(filePath, richTextBox1.Text);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
 
                         }
                     }
                     else
                     {
-                        
-                        File.WriteAllText(fileName, richTextBox1.Text);
+
+                        try
+                        {
+                            File.WriteAllText(fileName, richTextBox1.Text);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
                     }
                     

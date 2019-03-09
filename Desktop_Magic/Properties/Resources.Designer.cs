@@ -63,29 +63,9 @@ namespace DM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap autumn_leaves_PNG3571 {
-            get {
-                object obj = ResourceManager.GetObject("autumn_leaves_PNG3571", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap crystal_snowflake {
             get {
                 object obj = ResourceManager.GetObject("crystal-snowflake", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SnowFlake003 {
-            get {
-                object obj = ResourceManager.GetObject("SnowFlake003", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

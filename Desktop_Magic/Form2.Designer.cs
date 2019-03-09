@@ -51,17 +51,16 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(331, 211);
+            this.pictureBox1.Location = new System.Drawing.Point(458, 57);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(80, 76);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(211, 211);
+            this.pictureBox2.Location = new System.Drawing.Point(127, 57);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(75, 76);
             this.pictureBox2.TabIndex = 2;
@@ -70,7 +69,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(417, 211);
+            this.pictureBox3.Location = new System.Drawing.Point(456, 231);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(82, 76);
             this.pictureBox3.TabIndex = 3;
@@ -78,7 +77,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(86, 213);
+            this.pictureBox4.Location = new System.Drawing.Point(122, 214);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(80, 73);
             this.pictureBox4.TabIndex = 4;
@@ -87,7 +86,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::DM.Properties.Resources.crystal_snowflake;
-            this.pictureBox5.Location = new System.Drawing.Point(331, 293);
+            this.pictureBox5.Location = new System.Drawing.Point(295, 137);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(75, 76);
             this.pictureBox5.TabIndex = 5;
@@ -112,7 +111,6 @@
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -166,6 +166,7 @@ namespace DM
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
         }
 
         private void numbercheckBox_CheckedChanged(object sender, EventArgs e)

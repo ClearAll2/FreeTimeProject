@@ -17,7 +17,6 @@ using System.Drawing.Text;
 using System.Runtime.InteropServices;
 using System.Management;
 using System.Security.Permissions;
-using AE.Net.Mail;
 
 namespace RamC
 {
@@ -40,15 +39,14 @@ namespace RamC
         bool Cpulock = true;
         bool Disklock = true;
         bool Ramlock = true;
-        bool Maillock = true;
-        bool Mailstop = false;
+        //bool Mailstop = false;
         bool h = false;
         bool isLong = false;
 
         string Diskfont;
         string Ramfont;
         string Cpufont;
-        string Mailfont;
+        
         string Clockfont;
 
         int CTop;
@@ -59,11 +57,8 @@ namespace RamC
         int DiskLeft;
         int RamTop;
         int RamLeft;
-        int MailTop;
-        int MailLeft;
-        int urno = 0;
         WebClient wc = new WebClient();
-        BackgroundWorker bw;
+        //BackgroundWorker bw;
         BackgroundWorker bw2;
         
         bool lk = false;
@@ -71,9 +66,9 @@ namespace RamC
         //bool saved = false;
         string id = " ";
         string pass = " ";
-        ImapClient mail;
+        //ImapClient mail;
         AboutBox1 box = new AboutBox1();
-        General gn = new General();
+        
         WebClient wb = new WebClient();
         TypeConverter converter = TypeDescriptor.GetConverter(typeof(Font));
        // ReSize resize = new ReSize();
@@ -81,7 +76,7 @@ namespace RamC
         int blur = 5;
         Color stroke;
         
-        Form2 f2;
+       
         Form3 f3;
         public Form1()
         {
@@ -99,17 +94,16 @@ namespace RamC
             DiskLeft = label3.Left;
             RamTop = label1.Top;
             RamLeft = label1.Left;
-            MailTop = label5.Top;
-            MailLeft = label5.Left;
+           
 
             //get default font
             Cpufont = converter.ConvertToString(label4.Font);
             Diskfont = converter.ConvertToString(label3.Font);
             Ramfont = converter.ConvertToString(label1.Font);
-            Mailfont = converter.ConvertToString(label5.Font);
+           
             Clockfont = converter.ConvertToString(label2.Font);
-            
 
+            this.VisibleChanged += Form1_VisibleChanged;
 
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
             if (r == null)
@@ -167,10 +161,7 @@ namespace RamC
             {
                 label1.Font = (Font)converter.ConvertFromString((string)r.GetValue("Ramfont"));
             }
-            if (r.GetValue("Mailfont") != null)
-            {
-                label5.Font = (Font)converter.ConvertFromString((string)r.GetValue("Mailfont"));
-            }
+            
             if (r.GetValue("Clockfont") != null)
             {
                 label2.Font = (Font)converter.ConvertFromString((string)r.GetValue("Clockfont"));
@@ -198,11 +189,7 @@ namespace RamC
                 label1.Top = (int)r.GetValue("RamTop");
                 label1.Left = (int)r.GetValue("RamLeft");
             }
-            if (r.GetValue("MailTop") != null)
-            {
-                label5.Top = (int)r.GetValue("MailTop");
-                label5.Left = (int)r.GetValue("MailLeft");
-            }
+            
             if (r.GetValue("Hide") != null)
             {
                 hideTrayIconToolStripMenuItem.Checked = true;
@@ -227,7 +214,7 @@ namespace RamC
             {
                 id = (string)r.GetValue("Id");
                 pass = (string)r.GetValue("Pass");
-                General.haveId = true;
+               
                 //saved = true;
             }
             if (r.GetValue("CpuColor") != null)
@@ -250,11 +237,7 @@ namespace RamC
                 int tmp = (int)r.GetValue("TimeColor");
                 label2.ForeColor = Color.FromArgb(tmp);
             }
-            if (r.GetValue("MailColor") != null)
-            {
-                int tmp = (int)r.GetValue("MailColor");
-                label5.ForeColor = Color.FromArgb(tmp);
-            }
+            
             if (r.GetValue("Stroke") != null)
             {
                 int tmp = (int)r.GetValue("Stroke");
@@ -345,49 +328,41 @@ namespace RamC
             r.Dispose();
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
 
-            if (r.GetValue("showmail") != null)
-            {
-                showToolStripMenuItem.Checked = true;
-            }
-            else
-            {
-                closeToolStripMenuItem3_Click(null, null);
-            }
+           
             r.Close();
             r.Dispose();
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             if (r.GetValue("RamC") != null)
             {
-                runAtStartupToolStripMenuItem.Checked = true;
+                if (Application.ExecutablePath == (string)r.GetValue("RamC"))
+                    runAtStartupToolStripMenuItem.Checked = true;
             }
             r.Close();
             r.Dispose();
             notifyIcon1.BalloonTipClicked += notifyIcon1_BalloonTipClicked;
-            
-            //Time = (Bitmap)FancyText.ImageFromText("Time", label2.Font, Color.Black, Color.White);
-            label5.Text = "Mail:";
-            bw = new BackgroundWorker();
-            bw.DoWork += bw_DoWork;
-            bw.RunWorkerAsync();
-            f2 = new Form2();
-            f2.Hide();
-
-            bw2 = new BackgroundWorker();
-            bw2.DoWork += bw2_DoWork;
-            bw2.RunWorkerAsync();
-
-            
+           
 
             f3 = new Form3();
-            if (showAtStartupToolStripMenuItem.Checked)
-            {
-                
-                f3.Show();
-            }
+            
 
         }
 
-        
+        private void Form1_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                if (showAtStartupToolStripMenuItem.Checked)
+                {
+                    f3.Show();
+
+                    bw2 = new BackgroundWorker();
+                    bw2.DoWork += bw2_DoWork;
+                    bw2.RunWorkerAsync();
+                }
+            }
+        }
+
+
         //resize window
 
         private const int cGrip = 16;      // Grip size
@@ -519,163 +494,32 @@ namespace RamC
             string changelog = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsWXEyTzdrM1phOWM");
             if (version != Application.ProductVersion)
             {
-                if (MessageBox.Show("You are running old version " + Application.ProductVersion + "\nWould you like to download new version " + version + "?\n" + "Changelog: \n" + changelog, "RamC Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("You are running old version " + Application.ProductVersion + "\nWould you like to download new version " + version + "?\n" + changelog, "RamC Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Process.Start("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsdkJ3VEp2R0dlQm8");
                 }
             }
         }
 
-        //mail
-        void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Start:
-            int unread = 0;
-            while (true)
-            {
-                if (General.haveId == true)
-                {
-                    label5.Text = "Mail: load";
-                    r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-                    id = (string)r.GetValue("Id");
-                    pass = (string)r.GetValue("Pass");
-                    r.Close();
-                    break;
-                }
-                Thread.Sleep(2000);
-            }
-            exitToolStripMenuItem.Enabled = false;
-            exitToolStripMenuItem1.Enabled = false;
-            while (true)
-            {
-                try
-                {
-                    label5.Text = "Mail: check";
-                    var temp = wb.DownloadString("https://www.google.com");
-                    Thread.Sleep(2000);
-                }
-                catch (Exception)
-                {
-                    label5.Text = "Mail: dis";
-                    exitToolStripMenuItem.Enabled = true;
-                    exitToolStripMenuItem1.Enabled = true;
-                    Thread.Sleep(2000);
-                    continue;
-                }
-                break;
-            }
-            label5.Text = "Mail: init";
-            try
-            {
-                mail = new ImapClient("imap.gmail.com", id, pass, AuthMethods.Login, 993, true);
-            }
-            catch
-            {
-                label5.Text = "Mail: error";
-                exitToolStripMenuItem.Enabled = true;
-                exitToolStripMenuItem1.Enabled = true;
-                Thread.Sleep(10000);
-                label5.Text = "Mail: reload";
-                Thread.Sleep(2000);
-                goto Start;
-            }
-            label5.Text = "Mail: ok";
-            while (true)
-            {
-                exitToolStripMenuItem.Enabled = false;
-                exitToolStripMenuItem1.Enabled = false;
-                unread = 0;
-                label5.Text = "Mail: init";
-                try
-                {
-                    var temp = wb.DownloadString("https://www.google.com");
-
-                }
-                catch (Exception)
-                {
-                    label5.Text = "Mail: dis";
-                    exitToolStripMenuItem.Enabled = true;
-                    exitToolStripMenuItem1.Enabled = true;
-                    Thread.Sleep(2000);
-                    continue;
-                }
-                label5.Text = "Mail: load";
-                try
-                {
-                    mail.SelectMailbox("INBOX");
-                    var mailmess = mail.SearchMessages(SearchCondition.Unseen(), true, false).ToList();
-                    for (int i = 0; i < mailmess.Count; i++)
-                        unread++;
-                    label5.Text = "Mail: " + unread.ToString();
-                    if (unread > 0)
-                    {
-                        if (urno != unread)
-                        {
-                            if (notifyIcon1.Visible)
-                                notifyIcon1.ShowBalloonTip(1000, "New Emails", "You have " + unread.ToString() + " new emails", ToolTipIcon.Info);
-                            else
-                            {
-                                MessageBox.Show("You have " + unread.ToString() + " new emails", "New Emails", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-
-                        }
-                    }
-                    urno = unread;
-                }
-                catch (Exception)
-                {
-                    label5.Text = "Mail: new";
-                    //mail.Disconnect();
-                    try
-                    {
-                        mail = new ImapClient("imap.gmail.com", id, pass, AuthMethods.Login, 993, true);
-                    }
-                    catch (Exception)
-                    {
-                        continue;
-                    }
-                    Thread.Sleep(2000);
-                    continue;
-                }
-                exitToolStripMenuItem.Enabled = true;
-                exitToolStripMenuItem1.Enabled = true;
-                //Thread.Sleep(1800000);
-                //mail.Disconnect();
-                //mail.Dispose();
-
-                
-
-                Thread.Sleep(75000);
-
-                
-                while (Mailstop == true)
-                {
-                    label5.Text = "Mail: stop";
-                    
-                }
-                
-           
-            }
-        }
-
+        
         private void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
         {    
-            if (f2 != null && f2.IsDisposed != true)
-            {
-                f2.Show();
-                f2.TopMost = true;
-                f2.WindowState = FormWindowState.Normal;
-                f2.TopMost = false;
-            }
-            else
-            {
-                f2.Dispose();
-                f2 = new Form2();
-                f2.Show();
-                f2.TopMost = true;
-                f2.WindowState = FormWindowState.Normal;
-                f2.TopMost = false;
-            }
+            //if (f2 != null && f2.IsDisposed != true)
+            //{
+            //    f2.Show();
+            //    f2.TopMost = true;
+            //    f2.WindowState = FormWindowState.Normal;
+            //    f2.TopMost = false;
+            //}
+            //else
+            //{
+            //    f2.Dispose();
+            //    f2 = new Form2();
+            //    f2.Show();
+            //    f2.TopMost = true;
+            //    f2.WindowState = FormWindowState.Normal;
+            //    f2.TopMost = false;
+            //}
         }
 
         /*prevent this app from being hidden by "show desktop" button*/
@@ -724,8 +568,7 @@ namespace RamC
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (General.haveId == true && label5.Text != "Mail: error")
-                mail.Disconnect();
+            
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
             if (r == null)
                 r = Registry.CurrentUser.CreateSubKey("SOFTWARE\\ClearAll\\RamC\\Data");
@@ -747,8 +590,7 @@ namespace RamC
             r.SetValue("RamTop", label1.Top);
             r.SetValue("RamLeft", label1.Left);
             //
-            r.SetValue("MailTop", label5.Top);
-            r.SetValue("MailLeft", label5.Left);
+           
             //
             r.Close();
 
@@ -921,6 +763,7 @@ namespace RamC
         {
             //if (bw2.IsBusy != true)
             //    bw2.RunWorkerAsync();
+            
             if (box.Visible != true)
                 box.ShowDialog();
             
@@ -1063,47 +906,7 @@ namespace RamC
             r.Dispose();
         }
 
-        private void gmailToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (f2 != null && f2.IsDisposed != true)
-            {
-                f2.Show();
-                f2.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                f2.Dispose();
-                f2 = new Form2();
-                f2.Show();
-            }
-        }
 
-        private void label5_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                newx = e.X;
-                newy = e.Y;
-            }
-        }
-
-        private void label5_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left && lk != true)
-            {
-                Left = Left + (e.X - newx);
-                Top = Top + (e.Y - newy);
-            }
-            else
-            {
-                if (Maillock != true && e.Button == MouseButtons.Left)
-                {
-
-                    label5.Left = label5.Left + (e.X - newx);
-                    label5.Top = label5.Top + (e.Y - newy);
-                }
-            }
-        }
 
         private void strokeColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1240,56 +1043,6 @@ namespace RamC
             }
         }
 
-        private void colorToolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            cd.Color = label5.ForeColor;
-            if (cd.ShowDialog() == DialogResult.OK)
-            {
-                label5.ForeColor = cd.Color;
-                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-                r.SetValue("MailColor", label5.ForeColor.ToArgb());
-                r.Close();
-                r.Dispose();
-            }
-            cd.Dispose();
-        }
-
-        private void lockToolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            if (lk != true && lockToolStripMenuItem4.Checked == true)
-            {
-                MessageBox.Show("You must lock location of window before unlocking this", "Please!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            if (lockToolStripMenuItem4.Checked)
-            {
-                lockToolStripMenuItem4.Checked = false;
-                Maillock = false;
-            }
-            else
-            {
-                lockToolStripMenuItem4.Checked = true;
-                Maillock = true;
-            }
-        }
-
-        private void label5_DoubleClick(object sender, EventArgs e)
-        {
-
-            if (f2 != null && f2.IsDisposed != true)
-            {
-                f2.Show();
-                f2.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                f2.Dispose();
-                f2 = new Form2();
-                f2.Show();
-            }
-
-        }
 
         private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1309,11 +1062,6 @@ namespace RamC
             label1.Top = RamTop;
         }
 
-        private void defaultToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            label5.Left = MailLeft;
-            label5.Top = MailTop;
-        }
 
         private void defaultToolStripMenuItem4_Click(object sender, EventArgs e)
         {
@@ -1327,8 +1075,6 @@ namespace RamC
                 label3.Top = DiskTop;
                 label1.Left = RamLeft;
                 label1.Top = RamTop;
-                label5.Left = MailLeft;
-                label5.Top = MailTop;
             }
         }
 
@@ -1358,10 +1104,6 @@ namespace RamC
             Application.Exit();
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
 
         private void hideTrayIconToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1450,11 +1192,7 @@ namespace RamC
             rAMToolStripMenuItem_Click(null, null);
         }
 
-        private void closeToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            label5.Hide();
-            showToolStripMenuItem_Click(null, null);
-        }
+        
 
         private void cPUToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1513,24 +1251,7 @@ namespace RamC
             r.Dispose();
         }
 
-        private void showToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-            if (showToolStripMenuItem.Checked != true)
-            {
-                showToolStripMenuItem.Checked = true;
-                label5.Show();
-                r.SetValue("showmail", true);
-            }
-            else
-            {
-                showToolStripMenuItem.Checked = false;
-                label5.Hide();
-                r.DeleteValue("showmail", false);
-            }
-            r.Close();
-            r.Dispose();
-        }
+
 
         private void blur4tools_Click(object sender, EventArgs e)
         {
@@ -1596,20 +1317,7 @@ namespace RamC
             r.Dispose();
         }
         //disconnect mail
-        private void stopConnectionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Mailstop != true)
-            {
-                Mailstop = true;
-                stopConnectionToolStripMenuItem.Text = "Resume Connection";
-                label5.Text = "Mail:";
-            }
-            else
-            {
-                Mailstop = false;
-                stopConnectionToolStripMenuItem.Text = "Stop Connection";
-            }
-        }
+       
         
         //set disk font
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1666,22 +1374,7 @@ namespace RamC
         }
 
         //set mail font
-        private void fontToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            FontDialog fd = new FontDialog();
-            fd.Font = label5.Font;
-            if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                label5.Font = fd.Font;
-
-                string fontString = converter.ConvertToString(fd.Font);
-                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-                r.SetValue("Mailfont", fontString);
-                r.Close();
-                r.Dispose();
-            }
-            fd.Dispose();
-        }
+        
 
         //set clock font
         private void fontToolStripMenuItem4_Click(object sender, EventArgs e)
@@ -1748,15 +1441,8 @@ namespace RamC
         }
 
         //set mail font to default
-        private void setToDefaultToolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            label5.Font = (Font)converter.ConvertFromString(Mailfont);
-            string fontString = converter.ConvertToString(label5.Font);
-            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-            r.SetValue("Mailfont", fontString);
-            r.Close();
-            r.Dispose();
-        }
+        
+
 
         private void hToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1817,26 +1503,5 @@ namespace RamC
             r.Close();
             r.Dispose();
         }
-
-        
-
-        
-
-        
-
-        
-
-       
-
-
-
-
-
-
-
-
-
-
-
     }
 }

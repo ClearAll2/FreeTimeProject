@@ -115,11 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ICON.ico" />
-    <Content Include="newgenpack.ico" />
-    <Content Include="newicon.ico" />
     <Content Include="note1600.ico" />
-    <Content Include="notepad.ico" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

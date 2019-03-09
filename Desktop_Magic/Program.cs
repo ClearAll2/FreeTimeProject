@@ -16,19 +16,24 @@ namespace DM
         [STAThread]
         static void Main()
         {
-            
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
             m_Mutex = new Mutex(true, "DesktopMagic");
 
-            if (m_Mutex.WaitOne(0, false))
+            if (m_Mutex.WaitOne(0, true))
             {
-                
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());
+                m_Mutex.ReleaseMutex();
             }
             else
             {
-                MessageBox.Show("Desktop Magic is already running!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Desktop Magic is already running!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NativeMethods.PostMessage(
+                    (IntPtr)NativeMethods.HWND_BROADCAST,
+                    NativeMethods.WM_DMSHOWME,
+                    IntPtr.Zero,
+                    IntPtr.Zero);
+                
                 return;
             }
 

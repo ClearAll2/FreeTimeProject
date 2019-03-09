@@ -130,7 +130,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Auto Shutdown Pc_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -147,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="newicon.ico" />
-    <Content Include="power.ico" />
     <None Include="Resources\chat-inbound.wav" />
     <None Include="Resources\welcome.wav" />
   </ItemGroup>

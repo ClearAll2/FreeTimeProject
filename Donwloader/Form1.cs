@@ -37,20 +37,19 @@ namespace Donwloader
             string cut;
             if (textBox1.Text.Contains("drive.google.com/") )
             {
-                if (textBox1.Text.IndexOf("0") != -1)
+               
+                try
                 {
-                    try
-                    {
-                         cut = textBox1.Text.Substring(textBox1.Text.IndexOf("0"), textBox1.Text.LastIndexOf("/") - textBox1.Text.IndexOf("0"));
-                    }
-                    catch(Exception)
-                    {
-                        textBox2.Text = "";
-                        return;  
-                    }
-                    url = url + cut;
-                    textBox2.Text = url;
-                } 
+                        cut = textBox1.Text.Substring(textBox1.Text.LastIndexOf("d/")+2, textBox1.Text.LastIndexOf("/") - textBox1.Text.LastIndexOf("d/")-2);
+                }
+                catch(Exception)
+                {
+                    textBox2.Text = "";
+                    return;  
+                }
+                url = url + cut;
+                textBox2.Text = url;
+               
             }
             else if (textBox1.Text.Contains("www.dropbox.com/"))
             {

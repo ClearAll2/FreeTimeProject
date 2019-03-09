@@ -24,8 +24,9 @@ namespace LScanner
 {
     public partial class Form1 : Form
     {
-        List<Thread> threads = new List<Thread>();
+        List<bool> done = new List<bool>();
         List<string> list = new List<string>();
+
         string localIP;
         string host;
         bool stop = false;
@@ -38,7 +39,8 @@ namespace LScanner
         WebClient wc;
        
         NetworkInterface[] nics;
-        
+
+        int newx, newy;
         public Form1()
         {
             
@@ -47,6 +49,7 @@ namespace LScanner
             localIP = GetLocalIPAddress();
             textBox1.Text = localIP;
             label14.ForeColor = Color.Red;
+            //label16.Text = "LAN Scanner - v" + Application.ProductVersion;
 
             bw = new BackgroundWorker();
             bw.DoWork += bw_DoWork;
@@ -111,6 +114,7 @@ namespace LScanner
                             host = Dns.GetHostEntry(addr);
                             mac = GetMacAddress(subnet + subnetn);
                             listView1.Items.Add(new ListViewItem(new String[] { subnet + subnetn, host.HostName, mac }));
+                           
                         }
                         catch (Exception)
                         {
@@ -222,22 +226,7 @@ namespace LScanner
             
         }
 
-        private void blockToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            Thread t = new Thread(() => spoof(listView1.SelectedItems[0].SubItems[0].Text, listView1.SelectedItems[0].SubItems[2].Text));
-            t.Start();
-            threads.Add(t);
-            MessageBox.Show("Started a blocking thread!", "Info");
-        }
-
-        private void stopBlockToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            stop2 = true;
-            threads.Clear();
-            MessageBox.Show("Stopped!", "Info");
-        }
-
+      
 
         private void InitializeNetworkInterface()
         {
@@ -421,6 +410,8 @@ namespace LScanner
             }
         }
 
+
+
         //scan
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -440,7 +431,7 @@ namespace LScanner
             
             
             listView1.Items.Clear();
-
+           
             for (int i = 1; i < 255; i++)
             {
                 if (stop == true)
@@ -448,10 +439,10 @@ namespace LScanner
                 string subnetn = "." + i.ToString();
                 //MessageBox.Show(subnet + subnetn, "info");
                 Ping myPing = new Ping();
-                myPing.PingCompleted += myPing_PingCompleted;       
+                myPing.PingCompleted += myPing_PingCompleted;
                 try
                 {
-                    myPing.SendAsync(subnet + subnetn, 100, subnet+subnetn);
+                    myPing.SendAsync(subnet + subnetn, 10000, subnet+subnetn);
                     label3.ForeColor = System.Drawing.Color.Green;
                     label3.Text = "Scanning " + subnetn +"/.254";
                 }
@@ -459,34 +450,36 @@ namespace LScanner
                 {
                     continue;
                 }
-                myPing.Dispose();
+                //myPing.Dispose();
             }
             while (bw4.IsBusy)
             { }
             bw4.RunWorkerAsync();
+            
             button1.Enabled = true;
             button2.Enabled = false;
             label3.Text = "Done";
 
-            int count = listView1.Items.Count;
-            MessageBox.Show("Scanning done!\nFound " + count.ToString() + " hosts.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Scanning done!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void myPing_PingCompleted(object sender, PingCompletedEventArgs e)
         {
             string ip = (string)e.UserState;
             if (e.Reply != null && e.Reply.Status == IPStatus.Success)
-            {
-                
+            { 
+                for (int i=0;i<list.Count;i++)
+                {
+                    if(list[i] == ip)
+                    {
+                        return;
+                    }
+                }
                 listView1.Items.Add(new ListViewItem(new String[] { ip, "Getting hostname", "Getting MAC" }));
-                //listView1.Items.Add(new ListViewItem(new String[] { ip, host.HostName, mac }));
                 list.Add(ip);
+                done.Add(false);
             }
-            else
-            {
-                
-                return;
-            }
+            
             
         }
 
@@ -495,48 +488,57 @@ namespace LScanner
             button1.Enabled = false;
             button2.Enabled = false;
             button3.Enabled = false;
-            for (int j = 0; j < list.Count; j++)
-            {
-                if (stop == true)
-                    return;
-                IPAddress addr = null;
-                IPHostEntry host = null;
-                string mac = "?-?-?-?-?-?";
-                try
+            
+                for (int j = 0; j < list.Count; j++)
                 {
-                    addr = IPAddress.Parse(list[j]);
-                    host = Dns.GetHostEntry(addr);
-                    mac = GetMacAddress(list[j]);
-                }
-                catch (Exception)
-                {
-                    for (int i = 0; i < listView1.Items.Count; i++)
+                    if (stop == true)
+                        return;
+                    if (done[j] != true)
                     {
-                        if (listView1.Items[i].SubItems[0].Text == list[j])
+                        IPAddress addr = null;
+                        IPHostEntry host = null;
+                        string mac = "?-?-?-?-?-?";
+                        try
                         {
-                            listView1.Items[i].SubItems[1].ForeColor = Color.Red;
-                            listView1.Items[i].SubItems[1].Text = "Unknown";
-                            listView1.Items[i].SubItems[2].ForeColor = Color.Red;
-                            listView1.Items[i].SubItems[2].Text = "Unknown";
-                            break;
+                            addr = IPAddress.Parse(list[j]);
+                            host = Dns.GetHostEntry(addr);
+                            mac = GetMacAddress(list[j]);
+                            
+                        }
+                        catch (Exception)
+                        {
+                            for (int i = 0; i < listView1.Items.Count; i++)
+                            {
+                                if (listView1.Items[i].SubItems[0].Text == list[j])
+                                {
+                                    listView1.Items[i].SubItems[1].ForeColor = Color.Red;
+                                    listView1.Items[i].SubItems[1].Text = "Unknown";
+                                    listView1.Items[i].SubItems[2].ForeColor = Color.Red;
+                                    listView1.Items[i].SubItems[2].Text = "Unknown";
+                                    done[j] = false;
+                                    break;
+                                }
+                            }
+                            continue;
+                        }
+                        for (int i = 0; i < listView1.Items.Count; i++)
+                        {
+                            if (listView1.Items[i].SubItems[0].Text == list[j])
+                            {
+                                listView1.Items[i].SubItems[1].ForeColor = Color.White;
+                                listView1.Items[i].SubItems[2].ForeColor = Color.White;
+                                listView1.Items[i].SubItems[1].Text = host.HostName;
+                                listView1.Items[i].SubItems[2].Text = mac;
+                                done[j] = true;
+                                break;
+                            }
                         }
                     }
-                    continue;
                 }
-                for (int i = 0; i < listView1.Items.Count; i++)
-                {
-                    if (listView1.Items[i].SubItems[0].Text == list[j])
-                    {
-                        listView1.Items[i].SubItems[1].ForeColor = Color.White;
-                        listView1.Items[i].SubItems[2].ForeColor = Color.White;
-                        listView1.Items[i].SubItems[1].Text = host.HostName;
-                        listView1.Items[i].SubItems[2].Text = mac;
-                        break;
-                    }
-                }
-            }
+            
             button1.Enabled = true;
             button3.Enabled = true;
+
         }
 
         public void controlSys(string host, int flags)
@@ -604,6 +606,8 @@ namespace LScanner
         private void button1_Click(object sender, EventArgs e)
         {
             localIP = GetLocalIPAddress();
+            list.Clear();
+            done.Clear();
             if (radioButton2.Checked)
             {
                 if (!bw.IsBusy)
@@ -661,7 +665,15 @@ namespace LScanner
                 if (listView1.FocusedItem.Bounds.Contains(e.Location) == true)
                 {
                     contextMenuStrip1.Show(Cursor.Position);
-                    // .Show(Cursor.Position);
+                    if (button1.Enabled)
+                    { 
+                        resolveToolStripMenuItem.Enabled = true;
+                    }
+                    else
+                    {
+                        resolveToolStripMenuItem.Enabled = false;
+                    }
+                    
                 }
             }
         }
@@ -699,14 +711,177 @@ namespace LScanner
             //label6.Text = "This computer internet IP: " + GetLocalIPAddress2();
         }
 
+        private int sortColumn = -1;
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column != sortColumn)
+            {
+                // Set the sort column to the new column.
+                sortColumn = e.Column;
+                // Set the sort order to ascending by default.
+                listView1.Sorting = SortOrder.Ascending;
+            }
+            else
+            {
+                // Determine what the last sort order was and change it.
+                if (listView1.Sorting == SortOrder.Ascending)
+                    listView1.Sorting = SortOrder.Descending;
+                else
+                    listView1.Sorting = SortOrder.Ascending;
+            }
+
+            // Call the sort method to manually sort.
+            listView1.Sort();
+            // Set the ListViewItemSorter property to a new ListViewItemComparer
+            // object.
+            listView1.ListViewItemSorter = new ListViewItemComparer(e.Column,
+                                                              listView1.Sorting);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (bw.IsBusy == true || bw3.IsBusy == true || bw4.IsBusy == true)
+            {
+                if (MessageBox.Show("Some processes are still running\nDo you really want to quit?", "Are you sure", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    
+                    e.Cancel = true;
+                }
+                
+            }
+        }
+
+        private void resolveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bw4.IsBusy != true)
+            {
+                if (list.Count > 0)
+                {
+                    for (int i = 0; i < listView1.Items.Count; i++)
+                    {
+                        for (int j = 0; j < list.Count; j++)
+                        {
+                            if (listView1.Items[i].SubItems[0].Text == list[j])
+                            {
+                                if (done[j] != true)
+                                {
+                                    stop = false;
+                                    bw4.RunWorkerAsync();
+                                    return;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("This host has been resolved!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This host has beed resolved!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("This process is running, try again later!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void panel4_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                newx = e.X;
+                newy = e.Y;
+            }
+        }
+
+        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left = Left + (e.X - newx);
+                Top = Top + (e.Y - newy);
+            }
+        }
+
+        private void label16_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                newx = e.X;
+                newy = e.Y;
+            }
+        }
+
+        private void label16_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left = Left + (e.X - newx);
+                Top = Top + (e.Y - newy);
+            }
+        }
+
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                newx = e.X;
+                newy = e.Y;
+            }
+        }
+
        
         
 
-       
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left = Left + (e.X - newx);
+                Top = Top + (e.Y - newy);
+            }
+        }
+    }
 
-       
-        
-
-        
+    class ListViewItemComparer : System.Collections.IComparer
+    {
+        private int col;
+        private SortOrder order;
+        public ListViewItemComparer()
+        {
+            col = 0;
+            order = SortOrder.Ascending;
+        }
+        public ListViewItemComparer(int column, SortOrder order)
+        {
+            col = column;
+            this.order = order;
+        }
+        public int Compare(object x, object y)
+        {
+            int returnVal = -1;
+            returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
+                                    ((ListViewItem)y).SubItems[col].Text);
+            // Determine whether the sort order is descending.
+            if (order == SortOrder.Descending)
+                // Invert the value returned by String.Compare.
+                returnVal *= -1;
+            return returnVal;
+        }
     }
 }

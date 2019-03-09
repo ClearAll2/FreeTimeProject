@@ -10,6 +10,7 @@ namespace AS
 {
     partial class AboutBox1 : Form
     {
+        
         public AboutBox1()
         {
             InitializeComponent();
@@ -19,7 +20,10 @@ namespace AS
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
+            
         }
+
+        
 
         #region Assembly Attribute Accessors
 
@@ -100,5 +104,7 @@ namespace AS
             }
         }
         #endregion
+
+       
     }
 }

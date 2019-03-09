@@ -14,6 +14,7 @@ namespace AS
     {
         string text = "";
         int count = 0;
+        int newx, newy;
         SoundPlayer sound;
         public Form2()
         {
@@ -22,6 +23,7 @@ namespace AS
             button1.Enabled = false;
             textBox1.Text = "Write here...";
             button3.Hide();
+            button4.Hide();
             numericUpDown1.Hide();
             sound = new SoundPlayer(global::AS.Properties.Resources.chat_inbound);
         }
@@ -74,11 +76,13 @@ namespace AS
         {
             if (textBox1.Text.Length > 0 && textBox1.Text != "Write here...")
             {
-                button1.Enabled = true;
+                if (button4.ImageIndex != 1)
+                    button1.Enabled = true;
             }
             else
             {
-                button1.Enabled = false;  
+                if (button4.ImageIndex != 1)
+                    button1.Enabled = false;  
             }
 
         }
@@ -100,6 +104,7 @@ namespace AS
                 textBox1.Font = new Font(FontFamily.GenericSansSerif, 14.00F, FontStyle.Bold);
                 button2.Hide();
                 button3.Show();
+                button4.Show();
                 button1.Text = "Ok and Exit";
                 numericUpDown1.Show();
                 this.Show();
@@ -141,6 +146,7 @@ namespace AS
                 textBox1.Font = new Font(FontFamily.GenericSansSerif, 14.00F, FontStyle.Bold);
                 button2.Hide();
                 button3.Show();
+                button4.Show();
                 numericUpDown1.Show();
                 this.Show();
                 this.Focus();
@@ -177,6 +183,42 @@ namespace AS
                
         }
 
+        private void Form2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                newx = e.X;
+                newy = e.Y;
+            }
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (button4.ImageIndex != 1)
+            {
+                
+                textBox1.ReadOnly = false;
+                button4.ImageIndex = 1;
+                button3.Enabled = false;
+                button1.Enabled = false;
+            }
+            else
+            {
+                
+                textBox1.ReadOnly = true;
+                button4.ImageIndex = 0;
+                button3.Enabled = true;
+                button1.Enabled = true;
+            }
+        }
+
+        private void Form2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left = Left + (e.X - newx);
+                Top = Top + (e.Y - newy);
+            }
+        }
     }
 }

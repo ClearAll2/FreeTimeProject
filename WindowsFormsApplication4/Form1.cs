@@ -970,20 +970,6 @@ namespace WindowsFormsApplication4
             }
         }
 
-        private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            //throw new NotImplementedException();
-            jarvis.SpeakAsync("Download Completed!");
-            MessageBox.Show("Download completed!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //this.ControlBox = true;
-            this.button2.Enabled = true;
-        }
-
-        private void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)
@@ -1004,11 +990,6 @@ namespace WindowsFormsApplication4
                 }
                 
             }
-        }
-
-        private void toolStripSeparator1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1187,67 +1168,6 @@ namespace WindowsFormsApplication4
                 }
             }
         } 
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (showed == true)
-            {
-                if(textBox1.Text != textBox2.Text)
-                {
-                    MessageBox.Show("Rewritten password does not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                showed = false;
-                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\AS\\Data", true);
-                r.SetValue("Pass", textBox1.Text);
-                r.Close();
-                r.Dispose();
-                MessageBox.Show("Your password has been saved!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                panel1.Hide();
-            }
-            else
-            {
-                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\AS\\Data", true);
-                if ((string)r.GetValue("Pass") != textBox1.Text)
-                {
-                    MessageBox.Show("Wrong password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    r.Close(); r.Dispose();
-                    tick = true;
-                    checkBox3.Checked = true;
-                    tick = false;
-                    panel1.Hide();
-                    return;
-                }
-                else
-                {
-                    if (click != true)//check if stop button is clicked
-                    {
-                        MessageBox.Show("Success! AutoRun option has been disabled!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        r.Close();
-                        r.Dispose();
-                        panel1.Hide();
-                        wait = true;
-                        return;
-                    }
-                    else
-                    {
-                        click = false; 
-                        r.Close();
-                        r.Dispose();
-                        panel1.Hide();
-                        Stop();
-                    }
-                }
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            panel1.Hide();
-            tick = true;
-            checkBox3.Checked = true;
-            tick = false;
-        }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {

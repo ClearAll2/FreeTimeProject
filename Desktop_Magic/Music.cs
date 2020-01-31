@@ -14,7 +14,7 @@ using System.Diagnostics;
 
 namespace DM
 {
-    public partial class Form3 : Form
+    public partial class Music : Form
     {
         GlobalKeyboardHook gHook;
         List<String> fileNames = new List<String>();
@@ -27,7 +27,7 @@ namespace DM
         int last = 0;
         int newx, newy;
         RegistryKey r;
-        public Form3()
+        public Music()
         {
             InitializeComponent();        
             StartPosition = FormStartPosition.CenterScreen;

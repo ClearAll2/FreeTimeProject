@@ -12,10 +12,10 @@ using Microsoft.Win32;
 
 namespace DM
 {
-    public partial class Form4 : Form
+    public partial class Config : Form
     {
         RegistryKey r;
-        public Form4()
+        public Config()
         {
             InitializeComponent();
             timecheckBox.Hide();

@@ -12,7 +12,7 @@ using System.IO;
 
 namespace DM
 {
-    public partial class Form2 : Form
+    public partial class EffectForm : Form
     {
         List<CFlake> pics = new List<CFlake>();
         Random rnd = new Random();
@@ -31,7 +31,7 @@ namespace DM
         int x;
         int y;
         RegistryKey r1;
-        public Form2()
+        public EffectForm()
         {
             InitializeComponent();
             speed = Glob.Speed;

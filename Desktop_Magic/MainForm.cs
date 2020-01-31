@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.Win32;
-using System.Net;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
-using System.Threading;
+using System.Net;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace DM
 {
 
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         int newx, newy;
         bool started = false;
@@ -37,11 +31,11 @@ namespace DM
         BackgroundWorker bw3;
         string tmp = "";
         string changelog = "";
-        Form2 n;
-        Form3 f;
+        EffectForm n;
+        Music f;
         //Form5 f5;
         int value;
-        AboutBox1 ab = new AboutBox1();
+        About ab = new About();
         KeyboardHook hook = new KeyboardHook();
         KeyboardHook hook2 = new KeyboardHook();
 
@@ -56,12 +50,12 @@ namespace DM
         private void ShowMe()
         {
             this.TopMost = true;
-            this.Show();         
+            this.Show();
             WindowState = FormWindowState.Normal;
             this.TopMost = false;
         }
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             //notifyIcon1.Visible = false;
@@ -72,7 +66,7 @@ namespace DM
             bw3.RunWorkerAsync();
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
-            
+
             if (r1 == null)
                 r1 = Registry.CurrentUser.CreateSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data");
             Glob g = new Glob();
@@ -200,20 +194,20 @@ namespace DM
             r1.Close();
             r1.Dispose();
 
-            
 
-            f = new Form3();
+
+            f = new Music();
             //for hook
             f.Show();
             f.Hide();
 
-            
+
             hook.KeyPressed +=
             new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
             hook.RegisterHotKey(global::ModifierKeys.Alt, Keys.Left);
             hook.RegisterHotKey(global::ModifierKeys.Control, Keys.Left);
             hook.RegisterHotKey(global::ModifierKeys.Shift, Keys.Left);
-            
+
             hook2.KeyPressed +=
             new EventHandler<KeyPressedEventArgs>(hook2_KeyPressed);
             hook2.RegisterHotKey(global::ModifierKeys.Alt, Keys.Right);
@@ -224,7 +218,7 @@ namespace DM
 
         private void hook2_KeyPressed(object sender, KeyPressedEventArgs e)
         {
-            if (e.Modifier == global::ModifierKeys.Alt)              
+            if (e.Modifier == global::ModifierKeys.Alt)
                 trackBar1.Value += 1;
             else if (e.Modifier == global::ModifierKeys.Control)
                 trackBar2.Value += 1;
@@ -248,7 +242,7 @@ namespace DM
         private void bw3_DoWork(object sender, DoWorkEventArgs e)
         {
             Random r = new Random();
-            ret:
+        ret:
             int o = r.Next(1, 9);
             if (o == 1)
             {
@@ -319,7 +313,7 @@ namespace DM
                 tmp = ui;
                 button4.Text = "Download new...";
 
-                if (MessageBox.Show("New version " + tmp + " is now available\n\n"  + changelog + "\n\nWould you like to download now?", "Desktop Magic Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("New version " + tmp + " is now available\n\n" + changelog + "\n\nWould you like to download now?", "Desktop Magic Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     button4.Enabled = true;
                     Process.Start("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsUGxKUWtFTnM4dms");
@@ -345,7 +339,7 @@ namespace DM
                 //button9.Enabled = false;
                 started = true;
                 button1.Text = "Minimize";
-                n = new Form2();
+                n = new EffectForm();
                 n.Show();
 
             }
@@ -382,7 +376,7 @@ namespace DM
                 BeginInvoke(new MethodInvoker(delegate { Hide(); }));
 
             }
-            
+
             //gHook = new GlobalKeyboardHook();
             //gHook.KeyDown += new KeyEventHandler(gHook_Keydown);
             //foreach (Keys key in Enum.GetValues(typeof(Keys)))
@@ -732,7 +726,7 @@ namespace DM
                 }
                 else
                 {
-                    f = new Form3();
+                    f = new Music();
                     f.Show();
                     f.WindowState = FormWindowState.Normal;
                     f.TopMost = true;
@@ -1028,7 +1022,7 @@ namespace DM
                 }
                 else
                     Glob.Path = "";
-               
+
             }
             else
             {
@@ -1047,7 +1041,7 @@ namespace DM
 
         private void configToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form4 f4 = new Form4();
+            Config f4 = new Config();
             f4.ShowDialog();
         }
 
@@ -1072,10 +1066,10 @@ namespace DM
 
         private void label14_Click(object sender, EventArgs e)
         {
-           
+
             Application.Exit();
-            
-           
+
+
         }
 
         private void label15_Click(object sender, EventArgs e)
@@ -1106,7 +1100,7 @@ namespace DM
             }
         }
 
-       
+
 
         private void label18_Click(object sender, EventArgs e)
         {

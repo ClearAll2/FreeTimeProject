@@ -34,18 +34,18 @@ namespace DM
         public EffectForm()
         {
             InitializeComponent();
-            speed = Glob.Speed;
-            number = Glob.Number;
-            amount = Glob.Amount;
-            type = Glob.Type;
-            Size = Glob.Size;
-            path = Glob.Path;
+            speed = CGlob.Speed;
+            number = CGlob.Number;
+            amount = CGlob.Amount;
+            type = CGlob.Type;
+            Size = CGlob.Size;
+            path = CGlob.Path;
             pictureBox1.Hide();
             pictureBox2.Hide();
             pictureBox3.Hide();
             pictureBox4.Hide();
             pictureBox5.Hide();
-            timer1.Interval = rnd.Next(40, 55);   
+            timer1.Interval = 17;   
         }
         protected override CreateParams CreateParams
         {
@@ -62,14 +62,14 @@ namespace DM
             r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
             if ((int)r1.GetValue("DMT") == 3)
             {
-                if (File.Exists(Glob.Path))
+                if (File.Exists(CGlob.Path))
                 {
-                    pictureBox4.Image = Image.FromFile(Glob.Path);
+                    pictureBox4.Image = Image.FromFile(CGlob.Path);
 
                 }
                 else
                 {
-                    Glob.Type = 1;                   
+                    CGlob.Type = 1;                   
                     MessageBox.Show("Can not find your picture!!?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }     
             }
@@ -84,9 +84,9 @@ namespace DM
         }
         private void CreateFlake(CFlake pic)
         {
-            path = Glob.Path;
-            Size = Glob.Size;
-            type = Glob.Type;
+            path = CGlob.Path;
+            Size = CGlob.Size;
+            type = CGlob.Type;
             screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
             if (type == 1)
             {
@@ -102,9 +102,9 @@ namespace DM
             }
             else if (type == 3)
             {
-                pictureBox4.Image = Image.FromFile(Glob.Path);
+                pictureBox4.Image = Image.FromFile(CGlob.Path);
                 pic.Image = pictureBox4.Image;
-                size = rnd.Next(Glob.Size) + 5;
+                size = rnd.Next(CGlob.Size) + 5;
                 pic.Size = new System.Drawing.Size(size, size);
             }
             else if (type == 4)
@@ -137,11 +137,11 @@ namespace DM
                 }
                 else
                 {
-                    if (File.Exists(Glob.Path))
+                    if (File.Exists(CGlob.Path))
                     {
-                        pictureBox4.Image = Image.FromFile(Glob.Path);
+                        pictureBox4.Image = Image.FromFile(CGlob.Path);
                         pic.Image = pictureBox4.Image;
-                        size = rnd.Next(Glob.Size) + 5;
+                        size = rnd.Next(CGlob.Size) + 5;
                         pic.Size = new System.Drawing.Size(size, size);
                     }
                     else
@@ -179,8 +179,8 @@ namespace DM
         //
         private void RecreateFlake(CFlake pic)
         {
-            Size = Glob.Size;
-            type = Glob.Type;
+            Size = CGlob.Size;
+            type = CGlob.Type;
             screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
             if (type == 1)
             {
@@ -194,7 +194,7 @@ namespace DM
             }
             else if (type == 3)
             {
-                size = rnd.Next(Glob.Size) + 5;
+                size = rnd.Next(CGlob.Size) + 5;
                 pic.Size = new System.Drawing.Size(size, size);
             }
             else if (type == 4)
@@ -225,10 +225,10 @@ namespace DM
                 }
                 else
                 {
-                    if (File.Exists(Glob.Path) && pictureBox4.Image != null)
+                    if (File.Exists(CGlob.Path) && pictureBox4.Image != null)
                     {
                         pic.Image = pictureBox4.Image;
-                        size = rnd.Next(Glob.Size) + 5;
+                        size = rnd.Next(CGlob.Size) + 5;
                         pic.Size = new System.Drawing.Size(size, size);
                     }
                     else
@@ -267,7 +267,7 @@ namespace DM
         }
         public void Rescale()
         {
-            if (pics.Count != Glob.Amount || type != Glob.Type || path != Glob.Path)
+            if (pics.Count != CGlob.Amount || type != CGlob.Type || path != CGlob.Path)
             {  
                 g = this.CreateGraphics();
                 for (int i = 0; i < pics.Count; i++)
@@ -276,7 +276,7 @@ namespace DM
                 }
                 pics.Clear();
                 g.Dispose();
-                for (int i=0;i<Glob.Amount;i++)
+                for (int i=0;i<CGlob.Amount;i++)
                 {
                     CFlake pic = new CFlake();
                     pics.Add(pic);
@@ -288,9 +288,9 @@ namespace DM
         private void timer1_Tick(object sender, EventArgs e)
         {
             Rescale();
-            speed = Glob.Speed;
-            number = Glob.Number;
-            type = Glob.Type;
+            speed = CGlob.Speed;
+            number = CGlob.Number;
+            type = CGlob.Type;
             g = this.CreateGraphics();
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
             screenWidth = Screen.PrimaryScreen.WorkingArea.Width;

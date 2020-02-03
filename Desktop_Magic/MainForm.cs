@@ -14,6 +14,7 @@ namespace DM
 
     public partial class MainForm : Form
     {
+        int value;
         int newx, newy;
         bool started = false;
         string path = "";
@@ -33,8 +34,6 @@ namespace DM
         string changelog = "";
         EffectForm n;
         Music f;
-        //Form5 f5;
-        int value;
         About ab = new About();
         KeyboardHook hook = new KeyboardHook();
         KeyboardHook hook2 = new KeyboardHook();
@@ -55,6 +54,24 @@ namespace DM
             this.TopMost = false;
         }
 
+        //minimize form when clicking icon on taskbar
+        //for smooth load
+        //need other ways to fix flicker problem
+        private const int WS_MINIMIZEBOX = 0x20000;
+        private const int CS_DBLCLKS = 0x8;
+        private const int WS_EX = 0x02000000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_MINIMIZEBOX;
+                cp.ClassStyle |= CS_DBLCLKS;
+                //cp.ExStyle |= WS_EX;  // Turn on WS_EX_COMPOSITED //fail
+                return cp;
+            }
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -69,14 +86,14 @@ namespace DM
 
             if (r1 == null)
                 r1 = Registry.CurrentUser.CreateSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data");
-            Glob g = new Glob();
+            CGlob g = new CGlob();
             notifyIcon1.Icon = this.Icon;
             notifyIcon1.Text = "Desktop Magic v" + Application.ProductVersion + "\n" + "Click to pause/resume effect";
             panel2.Hide();
             panel3.Hide();
-            trackBar4.Value = Glob.Size;
-            label13.Text = trackBar4.Value.ToString();
-            value = trackBar4.Value;
+            trackBarSizeCustom.Value = CGlob.Size;
+            labelSizeCustom.Text = trackBarSizeCustom.Value.ToString();
+            value = trackBarSizeCustom.Value;
             if (r.GetValue("Desktop_Magic") == null)
             {
                 if ((string)r.GetValue("Desktop_Magic") == Application.ExecutablePath)
@@ -91,75 +108,75 @@ namespace DM
             //new
             if (r1.GetValue("DM3") == null)
             {
-                r1.SetValue("DM3", trackBar1.Value);
-                Speed = trackBar1.Value;
+                r1.SetValue("DM3", trackBarDirection.Value);
+                Speed = trackBarDirection.Value;
             }
             else
             {
-                trackBar1.Value = (int)r1.GetValue("DM3");
+                trackBarDirection.Value = (int)r1.GetValue("DM3");
             }
             if (r1.GetValue("DM4") == null)
             {
-                r1.SetValue("DM4", trackBar2.Value);
-                Number = trackBar2.Value;
+                r1.SetValue("DM4", trackBarSpeed.Value);
+                Number = trackBarSpeed.Value;
             }
             else
             {
-                trackBar2.Value = (int)r1.GetValue("DM4");
+                trackBarSpeed.Value = (int)r1.GetValue("DM4");
             }
             if (r1.GetValue("DM5") == null)
             {
-                r1.SetValue("DM5", trackBar3.Value);
-                Amount = trackBar3.Value;
+                r1.SetValue("DM5", trackBarNumber.Value);
+                Amount = trackBarNumber.Value;
             }
             else
             {
-                trackBar3.Value = (int)r1.GetValue("DM5");
+                trackBarNumber.Value = (int)r1.GetValue("DM5");
             }
-            label7.Text = trackBar1.Value.ToString();
-            label9.Text = trackBar2.Value.ToString();
-            label11.Text = trackBar3.Value.ToString();
+            labelDirection.Text = trackBarDirection.Value.ToString();
+            labelSpeed.Text = trackBarSpeed.Value.ToString();
+            labelNumber.Text = trackBarNumber.Value.ToString();
             if (r1.GetValue("DMT") == null)
             {
-                if (radioButton1.Checked)
+                if (leafButton.Checked)
                 {
                     r1.SetValue("DMT", 1);
-                    radioButton1.Checked = true;
+                    leafButton.Checked = true;
                 }
 
-                else if (radioButton3.Checked)
+                else if (customButton.Checked)
                 {
                     r1.SetValue("DMT", 3);
-                    radioButton3.Checked = true;
+                    customButton.Checked = true;
                 }
-                else if (radioButton4.Checked)
+                else if (snowflakeButton.Checked)
                 {
                     r1.SetValue("DMT", 4);
-                    radioButton4.Checked = true;
+                    snowflakeButton.Checked = true;
                 }
-                else if (radioButton5.Checked)
+                else if (mixButton.Checked)
                 {
                     r1.SetValue("DMT", 5);
-                    radioButton5.Checked = true;
+                    mixButton.Checked = true;
                 }
                 else
                 {
                     r1.SetValue("DMT", 2);
-                    radioButton2.Checked = true;
+                    snowButton.Checked = true;
                 }
             }
             else
             {
                 if ((int)r1.GetValue("DMT") == 1)
-                    radioButton1.Checked = true;
+                    leafButton.Checked = true;
                 else if ((int)r1.GetValue("DMT") == 2)
-                    radioButton2.Checked = true;
+                    snowButton.Checked = true;
                 else if ((int)r1.GetValue("DMT") == 3)
-                    radioButton3.Checked = true;
+                    customButton.Checked = true;
                 else if ((int)r1.GetValue("DMT") == 5)
-                    radioButton5.Checked = true;
+                    mixButton.Checked = true;
                 else
-                    radioButton4.Checked = true;
+                    snowflakeButton.Checked = true;
             }
 
             if (r1.GetValue("Link") != null)
@@ -187,8 +204,6 @@ namespace DM
             }
 
             bw.RunWorkerAsync();
-            button4.Enabled = false;
-            button4.Text = "Checking version...";
             r.Close();
             r.Dispose();
             r1.Close();
@@ -219,22 +234,22 @@ namespace DM
         private void hook2_KeyPressed(object sender, KeyPressedEventArgs e)
         {
             if (e.Modifier == global::ModifierKeys.Alt)
-                trackBar1.Value += 1;
+                trackBarDirection.Value += 1;
             else if (e.Modifier == global::ModifierKeys.Control)
-                trackBar2.Value += 1;
+                trackBarSpeed.Value += 1;
             else if (e.Modifier == global::ModifierKeys.Shift)
-                trackBar3.Value += 1;
+                trackBarNumber.Value += 1;
             saveSettings();
         }
 
         private void hook_KeyPressed(object sender, KeyPressedEventArgs e)
         {
             if (e.Modifier == global::ModifierKeys.Alt)
-                trackBar1.Value -= 1;
+                trackBarDirection.Value -= 1;
             else if (e.Modifier == global::ModifierKeys.Control)
-                trackBar2.Value -= 1;
+                trackBarSpeed.Value -= 1;
             else if (e.Modifier == global::ModifierKeys.Shift)
-                trackBar3.Value -= 1;
+                trackBarNumber.Value -= 1;
             saveSettings();
         }
 
@@ -254,7 +269,7 @@ namespace DM
             }
             else if (o == 3)
             {
-                tipsLabel.Text = "You can only open 1 instance of this app";
+                tipsLabel.Text = "You can only open one instance of this app";
             }
             else if (o == 4)
             {
@@ -266,7 +281,7 @@ namespace DM
             }
             else if (o == 6)
             {
-                tipsLabel.Text = "Alt + Left/Right to change driection";
+                tipsLabel.Text = "Alt + Left/Right to change direction";
             }
             else if (o == 7)
             {
@@ -293,17 +308,17 @@ namespace DM
             //check if internet is connected
             try
             {
-                button4.Text = "Connecting...";
+                updateButton.Text = "Connecting...";
                 var temp = wc.DownloadString("https://www.google.com.vn");
 
             }
             catch
             {
-                button4.Text = "UpToDate";
+                updateButton.Text = "Up to date";
                 wc.Dispose();
                 return;
             }
-            button4.Text = "Checking version...";
+            updateButton.Text = "Checking version...";
             var ui = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsV3B1OHN5Q0FIa3M");//check version
 
             if (Application.ProductVersion.CompareTo(ui) < 0)
@@ -311,22 +326,22 @@ namespace DM
                 changelog = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsbUVpQTd2Sk5SRE0");
                 wc.Dispose();
                 tmp = ui;
-                button4.Text = "Download new...";
+                updateButton.Text = "Update available";
 
                 if (MessageBox.Show("New version " + tmp + " is now available\n\n" + changelog + "\n\nWould you like to download now?", "Desktop Magic Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    button4.Enabled = true;
+                    updateButton.Enabled = true;
                     Process.Start("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsUGxKUWtFTnM4dms");
                 }
                 else
                 {
-                    button4.Text = "Download new...";
-                    button4.Enabled = true;
+                    updateButton.Text = "Update available";
+                    updateButton.Enabled = true;
                 }
             }
             else
             {
-                button4.Text = "UpToDate";
+                updateButton.Text = "Up to date";
             }
 
 
@@ -338,7 +353,7 @@ namespace DM
             {
                 //button9.Enabled = false;
                 started = true;
-                button1.Text = "Minimize";
+                startButton.Text = "Minimize";
                 n = new EffectForm();
                 n.Show();
 
@@ -465,32 +480,34 @@ namespace DM
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Process.Start("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsUGxKUWtFTnM4dms");
+            if (!bw.IsBusy)
+                bw.RunWorkerAsync();
+            //Process.Start("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsUGxKUWtFTnM4dms");
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            Speed = trackBar1.Value;
-            label7.Text = Speed.ToString();
+            Speed = trackBarDirection.Value;
+            labelDirection.Text = Speed.ToString();
         }
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
-            Number = trackBar2.Value;
-            label9.Text = Number.ToString();
+            Number = trackBarSpeed.Value;
+            labelSpeed.Text = Number.ToString();
         }
 
         private void trackBar3_Scroll(object sender, EventArgs e)
         {
-            Amount = trackBar3.Value;
-            label11.Text = Amount.ToString();
+            Amount = trackBarNumber.Value;
+            labelNumber.Text = Amount.ToString();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (radioButton3.Checked == true)
+            if (customButton.Checked)
             {
-                if (trackBar3.Value >= 20)
+                if (trackBarNumber.Value >= 20)
                 {
                     if (MessageBox.Show("Warning: Using custom image with high number may cause lag and ram overload!" + "\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     {
@@ -515,8 +532,8 @@ namespace DM
                     if (extension == ".jpg" || extension == ".png" || extension == ".gif")
                     {
                         r1.SetValue("CustomFile", path);
-                        pictureBox2.Image = Image.FromFile(path);
-                        pictureBox2.Size = new Size(trackBar4.Value, trackBar4.Value);
+                        pictureBoxCustom.Image = Image.FromFile(path);
+                        pictureBoxCustom.Size = new Size(trackBarSizeCustom.Value, trackBarSizeCustom.Value);
                     }
                     else
                     {
@@ -543,6 +560,7 @@ namespace DM
                 r1.Dispose();
                 op.Dispose();
                 return;
+
             }
             if (MessageBox.Show("Do you want to change?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -560,78 +578,77 @@ namespace DM
         {
             notifyIcon1.Visible = true;
             panel2.Hide();
-            this.Hide();
             r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
             if (r1.GetValue("DM3") == null)
             {
-                r1.SetValue("DM3", trackBar1.Value);
-                Speed = trackBar1.Value;
+                r1.SetValue("DM3", trackBarDirection.Value);
+                Speed = trackBarDirection.Value;
             }
             else
             {
-                trackBar1.Value = (int)r1.GetValue("DM3");
+                trackBarDirection.Value = (int)r1.GetValue("DM3");
             }
             if (r1.GetValue("DM4") == null)
             {
-                r1.SetValue("DM4", trackBar2.Value);
-                Number = trackBar2.Value;
+                r1.SetValue("DM4", trackBarSpeed.Value);
+                Number = trackBarSpeed.Value;
             }
             else
             {
-                trackBar2.Value = (int)r1.GetValue("DM4");
+                trackBarSpeed.Value = (int)r1.GetValue("DM4");
             }
             if (r1.GetValue("DM5") == null)
             {
-                r1.SetValue("DM5", trackBar3.Value);
-                Amount = trackBar3.Value;
+                r1.SetValue("DM5", trackBarNumber.Value);
+                Amount = trackBarNumber.Value;
             }
             else
             {
-                trackBar3.Value = (int)r1.GetValue("DM5");
+                trackBarNumber.Value = (int)r1.GetValue("DM5");
             }
-            label7.Text = trackBar1.Value.ToString();
-            label9.Text = trackBar2.Value.ToString();
-            label11.Text = trackBar3.Value.ToString();
+            labelDirection.Text = trackBarDirection.Value.ToString();
+            labelSpeed.Text = trackBarSpeed.Value.ToString();
+            labelNumber.Text = trackBarNumber.Value.ToString();
             if (r1.GetValue("DMT") == null)
             {
-                if (radioButton1.Checked)
+                if (leafButton.Checked)
                 {
                     r1.SetValue("DMT", 1);
-                    radioButton1.Checked = true;
+                    leafButton.Checked = true;
                 }
-                else if (radioButton3.Checked)
+                else if (customButton.Checked)
                 {
                     r1.SetValue("DMT", 3);
-                    radioButton3.Checked = true;
+                    customButton.Checked = true;
                 }
-                else if (radioButton4.Checked)
+                else if (snowflakeButton.Checked)
                 {
                     r1.SetValue("DMT", 4);
-                    radioButton4.Checked = true;
+                    snowflakeButton.Checked = true;
                 }
-                else if (radioButton5.Checked)
+                else if (mixButton.Checked)
                 {
                     r.SetValue("DMT", 5);
-                    radioButton5.Checked = true;
+                    mixButton.Checked = true;
                 }
                 else
                 {
                     r1.SetValue("DMT", 2);
-                    radioButton3.Checked = true;
+                    customButton.Checked = true;
                 }
             }
             else
             {
                 if ((int)r1.GetValue("DMT") == 1)
-                    radioButton1.Checked = true;
+                    leafButton.Checked = true;
                 else if ((int)r1.GetValue("DMT") == 2)
-                    radioButton2.Checked = true;
+                    snowButton.Checked = true;
                 else if ((int)r1.GetValue("DMT") == 3)
-                    radioButton3.Checked = true;
+                    customButton.Checked = true;
                 else if ((int)r1.GetValue("DMT") == 4)
-                    radioButton4.Checked = true;
+                    snowflakeButton.Checked = true;
                 else
-                    radioButton5.Checked = true;
+                    mixButton.Checked = true;
             }
             r1.Close();
 
@@ -639,71 +656,70 @@ namespace DM
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            if (leafButton.Checked)
             {
                 rb1 = true;
                 rb2 = false;
                 rb3 = false;
                 rb4 = false;
                 rb5 = false;
-                button7.Text = "Apply";
+                applyButton.Text = "Apply";
             }
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked)
+            if (snowButton.Checked)
             {
                 rb1 = false;
                 rb2 = true;
                 rb3 = false;
                 rb4 = false;
                 rb5 = false;
-                button7.Text = "Apply";
+                applyButton.Text = "Apply";
             }
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton3.Checked)
+            if (customButton.Checked)
             {
                 rb1 = false;
                 rb2 = false;
                 rb3 = true;
                 rb4 = false;
                 rb5 = false;
-                button7.Text = "Choose...";
+                applyButton.Text = "Choose...";
+
             }
         }
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton4.Checked)
+            if (snowflakeButton.Checked)
             {
                 rb1 = false;
                 rb2 = false;
                 rb3 = false;
                 rb4 = true;
                 rb5 = false;
-                button7.Text = "Apply";
+                applyButton.Text = "Apply";
             }
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton5.Checked)
+            if (mixButton.Checked)
             {
                 rb1 = false;
                 rb2 = false;
                 rb3 = false;
                 rb4 = false;
                 rb5 = true;
-                button7.Text = "Apply";
+                applyButton.Text = "Apply";
             }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            if (bw.IsBusy != true)
-                bw.RunWorkerAsync();
             if (ab.Visible != true)
                 ab.ShowDialog();
         }
@@ -756,8 +772,8 @@ namespace DM
         private void trackBar4_Scroll(object sender, EventArgs e)
         {
 
-            label13.Text = trackBar4.Value.ToString();
-            pictureBox2.Size = new Size(trackBar4.Value + 5, trackBar4.Value + 5);
+            labelSizeCustom.Text = trackBarSizeCustom.Value.ToString();
+            pictureBoxCustom.Size = new Size(trackBarSizeCustom.Value + 5, trackBarSizeCustom.Value + 5);
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -835,73 +851,73 @@ namespace DM
             CheckConfig();
             if (checkBox3.Checked && started == true)
             {
-                if (File.Exists(Glob.Path))
+                if (File.Exists(CGlob.Path))
                 {
                     Random rd = new Random();
                     if (RDirection != -9999)
-                        trackBar1.Value = rd.Next(-10, RDirection);
+                        trackBarDirection.Value = rd.Next(-10, RDirection);
                     if (RSpeed != -9999)
-                        trackBar2.Value = rd.Next(5, RSpeed);
+                        trackBarSpeed.Value = rd.Next(5, RSpeed);
                     if (RNumber != -9999)
-                        trackBar3.Value = rd.Next(3, RNumber);
+                        trackBarNumber.Value = rd.Next(3, RNumber);
                     if (RType == 1)
                     {
                         int ran = rd.Next(1, 5);
-                        if (radioButton1.Checked)
+                        if (leafButton.Checked)
                         {
                             if (ran == 1)
-                                radioButton2.Checked = true;
+                                snowButton.Checked = true;
                             else if (ran == 2)
-                                radioButton4.Checked = true;
+                                snowflakeButton.Checked = true;
                             else if (ran == 3)
-                                radioButton5.Checked = true;
+                                mixButton.Checked = true;
                             else
-                                radioButton3.Checked = true;
+                                customButton.Checked = true;
 
                         }
-                        else if (radioButton2.Checked)
+                        else if (snowButton.Checked)
                         {
                             if (ran == 1)
-                                radioButton4.Checked = true;
+                                snowflakeButton.Checked = true;
                             else if (ran == 2)
-                                radioButton1.Checked = true;
+                                leafButton.Checked = true;
                             else if (ran == 3)
-                                radioButton3.Checked = true;
+                                customButton.Checked = true;
                             else
-                                radioButton5.Checked = true;
+                                mixButton.Checked = true;
                         }
-                        else if (radioButton4.Checked)
+                        else if (snowflakeButton.Checked)
                         {
                             if (ran == 1)
-                                radioButton1.Checked = true;
+                                leafButton.Checked = true;
                             else if (ran == 2)
-                                radioButton5.Checked = true;
+                                mixButton.Checked = true;
                             else if (ran == 3)
-                                radioButton3.Checked = true;
+                                customButton.Checked = true;
                             else
-                                radioButton2.Checked = true;
+                                snowButton.Checked = true;
                         }
-                        else if (radioButton3.Checked)
+                        else if (customButton.Checked)
                         {
                             if (ran == 1)
-                                radioButton1.Checked = true;
+                                leafButton.Checked = true;
                             else if (ran == 2)
-                                radioButton2.Checked = true;
+                                snowButton.Checked = true;
                             else if (ran == 3)
-                                radioButton5.Checked = true;
+                                mixButton.Checked = true;
                             else
-                                radioButton4.Checked = true;
+                                snowflakeButton.Checked = true;
                         }
                         else
                         {
                             if (ran == 1)
-                                radioButton1.Checked = true;
+                                leafButton.Checked = true;
                             else if (ran == 2)
-                                radioButton2.Checked = true;
+                                snowButton.Checked = true;
                             else if (ran == 3)
-                                radioButton4.Checked = true;
+                                snowflakeButton.Checked = true;
                             else
-                                radioButton3.Checked = true;
+                                customButton.Checked = true;
                         }
                     }
                 }
@@ -909,63 +925,63 @@ namespace DM
                 {
                     Random rd = new Random();
                     if (RDirection != -9999)
-                        trackBar1.Value = rd.Next(-10, RDirection);
+                        trackBarDirection.Value = rd.Next(-10, RDirection);
                     if (RSpeed != -9999)
-                        trackBar2.Value = rd.Next(5, RSpeed);
+                        trackBarSpeed.Value = rd.Next(5, RSpeed);
                     if (RNumber != -9999)
-                        trackBar3.Value = rd.Next(3, RNumber);
+                        trackBarNumber.Value = rd.Next(3, RNumber);
                     if (RType == 1)
                     {
                         int ran = rd.Next(1, 5);
-                        if (radioButton1.Checked)
+                        if (leafButton.Checked)
                         {
                             if (ran == 1)
-                                radioButton2.Checked = true;
+                                snowButton.Checked = true;
                             else if (ran == 2)
-                                radioButton4.Checked = true;
+                                snowflakeButton.Checked = true;
                             else
-                                radioButton5.Checked = true;
+                                mixButton.Checked = true;
 
 
                         }
-                        else if (radioButton2.Checked)
+                        else if (snowButton.Checked)
                         {
                             if (ran == 1)
-                                radioButton4.Checked = true;
+                                snowflakeButton.Checked = true;
                             else if (ran == 2)
-                                radioButton1.Checked = true;
+                                leafButton.Checked = true;
                             else
-                                radioButton5.Checked = true;
+                                mixButton.Checked = true;
 
                         }
-                        else if (radioButton4.Checked)
+                        else if (snowflakeButton.Checked)
                         {
                             if (ran == 1)
-                                radioButton1.Checked = true;
+                                leafButton.Checked = true;
                             else if (ran == 2)
-                                radioButton5.Checked = true;
+                                mixButton.Checked = true;
                             else
-                                radioButton2.Checked = true;
+                                snowButton.Checked = true;
                         }
-                        else if (radioButton3.Checked)
+                        else if (customButton.Checked)
                         {
                             if (ran == 1)
-                                radioButton1.Checked = true;
+                                leafButton.Checked = true;
                             else if (ran == 2)
-                                radioButton2.Checked = true;
+                                snowButton.Checked = true;
                             else if (ran == 3)
-                                radioButton5.Checked = true;
+                                mixButton.Checked = true;
                             else
-                                radioButton4.Checked = true;
+                                snowflakeButton.Checked = true;
                         }
                         else
                         {
                             if (ran == 1)
-                                radioButton1.Checked = true;
+                                leafButton.Checked = true;
                             else if (ran == 2)
-                                radioButton2.Checked = true;
+                                snowButton.Checked = true;
                             else
-                                radioButton4.Checked = true;
+                                snowflakeButton.Checked = true;
 
                         }
                     }
@@ -980,60 +996,60 @@ namespace DM
         private void saveSettings()
         {
             r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
-            Glob.Speed = trackBar1.Value;
-            Glob.Number = trackBar2.Value;
-            Glob.Amount = trackBar3.Value;
-            r1.SetValue("DM3", trackBar1.Value);
-            r1.SetValue("DM4", trackBar2.Value);
-            r1.SetValue("DM5", trackBar3.Value);
+            CGlob.Speed = trackBarDirection.Value;
+            CGlob.Number = trackBarSpeed.Value;
+            CGlob.Amount = trackBarNumber.Value;
+            r1.SetValue("DM3", trackBarDirection.Value);
+            r1.SetValue("DM4", trackBarSpeed.Value);
+            r1.SetValue("DM5", trackBarNumber.Value);
             if (rb1 == true)
             {
-                Glob.Type = 1;
+                CGlob.Type = 1;
                 r1.SetValue("DMT", 1);
                 //Glob.Custom = false;
-                Glob.Path = "";
+                CGlob.Path = "";
             }
             else if (rb2 == true)
             {
-                Glob.Type = 2;
+                CGlob.Type = 2;
                 r1.SetValue("DMT", 2);
                 //Glob.Custom = false;
-                Glob.Path = "";
+                CGlob.Path = "";
             }
             else if (rb3 == true)
             {
-                Glob.Type = 3;
+                CGlob.Type = 3;
                 r1.SetValue("DMT", 3);
                 //Glob.Custom = true;
-                Glob.Path = (string)r1.GetValue("CustomFile");
-                Glob.Size = trackBar4.Value;
-                r1.SetValue("DM6", Glob.Size);
+                CGlob.Path = (string)r1.GetValue("CustomFile");
+                CGlob.Size = trackBarSizeCustom.Value;
+                r1.SetValue("DM6", CGlob.Size);
             }
             else if (rb5 == true)
             {
-                Glob.Type = 5;
+                CGlob.Type = 5;
                 r1.SetValue("DMT", 5);
                 //Glob.Custom = false;
                 if (r1.GetValue("CustomFile") != null)
                 {
-                    Glob.Path = (string)r1.GetValue("CustomFile");
-                    Glob.Size = trackBar4.Value;
-                    r1.SetValue("DM6", Glob.Size);
+                    CGlob.Path = (string)r1.GetValue("CustomFile");
+                    CGlob.Size = trackBarSizeCustom.Value;
+                    r1.SetValue("DM6", CGlob.Size);
                 }
                 else
-                    Glob.Path = "";
+                    CGlob.Path = "";
 
             }
             else
             {
-                Glob.Type = 4;
+                CGlob.Type = 4;
                 r1.SetValue("DMT", 4);
                 //Glob.Custom = false;
-                Glob.Path = "";
+                CGlob.Path = "";
             }
-            label7.Text = trackBar1.Value.ToString();
-            label9.Text = trackBar2.Value.ToString();
-            label11.Text = trackBar3.Value.ToString();
+            labelDirection.Text = trackBarDirection.Value.ToString();
+            labelSpeed.Text = trackBarSpeed.Value.ToString();
+            labelNumber.Text = trackBarNumber.Value.ToString();
 
             r1.Close();
             r1.Dispose();

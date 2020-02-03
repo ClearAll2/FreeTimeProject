@@ -6,7 +6,7 @@ using Microsoft.Win32;
 
 namespace DM
 {
-    public class Glob 
+    public class CGlob 
     {
         public static int Speed;
         public static int Number;
@@ -15,7 +15,7 @@ namespace DM
         public static int Size;
         //public static bool Custom;
         public static string Path;
-        public Glob()
+        public CGlob()
         {
             RegistryKey r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
             //r = Registry.CurrentUser.CreateSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data");

@@ -54,7 +54,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>snowflake.ico</ApplicationIcon>
+    <ApplicationIcon>snow_Km9_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>9AF40337BECE10321EB39A5FCA6D3D6CBB7FADE6</ManifestCertificateThumbprint>
@@ -98,7 +98,7 @@
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
     <Compile Include="CFlake.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="CGlob.cs" />
     <Compile Include="FancyText.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -168,6 +168,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="snow_Km9_icon.ico" />
     <None Include="Resources\SnowFlake003.png" />
     <None Include="Resources\autumn_leaves_PNG3571.png" />
     <None Include="Resources\crystal-snowflake.gif" />

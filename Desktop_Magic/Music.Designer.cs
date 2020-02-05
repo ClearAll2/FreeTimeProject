@@ -33,19 +33,14 @@
             this.importButton = new System.Windows.Forms.Button();
             this.checkBoxRepeat = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBoxShuffle = new System.Windows.Forms.CheckBox();
             this.checkBoxRunatStart = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
@@ -67,12 +62,11 @@
             // checkBoxRepeat
             // 
             this.checkBoxRepeat.AutoSize = true;
-            this.checkBoxRepeat.Enabled = false;
-            this.checkBoxRepeat.Location = new System.Drawing.Point(110, 34);
+            this.checkBoxRepeat.Location = new System.Drawing.Point(109, 20);
             this.checkBoxRepeat.Name = "checkBoxRepeat";
-            this.checkBoxRepeat.Size = new System.Drawing.Size(130, 17);
+            this.checkBoxRepeat.Size = new System.Drawing.Size(123, 17);
             this.checkBoxRepeat.TabIndex = 15;
-            this.checkBoxRepeat.Text = "Repeat selected song";
+            this.checkBoxRepeat.Text = "Repeat current song";
             this.checkBoxRepeat.UseVisualStyleBackColor = true;
             this.checkBoxRepeat.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -87,24 +81,13 @@
             this.label1.Size = new System.Drawing.Size(124, 16);
             this.label1.TabIndex = 16;
             this.label1.Text = "DM Music Player";
-            // 
-            // checkBoxShuffle
-            // 
-            this.checkBoxShuffle.AutoSize = true;
-            this.checkBoxShuffle.Checked = true;
-            this.checkBoxShuffle.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShuffle.Location = new System.Drawing.Point(110, 13);
-            this.checkBoxShuffle.Name = "checkBoxShuffle";
-            this.checkBoxShuffle.Size = new System.Drawing.Size(59, 17);
-            this.checkBoxShuffle.TabIndex = 17;
-            this.checkBoxShuffle.Text = "Shuffle";
-            this.checkBoxShuffle.UseVisualStyleBackColor = true;
-            this.checkBoxShuffle.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // checkBoxRunatStart
             // 
             this.checkBoxRunatStart.AutoSize = true;
-            this.checkBoxRunatStart.Location = new System.Drawing.Point(110, 57);
+            this.checkBoxRunatStart.Location = new System.Drawing.Point(109, 43);
             this.checkBoxRunatStart.Name = "checkBoxRunatStart";
             this.checkBoxRunatStart.Size = new System.Drawing.Size(162, 17);
             this.checkBoxRunatStart.TabIndex = 20;
@@ -158,32 +141,9 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.label2_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(172, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 22);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(242, 31);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(27, 22);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 25;
-            this.pictureBox2.TabStop = false;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.checkBoxRunatStart);
-            this.groupBox1.Controls.Add(this.checkBoxShuffle);
             this.groupBox1.Controls.Add(this.checkBoxRepeat);
             this.groupBox1.Controls.Add(this.importButton);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -197,10 +157,10 @@
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 28);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 27);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(299, 291);
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(299, 292);
             this.axWindowsMediaPlayer1.TabIndex = 14;
             this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.axWindowsMediaPlayer1_PlayStateChange);
             // 
@@ -226,8 +186,6 @@
             this.Resize += new System.EventHandler(this.Form3_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
@@ -240,12 +198,9 @@
         private System.Windows.Forms.CheckBox checkBoxRepeat;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBoxShuffle;
         private System.Windows.Forms.CheckBox checkBoxRunatStart;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;

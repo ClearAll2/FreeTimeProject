@@ -56,6 +56,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(75, 76);
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Visible = false;
             // 
             // pictureBox4
             // 
@@ -64,6 +65,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(80, 73);
             this.pictureBox4.TabIndex = 4;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Visible = false;
             // 
             // pictureBox3
             // 
@@ -73,6 +75,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(82, 76);
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
@@ -82,6 +85,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(75, 76);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // pictureBox1
             // 
@@ -91,6 +95,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(80, 76);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // EffectForm
             // 
@@ -105,7 +110,6 @@
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EffectForm";
             this.ShowInTaskbar = false;
             this.Text = "Desktop Magic Background";

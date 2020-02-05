@@ -25,7 +25,7 @@ namespace DM
             InitializeComponent();        
             StartPosition = FormStartPosition.CenterScreen;
             Rectangle workingArea = Screen.GetWorkingArea(this);
-            this.Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
+            this.Location = new Point(workingArea.Right - Size.Width - 30, (workingArea.Bottom - Size.Height) / 2);
         }
 
 
@@ -115,20 +115,11 @@ namespace DM
             }       
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxShuffle.Checked)
-                checkBoxRepeat.Enabled = false;
-            else
-                checkBoxRepeat.Enabled = true;
-        }
+    
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxRepeat.Checked)
-                checkBoxShuffle.Enabled = false;
-            else
-                checkBoxShuffle.Enabled = true;
+            
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)

@@ -56,7 +56,6 @@ namespace DM
 
         //minimize form when clicking icon on taskbar
         //for smooth load
-        //need other ways to fix flicker problem
         private const int WS_MINIMIZEBOX = 0x20000;
         private const int CS_DBLCLKS = 0x8;
         private const int WS_EX = 0x02000000;
@@ -149,10 +148,10 @@ namespace DM
                     r1.SetValue("DMT", 3);
                     customButton.Checked = true;
                 }
-                else if (snowflakeButton.Checked)
+                else if (sakuraButton.Checked)
                 {
                     r1.SetValue("DMT", 4);
-                    snowflakeButton.Checked = true;
+                    sakuraButton.Checked = true;
                 }
                 else if (mixButton.Checked)
                 {
@@ -176,7 +175,7 @@ namespace DM
                 else if ((int)r1.GetValue("DMT") == 5)
                     mixButton.Checked = true;
                 else
-                    snowflakeButton.Checked = true;
+                    sakuraButton.Checked = true;
             }
 
             if (r1.GetValue("Link") != null)
@@ -273,7 +272,7 @@ namespace DM
             }
             else if (o == 4)
             {
-                tipsLabel.Text = "You can check for update by clicking About";
+                tipsLabel.Text = "Icon made by Freepik. You can know more in About";
             }
             else if (o == 5)
             {
@@ -621,10 +620,10 @@ namespace DM
                     r1.SetValue("DMT", 3);
                     customButton.Checked = true;
                 }
-                else if (snowflakeButton.Checked)
+                else if (sakuraButton.Checked)
                 {
                     r1.SetValue("DMT", 4);
-                    snowflakeButton.Checked = true;
+                    sakuraButton.Checked = true;
                 }
                 else if (mixButton.Checked)
                 {
@@ -646,7 +645,7 @@ namespace DM
                 else if ((int)r1.GetValue("DMT") == 3)
                     customButton.Checked = true;
                 else if ((int)r1.GetValue("DMT") == 4)
-                    snowflakeButton.Checked = true;
+                    sakuraButton.Checked = true;
                 else
                     mixButton.Checked = true;
             }
@@ -694,7 +693,7 @@ namespace DM
         }
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            if (snowflakeButton.Checked)
+            if (sakuraButton.Checked)
             {
                 rb1 = false;
                 rb2 = false;
@@ -868,7 +867,7 @@ namespace DM
                             if (ran == 1)
                                 snowButton.Checked = true;
                             else if (ran == 2)
-                                snowflakeButton.Checked = true;
+                                sakuraButton.Checked = true;
                             else if (ran == 3)
                                 mixButton.Checked = true;
                             else
@@ -878,7 +877,7 @@ namespace DM
                         else if (snowButton.Checked)
                         {
                             if (ran == 1)
-                                snowflakeButton.Checked = true;
+                                sakuraButton.Checked = true;
                             else if (ran == 2)
                                 leafButton.Checked = true;
                             else if (ran == 3)
@@ -886,7 +885,7 @@ namespace DM
                             else
                                 mixButton.Checked = true;
                         }
-                        else if (snowflakeButton.Checked)
+                        else if (sakuraButton.Checked)
                         {
                             if (ran == 1)
                                 leafButton.Checked = true;
@@ -906,7 +905,7 @@ namespace DM
                             else if (ran == 3)
                                 mixButton.Checked = true;
                             else
-                                snowflakeButton.Checked = true;
+                                sakuraButton.Checked = true;
                         }
                         else
                         {
@@ -915,7 +914,7 @@ namespace DM
                             else if (ran == 2)
                                 snowButton.Checked = true;
                             else if (ran == 3)
-                                snowflakeButton.Checked = true;
+                                sakuraButton.Checked = true;
                             else
                                 customButton.Checked = true;
                         }
@@ -938,7 +937,7 @@ namespace DM
                             if (ran == 1)
                                 snowButton.Checked = true;
                             else if (ran == 2)
-                                snowflakeButton.Checked = true;
+                                sakuraButton.Checked = true;
                             else
                                 mixButton.Checked = true;
 
@@ -947,14 +946,14 @@ namespace DM
                         else if (snowButton.Checked)
                         {
                             if (ran == 1)
-                                snowflakeButton.Checked = true;
+                                sakuraButton.Checked = true;
                             else if (ran == 2)
                                 leafButton.Checked = true;
                             else
                                 mixButton.Checked = true;
 
                         }
-                        else if (snowflakeButton.Checked)
+                        else if (sakuraButton.Checked)
                         {
                             if (ran == 1)
                                 leafButton.Checked = true;
@@ -972,7 +971,7 @@ namespace DM
                             else if (ran == 3)
                                 mixButton.Checked = true;
                             else
-                                snowflakeButton.Checked = true;
+                                sakuraButton.Checked = true;
                         }
                         else
                         {
@@ -981,7 +980,7 @@ namespace DM
                             else if (ran == 2)
                                 snowButton.Checked = true;
                             else
-                                snowflakeButton.Checked = true;
+                                sakuraButton.Checked = true;
 
                         }
                     }
@@ -1115,8 +1114,6 @@ namespace DM
                 Top = Top + (e.Y - newy);
             }
         }
-
-
 
         private void label18_Click(object sender, EventArgs e)
         {

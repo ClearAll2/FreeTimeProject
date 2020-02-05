@@ -43,12 +43,11 @@
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.okButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.okButton.FlatAppearance.BorderSize = 0;
             this.okButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.okButton.Location = new System.Drawing.Point(241, 317);
+            this.okButton.Location = new System.Drawing.Point(241, 311);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 24);
+            this.okButton.Size = new System.Drawing.Size(75, 30);
             this.okButton.TabIndex = 24;
             this.okButton.Text = "&OK";
             // 

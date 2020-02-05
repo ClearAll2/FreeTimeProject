@@ -40,6 +40,8 @@ namespace DM
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (File.Exists(playlistLoc + "\\DMtmp.wpl"))
+                File.Delete(playlistLoc + "\\DMtmp.wpl");
             WMPLib.IWMPPlaylist playlist = axWindowsMediaPlayer1.playlistCollection.newPlaylist("DMtmp");
             WMPLib.IWMPMedia media;
             OpenFileDialog of = new OpenFileDialog();
@@ -113,15 +115,6 @@ namespace DM
             }       
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxShuffle.Checked)
@@ -171,62 +164,6 @@ namespace DM
                 Top = Top + (e.Y - newy);
             }
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPlaying)
-            {
-                axWindowsMediaPlayer1.Ctlcontrols.pause();
-                //button4.Text = "|>";
-            }
-            else
-            {
-                axWindowsMediaPlayer1.Ctlcontrols.play();
-                //button4.Text = "||";
-            }
-        }
-
-     
-
-        //protected override void WndProc(ref Message msg)
-        //{
-        //    if (msg.Msg == 0x319)   // WM_APPCOMMAND message
-        //    {
-        //        // extract cmd from LPARAM (as GET_APPCOMMAND_LPARAM macro does)
-        //        int cmd = (int)((uint)msg.LParam >> 16 & ~0xf000);
-        //        switch (cmd)
-        //        {
-                    
-        //            case 14:  // APPCOMMAND_MEDIA_PLAY_PAUSE
-        //                button4_Click(null, null);
-        //                break;
-        //            case 11:  // APPCOMMAND_MEDIA_NEXTTRACK
-        //                button1_Click(null, null);
-        //                break;
-        //            case 12:  // APPCOMMAND_MEDIA_PREVIOUSTRACK
-        //                button2_Click(null, null);
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    base.WndProc(ref msg);
-        //}
-
-
-        
-
-        //private void Form3_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    Message m = new Message();
-        //    m.Msg = e.KeyChar;
-
-        //    WndProc(ref m);
-        //}
-        
-
-       
-
-       
+      
     }
 }

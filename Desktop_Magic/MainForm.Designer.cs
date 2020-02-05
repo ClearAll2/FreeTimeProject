@@ -52,12 +52,13 @@
             this.libraryButton = new System.Windows.Forms.Button();
             this.mixButton = new System.Windows.Forms.RadioButton();
             this.customButton = new System.Windows.Forms.RadioButton();
-            this.snowflakeButton = new System.Windows.Forms.RadioButton();
+            this.sakuraButton = new System.Windows.Forms.RadioButton();
             this.buttonShortcut = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.labelAbout = new System.Windows.Forms.Label();
-            this.randomConfigButton = new System.Windows.Forms.PictureBox();
+            this.buttonRandomConfig = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.startButton = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.customizeButton = new System.Windows.Forms.Button();
@@ -92,7 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.randomConfigButton)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -208,7 +208,6 @@
             // updateButton
             // 
             this.updateButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.updateButton.FlatAppearance.BorderSize = 0;
             this.updateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,6 +245,7 @@
             this.trackBarDirection.Name = "trackBarDirection";
             this.trackBarDirection.Size = new System.Drawing.Size(293, 45);
             this.trackBarDirection.TabIndex = 7;
+            this.trackBarDirection.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarDirection, "Alt + Left/Right");
             this.trackBarDirection.Value = 10;
             this.trackBarDirection.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -259,6 +259,7 @@
             this.trackBarSpeed.Name = "trackBarSpeed";
             this.trackBarSpeed.Size = new System.Drawing.Size(293, 45);
             this.trackBarSpeed.TabIndex = 8;
+            this.trackBarSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarSpeed, "Ctrl + Left/Right");
             this.trackBarSpeed.Value = 5;
             this.trackBarSpeed.Scroll += new System.EventHandler(this.trackBar2_Scroll);
@@ -271,14 +272,14 @@
             this.trackBarNumber.Name = "trackBarNumber";
             this.trackBarNumber.Size = new System.Drawing.Size(293, 45);
             this.trackBarNumber.TabIndex = 9;
+            this.trackBarNumber.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarNumber, "Shift + Left/Right");
             this.trackBarNumber.Value = 20;
             this.trackBarNumber.Scroll += new System.EventHandler(this.trackBar3_Scroll);
             // 
             // libraryButton
             // 
-            this.libraryButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.libraryButton.FlatAppearance.BorderSize = 0;
+            this.libraryButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.libraryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.libraryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.libraryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,17 +316,17 @@
             this.customButton.UseVisualStyleBackColor = true;
             this.customButton.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // snowflakeButton
+            // sakuraButton
             // 
-            this.snowflakeButton.AutoSize = true;
-            this.snowflakeButton.Location = new System.Drawing.Point(12, 161);
-            this.snowflakeButton.Name = "snowflakeButton";
-            this.snowflakeButton.Size = new System.Drawing.Size(75, 17);
-            this.snowflakeButton.TabIndex = 12;
-            this.snowflakeButton.Text = "Snowflake";
-            this.toolTip1.SetToolTip(this.snowflakeButton, "You should choose images which have no background and small size");
-            this.snowflakeButton.UseVisualStyleBackColor = true;
-            this.snowflakeButton.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.sakuraButton.AutoSize = true;
+            this.sakuraButton.Location = new System.Drawing.Point(12, 161);
+            this.sakuraButton.Name = "sakuraButton";
+            this.sakuraButton.Size = new System.Drawing.Size(59, 17);
+            this.sakuraButton.TabIndex = 12;
+            this.sakuraButton.Text = "Sakura";
+            this.toolTip1.SetToolTip(this.sakuraButton, "You should choose images which have no background and small size");
+            this.sakuraButton.UseVisualStyleBackColor = true;
+            this.sakuraButton.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // buttonShortcut
             // 
@@ -397,23 +398,33 @@
             this.toolTip1.SetToolTip(this.labelAbout, "About");
             this.labelAbout.Click += new System.EventHandler(this.label1_Click);
             // 
-            // randomConfigButton
+            // buttonRandomConfig
             // 
-            this.randomConfigButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.randomConfigButton.Image = ((System.Drawing.Image)(resources.GetObject("randomConfigButton.Image")));
-            this.randomConfigButton.Location = new System.Drawing.Point(178, 96);
-            this.randomConfigButton.Name = "randomConfigButton";
-            this.randomConfigButton.Size = new System.Drawing.Size(23, 17);
-            this.randomConfigButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.randomConfigButton.TabIndex = 14;
-            this.randomConfigButton.TabStop = false;
-            this.toolTip1.SetToolTip(this.randomConfigButton, "Random Configuration");
-            this.randomConfigButton.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
+            this.buttonRandomConfig.BackColor = System.Drawing.Color.Transparent;
+            this.buttonRandomConfig.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonRandomConfig.FlatAppearance.BorderSize = 0;
+            this.buttonRandomConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonRandomConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRandomConfig.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonRandomConfig.ImageIndex = 0;
+            this.buttonRandomConfig.ImageList = this.imageList1;
+            this.buttonRandomConfig.Location = new System.Drawing.Point(181, 92);
+            this.buttonRandomConfig.Name = "buttonRandomConfig";
+            this.buttonRandomConfig.Size = new System.Drawing.Size(24, 24);
+            this.buttonRandomConfig.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.buttonRandomConfig, "Random Configuration");
+            this.buttonRandomConfig.UseVisualStyleBackColor = false;
+            this.buttonRandomConfig.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "gear.png");
             // 
             // startButton
             // 
             this.startButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.startButton.FlatAppearance.BorderSize = 0;
             this.startButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -441,7 +452,6 @@
             // customizeButton
             // 
             this.customizeButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.customizeButton.FlatAppearance.BorderSize = 0;
             this.customizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.customizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -457,7 +467,6 @@
             // musicButton
             // 
             this.musicButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.musicButton.FlatAppearance.BorderSize = 0;
             this.musicButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.musicButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.musicButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -476,7 +485,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.randomConfigButton);
+            this.groupBox1.Controls.Add(this.buttonRandomConfig);
             this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
@@ -532,7 +541,7 @@
             // 
             this.panel2.AllowDrop = true;
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.snowflakeButton);
+            this.panel2.Controls.Add(this.sakuraButton);
             this.panel2.Controls.Add(this.customButton);
             this.panel2.Controls.Add(this.snowButton);
             this.panel2.Controls.Add(this.leafButton);
@@ -661,8 +670,7 @@
             // 
             // backButton
             // 
-            this.backButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.backButton.FlatAppearance.BorderSize = 0;
+            this.backButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -676,8 +684,7 @@
             // 
             // applyButton
             // 
-            this.applyButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.applyButton.FlatAppearance.BorderSize = 0;
+            this.applyButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.applyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.applyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -804,7 +811,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDirection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.randomConfigButton)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -852,7 +858,6 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label tipsLabel;
-        private System.Windows.Forms.PictureBox randomConfigButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonCancelCustom;
@@ -861,7 +866,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button buttonOKCustom;
         private System.Windows.Forms.PictureBox pictureBoxCustom;
-        private System.Windows.Forms.RadioButton snowflakeButton;
+        private System.Windows.Forms.RadioButton sakuraButton;
         private System.Windows.Forms.RadioButton customButton;
         private System.Windows.Forms.RadioButton snowButton;
         private System.Windows.Forms.RadioButton leafButton;
@@ -881,5 +886,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonShortcut;
         private System.Windows.Forms.Button buttonMinimize;
+        private System.Windows.Forms.Button buttonRandomConfig;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

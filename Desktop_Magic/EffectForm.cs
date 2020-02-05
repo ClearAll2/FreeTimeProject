@@ -110,7 +110,7 @@ namespace DM
             else if (type == 4)
             {
                 pic.Image = pictureBox5.Image;
-                size = rnd.Next(25) + 5;
+                size = rnd.Next(20) + 5;
                 pic.Size = new System.Drawing.Size(size, size);
             }
             else
@@ -120,7 +120,7 @@ namespace DM
                 if (o == 1)
                 {
                     pic.Image = pictureBox5.Image;
-                    size = rnd.Next(25) + 5;
+                    size = rnd.Next(20) + 5;
                     pic.Size = new System.Drawing.Size(size, size);
                 }
                 else if (o == 2)
@@ -150,7 +150,7 @@ namespace DM
                         if (o1 == 1)
                         {
                             pic.Image = pictureBox5.Image;
-                            size = rnd.Next(25) + 5;
+                            size = rnd.Next(20) + 5;
                             pic.Size = new System.Drawing.Size(size, size);
                         }
                         else if (o1 == 2)
@@ -199,7 +199,7 @@ namespace DM
             }
             else if (type == 4)
             {
-                size = rnd.Next(25) + 5;
+                size = rnd.Next(20) + 5;
                 pic.Size = new System.Drawing.Size(size, size);
             }
             else
@@ -208,7 +208,7 @@ namespace DM
                 if (o == 1)
                 {
                     pic.Image = pictureBox5.Image;
-                    size = rnd.Next(25) + 5;
+                    size = rnd.Next(20) + 5;
                     pic.Size = new System.Drawing.Size(size, size);
                 }
                 else if (o == 2)
@@ -237,7 +237,7 @@ namespace DM
                         if (o1 == 1)
                         {
                             pic.Image = pictureBox5.Image;
-                            size = rnd.Next(25) + 5;
+                            size = rnd.Next(20) + 5;
                             pic.Size = new System.Drawing.Size(size, size);
                         }
                         else if (o1 == 2)
@@ -279,6 +279,7 @@ namespace DM
                 for (int i=0;i<CGlob.Amount;i++)
                 {
                     CFlake pic = new CFlake();
+                    
                     pics.Add(pic);
                     CreateFlake(pic);
                 }
@@ -335,5 +336,42 @@ namespace DM
             }
             g.Dispose();
         } 
+    }
+    public class CFlake
+    {
+
+        public Size Size;
+        public Point Position;
+        public Image Image;
+        public int Speed;
+        public int Direction;
+        public CFlake()
+        {
+            Speed = 30;
+            Direction = 50;
+        }
+        public Rectangle Bounds
+        {
+            get { return new Rectangle(this.Position, this.Size); }
+            set
+            {
+                this.Position = value.Location;
+                this.Size = value.Size;
+            }
+        }
+        public int Top
+        {
+            get { return this.Position.Y; }
+            set { this.Position.Y = value; }
+        }
+        public int Left
+        {
+            get { return this.Position.X; }
+            set { this.Position.X = value; }
+        }
+        public int Right
+        {
+            get { return this.Position.X + this.Size.Width; }
+        }
     }
 }

@@ -53,7 +53,6 @@
             // importButton
             // 
             this.importButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.importButton.FlatAppearance.BorderSize = 0;
             this.importButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.importButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.importButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,6 +208,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(299, 402);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);

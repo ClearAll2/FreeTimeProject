@@ -39,8 +39,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
@@ -117,11 +117,12 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(260, 0);
+            this.button6.Location = new System.Drawing.Point(248, 7);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(20, 21);
             this.button6.TabIndex = 18;
             this.button6.Text = "-";
+            this.toolTip1.SetToolTip(this.button6, "Hide");
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.label3_Click);
             // 
@@ -133,13 +134,18 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(279, 0);
+            this.button5.Location = new System.Drawing.Point(267, 7);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(20, 21);
             this.button5.TabIndex = 17;
             this.button5.Text = "X";
+            this.toolTip1.SetToolTip(this.button5, "Close");
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
             // 
             // groupBox1
             // 
@@ -154,19 +160,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "What say you?";
             // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 27);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(299, 292);
-            this.axWindowsMediaPlayer1.TabIndex = 14;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 34);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(299, 285);
+            this.axWindowsMediaPlayer1.TabIndex = 14;
             // 
             // Music
             // 
@@ -187,6 +193,7 @@
             this.Text = "Music Player";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
             this.Load += new System.EventHandler(this.Form3_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Music_Paint);
             this.Resize += new System.EventHandler(this.Form3_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -191,6 +191,10 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -337,7 +341,7 @@
             this.buttonShortcut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShortcut.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonShortcut.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonShortcut.Location = new System.Drawing.Point(321, 0);
+            this.buttonShortcut.Location = new System.Drawing.Point(317, 5);
             this.buttonShortcut.Name = "buttonShortcut";
             this.buttonShortcut.Size = new System.Drawing.Size(20, 19);
             this.buttonShortcut.TabIndex = 12;
@@ -355,7 +359,7 @@
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMinimize.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonMinimize.Location = new System.Drawing.Point(341, 0);
+            this.buttonMinimize.Location = new System.Drawing.Point(337, 5);
             this.buttonMinimize.Name = "buttonMinimize";
             this.buttonMinimize.Size = new System.Drawing.Size(20, 19);
             this.buttonMinimize.TabIndex = 11;
@@ -373,7 +377,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonClose.Location = new System.Drawing.Point(362, 0);
+            this.buttonClose.Location = new System.Drawing.Point(358, 5);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(20, 19);
             this.buttonClose.TabIndex = 10;
@@ -402,15 +406,14 @@
             // 
             this.buttonRandomConfig.BackColor = System.Drawing.Color.Transparent;
             this.buttonRandomConfig.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonRandomConfig.FlatAppearance.BorderSize = 0;
             this.buttonRandomConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonRandomConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRandomConfig.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonRandomConfig.ImageIndex = 0;
             this.buttonRandomConfig.ImageList = this.imageList1;
-            this.buttonRandomConfig.Location = new System.Drawing.Point(181, 92);
+            this.buttonRandomConfig.Location = new System.Drawing.Point(176, 88);
             this.buttonRandomConfig.Name = "buttonRandomConfig";
-            this.buttonRandomConfig.Size = new System.Drawing.Size(24, 24);
+            this.buttonRandomConfig.Size = new System.Drawing.Size(30, 30);
             this.buttonRandomConfig.TabIndex = 14;
             this.toolTip1.SetToolTip(this.buttonRandomConfig, "Random Configuration");
             this.buttonRandomConfig.UseVisualStyleBackColor = false;
@@ -420,7 +423,7 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "gear.png");
+            this.imageList1.Images.SetKeyName(0, "settings.png");
             // 
             // startButton
             // 
@@ -531,6 +534,7 @@
             // 
             this.tipsLabel.AutoSize = true;
             this.tipsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipsLabel.ForeColor = System.Drawing.Color.Blue;
             this.tipsLabel.Location = new System.Drawing.Point(77, 66);
             this.tipsLabel.Name = "tipsLabel";
             this.tipsLabel.Size = new System.Drawing.Size(61, 15);
@@ -764,6 +768,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(382, 58);
             this.panel4.TabIndex = 14;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
             // 
@@ -806,6 +811,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DM";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDirection)).EndInit();

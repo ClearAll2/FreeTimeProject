@@ -351,7 +351,6 @@ namespace DM
         {
             if (started != true)
             {
-                //button9.Enabled = false;
                 started = true;
                 startButton.Text = "Minimize";
                 n = new EffectForm();
@@ -362,7 +361,7 @@ namespace DM
             {
                 this.Hide();
                 notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(2000, "Howdy", "Desktop Magic is running in background", ToolTipIcon.Info);
+                notifyIcon1.ShowBalloonTip(2000, "Howdy", "Desktop Magic is running in background", ToolTipIcon.None);
             }
         }
 
@@ -445,12 +444,12 @@ namespace DM
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (FormWindowState.Minimized == WindowState)
-            {
-                this.Hide();
-                panel2.Hide();
-                notifyIcon1.Visible = true;
-            }
+            //if (FormWindowState.Minimized == WindowState)
+            //{
+            //    this.Hide();
+            //    panel2.Hide();
+            //    notifyIcon1.Visible = true;
+            //}
         }
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
@@ -1082,10 +1081,7 @@ namespace DM
 
         private void label14_Click(object sender, EventArgs e)
         {
-
             Application.Exit();
-
-
         }
 
         private void label15_Click(object sender, EventArgs e)
@@ -1114,6 +1110,27 @@ namespace DM
                 Left = Left + (e.X - newx);
                 Top = Top + (e.Y - newy);
             }
+        }
+
+        private void MainForm_Paint(object sender, PaintEventArgs e)
+        {
+            Form frm = (Form)sender;
+            ControlPaint.DrawBorder(e.Graphics, frm.ClientRectangle,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid);
+            
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+            Panel panel = (Panel)sender;
+            ControlPaint.DrawBorder(e.Graphics, panel.ClientRectangle,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid);
         }
 
         private void label18_Click(object sender, EventArgs e)

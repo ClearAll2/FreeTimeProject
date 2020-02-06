@@ -156,7 +156,15 @@ namespace DM
             }
         }
 
-       
+        private void Music_Paint(object sender, PaintEventArgs e)
+        {
+            Form frm = (Form)sender;
+            ControlPaint.DrawBorder(e.Graphics, frm.ClientRectangle,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid);
+        }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {

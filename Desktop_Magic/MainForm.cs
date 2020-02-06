@@ -330,7 +330,8 @@ namespace DM
                 if (MessageBox.Show("New version " + tmp + " is now available\n\n" + changelog + "\n\nWould you like to download now?", "Desktop Magic Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     updateButton.Enabled = true;
-                    Process.Start("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsUGxKUWtFTnM4dms");
+                    Process.Start(Application.StartupPath + "\\DM Updater.exe", "update");
+                    Application.Exit();
                 }
                 else
                 {
@@ -361,7 +362,7 @@ namespace DM
             {
                 this.Hide();
                 notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(2000, "Desktop Magic", "Desktop Magic is running in background", ToolTipIcon.Info);
+                notifyIcon1.ShowBalloonTip(2000, "Howdy", "Desktop Magic is running in background", ToolTipIcon.Info);
             }
         }
 

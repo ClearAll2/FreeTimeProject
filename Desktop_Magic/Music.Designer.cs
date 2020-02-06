@@ -40,6 +40,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
@@ -53,7 +54,7 @@
             this.importButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.importButton.Location = new System.Drawing.Point(12, 31);
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(82, 29);
+            this.importButton.Size = new System.Drawing.Size(93, 29);
             this.importButton.TabIndex = 12;
             this.importButton.Text = "Import";
             this.importButton.UseVisualStyleBackColor = true;
@@ -62,13 +63,12 @@
             // checkBoxRepeat
             // 
             this.checkBoxRepeat.AutoSize = true;
-            this.checkBoxRepeat.Location = new System.Drawing.Point(109, 20);
+            this.checkBoxRepeat.Location = new System.Drawing.Point(125, 20);
             this.checkBoxRepeat.Name = "checkBoxRepeat";
             this.checkBoxRepeat.Size = new System.Drawing.Size(123, 17);
             this.checkBoxRepeat.TabIndex = 15;
             this.checkBoxRepeat.Text = "Repeat current song";
             this.checkBoxRepeat.UseVisualStyleBackColor = true;
-            this.checkBoxRepeat.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label1
             // 
@@ -87,11 +87,11 @@
             // checkBoxRunatStart
             // 
             this.checkBoxRunatStart.AutoSize = true;
-            this.checkBoxRunatStart.Location = new System.Drawing.Point(109, 43);
+            this.checkBoxRunatStart.Location = new System.Drawing.Point(125, 43);
             this.checkBoxRunatStart.Name = "checkBoxRunatStart";
-            this.checkBoxRunatStart.Size = new System.Drawing.Size(162, 17);
+            this.checkBoxRunatStart.Size = new System.Drawing.Size(146, 17);
             this.checkBoxRunatStart.TabIndex = 20;
-            this.checkBoxRunatStart.Text = "Play selected song at startup";
+            this.checkBoxRunatStart.Text = "Play this playlist at startup";
             this.checkBoxRunatStart.UseVisualStyleBackColor = true;
             this.checkBoxRunatStart.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
@@ -162,7 +162,11 @@
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(299, 292);
             this.axWindowsMediaPlayer1.TabIndex = 14;
-            this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.axWindowsMediaPlayer1_PlayStateChange);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Music
             // 
@@ -204,5 +208,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Timer timer1;
     }
 }

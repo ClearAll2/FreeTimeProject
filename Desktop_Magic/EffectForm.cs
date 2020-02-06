@@ -40,11 +40,6 @@ namespace DM
             type = CGlob.Type;
             Size = CGlob.Size;
             path = CGlob.Path;
-            pictureBox1.Hide();
-            pictureBox2.Hide();
-            pictureBox3.Hide();
-            pictureBox4.Hide();
-            pictureBox5.Hide();
             timer1.Interval = 17;   
         }
         protected override CreateParams CreateParams

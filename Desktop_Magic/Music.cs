@@ -26,6 +26,14 @@ namespace DM
             StartPosition = FormStartPosition.CenterScreen;
             Rectangle workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point(workingArea.Right - Size.Width - 30, (workingArea.Bottom - Size.Height) / 2);
+            RegistryKey r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
+            if (r.GetValue("Link") != null)
+            {
+                checkBoxRunatStart.Checked = true;
+                axWindowsMediaPlayer1.URL = playlistLoc + "\\DMtmp.wpl";
+                axWindowsMediaPlayer1.Ctlcontrols.play();
+            }
+            r.Close();
         }
 
 
@@ -40,10 +48,6 @@ namespace DM
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (File.Exists(playlistLoc + "\\DMtmp.wpl"))
-                File.Delete(playlistLoc + "\\DMtmp.wpl");
-            WMPLib.IWMPPlaylist playlist = axWindowsMediaPlayer1.playlistCollection.newPlaylist("DMtmp");
-            WMPLib.IWMPMedia media;
             OpenFileDialog of = new OpenFileDialog();
             of.Filter = "Audio Files (*.mp3, *.m4a, *.aac, *.wma, *.wav)|*.mp3;*.m4a;*.aac;*.wma;*.wav|All files (*.*)|*.*";
             of.CheckFileExists = true;
@@ -53,6 +57,10 @@ namespace DM
             of.InitialDirectory = Environment.SpecialFolder.MyMusic.ToString();
             if (of.ShowDialog() == DialogResult.OK)
             {
+                if (File.Exists(playlistLoc + "\\DMtmp.wpl"))
+                    File.Delete(playlistLoc + "\\DMtmp.wpl");
+                WMPLib.IWMPPlaylist playlist = axWindowsMediaPlayer1.playlistCollection.newPlaylist("DMtmp");
+                WMPLib.IWMPMedia media;
                 foreach (string file in of.FileNames)
                 {
                     media = axWindowsMediaPlayer1.newMedia(file);
@@ -66,27 +74,24 @@ namespace DM
 
        
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (File.Exists(playlistLoc + "\\DMtmp.wpl"))
+        { 
+            if (File.Exists(playlistLoc + "\\DMtmp.wpl") && !checkBoxRunatStart.Checked)
                 File.Delete(playlistLoc + "\\DMtmp.wpl");
             gHook.unhook();
         }
         
-       
-
-        private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            if (axWindowsMediaPlayer1.playState == WMPLib.WMPPlayState.wmppsMediaEnded)
+            if (checkBoxRepeat.Checked && axWindowsMediaPlayer1.currentMedia != null)
             {
-                if (checkBoxRepeat.Checked)
+                int length = (int)axWindowsMediaPlayer1.Ctlcontrols.currentItem.duration;
+                if (length - (int)axWindowsMediaPlayer1.Ctlcontrols.currentPosition == 1)
                 {
-                   
+                    axWindowsMediaPlayer1.Ctlcontrols.currentPosition = 0;
                 }
             }
-            
         }
 
-        
         private void Form3_Load(object sender, EventArgs e)
         {
             gHook = new GlobalKeyboardHook();
@@ -117,14 +122,18 @@ namespace DM
 
     
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-
+            RegistryKey r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
+            if (checkBoxRunatStart.Checked)
+            {
+                r.SetValue("Link", true);
+            }
+            else
+            {
+                r.DeleteValue("Link", false);
+            }
+            r.Close();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -146,6 +155,8 @@ namespace DM
                 newy = e.Y;
             }
         }
+
+       
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {

@@ -34,6 +34,7 @@ namespace DM
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+                SetProcessDpiAwareness((int)DpiAwareness.SystemAware);
                 Application.Run(new MainForm());
                 m_Mutex.ReleaseMutex();
             }

@@ -247,7 +247,7 @@
             this.trackBarDirection.Location = new System.Drawing.Point(48, 16);
             this.trackBarDirection.Minimum = -10;
             this.trackBarDirection.Name = "trackBarDirection";
-            this.trackBarDirection.Size = new System.Drawing.Size(293, 45);
+            this.trackBarDirection.Size = new System.Drawing.Size(297, 45);
             this.trackBarDirection.TabIndex = 7;
             this.trackBarDirection.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarDirection, "Alt + Left/Right");
@@ -261,7 +261,7 @@
             this.trackBarSpeed.Maximum = 15;
             this.trackBarSpeed.Minimum = 1;
             this.trackBarSpeed.Name = "trackBarSpeed";
-            this.trackBarSpeed.Size = new System.Drawing.Size(293, 45);
+            this.trackBarSpeed.Size = new System.Drawing.Size(297, 45);
             this.trackBarSpeed.TabIndex = 8;
             this.trackBarSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarSpeed, "Ctrl + Left/Right");
@@ -274,7 +274,7 @@
             this.trackBarNumber.Maximum = 40;
             this.trackBarNumber.Minimum = 1;
             this.trackBarNumber.Name = "trackBarNumber";
-            this.trackBarNumber.Size = new System.Drawing.Size(293, 45);
+            this.trackBarNumber.Size = new System.Drawing.Size(297, 45);
             this.trackBarNumber.TabIndex = 9;
             this.trackBarNumber.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarNumber, "Shift + Left/Right");
@@ -341,9 +341,9 @@
             this.buttonShortcut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShortcut.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonShortcut.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonShortcut.Location = new System.Drawing.Point(317, 5);
+            this.buttonShortcut.Location = new System.Drawing.Point(306, 5);
             this.buttonShortcut.Name = "buttonShortcut";
-            this.buttonShortcut.Size = new System.Drawing.Size(20, 19);
+            this.buttonShortcut.Size = new System.Drawing.Size(20, 20);
             this.buttonShortcut.TabIndex = 12;
             this.buttonShortcut.Text = "?";
             this.toolTip1.SetToolTip(this.buttonShortcut, "About shortcuts");
@@ -359,12 +359,12 @@
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMinimize.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonMinimize.Location = new System.Drawing.Point(337, 5);
+            this.buttonMinimize.Location = new System.Drawing.Point(332, 5);
             this.buttonMinimize.Name = "buttonMinimize";
-            this.buttonMinimize.Size = new System.Drawing.Size(20, 19);
+            this.buttonMinimize.Size = new System.Drawing.Size(20, 20);
             this.buttonMinimize.TabIndex = 11;
             this.buttonMinimize.Text = "-";
-            this.toolTip1.SetToolTip(this.buttonMinimize, "Minimize and hide");
+            this.toolTip1.SetToolTip(this.buttonMinimize, "Minimize");
             this.buttonMinimize.UseVisualStyleBackColor = false;
             this.buttonMinimize.Click += new System.EventHandler(this.label15_Click);
             // 
@@ -379,7 +379,7 @@
             this.buttonClose.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonClose.Location = new System.Drawing.Point(358, 5);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(20, 19);
+            this.buttonClose.Size = new System.Drawing.Size(20, 20);
             this.buttonClose.TabIndex = 10;
             this.buttonClose.Text = "X";
             this.toolTip1.SetToolTip(this.buttonClose, "Close");
@@ -393,7 +393,7 @@
             this.labelAbout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAbout.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelAbout.Location = new System.Drawing.Point(161, 9);
+            this.labelAbout.Location = new System.Drawing.Point(151, 9);
             this.labelAbout.Name = "labelAbout";
             this.labelAbout.Size = new System.Drawing.Size(121, 39);
             this.labelAbout.TabIndex = 0;
@@ -567,6 +567,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(382, 199);
             this.panel2.TabIndex = 7;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // panel3
             // 
@@ -581,6 +582,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(382, 199);
             this.panel3.TabIndex = 17;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // buttonCancelCustom
             // 
@@ -703,11 +705,11 @@
             // labelNumber
             // 
             this.labelNumber.AutoSize = true;
-            this.labelNumber.Location = new System.Drawing.Point(339, 93);
+            this.labelNumber.Location = new System.Drawing.Point(351, 93);
             this.labelNumber.Name = "labelNumber";
-            this.labelNumber.Size = new System.Drawing.Size(41, 13);
+            this.labelNumber.Size = new System.Drawing.Size(13, 13);
             this.labelNumber.TabIndex = 8;
-            this.labelNumber.Text = "label11";
+            this.labelNumber.Text = "0";
             // 
             // label10
             // 
@@ -721,11 +723,11 @@
             // labelSpeed
             // 
             this.labelSpeed.AutoSize = true;
-            this.labelSpeed.Location = new System.Drawing.Point(339, 56);
+            this.labelSpeed.Location = new System.Drawing.Point(351, 56);
             this.labelSpeed.Name = "labelSpeed";
-            this.labelSpeed.Size = new System.Drawing.Size(35, 13);
+            this.labelSpeed.Size = new System.Drawing.Size(13, 13);
             this.labelSpeed.TabIndex = 6;
-            this.labelSpeed.Text = "label9";
+            this.labelSpeed.Text = "0";
             // 
             // label8
             // 
@@ -739,11 +741,11 @@
             // labelDirection
             // 
             this.labelDirection.AutoSize = true;
-            this.labelDirection.Location = new System.Drawing.Point(339, 16);
+            this.labelDirection.Location = new System.Drawing.Point(351, 16);
             this.labelDirection.Name = "labelDirection";
-            this.labelDirection.Size = new System.Drawing.Size(35, 13);
+            this.labelDirection.Size = new System.Drawing.Size(13, 13);
             this.labelDirection.TabIndex = 4;
-            this.labelDirection.Text = "label7";
+            this.labelDirection.Text = "0";
             // 
             // label6
             // 

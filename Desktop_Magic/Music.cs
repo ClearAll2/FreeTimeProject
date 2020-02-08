@@ -20,6 +20,24 @@ namespace DM
         int newx, newy;
         RegistryKey r;
         string playlistLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "Playlists");
+
+        //minimize form when clicking icon on taskbar
+        //for smooth load
+        private const int WS_MINIMIZEBOX = 0x20000;
+        private const int CS_DBLCLKS = 0x8;
+        private const int WS_EX = 0x02000000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_MINIMIZEBOX;
+                cp.ClassStyle |= CS_DBLCLKS;
+                //cp.ExStyle |= WS_EX;  // Turn on WS_EX_COMPOSITED //fail
+                return cp;
+            }
+        }
+
         public Music()
         {
             InitializeComponent();        
@@ -31,19 +49,10 @@ namespace DM
             {
                 checkBoxRunatStart.Checked = true;
                 axWindowsMediaPlayer1.URL = playlistLoc + "\\DMtmp.wpl";
+                axWindowsMediaPlayer1.settings.setMode("shuffle", true);
                 axWindowsMediaPlayer1.Ctlcontrols.play();
             }
             r.Close();
-        }
-
-
-        private void Form3_Resize(object sender, EventArgs e)
-        {
-            if (FormWindowState.Minimized == WindowState)
-            {
-                this.Hide();
-                
-            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -67,6 +76,7 @@ namespace DM
                     playlist.appendItem(media);
                 }
                 axWindowsMediaPlayer1.currentPlaylist = playlist;
+                axWindowsMediaPlayer1.settings.setMode("shuffle", true);
                 axWindowsMediaPlayer1.Ctlcontrols.play();
             }
             of.Dispose();
@@ -164,6 +174,16 @@ namespace DM
             Color.LightBlue, 1, ButtonBorderStyle.Solid,
             Color.LightBlue, 1, ButtonBorderStyle.Solid,
             Color.LightBlue, 1, ButtonBorderStyle.Solid);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            Panel panel = (Panel)sender;
+            ControlPaint.DrawBorder(e.Graphics, panel.ClientRectangle,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 0, ButtonBorderStyle.Solid);
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)

@@ -352,7 +352,7 @@ namespace DM
             if (started != true)
             {
                 started = true;
-                startButton.Text = "Minimize";
+                startButton.Text = "Minimize to tray";
                 n = new EffectForm();
                 n.Show();
 

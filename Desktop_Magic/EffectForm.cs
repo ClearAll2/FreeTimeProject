@@ -40,7 +40,7 @@ namespace DM
             type = CGlob.Type;
             Size = CGlob.Size;
             path = CGlob.Path;
-            timer1.Interval = 17;   
+            timer1.Interval = 30;   
         }
         protected override CreateParams CreateParams
         {

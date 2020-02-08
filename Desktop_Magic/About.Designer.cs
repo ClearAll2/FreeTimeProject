@@ -45,7 +45,7 @@
             this.okButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.okButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.okButton.Location = new System.Drawing.Point(241, 311);
+            this.okButton.Location = new System.Drawing.Point(241, 295);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 30);
             this.okButton.TabIndex = 24;
@@ -54,7 +54,7 @@
             // labelCompanyName
             // 
             this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCompanyName.Location = new System.Drawing.Point(6, 102);
+            this.labelCompanyName.Location = new System.Drawing.Point(6, 96);
             this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCompanyName.Name = "labelCompanyName";
@@ -66,7 +66,7 @@
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCopyright.Location = new System.Drawing.Point(6, 68);
+            this.labelCopyright.Location = new System.Drawing.Point(6, 64);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCopyright.Name = "labelCopyright";
@@ -78,7 +78,7 @@
             // labelVersion
             // 
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelVersion.Location = new System.Drawing.Point(6, 34);
+            this.labelVersion.Location = new System.Drawing.Point(6, 32);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelVersion.Name = "labelVersion";
@@ -120,7 +120,7 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(319, 344);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(319, 328);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // textBoxDescription
@@ -129,12 +129,12 @@
             this.textBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDescription.Location = new System.Drawing.Point(6, 139);
+            this.textBoxDescription.Location = new System.Drawing.Point(6, 131);
             this.textBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.Size = new System.Drawing.Size(310, 166);
+            this.textBoxDescription.Size = new System.Drawing.Size(310, 158);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
@@ -145,7 +145,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(337, 362);
+            this.ClientSize = new System.Drawing.Size(337, 346);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

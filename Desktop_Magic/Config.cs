@@ -105,8 +105,8 @@ namespace DM
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown3.Value < 5)
-                numericUpDown3.Value = 5;
+            if (numericUpDown3.Value < 1)
+                numericUpDown3.Value = 1;
             if (numericUpDown3.Value > 15)
                 numericUpDown3.Value = 15;
         

@@ -49,7 +49,8 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(170, 17);
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown1.Location = new System.Drawing.Point(195, 17);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             40,
             0,
@@ -73,7 +74,8 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(170, 43);
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown2.Location = new System.Drawing.Point(195, 43);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             10,
             0,
@@ -97,14 +99,15 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(170, 69);
+            this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown3.Location = new System.Drawing.Point(195, 69);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             15,
             0,
             0,
             0});
             this.numericUpDown3.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -135,7 +138,8 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(170, 95);
+            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown4.Location = new System.Drawing.Point(195, 95);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             1440,
             0,
@@ -177,7 +181,7 @@
             this.numbercheckBox.AutoSize = true;
             this.numbercheckBox.Checked = true;
             this.numbercheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.numbercheckBox.Location = new System.Drawing.Point(46, 18);
+            this.numbercheckBox.Location = new System.Drawing.Point(71, 18);
             this.numbercheckBox.Name = "numbercheckBox";
             this.numbercheckBox.Size = new System.Drawing.Size(110, 17);
             this.numbercheckBox.TabIndex = 9;
@@ -190,7 +194,7 @@
             this.directioncheckBox.AutoSize = true;
             this.directioncheckBox.Checked = true;
             this.directioncheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.directioncheckBox.Location = new System.Drawing.Point(46, 44);
+            this.directioncheckBox.Location = new System.Drawing.Point(71, 44);
             this.directioncheckBox.Name = "directioncheckBox";
             this.directioncheckBox.Size = new System.Drawing.Size(115, 17);
             this.directioncheckBox.TabIndex = 10;
@@ -203,7 +207,7 @@
             this.speedcheckBox.AutoSize = true;
             this.speedcheckBox.Checked = true;
             this.speedcheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.speedcheckBox.Location = new System.Drawing.Point(46, 70);
+            this.speedcheckBox.Location = new System.Drawing.Point(71, 70);
             this.speedcheckBox.Name = "speedcheckBox";
             this.speedcheckBox.Size = new System.Drawing.Size(104, 17);
             this.speedcheckBox.TabIndex = 11;
@@ -216,7 +220,7 @@
             this.timecheckBox.AutoSize = true;
             this.timecheckBox.Checked = true;
             this.timecheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.timecheckBox.Location = new System.Drawing.Point(213, 96);
+            this.timecheckBox.Location = new System.Drawing.Point(238, 96);
             this.timecheckBox.Name = "timecheckBox";
             this.timecheckBox.Size = new System.Drawing.Size(45, 17);
             this.timecheckBox.TabIndex = 12;
@@ -237,7 +241,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 97);
+            this.label4.Location = new System.Drawing.Point(68, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 26);
             this.label4.TabIndex = 7;
@@ -271,7 +275,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Random Configuration";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form4_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();

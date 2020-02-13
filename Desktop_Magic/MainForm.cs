@@ -257,7 +257,7 @@ namespace DM
         {
             Random r = new Random();
         ret:
-            int o = r.Next(1, 9);
+            int o = r.Next(1, 10);
             if (o == 1)
             {
                 tipsLabel.Text = "You can't play music before starting";
@@ -1135,7 +1135,7 @@ namespace DM
 
         private void label18_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Shortcut keys:\n\nAlt + Left/Right to change direction\nCtrl + Left/Right to change speed\nShift + Left/Right to change number", "About shortcut keys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Hotkeys:\n\nAlt + Left/Right to change direction\nCtrl + Left/Right to change speed\nShift + Left/Right to change number", "About shortcut keys", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
     }

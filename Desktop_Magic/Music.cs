@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using System.Media;
 using WMPLib;
 using System.IO;
-using System.Diagnostics;
 
 namespace DM
 {
@@ -18,7 +11,6 @@ namespace DM
     {
         GlobalKeyboardHook gHook;
         int newx, newy;
-        RegistryKey r;
         string playlistLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "Playlists");
 
         //minimize form when clicking icon on taskbar

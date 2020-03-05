@@ -17,7 +17,6 @@ namespace DM
         int value;
         int newx, newy;
         bool started = false;
-        string path = "";
         RegistryKey r;
         RegistryKey r1;
         int Speed; int RSpeed = 15;

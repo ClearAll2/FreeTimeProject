@@ -126,7 +126,7 @@
             // textBoxDescription
             // 
             this.textBoxDescription.BackColor = System.Drawing.Color.White;
-            this.textBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDescription.Location = new System.Drawing.Point(6, 131);

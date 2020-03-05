@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.IO;
@@ -20,7 +15,7 @@ namespace DM
         int speed = 10;
         int number = 10;
         int amount = 10;
-        int Size = 50;
+        int _size = 50;
         string path = "";
         int type = 1;
         Graphics g;
@@ -38,9 +33,9 @@ namespace DM
             number = CGlob.Number;
             amount = CGlob.Amount;
             type = CGlob.Type;
-            Size = CGlob.Size;
+            _size = CGlob.Size;
             path = CGlob.Path;
-            timer1.Interval = 30;   
+            timer1.Interval = 30;
         }
         protected override CreateParams CreateParams
         {
@@ -64,9 +59,9 @@ namespace DM
                 }
                 else
                 {
-                    CGlob.Type = 1;                   
+                    CGlob.Type = 1;
                     MessageBox.Show("Can not find your picture!!?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }     
+                }
             }
             r1.Close();
             r1.Dispose();
@@ -80,7 +75,7 @@ namespace DM
         private void CreateFlake(CFlake pic)
         {
             path = CGlob.Path;
-            Size = CGlob.Size;
+            _size = CGlob.Size;
             type = CGlob.Type;
             screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
             if (type == 1)
@@ -110,7 +105,7 @@ namespace DM
             }
             else
             {
-                
+
                 int o = rd.Next(1, 5);
                 if (o == 1)
                 {
@@ -162,8 +157,8 @@ namespace DM
                         }
                     }
                 }
-               
-                
+
+
             }
             pic.Position = new System.Drawing.Point(rnd.Next(screenWidth), rnd.Next(-15, -10));
             int sign = rnd.Next(2) == 0 ? -1 : 1;
@@ -174,7 +169,7 @@ namespace DM
         //
         private void RecreateFlake(CFlake pic)
         {
-            Size = CGlob.Size;
+            _size = CGlob.Size;
             type = CGlob.Type;
             screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
             if (type == 1)
@@ -212,7 +207,7 @@ namespace DM
                     size = rnd.Next(36) + 5;
                     pic.Size = new System.Drawing.Size(size, size);
                 }
-                else if (o==3)
+                else if (o == 3)
                 {
                     pic.Image = pictureBox2.Image;
                     size = rnd.Next(8) + 5;
@@ -249,7 +244,7 @@ namespace DM
                         }
                     }
                 }
-                
+
             }
             pic.Position = new System.Drawing.Point(rnd.Next(screenWidth), rnd.Next(-15, -10));
             int sign = rnd.Next(2) == 0 ? -1 : 1;
@@ -263,23 +258,23 @@ namespace DM
         public void Rescale()
         {
             if (pics.Count != CGlob.Amount || type != CGlob.Type || path != CGlob.Path)
-            {  
+            {
                 g = this.CreateGraphics();
                 for (int i = 0; i < pics.Count; i++)
                 {
-                    g.FillRectangle(SystemBrushes.Control, pics[i].Bounds); 
+                    g.FillRectangle(SystemBrushes.Control, pics[i].Bounds);
                 }
                 pics.Clear();
                 g.Dispose();
-                for (int i=0;i<CGlob.Amount;i++)
+                for (int i = 0; i < CGlob.Amount; i++)
                 {
                     CFlake pic = new CFlake();
-                    
+
                     pics.Add(pic);
                     CreateFlake(pic);
                 }
             }
-            
+
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -291,7 +286,7 @@ namespace DM
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
             screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
             for (int i = 0; i < pics.Count; i++)
-            {             
+            {
                 g.FillRectangle(SystemBrushes.Control, pics[i].Bounds);
                 if (pics[i].Top > screenHeight || pics[i].Right < 0 || pics[i].Left > screenWidth)
                 {
@@ -330,7 +325,7 @@ namespace DM
                     g.DrawImage(pics[i].Image, pics[i].Bounds);
             }
             g.Dispose();
-        } 
+        }
     }
     public class CFlake
     {

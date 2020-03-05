@@ -397,7 +397,7 @@
             this.labelAbout.Name = "labelAbout";
             this.labelAbout.Size = new System.Drawing.Size(121, 39);
             this.labelAbout.TabIndex = 0;
-            this.labelAbout.Text = "Desktop Magic v2.1\r\nCopyright ©  2020\r\nFreedom Software";
+            this.labelAbout.Text = "Desktop Magic v2.2\r\nCopyright ©  2020\r\nFreedom Software";
             this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip1.SetToolTip(this.labelAbout, "About");
             this.labelAbout.Click += new System.EventHandler(this.label1_Click);

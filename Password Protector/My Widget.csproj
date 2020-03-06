@@ -92,7 +92,6 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="FancyText.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -198,11 +198,6 @@ namespace RamC
                 lockClockLocationToolStripMenuItem.Checked = true;
                 clk = true;
             }
-            else
-            {
-                blurAmountToolStripMenuItem.Enabled = false;
-                strokeColorToolStripMenuItem.Enabled = false;
-            }
             if (r.GetValue("Id") != null && r.GetValue("Pass") != null)
             {
                 id = (string)r.GetValue("Id");
@@ -245,31 +240,7 @@ namespace RamC
             {
                 stroke = Color.White;
             }
-            
-            if (r.GetValue("Blur") != null)
-            {
-                blur = (int)r.GetValue("Blur");
-                if (blur == 3)
-                {
-                    blur3tools.Checked = true;
-                }
-                else if (blur == 5)
-                {
-                    blur5tools.Checked = true;
-                }
-                else if (blur == 7)
-                {
-                    blur7tools.Checked = true;
-                }
-                else if (blur == 9)
-                {
-                    blur9tools.Checked = true;
-                }
-            }
-            else
-            {
-                blur5tools.Checked = true;
-            }
+
 
             if (r.GetValue("transparency") != null)
             {
@@ -608,22 +579,22 @@ namespace RamC
                 labelClock.Text = cHour + ":" + cMinute + ":" + cSecond;
             
             //
-            if (clk == true)
-            {
-                labelClock.Hide();
+            //if (clk == true)
+            //{
+            //    labelClock.Hide();
 
-                g = this.CreateGraphics();
-                Time = (Bitmap)FancyText.ImageFromText(labelClock.Text, labelClock.Font, labelClock.ForeColor, stroke, blur);
+            //    g = this.CreateGraphics();
+            //    Time = (Bitmap)FancyText.ImageFromText(labelClock.Text, labelClock.Font, labelClock.ForeColor, stroke, blur);
 
-                g.FillRectangle(SystemBrushes.Control, this.ClientRectangle);
-                g.DrawImageUnscaled(Time, labelClock.Location);
+            //    g.FillRectangle(SystemBrushes.Control, this.ClientRectangle);
+            //    g.DrawImageUnscaled(Time, labelClock.Location);
 
-                g.Dispose();
-            }
-            else
-            {
+            //    g.Dispose();
+            //}
+            //else
+            //{
                 labelClock.Show();
-            }
+            //}
             
         }
 
@@ -822,18 +793,13 @@ namespace RamC
                 lockClockLocationToolStripMenuItem.Checked = true;
                 r.SetValue("CLock", true);
                 clk = true;
-                blurAmountToolStripMenuItem.Enabled = true;
-                strokeColorToolStripMenuItem.Enabled = true;
-                
             }
             else
             {
                 lockClockLocationToolStripMenuItem.Checked = false;
                 r.DeleteValue("CLock", false);
                 clk = false;
-                blurAmountToolStripMenuItem.Enabled = false;
-                strokeColorToolStripMenuItem.Enabled = false;
-               
+                
                 if (noneToolStripMenuItem.Checked == true)
                 {
                     MessageBox.Show("You can not move clock while background transparency is on", "Did you know?", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1006,6 +972,8 @@ namespace RamC
             {
                 labelClock.Top = CTop;
                 labelClock.Left = CLeft;
+                labelDate.Left = DateLeft;
+                labelDate.Top = DateTop;
                 labelCPU.Top = CpuTop;
                 labelCPU.Left = CpuLeft;
                 labelDisk.Left = DiskLeft;
@@ -1159,74 +1127,6 @@ namespace RamC
             r.Close();
             r.Dispose();
         }
-
-
-
-        private void blur4tools_Click(object sender, EventArgs e)
-        {
-            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-            if (blur3tools.Checked != true)
-            {
-                blur = 3;
-                blur3tools.Checked = true;
-                blur5tools.Checked = false;
-                blur7tools.Checked = false;
-                blur9tools.Checked = false;
-                r.SetValue("Blur", 3);
-            }
-            r.Close();
-            r.Dispose();
-        }
-
-        private void blur5tools_Click(object sender, EventArgs e)
-        {
-            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-            if (blur5tools.Checked != true)
-            {
-                blur = 5;
-                blur5tools.Checked = true;
-                blur3tools.Checked = false;
-                blur7tools.Checked = false;
-                blur9tools.Checked = false;
-                r.SetValue("Blur", 5);
-            }
-            r.Close();
-            r.Dispose();
-        }
-
-        private void blur6tools_Click(object sender, EventArgs e)
-        {
-            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-            if (blur7tools.Checked != true)
-            {
-                blur = 7;
-                blur7tools.Checked = true;
-                blur5tools.Checked = false;
-                blur3tools.Checked = false;
-                blur9tools.Checked = false;
-                r.SetValue("Blur", 7);
-            }
-            r.Close();
-            r.Dispose();
-        }
-
-        private void blur7tools_Click(object sender, EventArgs e)
-        {
-            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-            if (blur9tools.Checked != true)
-            {
-                blur = 9;
-                blur9tools.Checked = true;
-                blur5tools.Checked = false;
-                blur7tools.Checked = false;
-                blur3tools.Checked = false;
-                r.SetValue("Blur", 9);
-            }
-            r.Close();
-            r.Dispose();
-        }
-        //disconnect mail
-       
         
         //set disk font
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1415,34 +1315,21 @@ namespace RamC
 
         private void timerSystem_Tick(object sender, EventArgs e)
         {
+            labelDate.Text = DateTime.Now.Date.ToLongDateString();
             //
             fRam = RamC.NextValue();
             labelRam.Text = "Available memory: " + fRam.ToString() + "MB";
-            //label1.Hide();
-            // RAM = (Bitmap)FancyText.ImageFromText(label1.Text, label1.Font, Color.Black, Color.White);
-            // g.FillRectangle(SystemBrushes.Control, label1.Bounds);
-            // g.DrawImageUnscaled(RAM, label1.Location);
-            //
+          
             pDisk = Disk.NextValue();
             pDisk2 = Math.Round(pDisk, 1);
             if (pDisk2 > 100)
                 pDisk2 = 100;
             labelDisk.Text = "Disk usage: " + pDisk2.ToString() + "%";
-            // label3.Hide();
-            //DISK = (Bitmap)FancyText.ImageFromText(label3.Text, label3.Font, Color.Black, Color.White);
-            // g.FillRectangle(SystemBrushes.Control, label3.Bounds);
-            // g.DrawImageUnscaled(DISK, label3.Location);
-            //
+            
             pCpu = Cpu.NextValue();
             pCpu2 = Math.Round(pCpu, 1);
             labelCPU.Text = "CPU usage: " + pCpu2.ToString() + "%";
-            //label4.Text = "CPU speed: " + (CPUSpeed()/1000).ToString() + "GHz";
-            // label4.Hide();
-            // CPU = (Bitmap)FancyText.ImageFromText(label4.Text, label4.Font, Color.Black, Color.White);
-            // g.FillRectangle(SystemBrushes.Control, label4.Bounds);
-            // g.DrawImageUnscaled(CPU, label4.Location);
-
-
+            
         }
 
         private void defaultToolStripMenuItem3_Click(object sender, EventArgs e)
@@ -1562,6 +1449,12 @@ namespace RamC
                     labelDate.Top = labelDate.Top + (e.Y - newy);
                 }
             }
+        }
+
+        private void defaultLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            labelClock.Left = CLeft;
+            labelClock.Top = CTop;
         }
     }
 }

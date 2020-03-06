@@ -1,30 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Sockets;
 using System.Net;
-using System.Threading;
 using System.Diagnostics;
-using System.Windows;
 using Microsoft.Win32;
-using System.Drawing.Text;
 using System.Runtime.InteropServices;
-using System.Management;
-using System.Security.Permissions;
 
 namespace RamC
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         int newx;
         int newy;
-        int getTime;
         float fRam;
         float pDisk;
         double pDisk2;
@@ -77,8 +65,7 @@ namespace RamC
         Color stroke;
         
        
-        Form3 f3;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
@@ -273,12 +260,6 @@ namespace RamC
                 blur5tools.Checked = true;
             }
 
-           
-            if (r.GetValue("showWeather") != null)
-            {
-                showAtStartupToolStripMenuItem.Checked = true;
-            }
-
             if (r.GetValue("transparency") != null)
             {
                 noneToolStripMenuItem.Checked = true;
@@ -340,26 +321,11 @@ namespace RamC
             r.Close();
             r.Dispose();
             notifyIcon1.BalloonTipClicked += notifyIcon1_BalloonTipClicked;
-           
-
-            f3 = new Form3();
-            
-
         }
 
         private void Form1_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible)
-            {
-                if (showAtStartupToolStripMenuItem.Checked)
-                {
-                    f3.Show();
-
-                    bw2 = new BackgroundWorker();
-                    bw2.DoWork += bw2_DoWork;
-                    bw2.RunWorkerAsync();
-                }
-            }
+            
         }
 
 
@@ -599,7 +565,10 @@ namespace RamC
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            getTime = DateTime.Now.Hour;
+            string cHour, cMinute, cSecond;
+            int getTime = DateTime.Now.Hour;
+            int getMinute = DateTime.Now.Minute;
+            int getSecond = DateTime.Now.Second;
             if (h == true)
             {
                 if (getTime > 12)
@@ -607,41 +576,20 @@ namespace RamC
                 if (getTime == 0)
                     getTime = 12;
             }
-            if (getTime > 9)
-            {
-                if (isLong != true)
-                {
-                    if (DateTime.Now.Minute > 9)
-                        label2.Text = getTime + ":" + DateTime.Now.Minute;
-                    else
-                        label2.Text = getTime + ":" + "0" + DateTime.Now.Minute;
-                }
-                else
-                {
-                    if (DateTime.Now.Minute > 9)
-                        label2.Text = getTime + ":" + DateTime.Now.Minute  + ":" + DateTime.Now.Second;
-                    else
-                        label2.Text = getTime + ":" + "0" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
-                }
-            }
+            cHour = getTime.ToString();
+            cMinute = getMinute.ToString();
+            cSecond = getSecond.ToString();
+
+            if (getTime < 10)
+                cHour = "0" + cHour;
+            if (getMinute < 10)
+                cMinute = "0" + cMinute;
+            if (getSecond < 10)
+                cSecond = "0" + cSecond;
+            if (!isLong)
+                label2.Text = cHour + ":" + cMinute;
             else
-            {
-                if (isLong != true)
-                {
-                    if (DateTime.Now.Minute > 9)
-                        label2.Text = "0" + getTime + ":" + DateTime.Now.Minute;
-                    else
-                        label2.Text = "0" + getTime + ":" + "0" + DateTime.Now.Minute;
-                }
-                else
-                {
-                    if (DateTime.Now.Minute > 9)
-                        label2.Text = "0" + getTime + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
-                    else
-                        label2.Text = "0" + getTime + ":" + "0" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
-                }
-            }
-            
+                label2.Text = cHour + ":" + cMinute + ":" + cSecond;
             
             //
             if (clk == true)
@@ -660,34 +608,7 @@ namespace RamC
             {
                 label2.Show();
             }
-            //
-            fRam = RamC.NextValue();
-            label1.Text = "Available memory: " + fRam.ToString() + "MB";
-            //label1.Hide();
-            // RAM = (Bitmap)FancyText.ImageFromText(label1.Text, label1.Font, Color.Black, Color.White);
-            // g.FillRectangle(SystemBrushes.Control, label1.Bounds);
-            // g.DrawImageUnscaled(RAM, label1.Location);
-            //
-            pDisk = Disk.NextValue();
-            pDisk2 = Math.Round(pDisk, 1);
-            if (pDisk2 > 100)
-                pDisk2 = 100;
-            label3.Text = "Disk usage: " + pDisk2.ToString() + "%";
-            // label3.Hide();
-            //DISK = (Bitmap)FancyText.ImageFromText(label3.Text, label3.Font, Color.Black, Color.White);
-            // g.FillRectangle(SystemBrushes.Control, label3.Bounds);
-            // g.DrawImageUnscaled(DISK, label3.Location);
-            //
-            pCpu = Cpu.NextValue();
-            pCpu2 = Math.Round(pCpu, 1);
-            label4.Text = "CPU usage: " + pCpu2.ToString() + "%";
-            //label4.Text = "CPU speed: " + (CPUSpeed()/1000).ToString() + "GHz";
-            // label4.Hide();
-            // CPU = (Bitmap)FancyText.ImageFromText(label4.Text, label4.Font, Color.Black, Color.White);
-            // g.FillRectangle(SystemBrushes.Control, label4.Bounds);
-            // g.DrawImageUnscaled(CPU, label4.Location);
             
-
         }
 
         private void runAtStartupToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1124,35 +1045,7 @@ namespace RamC
             r.Dispose();
         }
 
-        private void weatherBetaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (f3.Visible)
-            {
-                f3.Hide();    
-            }
-            else
-            {
-                f3.Show();
-            }
-        }
-
-        private void showAtStartupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-            if (showAtStartupToolStripMenuItem.Checked != true)
-            {
-                showAtStartupToolStripMenuItem.Checked = true;
-                r.SetValue("showWeather", true);
-            }
-            else
-            {
-                showAtStartupToolStripMenuItem.Checked = false;
-                r.DeleteValue("showWeather", false);
-            }
-            r.Close();
-            r.Dispose();
-        }
-
+      
         private void noneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
@@ -1502,6 +1395,38 @@ namespace RamC
             }
             r.Close();
             r.Dispose();
+        }
+
+        private void timerSystem_Tick(object sender, EventArgs e)
+        {
+            //
+            fRam = RamC.NextValue();
+            label1.Text = "Available memory: " + fRam.ToString() + "MB";
+            //label1.Hide();
+            // RAM = (Bitmap)FancyText.ImageFromText(label1.Text, label1.Font, Color.Black, Color.White);
+            // g.FillRectangle(SystemBrushes.Control, label1.Bounds);
+            // g.DrawImageUnscaled(RAM, label1.Location);
+            //
+            pDisk = Disk.NextValue();
+            pDisk2 = Math.Round(pDisk, 1);
+            if (pDisk2 > 100)
+                pDisk2 = 100;
+            label3.Text = "Disk usage: " + pDisk2.ToString() + "%";
+            // label3.Hide();
+            //DISK = (Bitmap)FancyText.ImageFromText(label3.Text, label3.Font, Color.Black, Color.White);
+            // g.FillRectangle(SystemBrushes.Control, label3.Bounds);
+            // g.DrawImageUnscaled(DISK, label3.Location);
+            //
+            pCpu = Cpu.NextValue();
+            pCpu2 = Math.Round(pCpu, 1);
+            label4.Text = "CPU usage: " + pCpu2.ToString() + "%";
+            //label4.Text = "CPU speed: " + (CPUSpeed()/1000).ToString() + "GHz";
+            // label4.Hide();
+            // CPU = (Bitmap)FancyText.ImageFromText(label4.Text, label4.Font, Color.Black, Color.White);
+            // g.FillRectangle(SystemBrushes.Control, label4.Bounds);
+            // g.DrawImageUnscaled(CPU, label4.Location);
+
+
         }
     }
 }

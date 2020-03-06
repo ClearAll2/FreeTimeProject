@@ -20,7 +20,7 @@ namespace RamC
             m_Mutex = new Mutex(true, "RamC");
 
             if (m_Mutex.WaitOne(0, false))
-                Application.Run(new welcome());
+                Application.Run(new MainForm());
             else
             {
                 MessageBox.Show("RamC is already running!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

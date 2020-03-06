@@ -126,13 +126,17 @@
             // 
             // okButton
             // 
+            this.okButton.BackColor = System.Drawing.Color.DodgerBlue;
             this.okButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.okButton.FlatAppearance.BorderSize = 0;
+            this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.okButton.ForeColor = System.Drawing.Color.White;
             this.okButton.Location = new System.Drawing.Point(3, 233);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(276, 29);
             this.okButton.TabIndex = 24;
             this.okButton.Text = "Check for update";
-            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.UseVisualStyleBackColor = false;
             this.okButton.Click += new System.EventHandler(this.okButton_Click_1);
             // 
             // AboutBox1

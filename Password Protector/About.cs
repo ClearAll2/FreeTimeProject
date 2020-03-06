@@ -15,14 +15,13 @@ namespace RamC
     partial class AboutBox1 : Form
     {
         BackgroundWorker bw;
-        SoundPlayer sp;
         public AboutBox1()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion) + " Remastered";
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             //this.textBoxDescription.Text = AssemblyDescription;
@@ -30,29 +29,6 @@ namespace RamC
             bw = new BackgroundWorker();
             bw.DoWork += bw_DoWork;
 
-            this.VisibleChanged += AboutBox1_VisibleChanged;
-            
-        }
-
-        private void AboutBox1_VisibleChanged(object sender, EventArgs e)
-        {
-            if (this.Visible)
-            {
-                try
-                {
-                    sp = new SoundPlayer(Application.StartupPath + "\\about.wav");
-                    sp.Play();
-                }
-                catch
-                {
-                    return;
-                }
-            }
-            else
-            {
-                sp.Stop();
-                sp.Dispose();
-            }
         }
 
         void bw_DoWork(object sender, DoWorkEventArgs e)
@@ -74,7 +50,7 @@ namespace RamC
             string version = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdscWlERzNVY0xveHM");
             string changelog = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsWXEyTzdrM1phOWM");
             
-            if (version != Application.ProductVersion)
+            if (version.CompareTo(Application.ProductVersion) > 0)
             {
                 if (MessageBox.Show("You are running old version " + Application.ProductVersion + "\nWould you like to download new version " + version + "?\n" + "Changelog: \n" + changelog, "RamC Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -84,7 +60,7 @@ namespace RamC
             else
             {
                 okButton.Text = "Check for update";
-                MessageBox.Show("You are running latest version", "Congratulation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("You are running latest version", "Great!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             wc.Dispose();
             okButton.Text = "Check for update";
@@ -178,13 +154,5 @@ namespace RamC
             if (bw.IsBusy != true)
                 bw.RunWorkerAsync();
         }
-
-        private void logoPictureBox_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://mini102.wordpress.com/about/");
-        }
-
-       
-
     }
 }

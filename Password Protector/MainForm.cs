@@ -24,19 +24,22 @@ namespace RamC
         PerformanceCounter Disk = new PerformanceCounter("PhysicalDisk", "% Disk Time", "_Total");
         PerformanceCounter Cpu = new PerformanceCounter("Processor", "% Processor Time", "_Total");
         Graphics g;
+        bool Datelock = true;
         bool Cpulock = true;
         bool Disklock = true;
         bool Ramlock = true;
-        //bool Mailstop = false;
         bool h = false;
         bool isLong = false;
 
+        string Datefont;
         string Diskfont;
         string Ramfont;
         string Cpufont;
         
         string Clockfont;
 
+        int DateTop;
+        int DateLeft;
         int CTop;
         int CLeft;
         int CpuTop;
@@ -46,21 +49,16 @@ namespace RamC
         int RamTop;
         int RamLeft;
         WebClient wc = new WebClient();
-        //BackgroundWorker bw;
         BackgroundWorker bw2;
         
         bool lk = false;
         bool clk = false;
-        //bool saved = false;
         string id = " ";
         string pass = " ";
-        //ImapClient mail;
         AboutBox1 box = new AboutBox1();
         
         WebClient wb = new WebClient();
         TypeConverter converter = TypeDescriptor.GetConverter(typeof(Font));
-       // ReSize resize = new ReSize();
-
         int blur = 5;
         Color stroke;
         
@@ -69,28 +67,28 @@ namespace RamC
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
-            
-            //get default  position
-            
 
-            CTop = label2.Top;
-            CLeft = label2.Left;
-            CpuTop = label4.Top;
-            CpuLeft = label4.Left;
-            DiskTop = label3.Top;
-            DiskLeft = label3.Left;
-            RamTop = label1.Top;
-            RamLeft = label1.Left;
-           
+            //get default  position
+
+            DateTop = labelDate.Top;
+            DateLeft = labelDate.Left;
+            CTop = labelClock.Top;
+            CLeft = labelClock.Left;
+            CpuTop = labelCPU.Top;
+            CpuLeft = labelCPU.Left;
+            DiskTop = labelDisk.Top;
+            DiskLeft = labelDisk.Left;
+            RamTop = labelRam.Top;
+            RamLeft = labelRam.Left;
+
 
             //get default font
-            Cpufont = converter.ConvertToString(label4.Font);
-            Diskfont = converter.ConvertToString(label3.Font);
-            Ramfont = converter.ConvertToString(label1.Font);
+            Datefont = converter.ConvertToString(labelDate.Font);
+            Cpufont = converter.ConvertToString(labelCPU.Font);
+            Diskfont = converter.ConvertToString(labelDisk.Font);
+            Ramfont = converter.ConvertToString(labelRam.Font);
            
-            Clockfont = converter.ConvertToString(label2.Font);
-
-            this.VisibleChanged += Form1_VisibleChanged;
+            Clockfont = converter.ConvertToString(labelClock.Font);
 
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
             if (r == null)
@@ -135,46 +133,54 @@ namespace RamC
             r.Dispose();
 
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-
+            if (r.GetValue("Datefont") != null)
+            {
+                labelDate.Font = (Font)converter.ConvertFromString((string)r.GetValue("Datefont"));
+            }
             if (r.GetValue("Diskfont") != null)
             {
-                label3.Font = (Font)converter.ConvertFromString((string)r.GetValue("Diskfont"));
+                labelDisk.Font = (Font)converter.ConvertFromString((string)r.GetValue("Diskfont"));
             }
             if (r.GetValue("Cpufont") != null)
             {
-                label4.Font = (Font)converter.ConvertFromString((string)r.GetValue("Cpufont"));
+                labelCPU.Font = (Font)converter.ConvertFromString((string)r.GetValue("Cpufont"));
             }
             if (r.GetValue("Ramfont") != null)
             {
-                label1.Font = (Font)converter.ConvertFromString((string)r.GetValue("Ramfont"));
+                labelRam.Font = (Font)converter.ConvertFromString((string)r.GetValue("Ramfont"));
             }
             
             if (r.GetValue("Clockfont") != null)
             {
-                label2.Font = (Font)converter.ConvertFromString((string)r.GetValue("Clockfont"));
+                labelClock.Font = (Font)converter.ConvertFromString((string)r.GetValue("Clockfont"));
             }
 
 
+            if (r.GetValue("DateTop") != null)
+            {
+                labelDate.Top = (int)r.GetValue("DateTop");
+                labelDate.Left = (int)r.GetValue("DateLeft");
+            }
             if (r.GetValue("CTop") != null)
             {
-                label2.Top = (int)r.GetValue("CTop");
-                label2.Left = (int)r.GetValue("CLeft");
+                labelClock.Top = (int)r.GetValue("CTop");
+                labelClock.Left = (int)r.GetValue("CLeft");
             }
 
             if (r.GetValue("CpuTop") != null)
             {
-                label4.Top = (int)r.GetValue("CpuTop");
-                label4.Left = (int)r.GetValue("CpuLeft");
+                labelCPU.Top = (int)r.GetValue("CpuTop");
+                labelCPU.Left = (int)r.GetValue("CpuLeft");
             }
             if (r.GetValue("DiskTop") != null)
             {
-                label3.Top = (int)r.GetValue("DiskTop");
-                label3.Left = (int)r.GetValue("DiskLeft");
+                labelDisk.Top = (int)r.GetValue("DiskTop");
+                labelDisk.Left = (int)r.GetValue("DiskLeft");
             }
             if (r.GetValue("RamTop") != null)
             {
-                label1.Top = (int)r.GetValue("RamTop");
-                label1.Left = (int)r.GetValue("RamLeft");
+                labelRam.Top = (int)r.GetValue("RamTop");
+                labelRam.Left = (int)r.GetValue("RamLeft");
             }
             
             if (r.GetValue("Hide") != null)
@@ -204,25 +210,30 @@ namespace RamC
                
                 //saved = true;
             }
+            if (r.GetValue("DateColor") != null)
+            {
+                int tmp = (int)r.GetValue("DateColor");
+                labelDate.ForeColor = Color.FromArgb(tmp);
+            }
             if (r.GetValue("CpuColor") != null)
             {
                 int tmp = (int)r.GetValue("CpuColor");
-                label4.ForeColor = Color.FromArgb(tmp);
+                labelCPU.ForeColor = Color.FromArgb(tmp);
             }
             if (r.GetValue("DiskColor") != null)
             {
                 int tmp = (int)r.GetValue("DiskColor");
-                label3.ForeColor = Color.FromArgb(tmp);
+                labelDisk.ForeColor = Color.FromArgb(tmp);
             }
             if (r.GetValue("RamColor") != null)
             {
                 int tmp = (int)r.GetValue("RamColor");
-                label1.ForeColor = Color.FromArgb(tmp);
+                labelRam.ForeColor = Color.FromArgb(tmp);
             }
             if (r.GetValue("TimeColor") != null)
             {
                 int tmp = (int)r.GetValue("TimeColor");
-                label2.ForeColor = Color.FromArgb(tmp);
+                labelClock.ForeColor = Color.FromArgb(tmp);
             }
             
             if (r.GetValue("Stroke") != null)
@@ -271,7 +282,17 @@ namespace RamC
                 TransparencyKey = Color.White;
             }
 
-            
+            if (r.GetValue("showdate") != null)
+            {
+                dATEToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                dATEToolStripMenuItem_Click(null, null);
+            }
+            r.Close();
+            r.Dispose();
+            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
             if (r.GetValue("showcpu") != null)
             {
                 cPUToolStripMenuItem.Checked = true;
@@ -321,13 +342,8 @@ namespace RamC
             r.Close();
             r.Dispose();
             notifyIcon1.BalloonTipClicked += notifyIcon1_BalloonTipClicked;
+            labelDate.Text = DateTime.Now.Date.ToLongDateString();
         }
-
-        private void Form1_VisibleChanged(object sender, EventArgs e)
-        {
-            
-        }
-
 
         //resize window
 
@@ -544,17 +560,17 @@ namespace RamC
             r.SetValue("Top", Top);
             r.SetValue("Left", Left);
             //
-            r.SetValue("CTop", label2.Top);
-            r.SetValue("CLeft", label2.Left);
+            r.SetValue("CTop", labelClock.Top);
+            r.SetValue("CLeft", labelClock.Left);
             //
-            r.SetValue("CpuTop", label4.Top);
-            r.SetValue("CpuLeft", label4.Left);
+            r.SetValue("CpuTop", labelCPU.Top);
+            r.SetValue("CpuLeft", labelCPU.Left);
             //
-            r.SetValue("DiskTop", label3.Top);
-            r.SetValue("DiskLeft", label3.Left);
+            r.SetValue("DiskTop", labelDisk.Top);
+            r.SetValue("DiskLeft", labelDisk.Left);
             //
-            r.SetValue("RamTop", label1.Top);
-            r.SetValue("RamLeft", label1.Left);
+            r.SetValue("RamTop", labelRam.Top);
+            r.SetValue("RamLeft", labelRam.Left);
             //
            
             //
@@ -587,26 +603,26 @@ namespace RamC
             if (getSecond < 10)
                 cSecond = "0" + cSecond;
             if (!isLong)
-                label2.Text = cHour + ":" + cMinute;
+                labelClock.Text = cHour + ":" + cMinute;
             else
-                label2.Text = cHour + ":" + cMinute + ":" + cSecond;
+                labelClock.Text = cHour + ":" + cMinute + ":" + cSecond;
             
             //
             if (clk == true)
             {
-                label2.Hide();
+                labelClock.Hide();
 
                 g = this.CreateGraphics();
-                Time = (Bitmap)FancyText.ImageFromText(label2.Text, label2.Font, label2.ForeColor, stroke, blur);
+                Time = (Bitmap)FancyText.ImageFromText(labelClock.Text, labelClock.Font, labelClock.ForeColor, stroke, blur);
 
                 g.FillRectangle(SystemBrushes.Control, this.ClientRectangle);
-                g.DrawImageUnscaled(Time, label2.Location);
+                g.DrawImageUnscaled(Time, labelClock.Location);
 
                 g.Dispose();
             }
             else
             {
-                label2.Show();
+                labelClock.Show();
             }
             
         }
@@ -672,8 +688,8 @@ namespace RamC
             {
                 if (clk != true && e.Button == MouseButtons.Left && noneToolStripMenuItem.Checked != true)
                 {
-                    label2.Left = label2.Left + (e.X - newx);
-                    label2.Top = label2.Top + (e.Y - newy);
+                    labelClock.Left = labelClock.Left + (e.X - newx);
+                    labelClock.Top = labelClock.Top + (e.Y - newy);
                 }
             }
         }
@@ -711,8 +727,8 @@ namespace RamC
                 if (Cpulock != true && e.Button == MouseButtons.Left)
                 {
 
-                    label4.Left = label4.Left + (e.X - newx);
-                    label4.Top = label4.Top + (e.Y - newy);
+                    labelCPU.Left = labelCPU.Left + (e.X - newx);
+                    labelCPU.Top = labelCPU.Top + (e.Y - newy);
                 }
             }
         }
@@ -738,8 +754,8 @@ namespace RamC
                 if (Disklock != true && e.Button == MouseButtons.Left)
                 {
 
-                    label3.Left = label3.Left + (e.X - newx);
-                    label3.Top = label3.Top + (e.Y - newy);
+                    labelDisk.Left = labelDisk.Left + (e.X - newx);
+                    labelDisk.Top = labelDisk.Top + (e.Y - newy);
                 }
             }
         }
@@ -765,8 +781,8 @@ namespace RamC
                 if (Ramlock != true && e.Button == MouseButtons.Left)
                 {
 
-                    label1.Left = label1.Left + (e.X - newx);
-                    label1.Top = label1.Top + (e.Y - newy);
+                    labelRam.Left = labelRam.Left + (e.X - newx);
+                    labelRam.Top = labelRam.Top + (e.Y - newy);
                 }
             }
         }
@@ -849,12 +865,12 @@ namespace RamC
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            cd.Color = label4.ForeColor;
+            cd.Color = labelCPU.ForeColor;
             if (cd.ShowDialog() == DialogResult.OK)
             {
-                label4.ForeColor = cd.Color;
+                labelCPU.ForeColor = cd.Color;
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-                r.SetValue("CpuColor", label4.ForeColor.ToArgb());
+                r.SetValue("CpuColor", labelCPU.ForeColor.ToArgb());
                 r.Close();
                 r.Dispose();
             }
@@ -864,12 +880,12 @@ namespace RamC
         private void colorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            cd.Color = label3.ForeColor;
+            cd.Color = labelDisk.ForeColor;
             if (cd.ShowDialog() == DialogResult.OK)
             {
-                label3.ForeColor = cd.Color;
+                labelDisk.ForeColor = cd.Color;
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-                r.SetValue("DiskColor", label3.ForeColor.ToArgb());
+                r.SetValue("DiskColor", labelDisk.ForeColor.ToArgb());
                 r.Close();
                 r.Dispose();
             }
@@ -879,12 +895,12 @@ namespace RamC
         private void colorToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            cd.Color = label1.ForeColor;
+            cd.Color = labelRam.ForeColor;
             if (cd.ShowDialog() == DialogResult.OK)
             {
-                label1.ForeColor = cd.Color;
+                labelRam.ForeColor = cd.Color;
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-                r.SetValue("RamColor", label1.ForeColor.ToArgb());
+                r.SetValue("RamColor", labelRam.ForeColor.ToArgb());
                 r.Close();
                 r.Dispose();
             }
@@ -894,12 +910,12 @@ namespace RamC
         private void colorToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            cd.Color = label2.ForeColor;
+            cd.Color = labelClock.ForeColor;
             if (cd.ShowDialog() == DialogResult.OK)
             {
-                label2.ForeColor = cd.Color;
+                labelClock.ForeColor = cd.Color;
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
-                r.SetValue("TimeColor", label2.ForeColor.ToArgb());
+                r.SetValue("TimeColor", labelClock.ForeColor.ToArgb());
                 r.Close();
                 r.Dispose();
             }
@@ -967,20 +983,20 @@ namespace RamC
 
         private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label4.Top = CpuTop;
-            label4.Left = CpuLeft;
+            labelCPU.Top = CpuTop;
+            labelCPU.Left = CpuLeft;
         }
 
         private void defaultToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            label3.Left = DiskLeft;
-            label3.Top = DiskTop;
+            labelDisk.Left = DiskLeft;
+            labelDisk.Top = DiskTop;
         }
 
         private void defaultToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            label1.Left = RamLeft;
-            label1.Top = RamTop;
+            labelRam.Left = RamLeft;
+            labelRam.Top = RamTop;
         }
 
 
@@ -988,14 +1004,14 @@ namespace RamC
         {
             if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                label2.Top = CTop;
-                label2.Left = CLeft;
-                label4.Top = CpuTop;
-                label4.Left = CpuLeft;
-                label3.Left = DiskLeft;
-                label3.Top = DiskTop;
-                label1.Left = RamLeft;
-                label1.Top = RamTop;
+                labelClock.Top = CTop;
+                labelClock.Left = CLeft;
+                labelCPU.Top = CpuTop;
+                labelCPU.Left = CpuLeft;
+                labelDisk.Left = DiskLeft;
+                labelDisk.Top = DiskTop;
+                labelRam.Left = RamLeft;
+                labelRam.Top = RamTop;
             }
         }
 
@@ -1069,19 +1085,19 @@ namespace RamC
 
         private void closeToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            label4.Hide();
+            labelCPU.Hide();
             cPUToolStripMenuItem_Click(null, null);
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label3.Hide();
+            labelDisk.Hide();
             dISKToolStripMenuItem_Click(null, null);
         }
 
         private void closeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            label1.Hide();
+            labelRam.Hide();
             rAMToolStripMenuItem_Click(null, null);
         }
 
@@ -1093,13 +1109,13 @@ namespace RamC
             if (cPUToolStripMenuItem.Checked != true)
             {
                 cPUToolStripMenuItem.Checked = true;
-                label4.Show();
+                labelCPU.Show();
                 r.SetValue("showcpu", true);
             }
             else
             {
                 cPUToolStripMenuItem.Checked = false;
-                label4.Hide();
+                labelCPU.Hide();
                 r.DeleteValue("showcpu", false);
             }
             r.Close();
@@ -1112,13 +1128,13 @@ namespace RamC
             if (rAMToolStripMenuItem.Checked != true)
             {
                 rAMToolStripMenuItem.Checked = true;
-                label1.Show();
+                labelRam.Show();
                 r.SetValue("showram", true);
             }
             else
             {
                 rAMToolStripMenuItem.Checked = false;
-                label1.Hide();
+                labelRam.Hide();
                 r.DeleteValue("showram", false);
             }
             r.Close();
@@ -1131,13 +1147,13 @@ namespace RamC
             if (dISKToolStripMenuItem.Checked != true)
             {
                 dISKToolStripMenuItem.Checked = true;
-                label3.Show();
+                labelDisk.Show();
                 r.SetValue("showdisk", true);
             }
             else
             {
                 dISKToolStripMenuItem.Checked = false;
-                label3.Hide();
+                labelDisk.Hide();
                 r.DeleteValue("showdisk", false);
             }
             r.Close();
@@ -1216,10 +1232,10 @@ namespace RamC
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog fd = new FontDialog();
-            fd.Font = label3.Font;
+            fd.Font = labelDisk.Font;
             if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                label3.Font = fd.Font;
+                labelDisk.Font = fd.Font;
                 
                 string fontString = converter.ConvertToString(fd.Font);
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
@@ -1234,10 +1250,10 @@ namespace RamC
         private void fontToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FontDialog fd = new FontDialog();
-            fd.Font = label4.Font;
+            fd.Font = labelCPU.Font;
             if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                label4.Font = fd.Font;
+                labelCPU.Font = fd.Font;
 
                 string fontString = converter.ConvertToString(fd.Font);
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
@@ -1252,10 +1268,10 @@ namespace RamC
         private void fontToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             FontDialog fd = new FontDialog();
-            fd.Font = label1.Font;
+            fd.Font = labelRam.Font;
             if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                label1.Font = fd.Font;
+                labelRam.Font = fd.Font;
 
                 string fontString = converter.ConvertToString(fd.Font);
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
@@ -1273,10 +1289,10 @@ namespace RamC
         private void fontToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             FontDialog fd = new FontDialog();
-            fd.Font = label2.Font;
+            fd.Font = labelClock.Font;
             if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                label2.Font = fd.Font;
+                labelClock.Font = fd.Font;
 
                 string fontString = converter.ConvertToString(fd.Font);
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
@@ -1291,8 +1307,8 @@ namespace RamC
         //set disk font to default
         private void setToDefaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label3.Font = (Font)converter.ConvertFromString(Diskfont);
-            string fontString = converter.ConvertToString(label3.Font);
+            labelDisk.Font = (Font)converter.ConvertFromString(Diskfont);
+            string fontString = converter.ConvertToString(labelDisk.Font);
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
             r.SetValue("Diskfont", fontString);
             r.Close();
@@ -1302,8 +1318,8 @@ namespace RamC
         //set cpu font to default
         private void setToDefaultToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            label4.Font = (Font)converter.ConvertFromString(Cpufont);
-            string fontString = converter.ConvertToString(label4.Font);
+            labelCPU.Font = (Font)converter.ConvertFromString(Cpufont);
+            string fontString = converter.ConvertToString(labelCPU.Font);
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
             r.SetValue("Cpufont", fontString);
             r.Close();
@@ -1313,8 +1329,8 @@ namespace RamC
         //set ram font to default
         private void setToDefaultToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            label1.Font = (Font)converter.ConvertFromString(Ramfont);
-            string fontString = converter.ConvertToString(label1.Font);
+            labelRam.Font = (Font)converter.ConvertFromString(Ramfont);
+            string fontString = converter.ConvertToString(labelRam.Font);
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
             r.SetValue("Ramfont", fontString);
             r.Close();
@@ -1325,8 +1341,8 @@ namespace RamC
         //set clock font to default
         private void setToDefaultToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            label2.Font = (Font)converter.ConvertFromString(Clockfont);
-            string fontString = converter.ConvertToString(label2.Font);
+            labelClock.Font = (Font)converter.ConvertFromString(Clockfont);
+            string fontString = converter.ConvertToString(labelClock.Font);
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
             r.SetValue("Clockfont", fontString);
             r.Close();
@@ -1401,7 +1417,7 @@ namespace RamC
         {
             //
             fRam = RamC.NextValue();
-            label1.Text = "Available memory: " + fRam.ToString() + "MB";
+            labelRam.Text = "Available memory: " + fRam.ToString() + "MB";
             //label1.Hide();
             // RAM = (Bitmap)FancyText.ImageFromText(label1.Text, label1.Font, Color.Black, Color.White);
             // g.FillRectangle(SystemBrushes.Control, label1.Bounds);
@@ -1411,7 +1427,7 @@ namespace RamC
             pDisk2 = Math.Round(pDisk, 1);
             if (pDisk2 > 100)
                 pDisk2 = 100;
-            label3.Text = "Disk usage: " + pDisk2.ToString() + "%";
+            labelDisk.Text = "Disk usage: " + pDisk2.ToString() + "%";
             // label3.Hide();
             //DISK = (Bitmap)FancyText.ImageFromText(label3.Text, label3.Font, Color.Black, Color.White);
             // g.FillRectangle(SystemBrushes.Control, label3.Bounds);
@@ -1419,7 +1435,7 @@ namespace RamC
             //
             pCpu = Cpu.NextValue();
             pCpu2 = Math.Round(pCpu, 1);
-            label4.Text = "CPU usage: " + pCpu2.ToString() + "%";
+            labelCPU.Text = "CPU usage: " + pCpu2.ToString() + "%";
             //label4.Text = "CPU speed: " + (CPUSpeed()/1000).ToString() + "GHz";
             // label4.Hide();
             // CPU = (Bitmap)FancyText.ImageFromText(label4.Text, label4.Font, Color.Black, Color.White);
@@ -1427,6 +1443,125 @@ namespace RamC
             // g.DrawImageUnscaled(CPU, label4.Location);
 
 
+        }
+
+        private void defaultToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            labelDate.Top = DateTop;
+            labelDate.Left = DateLeft;
+        }
+
+        private void customizeFontToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            FontDialog fd = new FontDialog();
+            fd.Font = labelDate.Font;
+            if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                labelDate.Font = fd.Font;
+
+                string fontString = converter.ConvertToString(fd.Font);
+                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
+                r.SetValue("Datefont", fontString);
+                r.Close();
+                r.Dispose();
+            }
+            fd.Dispose();
+        }
+
+        private void setToDefaultToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            labelDate.Font = (Font)converter.ConvertFromString(Datefont);
+            string fontString = converter.ConvertToString(labelDate.Font);
+            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
+            r.SetValue("Datefont", fontString);
+            r.Close();
+            r.Dispose();
+        }
+
+        private void colorToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            cd.Color = labelDate.ForeColor;
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                labelDate.ForeColor = cd.Color;
+                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
+                r.SetValue("DateColor", labelDate.ForeColor.ToArgb());
+                r.Close();
+                r.Dispose();
+            }
+            cd.Dispose();
+        }
+
+        private void lockToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (lk != true && lockToolStripMenuItem.Checked == true)
+            {
+                MessageBox.Show("You must lock location of window before unlocking this", "Please!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (lockToolStripMenuItem.Checked)
+            {
+                lockToolStripMenuItem.Checked = false;
+                Datelock = false;
+            }
+            else
+            {
+                lockToolStripMenuItem.Checked = true;
+                Datelock = true;
+            }
+        }
+
+        private void hideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            labelDate.Hide();
+            dATEToolStripMenuItem_Click(null, null);
+        }
+
+        private void dATEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\RamC\\Data", true);
+            if (dATEToolStripMenuItem.Checked != true)
+            {
+                dATEToolStripMenuItem.Checked = true;
+                labelDate.Show();
+                r.SetValue("showdate", true);
+            }
+            else
+            {
+                dATEToolStripMenuItem.Checked = false;
+                labelDate.Hide();
+                r.DeleteValue("showdate", false);
+            }
+            r.Close();
+            r.Dispose();
+        }
+
+        private void labelDate_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                newx = e.X;
+                newy = e.Y;
+            }
+        }
+
+        private void labelDate_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && lk != true)
+            {
+                Left = Left + (e.X - newx);
+                Top = Top + (e.Y - newy);
+            }
+            else
+            {
+                if (Datelock != true && e.Button == MouseButtons.Left)
+                {
+
+                    labelDate.Left = labelDate.Left + (e.X - newx);
+                    labelDate.Top = labelDate.Top + (e.Y - newy);
+                }
+            }
         }
     }
 }

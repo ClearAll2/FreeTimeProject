@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelRam = new System.Windows.Forms.Label();
             this.contextMenuStripRam = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.defaultToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,12 +54,11 @@
             this.dISKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelClock = new System.Windows.Forms.Label();
             this.contextMenuStripClock = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lockLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lockClockLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hideTrayIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clockTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,8 +76,9 @@
             this.blur5tools = new System.Windows.Forms.ToolStripMenuItem();
             this.blur7tools = new System.Windows.Forms.ToolStripMenuItem();
             this.blur9tools = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideTrayIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelDisk = new System.Windows.Forms.Label();
             this.contextMenuStripDisk = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.defaultToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +87,7 @@
             this.colorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lockToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelCPU = new System.Windows.Forms.Label();
             this.contextMenuStripCpu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.defaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,27 +98,38 @@
             this.closeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerSystem = new System.Windows.Forms.Timer(this.components);
+            this.labelDate = new System.Windows.Forms.Label();
+            this.contextMenuStripDate = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.defaultToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fontToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.customizeFontToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.setToDefaultToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dATEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripRam.SuspendLayout();
             this.contextMenuStripMain.SuspendLayout();
             this.contextMenuStripClock.SuspendLayout();
             this.contextMenuStripDisk.SuspendLayout();
             this.contextMenuStripCpu.SuspendLayout();
+            this.contextMenuStripDate.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // labelRam
             // 
-            this.label1.AutoSize = true;
-            this.label1.ContextMenuStrip = this.contextMenuStripRam;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 135);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Available memory:";
-            this.label1.DoubleClick += new System.EventHandler(this.label1_DoubleClick);
-            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
-            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
+            this.labelRam.AutoSize = true;
+            this.labelRam.ContextMenuStrip = this.contextMenuStripRam;
+            this.labelRam.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelRam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRam.Location = new System.Drawing.Point(38, 163);
+            this.labelRam.Name = "labelRam";
+            this.labelRam.Size = new System.Drawing.Size(109, 13);
+            this.labelRam.TabIndex = 0;
+            this.labelRam.Text = "Available memory:";
+            this.labelRam.DoubleClick += new System.EventHandler(this.label1_DoubleClick);
+            this.labelRam.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
+            this.labelRam.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
             // 
             // contextMenuStripRam
             // 
@@ -205,7 +216,7 @@
             this.toolStripSeparator4,
             this.exitToolStripMenuItem});
             this.contextMenuStripMain.Name = "contextMenuStrip1";
-            this.contextMenuStripMain.Size = new System.Drawing.Size(203, 176);
+            this.contextMenuStripMain.Size = new System.Drawing.Size(203, 154);
             // 
             // aboutToolStripMenuItem
             // 
@@ -262,7 +273,8 @@
             this.systemWatcherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cPUToolStripMenuItem,
             this.rAMToolStripMenuItem,
-            this.dISKToolStripMenuItem});
+            this.dISKToolStripMenuItem,
+            this.dATEToolStripMenuItem});
             this.systemWatcherToolStripMenuItem.Name = "systemWatcherToolStripMenuItem";
             this.systemWatcherToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.systemWatcherToolStripMenuItem.Text = "System Monitor";
@@ -272,7 +284,7 @@
             this.cPUToolStripMenuItem.Checked = true;
             this.cPUToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cPUToolStripMenuItem.Name = "cPUToolStripMenuItem";
-            this.cPUToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.cPUToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cPUToolStripMenuItem.Text = "CPU";
             this.cPUToolStripMenuItem.Click += new System.EventHandler(this.cPUToolStripMenuItem_Click);
             // 
@@ -281,7 +293,7 @@
             this.rAMToolStripMenuItem.Checked = true;
             this.rAMToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.rAMToolStripMenuItem.Name = "rAMToolStripMenuItem";
-            this.rAMToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.rAMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.rAMToolStripMenuItem.Text = "RAM";
             this.rAMToolStripMenuItem.Click += new System.EventHandler(this.rAMToolStripMenuItem_Click);
             // 
@@ -290,7 +302,7 @@
             this.dISKToolStripMenuItem.Checked = true;
             this.dISKToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.dISKToolStripMenuItem.Name = "dISKToolStripMenuItem";
-            this.dISKToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.dISKToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dISKToolStripMenuItem.Text = "DISK";
             this.dISKToolStripMenuItem.Click += new System.EventHandler(this.dISKToolStripMenuItem_Click);
             // 
@@ -306,19 +318,19 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // label2
+            // labelClock
             // 
-            this.label2.AutoSize = true;
-            this.label2.ContextMenuStrip = this.contextMenuStripClock;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 73);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "INIT";
-            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label2_MouseDown);
-            this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label2_MouseMove);
+            this.labelClock.AutoSize = true;
+            this.labelClock.ContextMenuStrip = this.contextMenuStripClock;
+            this.labelClock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelClock.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelClock.Location = new System.Drawing.Point(22, 24);
+            this.labelClock.Name = "labelClock";
+            this.labelClock.Size = new System.Drawing.Size(157, 73);
+            this.labelClock.TabIndex = 1;
+            this.labelClock.Text = "INIT";
+            this.labelClock.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label2_MouseDown);
+            this.labelClock.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label2_MouseMove);
             // 
             // contextMenuStripClock
             // 
@@ -356,13 +368,6 @@
             this.lockClockLocationToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.lockClockLocationToolStripMenuItem.Text = "Lock Clock Location";
             this.lockClockLocationToolStripMenuItem.Click += new System.EventHandler(this.lockClockLocationToolStripMenuItem_Click);
-            // 
-            // hideTrayIconToolStripMenuItem
-            // 
-            this.hideTrayIconToolStripMenuItem.Name = "hideTrayIconToolStripMenuItem";
-            this.hideTrayIconToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.hideTrayIconToolStripMenuItem.Text = "Hide Tray Icon";
-            this.hideTrayIconToolStripMenuItem.Click += new System.EventHandler(this.hideTrayIconToolStripMenuItem_Click);
             // 
             // clockToolStripMenuItem
             // 
@@ -499,6 +504,13 @@
             this.blur9tools.Text = "9";
             this.blur9tools.Click += new System.EventHandler(this.blur7tools_Click);
             // 
+            // hideTrayIconToolStripMenuItem
+            // 
+            this.hideTrayIconToolStripMenuItem.Name = "hideTrayIconToolStripMenuItem";
+            this.hideTrayIconToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.hideTrayIconToolStripMenuItem.Text = "Hide Tray Icon";
+            this.hideTrayIconToolStripMenuItem.Click += new System.EventHandler(this.hideTrayIconToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
@@ -506,20 +518,20 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // label3
+            // labelDisk
             // 
-            this.label3.AutoSize = true;
-            this.label3.ContextMenuStrip = this.contextMenuStripDisk;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(38, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Disk usage: ";
-            this.label3.DoubleClick += new System.EventHandler(this.label3_DoubleClick);
-            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label3_MouseDown);
-            this.label3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label3_MouseMove);
+            this.labelDisk.AutoSize = true;
+            this.labelDisk.ContextMenuStrip = this.contextMenuStripDisk;
+            this.labelDisk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDisk.Location = new System.Drawing.Point(38, 144);
+            this.labelDisk.Name = "labelDisk";
+            this.labelDisk.Size = new System.Drawing.Size(78, 13);
+            this.labelDisk.TabIndex = 2;
+            this.labelDisk.Text = "Disk usage: ";
+            this.labelDisk.DoubleClick += new System.EventHandler(this.label3_DoubleClick);
+            this.labelDisk.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label3_MouseDown);
+            this.labelDisk.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label3_MouseMove);
             // 
             // contextMenuStripDisk
             // 
@@ -588,20 +600,20 @@
             this.closeToolStripMenuItem.Text = "Hide";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
-            // label4
+            // labelCPU
             // 
-            this.label4.AutoSize = true;
-            this.label4.ContextMenuStrip = this.contextMenuStripCpu;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(38, 97);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "CPU usage:";
-            this.label4.DoubleClick += new System.EventHandler(this.label4_DoubleClick);
-            this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label4_MouseDown);
-            this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label4_MouseMove);
+            this.labelCPU.AutoSize = true;
+            this.labelCPU.ContextMenuStrip = this.contextMenuStripCpu;
+            this.labelCPU.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelCPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCPU.Location = new System.Drawing.Point(38, 125);
+            this.labelCPU.Name = "labelCPU";
+            this.labelCPU.Size = new System.Drawing.Size(74, 13);
+            this.labelCPU.TabIndex = 3;
+            this.labelCPU.Text = "CPU usage:";
+            this.labelCPU.DoubleClick += new System.EventHandler(this.label4_DoubleClick);
+            this.labelCPU.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label4_MouseDown);
+            this.labelCPU.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label4_MouseMove);
             // 
             // contextMenuStripCpu
             // 
@@ -634,14 +646,14 @@
             // customizeFontToolStripMenuItem
             // 
             this.customizeFontToolStripMenuItem.Name = "customizeFontToolStripMenuItem";
-            this.customizeFontToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.customizeFontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customizeFontToolStripMenuItem.Text = "Customize font";
             this.customizeFontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem1_Click);
             // 
             // setToDefaultToolStripMenuItem1
             // 
             this.setToDefaultToolStripMenuItem1.Name = "setToDefaultToolStripMenuItem1";
-            this.setToDefaultToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.setToDefaultToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.setToDefaultToolStripMenuItem1.Text = "Set to default";
             this.setToDefaultToolStripMenuItem1.Click += new System.EventHandler(this.setToDefaultToolStripMenuItem1_Click);
             // 
@@ -684,16 +696,104 @@
             this.timerSystem.Interval = 1000;
             this.timerSystem.Tick += new System.EventHandler(this.timerSystem_Tick);
             // 
+            // labelDate
+            // 
+            this.labelDate.AutoSize = true;
+            this.labelDate.ContextMenuStrip = this.contextMenuStripDate;
+            this.labelDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDate.Location = new System.Drawing.Point(38, 97);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(34, 13);
+            this.labelDate.TabIndex = 5;
+            this.labelDate.Text = "Date";
+            this.labelDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelDate_MouseDown);
+            this.labelDate.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelDate_MouseMove);
+            // 
+            // contextMenuStripDate
+            // 
+            this.contextMenuStripDate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defaultToolStripMenuItem3,
+            this.fontToolStripMenuItem3,
+            this.colorToolStripMenuItem4,
+            this.lockToolStripMenuItem,
+            this.hideToolStripMenuItem});
+            this.contextMenuStripDate.Name = "contextMenuStripDate";
+            this.contextMenuStripDate.Size = new System.Drawing.Size(113, 114);
+            // 
+            // defaultToolStripMenuItem3
+            // 
+            this.defaultToolStripMenuItem3.Name = "defaultToolStripMenuItem3";
+            this.defaultToolStripMenuItem3.Size = new System.Drawing.Size(112, 22);
+            this.defaultToolStripMenuItem3.Text = "Default";
+            this.defaultToolStripMenuItem3.Click += new System.EventHandler(this.defaultToolStripMenuItem3_Click);
+            // 
+            // fontToolStripMenuItem3
+            // 
+            this.fontToolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customizeFontToolStripMenuItem4,
+            this.setToDefaultToolStripMenuItem4});
+            this.fontToolStripMenuItem3.Name = "fontToolStripMenuItem3";
+            this.fontToolStripMenuItem3.Size = new System.Drawing.Size(112, 22);
+            this.fontToolStripMenuItem3.Text = "Font";
+            // 
+            // lockToolStripMenuItem
+            // 
+            this.lockToolStripMenuItem.Checked = true;
+            this.lockToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.lockToolStripMenuItem.Name = "lockToolStripMenuItem";
+            this.lockToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.lockToolStripMenuItem.Text = "Lock";
+            this.lockToolStripMenuItem.Click += new System.EventHandler(this.lockToolStripMenuItem_Click_1);
+            // 
+            // hideToolStripMenuItem
+            // 
+            this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
+            this.hideToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.hideToolStripMenuItem.Text = "Hide";
+            this.hideToolStripMenuItem.Click += new System.EventHandler(this.hideToolStripMenuItem_Click);
+            // 
+            // colorToolStripMenuItem4
+            // 
+            this.colorToolStripMenuItem4.Name = "colorToolStripMenuItem4";
+            this.colorToolStripMenuItem4.Size = new System.Drawing.Size(112, 22);
+            this.colorToolStripMenuItem4.Text = "Color";
+            this.colorToolStripMenuItem4.Click += new System.EventHandler(this.colorToolStripMenuItem4_Click);
+            // 
+            // customizeFontToolStripMenuItem4
+            // 
+            this.customizeFontToolStripMenuItem4.Name = "customizeFontToolStripMenuItem4";
+            this.customizeFontToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.customizeFontToolStripMenuItem4.Text = "Customize font";
+            this.customizeFontToolStripMenuItem4.Click += new System.EventHandler(this.customizeFontToolStripMenuItem4_Click);
+            // 
+            // setToDefaultToolStripMenuItem4
+            // 
+            this.setToDefaultToolStripMenuItem4.Name = "setToDefaultToolStripMenuItem4";
+            this.setToDefaultToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.setToDefaultToolStripMenuItem4.Text = "Set to default";
+            this.setToDefaultToolStripMenuItem4.Click += new System.EventHandler(this.setToDefaultToolStripMenuItem4_Click);
+            // 
+            // dATEToolStripMenuItem
+            // 
+            this.dATEToolStripMenuItem.Checked = true;
+            this.dATEToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.dATEToolStripMenuItem.Name = "dATEToolStripMenuItem";
+            this.dATEToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dATEToolStripMenuItem.Text = "DATE";
+            this.dATEToolStripMenuItem.Click += new System.EventHandler(this.dATEToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 171);
+            this.ClientSize = new System.Drawing.Size(244, 197);
             this.ContextMenuStrip = this.contextMenuStripClock;
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelDate);
+            this.Controls.Add(this.labelCPU);
+            this.Controls.Add(this.labelDisk);
+            this.Controls.Add(this.labelClock);
+            this.Controls.Add(this.labelRam);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(1000, 200);
@@ -714,6 +814,7 @@
             this.contextMenuStripClock.ResumeLayout(false);
             this.contextMenuStripDisk.ResumeLayout(false);
             this.contextMenuStripCpu.ResumeLayout(false);
+            this.contextMenuStripDate.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,14 +822,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelRam;
         private System.Windows.Forms.Timer timerClock;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripMain;
         private System.Windows.Forms.ToolStripMenuItem runAtStartupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelClock;
+        private System.Windows.Forms.Label labelDisk;
+        private System.Windows.Forms.Label labelCPU;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripCpu;
@@ -789,6 +890,16 @@
         private System.Windows.Forms.ToolStripMenuItem customizeFontToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem customizeFontToolStripMenuItem3;
         private System.Windows.Forms.Timer timerSystem;
+        private System.Windows.Forms.Label labelDate;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripDate;
+        private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem customizeFontToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem setToDefaultToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem lockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dATEToolStripMenuItem;
     }
 }
 

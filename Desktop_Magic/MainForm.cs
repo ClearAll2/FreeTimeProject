@@ -291,7 +291,7 @@ namespace DM
             }
             else
             {
-                tipsLabel.Text = "Have a nice day!";
+                tipsLabel.Text = "Protect yourself and your family from Covid-19!";
             }
 
             Thread.Sleep(10000);

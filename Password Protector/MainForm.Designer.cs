@@ -650,7 +650,7 @@
             this.labelDate.ContextMenuStrip = this.contextMenuStripDate;
             this.labelDate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDate.Location = new System.Drawing.Point(38, 97);
+            this.labelDate.Location = new System.Drawing.Point(38, 85);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(34, 13);
             this.labelDate.TabIndex = 5;

@@ -531,6 +531,9 @@ namespace RamC
             r.SetValue("Top", Top);
             r.SetValue("Left", Left);
             //
+            r.SetValue("DateTop", labelDate.Top);
+            r.SetValue("DateLeft", labelDate.Left);
+            //
             r.SetValue("CTop", labelClock.Top);
             r.SetValue("CLeft", labelClock.Left);
             //

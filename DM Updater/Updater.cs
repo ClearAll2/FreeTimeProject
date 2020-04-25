@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
 
@@ -24,7 +25,7 @@ namespace DM_Updater
                 WebClient wc = new WebClient();
                 wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
                 wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadCompleted);
-                wc.DownloadFileAsync(new Uri("https://drive.google.com/uc?export=download&id=1O4aEgJFnHt3JM-w4_cDMvnGOJrsuLJSq"), Application.StartupPath + "\\DM.exe");
+                wc.DownloadFileAsync(new Uri("https://download-cas.000webhostapp.com/download/DM/Release.zip"), Application.StartupPath + "\\Release.zip");
                 wc.Dispose();
             }
             catch
@@ -40,7 +41,14 @@ namespace DM_Updater
 
         private void wc_DownloadCompleted(object sender, AsyncCompletedEventArgs e)
         {
+            ZipArchive zipArchive = ZipFile.OpenRead(Application.StartupPath + @"\Release.zip");
+            foreach (ZipArchiveEntry entry in zipArchive.Entries)
+            {
+                entry.ExtractToFile(System.IO.Path.Combine(Application.StartupPath, entry.Name), true);
+            }
+            zipArchive.Dispose();
             Process.Start(Application.StartupPath + "\\DM.exe");
+            System.IO.File.Delete(Application.StartupPath + "\\Release.zip");
             Application.Exit();
         }
 

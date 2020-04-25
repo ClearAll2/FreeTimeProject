@@ -299,6 +299,12 @@ namespace DM
             goto ret;
         }
 
+        private string GetProductVersion(string s)
+        {
+            FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(s);
+            return myFileVersionInfo.ProductVersion;
+        }
+
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -316,12 +322,28 @@ namespace DM
                 wc.Dispose();
                 return;
             }
+            updateButton.Text = "Checking updater...";
+            //update new version for the updater
+            string ver = "https://download-cas.000webhostapp.com/download/DM/uversion"; //version on the internet
+            string curr_ver;
+            if (System.IO.File.Exists(Application.StartupPath + "\\DM Updater.exe"))
+                curr_ver = GetProductVersion(Application.StartupPath + "\\DM Updater.exe"); //version of updater
+            else
+                curr_ver = "0.0.0.0";
+
+            string sver = wc.DownloadString(ver);
+            if (curr_ver.CompareTo(sver) < 0)
+            {
+                updateButton.Text = "Updating updater...";
+                wc.DownloadFile(new Uri("https://download-cas.000webhostapp.com/download/DM/DM%20Updater.exe"), Application.StartupPath + "\\DM Updater.exe");
+            }
+
             updateButton.Text = "Checking version...";
-            var ui = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsV3B1OHN5Q0FIa3M");//check version
+            var ui = wc.DownloadString("https://download-cas.000webhostapp.com/download/DM/version");//check version
 
             if (Application.ProductVersion.CompareTo(ui) < 0)
             {
-                changelog = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsbUVpQTd2Sk5SRE0");
+                changelog = wc.DownloadString("https://download-cas.000webhostapp.com/download/DM/changelog");
                 wc.Dispose();
                 tmp = ui;
                 updateButton.Text = "Update available";

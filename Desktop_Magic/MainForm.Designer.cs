@@ -304,7 +304,7 @@
             this.mixButton.Size = new System.Drawing.Size(41, 17);
             this.mixButton.TabIndex = 18;
             this.mixButton.Text = "Mix";
-            this.toolTip1.SetToolTip(this.mixButton, "Combine Leaf, Snow, Snowflake and custom image");
+            this.toolTip1.SetToolTip(this.mixButton, "Combine Leaf, Snow, Sakura and custom image");
             this.mixButton.UseVisualStyleBackColor = true;
             this.mixButton.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
@@ -395,9 +395,9 @@
             this.labelAbout.ForeColor = System.Drawing.SystemColors.Control;
             this.labelAbout.Location = new System.Drawing.Point(151, 9);
             this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(121, 39);
+            this.labelAbout.Size = new System.Drawing.Size(116, 39);
             this.labelAbout.TabIndex = 0;
-            this.labelAbout.Text = "Desktop Magic v2.2\r\nCopyright ©  2020\r\nFreedom Software";
+            this.labelAbout.Text = "Desktop Magic v2x\r\nCopyright ©  2020\r\nFreedom Software";
             this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip1.SetToolTip(this.labelAbout, "About");
             this.labelAbout.Click += new System.EventHandler(this.label1_Click);

@@ -59,6 +59,7 @@
             this.labelAbout = new System.Windows.Forms.Label();
             this.buttonRandomConfig = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.buttonSchedule = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.customizeButton = new System.Windows.Forms.Button();
@@ -424,6 +425,24 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "settings.png");
+            this.imageList1.Images.SetKeyName(1, "interface.png");
+            // 
+            // buttonSchedule
+            // 
+            this.buttonSchedule.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSchedule.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonSchedule.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSchedule.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonSchedule.ImageIndex = 1;
+            this.buttonSchedule.ImageList = this.imageList1;
+            this.buttonSchedule.Location = new System.Drawing.Point(176, 23);
+            this.buttonSchedule.Name = "buttonSchedule";
+            this.buttonSchedule.Size = new System.Drawing.Size(30, 30);
+            this.buttonSchedule.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.buttonSchedule, "Schedule time to run");
+            this.buttonSchedule.UseVisualStyleBackColor = false;
+            this.buttonSchedule.Click += new System.EventHandler(this.buttonSchedule_Click);
             // 
             // startButton
             // 
@@ -488,6 +507,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonSchedule);
             this.groupBox1.Controls.Add(this.buttonRandomConfig);
             this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.checkBox2);
@@ -897,5 +917,6 @@
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.Button buttonRandomConfig;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button buttonSchedule;
     }
 }

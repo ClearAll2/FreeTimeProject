@@ -81,6 +81,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -127,6 +129,14 @@
     <Compile Include="Hook2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule.cs" />
+    <Compile Include="ScheduleSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleSetting.Designer.cs">
+      <DependentUpon>ScheduleSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeekDay.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +156,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleSetting.resx">
+      <DependentUpon>ScheduleSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\app.manifest" />

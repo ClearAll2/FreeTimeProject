@@ -90,6 +90,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
@@ -440,7 +441,7 @@
             this.buttonSchedule.Name = "buttonSchedule";
             this.buttonSchedule.Size = new System.Drawing.Size(30, 30);
             this.buttonSchedule.TabIndex = 15;
-            this.toolTip1.SetToolTip(this.buttonSchedule, "Schedule time to run");
+            this.toolTip1.SetToolTip(this.buttonSchedule, "Schedule Configuration");
             this.buttonSchedule.UseVisualStyleBackColor = false;
             this.buttonSchedule.Click += new System.EventHandler(this.buttonSchedule_Click);
             // 
@@ -807,6 +808,12 @@
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -918,5 +925,6 @@
         private System.Windows.Forms.Button buttonRandomConfig;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button buttonSchedule;
+        private System.Windows.Forms.Timer timer1;
     }
 }

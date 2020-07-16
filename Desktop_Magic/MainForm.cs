@@ -14,29 +14,30 @@ namespace DM
 
     public partial class MainForm : Form
     {
-        int value;
-        int newx, newy;
-        bool started = false;
-        RegistryKey r;
-        RegistryKey r1;
-        int Speed; int RSpeed = 15;
-        int Number; int RDirection = 10;
-        int Amount; int RNumber = 15; int RType = 1;
-        bool rb1 = false;
-        bool rb2 = false;
-        bool rb3 = false;
-        bool rb4 = false;
-        bool rb5 = false;
-        BackgroundWorker bw;
-        BackgroundWorker bw3;
-        string tmp = "";
-        string changelog = "";
-        EffectForm n;
-        Music f;
-        About ab = new About();
-        KeyboardHook hook = new KeyboardHook();
-        KeyboardHook hook2 = new KeyboardHook();
-
+        private int value;
+        private int newx, newy;
+        private bool started = false;
+        private RegistryKey r;
+        private RegistryKey r1;
+        private int Speed; private int RSpeed = 15;
+        private int Number; private int RDirection = 10;
+        private int Amount; private int RNumber = 15; private int RType = 1;
+        private bool rb1 = false;
+        private bool rb2 = false;
+        private bool rb3 = false;
+        private bool rb4 = false;
+        private bool rb5 = false;
+        private bool mon, tue, wed, thu, fri, sat, sun = false;
+        private BackgroundWorker bw;
+        private BackgroundWorker bw3;
+        private string tmp = "";
+        private string changelog = "";
+        private EffectForm n;
+        private Music f;
+        private About ab = new About();
+        private KeyboardHook hook = new KeyboardHook();
+        private KeyboardHook hook2 = new KeyboardHook();
+        Schedule schedule = new Schedule();
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == NativeMethods.WM_DMSHOWME)
@@ -100,8 +101,9 @@ namespace DM
             else
             {
                 checkBox1.Checked = true;
-                button1_Click(null, null);
                 notifyIcon1.Visible = true;
+                button1_Click(null, null);
+                
             }
             //new
             if (r1.GetValue("DM3") == null)
@@ -227,6 +229,7 @@ namespace DM
             hook2.RegisterHotKey(global::ModifierKeys.Control, Keys.Right);
             hook2.RegisterHotKey(global::ModifierKeys.Shift, Keys.Right);
 
+            timer1.Start();
         }
 
         private void hook2_KeyPressed(object sender, KeyPressedEventArgs e)
@@ -254,6 +257,7 @@ namespace DM
         //tips
         private void bw3_DoWork(object sender, DoWorkEventArgs e)
         {
+            LoadSetting();
             Random r = new Random();
         ret:
             int o = r.Next(1, 10);
@@ -307,7 +311,6 @@ namespace DM
 
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-
             WebClient wc = new WebClient();
             //check if internet is connected
             try
@@ -366,6 +369,28 @@ namespace DM
             }
 
 
+        }
+
+        private void LoadSetting()
+        {
+            if (File.Exists(Application.StartupPath + "\\schedule"))
+            {
+                StreamReader streamReader = new StreamReader(Application.StartupPath + "\\schedule");
+                schedule.startTimeH = Int32.Parse(streamReader.ReadLine());
+                schedule.startTimeM = Int32.Parse(streamReader.ReadLine());
+                schedule.endTimeH = Int32.Parse(streamReader.ReadLine());
+                schedule.endTimeM = Int32.Parse(streamReader.ReadLine());
+                mon = Boolean.Parse(streamReader.ReadLine());
+                tue = Boolean.Parse(streamReader.ReadLine());
+                wed = Boolean.Parse(streamReader.ReadLine());
+                thu = Boolean.Parse(streamReader.ReadLine());
+                fri = Boolean.Parse(streamReader.ReadLine());
+                sat = Boolean.Parse(streamReader.ReadLine());
+                sun = Boolean.Parse(streamReader.ReadLine());
+                schedule.weekDays = new WeekDay(mon, tue, wed, thu, fri, sat, sun);
+
+                streamReader.Close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1111,6 +1136,56 @@ namespace DM
             WindowState = FormWindowState.Minimized;
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (File.Exists(Application.StartupPath + "\\schedule"))
+            {
+                if (DateTime.Now.Hour == schedule.endTimeH && DateTime.Now.Minute > schedule.endTimeM || DateTime.Now.Hour > schedule.endTimeH)
+                {
+                    if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && mon || DateTime.Now.DayOfWeek == DayOfWeek.Tuesday && tue || DateTime.Now.DayOfWeek == DayOfWeek.Wednesday && wed || DateTime.Now.DayOfWeek == DayOfWeek.Thursday && thu || DateTime.Now.DayOfWeek == DayOfWeek.Friday && fri || DateTime.Now.DayOfWeek == DayOfWeek.Saturday && sat || DateTime.Now.DayOfWeek == DayOfWeek.Sunday && sun)
+                    {
+                        if (checkBox1.Checked && n != null && n.IsDisposed != true)
+                        {
+                            if (n.Visible)
+                                n.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        if (n.Visible)
+                            n.Visible = false;
+                    }
+                }
+                else if (DateTime.Now.Hour >= schedule.startTimeH && DateTime.Now.Minute >= schedule.startTimeM && DateTime.Now.Hour <= schedule.endTimeH)
+                {
+                    if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && mon || DateTime.Now.DayOfWeek == DayOfWeek.Tuesday && tue || DateTime.Now.DayOfWeek == DayOfWeek.Wednesday && wed || DateTime.Now.DayOfWeek == DayOfWeek.Thursday && thu || DateTime.Now.DayOfWeek == DayOfWeek.Friday && fri || DateTime.Now.DayOfWeek == DayOfWeek.Saturday && sat || DateTime.Now.DayOfWeek == DayOfWeek.Sunday && sun)
+                    {
+                        if (checkBox1.Checked)
+                        {
+                            if (n != null && n.IsDisposed != true)
+                            {
+                                if (!n.Visible)
+                                    n.Visible = true;
+                            }
+                            else
+                            {
+                                button1_Click(null, null);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (checkBox1.Checked && n != null && n.IsDisposed != true)
+                        {
+                            if (n.Visible)
+                                n.Visible = false;
+                        }
+                    }
+
+                }
+            }
+        }
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(linkLabel1.Text);
@@ -1157,7 +1232,14 @@ namespace DM
 
         private void buttonSchedule_Click(object sender, EventArgs e)
         {
+            ScheduleSetting scheduleSetting = new ScheduleSetting();
+            scheduleSetting.FormClosed += ScheduleSetting_FormClosed;
+            scheduleSetting.ShowDialog();
+        }
 
+        private void ScheduleSetting_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadSetting();
         }
 
         private void label18_Click(object sender, EventArgs e)

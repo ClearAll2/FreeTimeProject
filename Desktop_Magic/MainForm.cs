@@ -1142,45 +1142,54 @@ namespace DM
             {
                 if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && mon || DateTime.Now.DayOfWeek == DayOfWeek.Tuesday && tue || DateTime.Now.DayOfWeek == DayOfWeek.Wednesday && wed || DateTime.Now.DayOfWeek == DayOfWeek.Thursday && thu || DateTime.Now.DayOfWeek == DayOfWeek.Friday && fri || DateTime.Now.DayOfWeek == DayOfWeek.Saturday && sat || DateTime.Now.DayOfWeek == DayOfWeek.Sunday && sun)
                 {
-                    if (schedule.startTimeH < schedule.endTimeH)
+                    if (schedule.startTimeH < schedule.endTimeH)//if start time < end time
                     {
-                        if (DateTime.Now.Hour == schedule.startTimeH)
+                        if (DateTime.Now.Hour == schedule.startTimeH)//check time = start time
                         {
-                            if (DateTime.Now.Minute >= schedule.startTimeM)
+                            if (DateTime.Now.Minute >= schedule.startTimeM) //check minute >= start minute
                                 CheckForStart();
                             else
                                 CheckForStop();
                         }
-                        else if (DateTime.Now.Hour > schedule.startTimeH)
+                        else if (DateTime.Now.Hour > schedule.startTimeH) //check time > start time
                         {
-                            if (DateTime.Now.Hour <= schedule.endTimeH)
+                            if (DateTime.Now.Hour < schedule.endTimeH)//check time < end time
+                            {
                                 CheckForStart();
-                            else
+                            }
+                            else if (DateTime.Now.Hour == schedule.endTimeH)//check time == end time
+                            {
+                                if (DateTime.Now.Minute <= schedule.endTimeM) //check time <= end minute
+                                    CheckForStart();
+                                else
+                                    CheckForStop();
+                            }
+                            else//else time > end time
                                 CheckForStop();
                         }
-                        else
+                        else //else time < start time
                         {
                             CheckForStop();
                         }
                     }
-                    else if (schedule.startTimeH > schedule.endTimeH)
+                    else if (schedule.startTimeH > schedule.endTimeH) //if start time > end time
                     {
-                        if (DateTime.Now.Hour == schedule.startTimeH)
+                        if (DateTime.Now.Hour == schedule.startTimeH) //check time = start time
                         {
-                            if (DateTime.Now.Minute >= schedule.startTimeM)
+                            if (DateTime.Now.Minute >= schedule.startTimeM) //check minute >= start minute
                                 CheckForStart();
                             else
                                 CheckForStop();
                         }
-                        else if (DateTime.Now.Hour > schedule.startTimeH)
+                        else if (DateTime.Now.Hour > schedule.startTimeH)// if time > start time
                         {
                             CheckForStart();
                         }
                         else
                         {
-                            if (DateTime.Now.Hour <= schedule.endTimeH)
+                            if (DateTime.Now.Hour <= schedule.endTimeH) //if time <= end time
                             {
-                                if (DateTime.Now.Minute <= schedule.endTimeM)
+                                if (DateTime.Now.Minute <= schedule.endTimeM) //if (minute <= end minute
                                     CheckForStart();
                                 else
                                     CheckForStop();
@@ -1189,11 +1198,11 @@ namespace DM
                                 CheckForStop();
                         }
                     }
-                    else
+                    else //else they're equal
                     {
-                        if (DateTime.Now.Hour == schedule.startTimeH)
+                        if (DateTime.Now.Hour == schedule.startTimeH)//if time = start time
                         {
-                            if (DateTime.Now.Minute >= schedule.startTimeM)
+                            if (DateTime.Now.Minute >= schedule.startTimeM)//if minute >= start minute
                             {
                                 CheckForStart();
                             }

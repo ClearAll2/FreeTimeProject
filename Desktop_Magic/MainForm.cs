@@ -1138,50 +1138,102 @@ namespace DM
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (File.Exists(Application.StartupPath + "\\schedule"))
+            if (File.Exists(Application.StartupPath + "\\schedule") && checkBox1.Checked)
             {
-                if (DateTime.Now.Hour == schedule.endTimeH && DateTime.Now.Minute > schedule.endTimeM || DateTime.Now.Hour > schedule.endTimeH)
+                if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && mon || DateTime.Now.DayOfWeek == DayOfWeek.Tuesday && tue || DateTime.Now.DayOfWeek == DayOfWeek.Wednesday && wed || DateTime.Now.DayOfWeek == DayOfWeek.Thursday && thu || DateTime.Now.DayOfWeek == DayOfWeek.Friday && fri || DateTime.Now.DayOfWeek == DayOfWeek.Saturday && sat || DateTime.Now.DayOfWeek == DayOfWeek.Sunday && sun)
                 {
-                    if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && mon || DateTime.Now.DayOfWeek == DayOfWeek.Tuesday && tue || DateTime.Now.DayOfWeek == DayOfWeek.Wednesday && wed || DateTime.Now.DayOfWeek == DayOfWeek.Thursday && thu || DateTime.Now.DayOfWeek == DayOfWeek.Friday && fri || DateTime.Now.DayOfWeek == DayOfWeek.Saturday && sat || DateTime.Now.DayOfWeek == DayOfWeek.Sunday && sun)
+                    if (schedule.startTimeH < schedule.endTimeH)
                     {
-                        if (checkBox1.Checked && n != null && n.IsDisposed != true)
+                        if (DateTime.Now.Hour == schedule.startTimeH)
                         {
-                            if (n.Visible)
-                                n.Visible = false;
+                            if (DateTime.Now.Minute >= schedule.startTimeM)
+                                CheckForStart();
+                            else
+                                CheckForStop();
+                        }
+                        else if (DateTime.Now.Hour > schedule.startTimeH)
+                        {
+                            if (DateTime.Now.Hour <= schedule.endTimeH)
+                                CheckForStart();
+                            else
+                                CheckForStop();
+                        }
+                        else
+                        {
+                            CheckForStop();
+                        }
+                    }
+                    else if (schedule.startTimeH > schedule.endTimeH)
+                    {
+                        if (DateTime.Now.Hour == schedule.startTimeH)
+                        {
+                            if (DateTime.Now.Minute >= schedule.startTimeM)
+                                CheckForStart();
+                            else
+                                CheckForStop();
+                        }
+                        else if (DateTime.Now.Hour > schedule.startTimeH)
+                        {
+                            CheckForStart();
+                        }
+                        else
+                        {
+                            if (DateTime.Now.Hour <= schedule.endTimeH)
+                            {
+                                if (DateTime.Now.Minute <= schedule.endTimeM)
+                                    CheckForStart();
+                                else
+                                    CheckForStop();
+                            }
+                            else
+                                CheckForStop();
                         }
                     }
                     else
                     {
-                        if (n.Visible)
-                            n.Visible = false;
-                    }
-                }
-                else if (DateTime.Now.Hour >= schedule.startTimeH && DateTime.Now.Minute >= schedule.startTimeM && DateTime.Now.Hour <= schedule.endTimeH)
-                {
-                    if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && mon || DateTime.Now.DayOfWeek == DayOfWeek.Tuesday && tue || DateTime.Now.DayOfWeek == DayOfWeek.Wednesday && wed || DateTime.Now.DayOfWeek == DayOfWeek.Thursday && thu || DateTime.Now.DayOfWeek == DayOfWeek.Friday && fri || DateTime.Now.DayOfWeek == DayOfWeek.Saturday && sat || DateTime.Now.DayOfWeek == DayOfWeek.Sunday && sun)
-                    {
-                        if (checkBox1.Checked)
+                        if (DateTime.Now.Hour == schedule.startTimeH)
                         {
-                            if (n != null && n.IsDisposed != true)
+                            if (DateTime.Now.Minute >= schedule.startTimeM)
                             {
-                                if (!n.Visible)
-                                    n.Visible = true;
+                                CheckForStart();
                             }
                             else
                             {
-                                button1_Click(null, null);
+                                CheckForStop();
                             }
                         }
-                    }
-                    else
-                    {
-                        if (checkBox1.Checked && n != null && n.IsDisposed != true)
+                        else
                         {
-                            if (n.Visible)
-                                n.Visible = false;
+                            CheckForStop();
                         }
                     }
+                }
+                else
+                {
+                    CheckForStop();
+                }
+                
+            }
+        }
 
+        private void CheckForStop()
+        {
+            if (n!= null && !n.IsDisposed)
+                if (n.Visible)
+                    n.Visible = false;
+        }
+
+        private void CheckForStart()
+        {
+            if (checkBox1.Checked)
+            {
+                if (n != null && !n.IsDisposed)
+                {
+                    n.Visible = true;
+                }
+                else
+                {
+                    button1_Click(null, null);
                 }
             }
         }

@@ -252,7 +252,7 @@
             this.MinimizeBox = false;
             this.Name = "ScheduleSetting";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schedule Setting";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHMonF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHMonT)).EndInit();

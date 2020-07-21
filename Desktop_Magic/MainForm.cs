@@ -28,6 +28,7 @@ namespace DM
         private bool rb4 = false;
         private bool rb5 = false;
         private bool mon, tue, wed, thu, fri, sat, sun = false;
+        private bool userHide = false;
         private BackgroundWorker bw;
         private BackgroundWorker bw3;
         private string tmp = "";
@@ -504,14 +505,11 @@ namespace DM
             {
                 if (n != null && n.IsDisposed != true)
                 {
-                    if (n.Visible == true)
-                    {
-                        n.Hide();
-                    }
+                    if (!userHide)
+                        userHide = true;
                     else
-                    {
-                        n.Show();
-                    }
+                        userHide = false;
+                    n.Visible = !userHide;
                 }
             }
         }
@@ -1238,7 +1236,7 @@ namespace DM
             {
                 if (n != null && !n.IsDisposed)
                 {
-                    n.Visible = true;
+                    n.Visible = !userHide;
                 }
                 else
                 {

@@ -186,6 +186,44 @@ namespace DM
                 Top = Top + (e.Y - newy);
             }
         }
-      
+
+        private void playPauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPlaying)
+                axWindowsMediaPlayer1.Ctlcontrols.pause();
+            else
+                axWindowsMediaPlayer1.Ctlcontrols.play();
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
+        }
+
+        private void nextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.next();
+        }
+
+        private void previousToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.previous();
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (this.Visible)
+                    this.Hide();
+                else
+                    this.Show();
+            }
+        }
+
+        private void exitMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

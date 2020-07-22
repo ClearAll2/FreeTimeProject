@@ -882,13 +882,11 @@ namespace DM
                 CheckConfig();
                 timer2.Enabled = true;
                 r1.SetValue("AaR", true);
-                buttonRandomConfig.Visible = true;
             }
             else
             {
                 timer2.Enabled = false;
                 r1.DeleteValue("AaR", false);
-                buttonRandomConfig.Visible = false;
                 //radioButton5.Enabled = true;
             }
             //if (started == true && checkBox2.Checked)

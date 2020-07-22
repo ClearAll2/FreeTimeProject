@@ -36,13 +36,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mainWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.musicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.scheduleConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -114,22 +110,19 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.BackColor = System.Drawing.Color.White;
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
             this.toolStripSeparator1,
             this.mainWindowToolStripMenuItem,
             this.optionsToolStripMenuItem,
-            this.toolStripSeparator3,
             this.musicToolStripMenuItem,
-            this.toolStripSeparator2,
             this.configToolStripMenuItem,
-            this.toolStripSeparator5,
             this.scheduleConfigurationToolStripMenuItem,
-            this.toolStripSeparator4,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 188);
+            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 164);
             // 
             // aboutToolStripMenuItem
             // 
@@ -160,22 +153,12 @@
             this.optionsToolStripMenuItem.Text = "Customize";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(196, 6);
-            // 
             // musicToolStripMenuItem
             // 
             this.musicToolStripMenuItem.Name = "musicToolStripMenuItem";
             this.musicToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.musicToolStripMenuItem.Text = "Music Player";
             this.musicToolStripMenuItem.Click += new System.EventHandler(this.musicToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(196, 6);
             // 
             // configToolStripMenuItem
             // 
@@ -184,22 +167,12 @@
             this.configToolStripMenuItem.Text = "Random Configuration";
             this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(196, 6);
-            // 
             // scheduleConfigurationToolStripMenuItem
             // 
             this.scheduleConfigurationToolStripMenuItem.Name = "scheduleConfigurationToolStripMenuItem";
             this.scheduleConfigurationToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.scheduleConfigurationToolStripMenuItem.Text = "Schedule Configuration";
             this.scheduleConfigurationToolStripMenuItem.Click += new System.EventHandler(this.buttonSchedule_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(196, 6);
             // 
             // exitToolStripMenuItem
             // 
@@ -877,13 +850,10 @@
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.ToolStripMenuItem musicToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Button musicButton;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label16;
@@ -922,6 +892,5 @@
         private System.Windows.Forms.Button buttonSchedule;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem scheduleConfigurationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

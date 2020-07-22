@@ -181,10 +181,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\music.png" />
     <Content Include="snow_Km9_icon.ico" />
-    <None Include="Resources\SnowFlake003.png" />
-    <None Include="Resources\autumn_leaves_PNG3571.png" />
-    <None Include="Resources\crystal-snowflake.gif" />
     <Content Include="snowflake.ico" />
   </ItemGroup>
   <ItemGroup>

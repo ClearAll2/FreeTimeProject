@@ -40,7 +40,7 @@
             // labelCompanyName
             // 
             this.labelCompanyName.AutoSize = true;
-            this.labelCompanyName.Location = new System.Drawing.Point(15, 61);
+            this.labelCompanyName.Location = new System.Drawing.Point(15, 63);
             this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCompanyName.Name = "labelCompanyName";
@@ -52,7 +52,7 @@
             // labelCopyright
             // 
             this.labelCopyright.AutoSize = true;
-            this.labelCopyright.Location = new System.Drawing.Point(15, 88);
+            this.labelCopyright.Location = new System.Drawing.Point(15, 91);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCopyright.Name = "labelCopyright";
@@ -64,7 +64,7 @@
             // labelVersion
             // 
             this.labelVersion.AutoSize = true;
-            this.labelVersion.Location = new System.Drawing.Point(15, 34);
+            this.labelVersion.Location = new System.Drawing.Point(15, 35);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelVersion.Name = "labelVersion";
@@ -103,7 +103,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(18, 281);
             this.textBox1.Multiline = true;

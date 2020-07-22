@@ -41,10 +41,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +60,7 @@
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(93, 29);
             this.importButton.TabIndex = 12;
-            this.importButton.Text = "Import";
+            this.importButton.Text = "Open";
             this.importButton.UseVisualStyleBackColor = true;
             this.importButton.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -78,7 +80,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(96, 11);
+            this.label1.Location = new System.Drawing.Point(111, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 16;
@@ -100,6 +102,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.label1);
@@ -183,6 +186,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(299, 368);
             this.tableLayoutPanel1.TabIndex = 21;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DM.Properties.Resources.music;
+            this.pictureBox1.Location = new System.Drawing.Point(85, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -216,6 +229,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
 
@@ -234,5 +248,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

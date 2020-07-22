@@ -40,6 +40,8 @@
             this.musicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.scheduleConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -53,7 +55,6 @@
             this.mixButton = new System.Windows.Forms.RadioButton();
             this.customButton = new System.Windows.Forms.RadioButton();
             this.sakuraButton = new System.Windows.Forms.RadioButton();
-            this.buttonShortcut = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.labelAbout = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.scheduleConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
@@ -123,12 +123,13 @@
             this.musicToolStripMenuItem,
             this.toolStripSeparator2,
             this.configToolStripMenuItem,
+            this.toolStripSeparator5,
             this.scheduleConfigurationToolStripMenuItem,
             this.toolStripSeparator4,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 204);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 188);
             // 
             // aboutToolStripMenuItem
             // 
@@ -182,6 +183,18 @@
             this.configToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.configToolStripMenuItem.Text = "Random Configuration";
             this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(196, 6);
+            // 
+            // scheduleConfigurationToolStripMenuItem
+            // 
+            this.scheduleConfigurationToolStripMenuItem.Name = "scheduleConfigurationToolStripMenuItem";
+            this.scheduleConfigurationToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.scheduleConfigurationToolStripMenuItem.Text = "Schedule Configuration";
+            this.scheduleConfigurationToolStripMenuItem.Click += new System.EventHandler(this.buttonSchedule_Click);
             // 
             // toolStripSeparator4
             // 
@@ -254,7 +267,7 @@
             this.trackBarDirection.Size = new System.Drawing.Size(297, 45);
             this.trackBarDirection.TabIndex = 7;
             this.trackBarDirection.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.toolTip1.SetToolTip(this.trackBarDirection, "Alt + Left/Right");
+            this.toolTip1.SetToolTip(this.trackBarDirection, "Press Alt + Left/Right to change immediately");
             this.trackBarDirection.Value = 10;
             this.trackBarDirection.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
@@ -268,7 +281,7 @@
             this.trackBarSpeed.Size = new System.Drawing.Size(297, 45);
             this.trackBarSpeed.TabIndex = 8;
             this.trackBarSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.toolTip1.SetToolTip(this.trackBarSpeed, "Ctrl + Left/Right");
+            this.toolTip1.SetToolTip(this.trackBarSpeed, "Press Ctrl + Left/Right to change immediately");
             this.trackBarSpeed.Value = 5;
             this.trackBarSpeed.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
@@ -281,7 +294,7 @@
             this.trackBarNumber.Size = new System.Drawing.Size(297, 45);
             this.trackBarNumber.TabIndex = 9;
             this.trackBarNumber.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.toolTip1.SetToolTip(this.trackBarNumber, "Shift + Left/Right");
+            this.toolTip1.SetToolTip(this.trackBarNumber, "Press to Shift + Left/Right to change immediately");
             this.trackBarNumber.Value = 20;
             this.trackBarNumber.Scroll += new System.EventHandler(this.trackBar3_Scroll);
             // 
@@ -335,24 +348,6 @@
             this.toolTip1.SetToolTip(this.sakuraButton, "You should choose images which have no background and small size");
             this.sakuraButton.UseVisualStyleBackColor = true;
             this.sakuraButton.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // buttonShortcut
-            // 
-            this.buttonShortcut.BackColor = System.Drawing.Color.Transparent;
-            this.buttonShortcut.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonShortcut.FlatAppearance.BorderSize = 0;
-            this.buttonShortcut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
-            this.buttonShortcut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShortcut.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonShortcut.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonShortcut.Location = new System.Drawing.Point(306, 5);
-            this.buttonShortcut.Name = "buttonShortcut";
-            this.buttonShortcut.Size = new System.Drawing.Size(20, 20);
-            this.buttonShortcut.TabIndex = 12;
-            this.buttonShortcut.Text = "?";
-            this.toolTip1.SetToolTip(this.buttonShortcut, "Hotkeys Info");
-            this.buttonShortcut.UseVisualStyleBackColor = false;
-            this.buttonShortcut.Click += new System.EventHandler(this.label18_Click);
             // 
             // buttonMinimize
             // 
@@ -526,7 +521,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(96, 229);
+            this.label16.Location = new System.Drawing.Point(94, 68);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(62, 13);
             this.label16.TabIndex = 16;
@@ -535,7 +530,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(164, 229);
+            this.linkLabel1.Location = new System.Drawing.Point(162, 68);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(105, 13);
             this.linkLabel1.TabIndex = 17;
@@ -547,7 +542,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(33, 66);
+            this.label17.Location = new System.Drawing.Point(27, 227);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(38, 15);
             this.label17.TabIndex = 18;
@@ -558,7 +553,7 @@
             this.tipsLabel.AutoSize = true;
             this.tipsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tipsLabel.ForeColor = System.Drawing.Color.Blue;
-            this.tipsLabel.Location = new System.Drawing.Point(77, 66);
+            this.tipsLabel.Location = new System.Drawing.Point(71, 227);
             this.tipsLabel.Name = "tipsLabel";
             this.tipsLabel.Size = new System.Drawing.Size(61, 15);
             this.tipsLabel.TabIndex = 19;
@@ -782,7 +777,6 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Controls.Add(this.buttonShortcut);
             this.panel4.Controls.Add(this.buttonMinimize);
             this.panel4.Controls.Add(this.buttonClose);
             this.panel4.Controls.Add(this.labelAbout);
@@ -815,13 +809,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // scheduleConfigurationToolStripMenuItem
-            // 
-            this.scheduleConfigurationToolStripMenuItem.Name = "scheduleConfigurationToolStripMenuItem";
-            this.scheduleConfigurationToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.scheduleConfigurationToolStripMenuItem.Text = "Schedule Configuration";
-            this.scheduleConfigurationToolStripMenuItem.Click += new System.EventHandler(this.buttonSchedule_Click);
             // 
             // MainForm
             // 
@@ -929,12 +916,12 @@
         private System.Windows.Forms.TrackBar trackBarSpeed;
         private System.Windows.Forms.TrackBar trackBarDirection;
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.Button buttonShortcut;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.Button buttonRandomConfig;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button buttonSchedule;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem scheduleConfigurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

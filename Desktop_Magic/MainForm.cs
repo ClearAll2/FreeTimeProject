@@ -268,11 +268,11 @@ namespace DM
             }
             else if (o == 2)
             {
-                tipsLabel.Text = "This app checks for update automatically";
+                tipsLabel.Text = "This app can check and update automatically";
             }
             else if (o == 3)
             {
-                tipsLabel.Text = "You can only open one instance of this app";
+                tipsLabel.Text = "You can open only one instance of this app";
             }
             else if (o == 4)
             {
@@ -281,25 +281,30 @@ namespace DM
             else if (o == 5)
             {
                 tipsLabel.Text = "You can pause/resume effect by clicking tray icon";
+                tipsLabel.ForeColor = Color.Green;
             }
             else if (o == 6)
             {
-                tipsLabel.Text = "Alt + Left/Right to change direction";
+                tipsLabel.Text = "Press Alt + Left/Right to change direction";
+                tipsLabel.ForeColor = Color.Green;
             }
             else if (o == 7)
             {
-                tipsLabel.Text = "Ctrl + Left/Right to change speed";
+                tipsLabel.Text = "Press Ctrl + Left/Right to change speed";
+                tipsLabel.ForeColor = Color.Green;
             }
             else if (o == 8)
             {
-                tipsLabel.Text = "Shift + Left/Right to change number";
+                tipsLabel.Text = "Press Shift + Left/Right to change number";
             }
             else
             {
                 tipsLabel.Text = "Protect yourself and your family from Covid-19!";
+                tipsLabel.ForeColor = Color.Red;
             }
-
+            
             Thread.Sleep(10000);
+            tipsLabel.ForeColor = Color.Blue;
 
             goto ret;
         }
@@ -1300,12 +1305,6 @@ namespace DM
         {
             LoadSetting();
         }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hotkeys:\n\nAlt + Left/Right to change direction\nCtrl + Left/Right to change speed\nShift + Left/Right to change number", "About shortcut keys", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
     }
 
     internal class NativeMethods

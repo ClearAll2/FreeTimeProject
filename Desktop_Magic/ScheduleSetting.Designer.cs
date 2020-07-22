@@ -196,6 +196,11 @@
             this.numericUpDownHMonT.Size = new System.Drawing.Size(42, 20);
             this.numericUpDownHMonT.TabIndex = 26;
             this.numericUpDownHMonT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownHMonT.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             // 
             // numericUpDownMMonF
             // 

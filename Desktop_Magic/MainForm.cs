@@ -1188,12 +1188,16 @@ namespace DM
                         }
                         else
                         {
-                            if (DateTime.Now.Hour <= schedule.endTimeH) //if time <= end time
+                            if (DateTime.Now.Hour == schedule.endTimeH) //if time <= end time
                             {
                                 if (DateTime.Now.Minute <= schedule.endTimeM) //if (minute <= end minute
                                     CheckForStart();
                                 else
                                     CheckForStop();
+                            }
+                            else if (DateTime.Now.Hour < schedule.endTimeH)
+                            {
+                                CheckForStart();
                             }
                             else
                                 CheckForStop();

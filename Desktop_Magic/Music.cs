@@ -215,9 +215,15 @@ namespace DM
             if (e.Button == MouseButtons.Left)
             {
                 if (this.Visible)
+                {
                     this.Hide();
+                }
                 else
+                {
+                    this.TopMost = true;
                     this.Show();
+                    this.TopMost = false;
+                }
             }
         }
 

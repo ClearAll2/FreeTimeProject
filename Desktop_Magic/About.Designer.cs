@@ -111,9 +111,8 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(313, 117);
             this.textBox1.TabIndex = 25;
-            this.textBox1.Text = "Changelog v2.5:\r\n-We added Schedule Setting.\r\n-We improved application performanc" +
-    "e and size.\r\n-We added tray icon for Music Player.\r\n-We added Changelog section " +
-    "in About.";
+            this.textBox1.Text = "Changelog v2.6:\r\n-We fixed a bug which DM can\'t start on old Windows.\r\n-We improv" +
+    "ed Music Player tray icon.";
             // 
             // buttonOK
             // 

@@ -57,6 +57,7 @@
             this.buttonRandomConfig = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.buttonSchedule = new System.Windows.Forms.Button();
+            this.checkBoxSmoothmotion = new System.Windows.Forms.CheckBox();
             this.startButton = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.customizeButton = new System.Windows.Forms.Button();
@@ -75,16 +76,19 @@
             this.label12 = new System.Windows.Forms.Label();
             this.buttonOKCustom = new System.Windows.Forms.Button();
             this.pictureBoxCustom = new System.Windows.Forms.PictureBox();
-            this.snowButton = new System.Windows.Forms.RadioButton();
-            this.leafButton = new System.Windows.Forms.RadioButton();
             this.backButton = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelNumber = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.labelSpeed = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.labelDirection = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.leafButton = new System.Windows.Forms.RadioButton();
+            this.snowButton = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -97,6 +101,9 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSizeCustom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCustom)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -189,7 +196,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.Red;
+            this.checkBox1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.checkBox1.Location = new System.Drawing.Point(6, 32);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(162, 17);
@@ -234,10 +241,10 @@
             // trackBarDirection
             // 
             this.trackBarDirection.LargeChange = 2;
-            this.trackBarDirection.Location = new System.Drawing.Point(48, 16);
+            this.trackBarDirection.Location = new System.Drawing.Point(49, 22);
             this.trackBarDirection.Minimum = -10;
             this.trackBarDirection.Name = "trackBarDirection";
-            this.trackBarDirection.Size = new System.Drawing.Size(297, 45);
+            this.trackBarDirection.Size = new System.Drawing.Size(118, 45);
             this.trackBarDirection.TabIndex = 7;
             this.trackBarDirection.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarDirection, "Press Alt + Left/Right to change immediately");
@@ -247,11 +254,11 @@
             // trackBarSpeed
             // 
             this.trackBarSpeed.LargeChange = 2;
-            this.trackBarSpeed.Location = new System.Drawing.Point(48, 56);
+            this.trackBarSpeed.Location = new System.Drawing.Point(49, 62);
             this.trackBarSpeed.Maximum = 15;
             this.trackBarSpeed.Minimum = 1;
             this.trackBarSpeed.Name = "trackBarSpeed";
-            this.trackBarSpeed.Size = new System.Drawing.Size(297, 45);
+            this.trackBarSpeed.Size = new System.Drawing.Size(118, 45);
             this.trackBarSpeed.TabIndex = 8;
             this.trackBarSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarSpeed, "Press Ctrl + Left/Right to change immediately");
@@ -260,11 +267,11 @@
             // 
             // trackBarNumber
             // 
-            this.trackBarNumber.Location = new System.Drawing.Point(48, 93);
+            this.trackBarNumber.Location = new System.Drawing.Point(49, 99);
             this.trackBarNumber.Maximum = 40;
             this.trackBarNumber.Minimum = 1;
             this.trackBarNumber.Name = "trackBarNumber";
-            this.trackBarNumber.Size = new System.Drawing.Size(297, 45);
+            this.trackBarNumber.Size = new System.Drawing.Size(118, 45);
             this.trackBarNumber.TabIndex = 9;
             this.trackBarNumber.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip1.SetToolTip(this.trackBarNumber, "Press to Shift + Left/Right to change immediately");
@@ -277,9 +284,9 @@
             this.libraryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.libraryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.libraryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.libraryButton.Location = new System.Drawing.Point(208, 126);
+            this.libraryButton.Location = new System.Drawing.Point(12, 164);
             this.libraryButton.Name = "libraryButton";
-            this.libraryButton.Size = new System.Drawing.Size(156, 27);
+            this.libraryButton.Size = new System.Drawing.Size(196, 27);
             this.libraryButton.TabIndex = 16;
             this.libraryButton.Text = "Online Library";
             this.toolTip1.SetToolTip(this.libraryButton, "Get more custom images");
@@ -289,7 +296,7 @@
             // mixButton
             // 
             this.mixButton.AutoSize = true;
-            this.mixButton.Location = new System.Drawing.Point(122, 139);
+            this.mixButton.Location = new System.Drawing.Point(98, 43);
             this.mixButton.Name = "mixButton";
             this.mixButton.Size = new System.Drawing.Size(41, 17);
             this.mixButton.TabIndex = 18;
@@ -301,7 +308,7 @@
             // customButton
             // 
             this.customButton.AutoSize = true;
-            this.customButton.Location = new System.Drawing.Point(124, 161);
+            this.customButton.Location = new System.Drawing.Point(23, 66);
             this.customButton.Name = "customButton";
             this.customButton.Size = new System.Drawing.Size(60, 17);
             this.customButton.TabIndex = 13;
@@ -313,7 +320,7 @@
             // sakuraButton
             // 
             this.sakuraButton.AutoSize = true;
-            this.sakuraButton.Location = new System.Drawing.Point(12, 161);
+            this.sakuraButton.Location = new System.Drawing.Point(24, 43);
             this.sakuraButton.Name = "sakuraButton";
             this.sakuraButton.Size = new System.Drawing.Size(59, 17);
             this.sakuraButton.TabIndex = 12;
@@ -414,6 +421,18 @@
             this.toolTip1.SetToolTip(this.buttonSchedule, "Schedule Configuration");
             this.buttonSchedule.UseVisualStyleBackColor = false;
             this.buttonSchedule.Click += new System.EventHandler(this.buttonSchedule_Click);
+            // 
+            // checkBoxSmoothmotion
+            // 
+            this.checkBoxSmoothmotion.AutoSize = true;
+            this.checkBoxSmoothmotion.Location = new System.Drawing.Point(23, 22);
+            this.checkBoxSmoothmotion.Name = "checkBoxSmoothmotion";
+            this.checkBoxSmoothmotion.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxSmoothmotion.TabIndex = 0;
+            this.checkBoxSmoothmotion.Text = "Smooth motion";
+            this.toolTip1.SetToolTip(this.checkBoxSmoothmotion, "This will use more CPU");
+            this.checkBoxSmoothmotion.UseVisualStyleBackColor = true;
+            this.checkBoxSmoothmotion.CheckedChanged += new System.EventHandler(this.checkBoxSmoothmotion_CheckedChanged);
             // 
             // startButton
             // 
@@ -536,23 +555,12 @@
             // 
             this.panel2.AllowDrop = true;
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.sakuraButton);
-            this.panel2.Controls.Add(this.customButton);
-            this.panel2.Controls.Add(this.snowButton);
-            this.panel2.Controls.Add(this.leafButton);
             this.panel2.Controls.Add(this.backButton);
             this.panel2.Controls.Add(this.applyButton);
-            this.panel2.Controls.Add(this.labelNumber);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.labelSpeed);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.labelDirection);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.mixButton);
             this.panel2.Controls.Add(this.libraryButton);
-            this.panel2.Controls.Add(this.trackBarNumber);
-            this.panel2.Controls.Add(this.trackBarSpeed);
-            this.panel2.Controls.Add(this.trackBarDirection);
+            this.panel2.Controls.Add(this.groupBox3);
+            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 58);
             this.panel2.Name = "panel2";
@@ -643,35 +651,13 @@
             this.pictureBoxCustom.TabIndex = 0;
             this.pictureBoxCustom.TabStop = false;
             // 
-            // snowButton
-            // 
-            this.snowButton.AutoSize = true;
-            this.snowButton.Location = new System.Drawing.Point(64, 138);
-            this.snowButton.Name = "snowButton";
-            this.snowButton.Size = new System.Drawing.Size(52, 17);
-            this.snowButton.TabIndex = 11;
-            this.snowButton.Text = "Snow";
-            this.snowButton.UseVisualStyleBackColor = true;
-            this.snowButton.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // leafButton
-            // 
-            this.leafButton.AutoSize = true;
-            this.leafButton.Location = new System.Drawing.Point(12, 138);
-            this.leafButton.Name = "leafButton";
-            this.leafButton.Size = new System.Drawing.Size(46, 17);
-            this.leafButton.TabIndex = 10;
-            this.leafButton.Text = "Leaf";
-            this.leafButton.UseVisualStyleBackColor = true;
-            this.leafButton.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
             // backButton
             // 
             this.backButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backButton.Location = new System.Drawing.Point(289, 159);
+            this.backButton.Location = new System.Drawing.Point(295, 164);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 27);
             this.backButton.TabIndex = 15;
@@ -685,7 +671,7 @@
             this.applyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.applyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.applyButton.Location = new System.Drawing.Point(208, 159);
+            this.applyButton.Location = new System.Drawing.Point(214, 164);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(75, 27);
             this.applyButton.TabIndex = 14;
@@ -693,10 +679,28 @@
             this.applyButton.UseVisualStyleBackColor = true;
             this.applyButton.Click += new System.EventHandler(this.button7_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.labelNumber);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.labelSpeed);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.labelDirection);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.trackBarNumber);
+            this.groupBox3.Controls.Add(this.trackBarSpeed);
+            this.groupBox3.Controls.Add(this.trackBarDirection);
+            this.groupBox3.Location = new System.Drawing.Point(12, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(196, 152);
+            this.groupBox3.TabIndex = 20;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Customizable Specs";
+            // 
             // labelNumber
             // 
             this.labelNumber.AutoSize = true;
-            this.labelNumber.Location = new System.Drawing.Point(351, 93);
+            this.labelNumber.Location = new System.Drawing.Point(173, 99);
             this.labelNumber.Name = "labelNumber";
             this.labelNumber.Size = new System.Drawing.Size(13, 13);
             this.labelNumber.TabIndex = 8;
@@ -705,7 +709,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 93);
+            this.label10.Location = new System.Drawing.Point(6, 99);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(44, 13);
             this.label10.TabIndex = 7;
@@ -714,7 +718,7 @@
             // labelSpeed
             // 
             this.labelSpeed.AutoSize = true;
-            this.labelSpeed.Location = new System.Drawing.Point(351, 56);
+            this.labelSpeed.Location = new System.Drawing.Point(173, 63);
             this.labelSpeed.Name = "labelSpeed";
             this.labelSpeed.Size = new System.Drawing.Size(13, 13);
             this.labelSpeed.TabIndex = 6;
@@ -723,7 +727,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 56);
+            this.label8.Location = new System.Drawing.Point(6, 62);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 5;
@@ -732,7 +736,7 @@
             // labelDirection
             // 
             this.labelDirection.AutoSize = true;
-            this.labelDirection.Location = new System.Drawing.Point(351, 16);
+            this.labelDirection.Location = new System.Drawing.Point(173, 24);
             this.labelDirection.Name = "labelDirection";
             this.labelDirection.Size = new System.Drawing.Size(13, 13);
             this.labelDirection.TabIndex = 4;
@@ -741,11 +745,57 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 16);
+            this.label6.Location = new System.Drawing.Point(6, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "Direction";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.mixButton);
+            this.groupBox2.Controls.Add(this.leafButton);
+            this.groupBox2.Controls.Add(this.sakuraButton);
+            this.groupBox2.Controls.Add(this.snowButton);
+            this.groupBox2.Controls.Add(this.customButton);
+            this.groupBox2.Location = new System.Drawing.Point(214, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(156, 97);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Type";
+            // 
+            // leafButton
+            // 
+            this.leafButton.AutoSize = true;
+            this.leafButton.Location = new System.Drawing.Point(24, 20);
+            this.leafButton.Name = "leafButton";
+            this.leafButton.Size = new System.Drawing.Size(46, 17);
+            this.leafButton.TabIndex = 10;
+            this.leafButton.Text = "Leaf";
+            this.leafButton.UseVisualStyleBackColor = true;
+            this.leafButton.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // snowButton
+            // 
+            this.snowButton.AutoSize = true;
+            this.snowButton.Location = new System.Drawing.Point(98, 20);
+            this.snowButton.Name = "snowButton";
+            this.snowButton.Size = new System.Drawing.Size(52, 17);
+            this.snowButton.TabIndex = 11;
+            this.snowButton.Text = "Snow";
+            this.snowButton.UseVisualStyleBackColor = true;
+            this.snowButton.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.checkBoxSmoothmotion);
+            this.groupBox4.Location = new System.Drawing.Point(214, 109);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(156, 49);
+            this.groupBox4.TabIndex = 21;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "FPS";
             // 
             // panel4
             // 
@@ -809,6 +859,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DM";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.Resize += new System.EventHandler(this.Form1_Resize);
@@ -819,11 +870,16 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSizeCustom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCustom)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -892,5 +948,9 @@
         private System.Windows.Forms.Button buttonSchedule;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem scheduleConfigurationToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox checkBoxSmoothmotion;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

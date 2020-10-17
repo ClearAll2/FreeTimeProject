@@ -257,6 +257,11 @@ namespace DM
         }
         public void Rescale()
         {
+            if (CGlob.Smooth == true)
+                timer1.Interval = 16;
+            else
+                timer1.Interval = 30;
+
             if (pics.Count != CGlob.Amount || type != CGlob.Type || path != CGlob.Path)
             {
                 g = this.CreateGraphics();
@@ -311,6 +316,10 @@ namespace DM
                             pics[i].Image = pictureBox3.Image;
                     }
                 }
+                //if (CGlob.Smooth == true)
+                //{
+                //    speed /= 2;
+                //}
                 pics[i].Speed = number;
                 x = pics[i].Position.X;
                 y = pics[i].Position.Y;
@@ -335,6 +344,7 @@ namespace DM
         public Image Image;
         public int Speed;
         public int Direction;
+
         public CFlake()
         {
             Speed = 30;

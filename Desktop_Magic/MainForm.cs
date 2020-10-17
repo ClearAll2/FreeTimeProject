@@ -194,6 +194,15 @@ namespace DM
             else
                 timer2.Enabled = true;
 
+            if (r1.GetValue("DM7") == null)
+            {
+                checkBoxSmoothmotion.Checked = false;
+            }
+            else
+            {
+                checkBoxSmoothmotion.Checked = true;
+            }
+
             //never put this to top
             if (r1.GetValue("DM2") == null)
             {
@@ -1250,6 +1259,33 @@ namespace DM
                     button1_Click(null, null);
                 }
             }
+        }
+
+        private void checkBoxSmoothmotion_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSmoothmotion.Checked)
+            {
+                CGlob.Smooth = true;  
+            }
+            else
+            {
+                CGlob.Smooth = false;
+            }
+
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
+            if (checkBoxSmoothmotion.Checked)
+            {
+                r1.SetValue("DM7", true);
+            }
+            else
+            {
+                r1.DeleteValue("DM7", false);
+            }
+            r1.Close();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

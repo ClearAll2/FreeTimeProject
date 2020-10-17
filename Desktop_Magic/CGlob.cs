@@ -13,6 +13,7 @@ namespace DM
         public static int Type;
         public static int Amount;
         public static int Size;
+        public static bool Smooth;
         //public static bool Custom;
         public static string Path;
         public CGlob()
@@ -67,6 +68,14 @@ namespace DM
                 Path = (string)r.GetValue("CustomFile");
             }
             //r.Close();
+            if (r.GetValue("DM7") == null)
+            {
+                Smooth = false;
+            }
+            else
+            {
+                Smooth = true;
+            }
         }
     }
 }

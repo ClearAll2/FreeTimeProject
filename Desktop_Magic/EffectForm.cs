@@ -9,23 +9,23 @@ namespace DM
 {
     public partial class EffectForm : Form
     {
-        List<CFlake> pics = new List<CFlake>();
-        Random rnd = new Random();
-        Random rd = new Random();
-        int speed = 10;
-        int number = 10;
-        int amount = 10;
-        int _size = 50;
-        string path = "";
-        int type = 1;
-        Graphics g;
-        int screenHeight;
-        int screenWidth;
-        int size;
-        Point p = new Point(0, 0);
-        int x;
-        int y;
-        RegistryKey r1;
+        private List<CFlake> pics = new List<CFlake>();
+        private Random rnd = new Random();
+        private Random rd = new Random();
+        private int speed = 10;
+        private int number = 10;
+        private int amount = 10;
+        private int _size = 50;
+        private string path = "";
+        private int type = 1;
+        private Graphics g;
+        private int screenHeight;
+        private int screenWidth;
+        private int size;
+        private Point p = new Point(0, 0);
+        private int x;
+        private int y;
+        private RegistryKey r1;
         public EffectForm()
         {
             InitializeComponent();

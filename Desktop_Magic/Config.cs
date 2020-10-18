@@ -14,7 +14,7 @@ namespace DM
 {
     public partial class Config : Form
     {
-        RegistryKey r;
+        private RegistryKey r;
         public Config()
         {
             InitializeComponent();

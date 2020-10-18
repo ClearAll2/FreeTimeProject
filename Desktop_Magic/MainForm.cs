@@ -38,7 +38,7 @@ namespace DM
         private About ab = new About();
         private KeyboardHook hook = new KeyboardHook();
         private KeyboardHook hook2 = new KeyboardHook();
-        Schedule schedule = new Schedule();
+        private Schedule schedule = new Schedule();
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == NativeMethods.WM_DMSHOWME)

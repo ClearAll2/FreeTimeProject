@@ -308,7 +308,7 @@
             // customButton
             // 
             this.customButton.AutoSize = true;
-            this.customButton.Location = new System.Drawing.Point(23, 66);
+            this.customButton.Location = new System.Drawing.Point(14, 66);
             this.customButton.Name = "customButton";
             this.customButton.Size = new System.Drawing.Size(60, 17);
             this.customButton.TabIndex = 13;
@@ -320,7 +320,7 @@
             // sakuraButton
             // 
             this.sakuraButton.AutoSize = true;
-            this.sakuraButton.Location = new System.Drawing.Point(24, 43);
+            this.sakuraButton.Location = new System.Drawing.Point(14, 43);
             this.sakuraButton.Name = "sakuraButton";
             this.sakuraButton.Size = new System.Drawing.Size(59, 17);
             this.sakuraButton.TabIndex = 12;
@@ -768,7 +768,7 @@
             // leafButton
             // 
             this.leafButton.AutoSize = true;
-            this.leafButton.Location = new System.Drawing.Point(24, 20);
+            this.leafButton.Location = new System.Drawing.Point(14, 20);
             this.leafButton.Name = "leafButton";
             this.leafButton.Size = new System.Drawing.Size(46, 17);
             this.leafButton.TabIndex = 10;

@@ -9,9 +9,9 @@ namespace DM
 {
     public partial class Music : Form
     {
-        GlobalKeyboardHook gHook;
-        int newx, newy;
-        string playlistLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "Playlists");
+        private GlobalKeyboardHook gHook;
+        private int newx, newy;
+        private string playlistLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "Playlists");
 
         //minimize form when clicking icon on taskbar
         //for smooth load

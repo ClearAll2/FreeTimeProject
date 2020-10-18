@@ -111,7 +111,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(313, 117);
             this.textBox1.TabIndex = 25;
-            this.textBox1.Text = "Changelog v2.7:\r\n";
+            this.textBox1.Text = "Changelog v2.7:\r\n-We added Smooth motion option.";
             // 
             // buttonOK
             // 

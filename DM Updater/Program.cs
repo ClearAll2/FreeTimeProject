@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,6 +25,7 @@ namespace DM_Updater
         /// The main entry point for the application.
         /// </summary>
         /// 
+        private static Mutex m_Mutex;
         private static String _fileName = "";
         public static String FileName
         {
@@ -39,13 +41,23 @@ namespace DM_Updater
         [STAThread]
         static void Main(String[] args)
         {
+            m_Mutex = new Mutex(true, "DMUpdater");
             if (args.Length > 0)
             {
                 _fileName = args[0];
             }
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Updater());
+            if (m_Mutex.WaitOne(0, true))
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                SetProcessDpiAwareness((int)DpiAwareness.SystemAware);
+                Application.Run(new Updater());
+            }
+            else
+            {
+                //MessageBox.Show("DM Updater is already running!", "Hey man!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
         }
     }
 }

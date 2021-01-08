@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
@@ -9,12 +10,25 @@ namespace DM_Updater
 {
     public partial class Updater : Form
     {
-        BackgroundWorker bw;
+        private BackgroundWorker bw;
         public Updater()
         {
             InitializeComponent();
             bw = new BackgroundWorker();
             bw.DoWork += Bw_DoWork;
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += BackgroundWorker_DoWork;
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (System.IO.File.Exists(Path.Combine(Application.StartupPath, "DM.exe")))
+                labellocalVer.Text = GetProductVersion(Path.Combine(Application.StartupPath, "DM.exe"));
+            else
+                labellocalVer.Text = "N/A";
+            WebClient wc = new WebClient();
+            labellatestVer.Text = wc.DownloadString("https://download-cas.000webhostapp.com/download/DM/version");//check version
         }
 
         private void Bw_DoWork(object sender, DoWorkEventArgs e)
@@ -47,7 +61,8 @@ namespace DM_Updater
                 entry.ExtractToFile(System.IO.Path.Combine(Application.StartupPath, entry.Name), true);
             }
             zipArchive.Dispose();
-            Process.Start(Application.StartupPath + "\\DM.exe");
+            if (checkBoxAutoOpen.Checked)
+                Process.Start(Application.StartupPath + "\\DM.exe");
             System.IO.File.Delete(Application.StartupPath + "\\Release.zip");
             Application.Exit();
         }
@@ -56,12 +71,24 @@ namespace DM_Updater
         {
             if (Program.FileName != "")
             {
+                panelFront.Hide();
                 bw.RunWorkerAsync(Program.FileName);
             }
-            else
+            
+        }
+
+        private string GetProductVersion(string s)
+        {
+            FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(s);
+            return myFileVersionInfo.ProductVersion;
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            if (!bw.IsBusy)
             {
-                MessageBox.Show("This app can't be opened manually!", "Manual? No no", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Application.Exit();
+                panelFront.Hide();
+                bw.RunWorkerAsync(Program.FileName);
             }
         }
     }

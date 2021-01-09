@@ -15,8 +15,8 @@ namespace DM
             InitializeComponent();
             this.Text = String.Format("About {0}", "Desktop Magic");
             labelProductName.Text = Application.ProductName;
-            labelVersion.Text = String.Format("Version {0}", Application.ProductVersion) + " Remastered";
-            labelCopyright.Text = "Copyright © 2016 - 2020";
+            labelVersion.Text = String.Format("Version {0}", Application.ProductVersion);
+            labelCopyright.Text = "Copyright © 2016 - 2021";
             labelCompanyName.Text = Application.CompanyName;
             buttonOK.Select();
         }

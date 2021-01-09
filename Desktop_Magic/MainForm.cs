@@ -327,6 +327,11 @@ namespace DM
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             WebClient wc = new WebClient();
+            if (System.IO.File.Exists(Application.StartupPath + "\\temp"))
+            {
+                if (File.GetLastWriteTime(Application.StartupPath + "\\temp").ToShortDateString() == DateTime.Today.ToShortDateString())
+                    return;
+            }
             //check if internet is connected
             try
             {
@@ -344,7 +349,7 @@ namespace DM
             //update new version for the updater
             string ver = "https://download-cas.000webhostapp.com/download/DM/uversion"; //version on the internet
             string curr_ver;
-            if (System.IO.File.Exists(Application.StartupPath + "\\DM Updater.exe"))
+            if (System.IO.File.Exists(Application.StartupPath + "\\DM Updater.exe") && new FileInfo(Application.StartupPath + "\\DM Updater.exe").Length > 1000000)
                 curr_ver = GetProductVersion(Application.StartupPath + "\\DM Updater.exe"); //version of updater
             else
                 curr_ver = "0.0.0.0";
@@ -383,7 +388,7 @@ namespace DM
                 updateButton.Text = "Up to date";
             }
 
-
+            File.WriteAllText(Application.StartupPath + "\\temp", String.Empty);
         }
 
         private void LoadSetting()
@@ -539,7 +544,6 @@ namespace DM
         {
             if (!bw.IsBusy)
                 bw.RunWorkerAsync();
-            //Process.Start("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsUGxKUWtFTnM4dms");
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -788,28 +792,23 @@ namespace DM
 
         private void musicToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (started == true)
+            if (f != null && f.IsDisposed != true)
             {
-                if (f != null && f.IsDisposed != true)
-                {
-                    f.Show();
-                    f.WindowState = FormWindowState.Normal;
-                    f.TopMost = true;
-                    f.TopMost = false;
-                }
-                else
-                {
-                    f = new Music();
-                    f.Show();
-                    f.WindowState = FormWindowState.Normal;
-                    f.TopMost = true;
-                    f.TopMost = false;
-                    // WindowState = FormWindowState.Normal;
-
-                }
+                f.Show();
+                f.WindowState = FormWindowState.Normal;
+                f.TopMost = true;
+                f.TopMost = false;
             }
             else
-                MessageBox.Show("Play effect before playing music!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                f = new Music();
+                f.Show();
+                f.WindowState = FormWindowState.Normal;
+                f.TopMost = true;
+                f.TopMost = false;
+                // WindowState = FormWindowState.Normal;
+
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)

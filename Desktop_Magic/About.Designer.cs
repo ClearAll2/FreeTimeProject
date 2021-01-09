@@ -111,8 +111,8 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(313, 117);
             this.textBox1.TabIndex = 25;
-            this.textBox1.Text = "Changelog v2.8:\r\n-We improved update function.\r\n-We updated DM Updater, now you c" +
-    "an open manually.";
+            this.textBox1.Text = "Changelog v2.8:\r\n-We added Color Theme.\r\n-We improved some features.\r\n-We updated" +
+    " DM Updater, now you can open manually.";
             // 
             // buttonOK
             // 

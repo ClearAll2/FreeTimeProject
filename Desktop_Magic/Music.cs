@@ -30,7 +30,7 @@ namespace DM
             }
         }
 
-        public Music()
+        public Music(Color color)
         {
             InitializeComponent();        
             StartPosition = FormStartPosition.CenterScreen;
@@ -45,6 +45,7 @@ namespace DM
                 axWindowsMediaPlayer1.Ctlcontrols.play();
             }
             r.Close();
+            ApplyTheme(color);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -230,6 +231,11 @@ namespace DM
         private void exitMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void ApplyTheme(Color color)
+        {
+            importButton.ForeColor = color;
         }
     }
 }

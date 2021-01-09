@@ -13,10 +13,12 @@ namespace DM
 {
     public partial class ScheduleSetting : Form
     {
-        public ScheduleSetting()
+        public ScheduleSetting(Color color)
         {
             InitializeComponent();
             LoadSetting();
+            buttonOK.ForeColor = color;
+            buttonCancel.ForeColor = color;
         }
 
         private void LoadSetting()

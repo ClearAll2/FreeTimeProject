@@ -97,15 +97,17 @@ namespace DM
             if (r.GetValue("Desktop_Magic") == null)
             {
                 if ((string)r.GetValue("Desktop_Magic") == Application.ExecutablePath)
-                    checkBox1.Checked = false;
+                    checkBoxRunatStartup.Checked = false;
             }
             else
             {
-                checkBox1.Checked = true;
+                checkBoxRunatStartup.Checked = true;
                 notifyIcon1.Visible = true;
                 button1_Click(null, null);
                 
             }
+            
+
             //new
             if (r1.GetValue("DM3") == null)
             {
@@ -182,7 +184,7 @@ namespace DM
 
             if (r1.GetValue("Link") != null)
             {
-                if (checkBox1.Checked != true)
+                if (checkBoxRunatStartup.Checked != true)
                 {
                     button1_Click(null, null);
                     notifyIcon1.Visible = true;
@@ -190,7 +192,7 @@ namespace DM
 
             }
             if (r1.GetValue("AaR") == null)
-                checkBox3.Checked = false;
+                checkBoxAllrandom.Checked = false;
             else
                 timer2.Enabled = true;
 
@@ -203,14 +205,20 @@ namespace DM
                 checkBoxSmoothmotion.Checked = true;
             }
 
+            if (r1.GetValue("Theme") != null)
+            {
+                int tmp = (int)r1.GetValue("Theme");
+                ApplyTheme(Color.FromArgb(tmp));
+            }
+
             //never put this to top
             if (r1.GetValue("DM2") == null)
             {
-                checkBox2.Checked = false;
+                checkBoxHideatStartup.Checked = false;
             }
             else
             {
-                checkBox2.Checked = true;
+                checkBoxHideatStartup.Checked = true;
             }
 
             bw.RunWorkerAsync();
@@ -221,7 +229,7 @@ namespace DM
 
 
 
-            f = new Music();
+            f = new Music(startButton.ForeColor);
             //for hook
             f.Show();
             f.Hide();
@@ -273,7 +281,7 @@ namespace DM
             int o = r.Next(1, 10);
             if (o == 1)
             {
-                tipsLabel.Text = "You can't play music before starting";
+                tipsLabel.Text = "Now you can play music before starting";
             }
             else if (o == 2)
             {
@@ -327,7 +335,7 @@ namespace DM
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             WebClient wc = new WebClient();
-            if (System.IO.File.Exists(Application.StartupPath + "\\temp"))
+            if (e.Argument == null && System.IO.File.Exists(Application.StartupPath + "\\temp"))
             {
                 if (File.GetLastWriteTime(Application.StartupPath + "\\temp").ToShortDateString() == DateTime.Today.ToShortDateString())
                     return;
@@ -451,7 +459,7 @@ namespace DM
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
+            if (checkBoxHideatStartup.Checked)
             {
                 BeginInvoke(new MethodInvoker(delegate { Hide(); }));
 
@@ -468,7 +476,7 @@ namespace DM
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            if (checkBox1.Checked)
+            if (checkBoxRunatStartup.Checked)
             {
                 r.SetValue("Desktop_Magic", Application.ExecutablePath);
             }
@@ -482,7 +490,7 @@ namespace DM
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
-            if (checkBox2.Checked)
+            if (checkBoxHideatStartup.Checked)
             {
                 r1.SetValue("DM2", true);
             }
@@ -543,7 +551,7 @@ namespace DM
         private void button4_Click(object sender, EventArgs e)
         {
             if (!bw.IsBusy)
-                bw.RunWorkerAsync();
+                bw.RunWorkerAsync("manual");
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -801,7 +809,7 @@ namespace DM
             }
             else
             {
-                f = new Music();
+                f = new Music(startButton.ForeColor);
                 f.Show();
                 f.WindowState = FormWindowState.Normal;
                 f.TopMost = true;
@@ -885,7 +893,7 @@ namespace DM
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
-            if (checkBox3.Checked)
+            if (checkBoxAllrandom.Checked)
             {
                 CheckConfig();
                 timer2.Enabled = true;
@@ -904,7 +912,7 @@ namespace DM
         private void timer2_Tick(object sender, EventArgs e)
         {
             CheckConfig();
-            if (checkBox3.Checked && started == true)
+            if (checkBoxAllrandom.Checked && started == true)
             {
                 if (File.Exists(CGlob.Path))
                 {
@@ -1112,7 +1120,7 @@ namespace DM
 
         private void configToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Config f4 = new Config();
+            Config f4 = new Config(startButton.ForeColor);
             f4.ShowDialog();
         }
 
@@ -1137,7 +1145,20 @@ namespace DM
 
         private void label14_Click(object sender, EventArgs e)
         {
+            if (started)
+            {
+                DialogResult dialogResult = new DialogResult();
+                dialogResult = MessageBox.Show("You just want to hide this window, right?", "Wait a second!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    button1_Click(null, null);
+                    return;
+                }
+                else if (dialogResult == DialogResult.Cancel)
+                    return;
+            }
             Application.Exit();
+
         }
 
         private void label15_Click(object sender, EventArgs e)
@@ -1147,7 +1168,7 @@ namespace DM
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (File.Exists(Application.StartupPath + "\\schedule") && checkBox1.Checked)
+            if (File.Exists(Application.StartupPath + "\\schedule") && checkBoxRunatStartup.Checked)
             {
                 if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && mon || DateTime.Now.DayOfWeek == DayOfWeek.Tuesday && tue || DateTime.Now.DayOfWeek == DayOfWeek.Wednesday && wed || DateTime.Now.DayOfWeek == DayOfWeek.Thursday && thu || DateTime.Now.DayOfWeek == DayOfWeek.Friday && fri || DateTime.Now.DayOfWeek == DayOfWeek.Saturday && sat || DateTime.Now.DayOfWeek == DayOfWeek.Sunday && sun)
                 {
@@ -1247,7 +1268,7 @@ namespace DM
 
         private void CheckForStart()
         {
-            if (checkBox1.Checked)
+            if (checkBoxRunatStartup.Checked)
             {
                 if (n != null && !n.IsDisposed)
                 {
@@ -1285,6 +1306,40 @@ namespace DM
                 r1.DeleteValue("DM7", false);
             }
             r1.Close();
+        }
+
+        private void buttonTheme_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.AnyColor = true;
+            colorDialog.AllowFullOpen = true;
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                ApplyTheme(colorDialog.Color);
+                r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
+                r1.SetValue("Theme", startButton.ForeColor.ToArgb());
+                r1.Close();
+            }
+            colorDialog.Dispose();
+        }
+
+        private void ApplyTheme(Color color)
+        {
+            startButton.ForeColor = color;
+            customizeButton.ForeColor = color;
+            updateButton.ForeColor = color;
+            musicButton.ForeColor = color;
+            checkBoxRunatStartup.ForeColor = color;
+            applyButton.ForeColor = color;
+            backButton.ForeColor = color;
+            buttonOKCustom.ForeColor = color;
+            buttonCancelCustom.ForeColor = color;
+            libraryButton.ForeColor = color;
+            aboutToolStripMenuItem.ForeColor = color;
+            if (f != null && !f.IsDisposed)
+            {
+                f.ApplyTheme(color);
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1333,7 +1388,7 @@ namespace DM
 
         private void buttonSchedule_Click(object sender, EventArgs e)
         {
-            ScheduleSetting scheduleSetting = new ScheduleSetting();
+            ScheduleSetting scheduleSetting = new ScheduleSetting(startButton.ForeColor);
             scheduleSetting.FormClosed += ScheduleSetting_FormClosed;
             scheduleSetting.ShowDialog();
         }

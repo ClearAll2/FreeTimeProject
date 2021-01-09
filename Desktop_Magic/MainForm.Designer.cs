@@ -41,9 +41,9 @@
             this.scheduleConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxRunatStartup = new System.Windows.Forms.CheckBox();
             this.updateButton = new System.Windows.Forms.Button();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBoxAllrandom = new System.Windows.Forms.CheckBox();
             this.trackBarDirection = new System.Windows.Forms.TrackBar();
             this.trackBarSpeed = new System.Windows.Forms.TrackBar();
             this.trackBarNumber = new System.Windows.Forms.TrackBar();
@@ -58,8 +58,9 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.buttonSchedule = new System.Windows.Forms.Button();
             this.checkBoxSmoothmotion = new System.Windows.Forms.CheckBox();
+            this.buttonTheme = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxHideatStartup = new System.Windows.Forms.CheckBox();
             this.customizeButton = new System.Windows.Forms.Button();
             this.musicButton = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
@@ -133,6 +134,7 @@
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.Blue;
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -192,26 +194,26 @@
             // 
             this.toolTip1.IsBalloon = true;
             // 
-            // checkBox1
+            // checkBoxRunatStartup
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.checkBox1.Location = new System.Drawing.Point(6, 32);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(162, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Run at Windows startup";
-            this.toolTip1.SetToolTip(this.checkBox1, "Start this application when Windows startup.");
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxRunatStartup.AutoSize = true;
+            this.checkBoxRunatStartup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRunatStartup.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.checkBoxRunatStartup.Location = new System.Drawing.Point(6, 32);
+            this.checkBoxRunatStartup.Name = "checkBoxRunatStartup";
+            this.checkBoxRunatStartup.Size = new System.Drawing.Size(162, 17);
+            this.checkBoxRunatStartup.TabIndex = 7;
+            this.checkBoxRunatStartup.Text = "Run at Windows startup";
+            this.toolTip1.SetToolTip(this.checkBoxRunatStartup, "Start this application when Windows startup.");
+            this.checkBoxRunatStartup.UseVisualStyleBackColor = true;
+            this.checkBoxRunatStartup.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // updateButton
             // 
             this.updateButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.updateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.updateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateButton.Location = new System.Drawing.Point(228, 157);
             this.updateButton.Name = "updateButton";
@@ -222,21 +224,21 @@
             this.updateButton.UseVisualStyleBackColor = false;
             this.updateButton.Click += new System.EventHandler(this.button4_Click);
             // 
-            // checkBox3
+            // checkBoxAllrandom
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(6, 97);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(169, 17);
-            this.checkBox3.TabIndex = 13;
-            this.checkBox3.Text = "All random and automatic";
-            this.toolTip1.SetToolTip(this.checkBox3, "Automatically select direction, speed, number and type.\r\nChange every thing every" +
+            this.checkBoxAllrandom.AutoSize = true;
+            this.checkBoxAllrandom.Checked = true;
+            this.checkBoxAllrandom.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAllrandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAllrandom.Location = new System.Drawing.Point(6, 97);
+            this.checkBoxAllrandom.Name = "checkBoxAllrandom";
+            this.checkBoxAllrandom.Size = new System.Drawing.Size(169, 17);
+            this.checkBoxAllrandom.TabIndex = 13;
+            this.checkBoxAllrandom.Text = "All random and automatic";
+            this.toolTip1.SetToolTip(this.checkBoxAllrandom, "Automatically select direction, speed, number and type.\r\nChange every thing every" +
         " 5 minutes (default). Read readme\r\nfor more information.");
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.checkBoxAllrandom.UseVisualStyleBackColor = true;
+            this.checkBoxAllrandom.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // trackBarDirection
             // 
@@ -281,9 +283,9 @@
             // libraryButton
             // 
             this.libraryButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.libraryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.libraryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.libraryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.libraryButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.libraryButton.Location = new System.Drawing.Point(12, 164);
             this.libraryButton.Name = "libraryButton";
             this.libraryButton.Size = new System.Drawing.Size(196, 27);
@@ -376,7 +378,7 @@
             this.labelAbout.Name = "labelAbout";
             this.labelAbout.Size = new System.Drawing.Size(116, 39);
             this.labelAbout.TabIndex = 0;
-            this.labelAbout.Text = "Desktop Magic v2x\r\nCopyright ©  2020\r\nFreedom Software";
+            this.labelAbout.Text = "Desktop Magic v2x\r\nCopyright ©  2021\r\nFreedom Software";
             this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip1.SetToolTip(this.labelAbout, "About");
             this.labelAbout.Click += new System.EventHandler(this.label1_Click);
@@ -434,12 +436,30 @@
             this.checkBoxSmoothmotion.UseVisualStyleBackColor = true;
             this.checkBoxSmoothmotion.CheckedChanged += new System.EventHandler(this.checkBoxSmoothmotion_CheckedChanged);
             // 
+            // buttonTheme
+            // 
+            this.buttonTheme.BackColor = System.Drawing.Color.Transparent;
+            this.buttonTheme.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonTheme.FlatAppearance.BorderSize = 0;
+            this.buttonTheme.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTheme.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonTheme.Location = new System.Drawing.Point(306, 5);
+            this.buttonTheme.Name = "buttonTheme";
+            this.buttonTheme.Size = new System.Drawing.Size(20, 20);
+            this.buttonTheme.TabIndex = 12;
+            this.buttonTheme.Text = "#";
+            this.toolTip1.SetToolTip(this.buttonTheme, "Color Theme");
+            this.buttonTheme.UseVisualStyleBackColor = false;
+            this.buttonTheme.Click += new System.EventHandler(this.buttonTheme_Click);
+            // 
             // startButton
             // 
             this.startButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.startButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.startButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.startButton.Location = new System.Drawing.Point(228, 92);
             this.startButton.Name = "startButton";
@@ -449,24 +469,24 @@
             this.startButton.UseVisualStyleBackColor = false;
             this.startButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox2
+            // checkBoxHideatStartup
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(6, 65);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(196, 17);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "Hide this dialog box at startup";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBoxHideatStartup.AutoSize = true;
+            this.checkBoxHideatStartup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxHideatStartup.Location = new System.Drawing.Point(6, 65);
+            this.checkBoxHideatStartup.Name = "checkBoxHideatStartup";
+            this.checkBoxHideatStartup.Size = new System.Drawing.Size(196, 17);
+            this.checkBoxHideatStartup.TabIndex = 8;
+            this.checkBoxHideatStartup.Text = "Hide this dialog box at startup";
+            this.checkBoxHideatStartup.UseVisualStyleBackColor = true;
+            this.checkBoxHideatStartup.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // customizeButton
             // 
             this.customizeButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.customizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.customizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customizeButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.customizeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.customizeButton.Location = new System.Drawing.Point(228, 124);
             this.customizeButton.Name = "customizeButton";
@@ -479,9 +499,9 @@
             // musicButton
             // 
             this.musicButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.musicButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.musicButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.musicButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.musicButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.musicButton.Location = new System.Drawing.Point(228, 189);
             this.musicButton.Name = "musicButton";
             this.musicButton.Size = new System.Drawing.Size(142, 26);
@@ -499,9 +519,9 @@
             // 
             this.groupBox1.Controls.Add(this.buttonSchedule);
             this.groupBox1.Controls.Add(this.buttonRandomConfig);
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.checkBoxAllrandom);
+            this.groupBox1.Controls.Add(this.checkBoxHideatStartup);
+            this.groupBox1.Controls.Add(this.checkBoxRunatStartup);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 92);
             this.groupBox1.Name = "groupBox1";
@@ -586,9 +606,9 @@
             // buttonCancelCustom
             // 
             this.buttonCancelCustom.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonCancelCustom.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonCancelCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancelCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelCustom.ForeColor = System.Drawing.Color.DodgerBlue;
             this.buttonCancelCustom.Location = new System.Drawing.Point(99, 153);
             this.buttonCancelCustom.Name = "buttonCancelCustom";
             this.buttonCancelCustom.Size = new System.Drawing.Size(81, 29);
@@ -631,9 +651,9 @@
             // buttonOKCustom
             // 
             this.buttonOKCustom.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonOKCustom.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonOKCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOKCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOKCustom.ForeColor = System.Drawing.Color.DodgerBlue;
             this.buttonOKCustom.Location = new System.Drawing.Point(12, 153);
             this.buttonOKCustom.Name = "buttonOKCustom";
             this.buttonOKCustom.Size = new System.Drawing.Size(81, 29);
@@ -654,9 +674,9 @@
             // backButton
             // 
             this.backButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.backButton.Location = new System.Drawing.Point(295, 164);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 27);
@@ -668,9 +688,9 @@
             // applyButton
             // 
             this.applyButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.applyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.applyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.applyButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.applyButton.Location = new System.Drawing.Point(214, 164);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(75, 27);
@@ -800,6 +820,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Controls.Add(this.buttonTheme);
             this.panel4.Controls.Add(this.buttonMinimize);
             this.panel4.Controls.Add(this.buttonClose);
             this.panel4.Controls.Add(this.labelAbout);
@@ -900,14 +921,14 @@
         private System.Windows.Forms.Label labelAbout;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBoxRunatStartup;
+        private System.Windows.Forms.CheckBox checkBoxHideatStartup;
         private System.Windows.Forms.Button customizeButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.ToolStripMenuItem musicToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Button musicButton;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBoxAllrandom;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
         private System.Windows.Forms.Panel panel4;
@@ -952,5 +973,6 @@
         private System.Windows.Forms.CheckBox checkBoxSmoothmotion;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonTheme;
     }
 }

@@ -15,11 +15,13 @@ namespace DM
     public partial class Config : Form
     {
         private RegistryKey r;
-        public Config()
+        public Config(Color color)
         {
             InitializeComponent();
             timecheckBox.Hide();
             CheckConfig();
+            button1.ForeColor = color;
+            button2.ForeColor = color;
         }
 
         private void CheckConfig()

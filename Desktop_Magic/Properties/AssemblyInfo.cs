@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Freedom Software")]
 [assembly: AssemblyProduct("Desktop Magic")]
-[assembly: AssemblyCopyright("Copyright © 2016 - 2020")]
+[assembly: AssemblyCopyright("Copyright © 2016 - 2021")]
 [assembly: AssemblyTrademark("Clear All Soft (CAS)")]
 [assembly: AssemblyCulture("")]
 

@@ -109,10 +109,11 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(313, 117);
             this.textBox1.TabIndex = 25;
-            this.textBox1.Text = "Changelog v2.8:\r\n-We added Color Theme.\r\n-We improved some features.\r\n-We updated" +
-    " DM Updater, now you can open manually.";
+            this.textBox1.Text = "Changelog v2.8.0.1:\r\n-Small changes.\r\n\r\nChangelog v2.8:\r\n-We added Color Theme.\r\n" +
+    "-We improved some features.\r\n-We updated DM Updater, now you can open manually.";
             // 
             // buttonOK
             // 

@@ -75,7 +75,6 @@ namespace DM
         public MainForm()
         {
             InitializeComponent();
-            //notifyIcon1.Visible = false;
             bw = new BackgroundWorker();
             bw.DoWork += bw_DoWork;
             bw3 = new BackgroundWorker();
@@ -107,7 +106,6 @@ namespace DM
                 
             }
             
-
             //new
             if (r1.GetValue("DM3") == null)
             {
@@ -281,7 +279,8 @@ namespace DM
             int o = r.Next(1, 10);
             if (o == 1)
             {
-                tipsLabel.Text = "Now you can play music before starting";
+                tipsLabel.Text = "Remember to wear mask and wash your hands";
+                tipsLabel.ForeColor = Color.Red;
             }
             else if (o == 2)
             {

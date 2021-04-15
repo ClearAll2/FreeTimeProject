@@ -79,17 +79,17 @@
             this.pictureBoxCustom = new System.Windows.Forms.PictureBox();
             this.backButton = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxSpecs = new System.Windows.Forms.GroupBox();
             this.labelNumber = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.labelSpeed = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.labelDirection = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxType = new System.Windows.Forms.GroupBox();
             this.leafButton = new System.Windows.Forms.RadioButton();
             this.snowButton = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxFPS = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -102,9 +102,9 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSizeCustom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCustom)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBoxSpecs.SuspendLayout();
+            this.groupBoxType.SuspendLayout();
+            this.groupBoxFPS.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -429,10 +429,10 @@
             this.checkBoxSmoothmotion.AutoSize = true;
             this.checkBoxSmoothmotion.Location = new System.Drawing.Point(23, 22);
             this.checkBoxSmoothmotion.Name = "checkBoxSmoothmotion";
-            this.checkBoxSmoothmotion.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxSmoothmotion.Size = new System.Drawing.Size(97, 17);
             this.checkBoxSmoothmotion.TabIndex = 0;
-            this.checkBoxSmoothmotion.Text = "Smooth motion";
-            this.toolTip1.SetToolTip(this.checkBoxSmoothmotion, "This will use more CPU");
+            this.checkBoxSmoothmotion.Text = "Smooth Motion";
+            this.toolTip1.SetToolTip(this.checkBoxSmoothmotion, "Increases FPS from 30 to 60. This may affect CPU usage.");
             this.checkBoxSmoothmotion.UseVisualStyleBackColor = true;
             this.checkBoxSmoothmotion.CheckedChanged += new System.EventHandler(this.checkBoxSmoothmotion_CheckedChanged);
             // 
@@ -578,9 +578,9 @@
             this.panel2.Controls.Add(this.backButton);
             this.panel2.Controls.Add(this.applyButton);
             this.panel2.Controls.Add(this.libraryButton);
-            this.panel2.Controls.Add(this.groupBox3);
-            this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.groupBox4);
+            this.panel2.Controls.Add(this.groupBoxSpecs);
+            this.panel2.Controls.Add(this.groupBoxType);
+            this.panel2.Controls.Add(this.groupBoxFPS);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 58);
             this.panel2.Name = "panel2";
@@ -699,23 +699,23 @@
             this.applyButton.UseVisualStyleBackColor = true;
             this.applyButton.Click += new System.EventHandler(this.button7_Click);
             // 
-            // groupBox3
+            // groupBoxSpecs
             // 
-            this.groupBox3.Controls.Add(this.labelNumber);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.labelSpeed);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.labelDirection);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.trackBarNumber);
-            this.groupBox3.Controls.Add(this.trackBarSpeed);
-            this.groupBox3.Controls.Add(this.trackBarDirection);
-            this.groupBox3.Location = new System.Drawing.Point(12, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(196, 152);
-            this.groupBox3.TabIndex = 20;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Customizable Specs";
+            this.groupBoxSpecs.Controls.Add(this.labelNumber);
+            this.groupBoxSpecs.Controls.Add(this.label10);
+            this.groupBoxSpecs.Controls.Add(this.labelSpeed);
+            this.groupBoxSpecs.Controls.Add(this.label8);
+            this.groupBoxSpecs.Controls.Add(this.labelDirection);
+            this.groupBoxSpecs.Controls.Add(this.label6);
+            this.groupBoxSpecs.Controls.Add(this.trackBarNumber);
+            this.groupBoxSpecs.Controls.Add(this.trackBarSpeed);
+            this.groupBoxSpecs.Controls.Add(this.trackBarDirection);
+            this.groupBoxSpecs.Location = new System.Drawing.Point(12, 6);
+            this.groupBoxSpecs.Name = "groupBoxSpecs";
+            this.groupBoxSpecs.Size = new System.Drawing.Size(196, 152);
+            this.groupBoxSpecs.TabIndex = 20;
+            this.groupBoxSpecs.TabStop = false;
+            this.groupBoxSpecs.Text = "Customizable Specs";
             // 
             // labelNumber
             // 
@@ -771,19 +771,19 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Direction";
             // 
-            // groupBox2
+            // groupBoxType
             // 
-            this.groupBox2.Controls.Add(this.mixButton);
-            this.groupBox2.Controls.Add(this.leafButton);
-            this.groupBox2.Controls.Add(this.sakuraButton);
-            this.groupBox2.Controls.Add(this.snowButton);
-            this.groupBox2.Controls.Add(this.customButton);
-            this.groupBox2.Location = new System.Drawing.Point(214, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(156, 97);
-            this.groupBox2.TabIndex = 19;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Type";
+            this.groupBoxType.Controls.Add(this.mixButton);
+            this.groupBoxType.Controls.Add(this.leafButton);
+            this.groupBoxType.Controls.Add(this.sakuraButton);
+            this.groupBoxType.Controls.Add(this.snowButton);
+            this.groupBoxType.Controls.Add(this.customButton);
+            this.groupBoxType.Location = new System.Drawing.Point(214, 6);
+            this.groupBoxType.Name = "groupBoxType";
+            this.groupBoxType.Size = new System.Drawing.Size(156, 97);
+            this.groupBoxType.TabIndex = 19;
+            this.groupBoxType.TabStop = false;
+            this.groupBoxType.Text = "Type";
             // 
             // leafButton
             // 
@@ -807,15 +807,15 @@
             this.snowButton.UseVisualStyleBackColor = true;
             this.snowButton.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // groupBox4
+            // groupBoxFPS
             // 
-            this.groupBox4.Controls.Add(this.checkBoxSmoothmotion);
-            this.groupBox4.Location = new System.Drawing.Point(214, 109);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(156, 49);
-            this.groupBox4.TabIndex = 21;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "FPS";
+            this.groupBoxFPS.Controls.Add(this.checkBoxSmoothmotion);
+            this.groupBoxFPS.Location = new System.Drawing.Point(214, 109);
+            this.groupBoxFPS.Name = "groupBoxFPS";
+            this.groupBoxFPS.Size = new System.Drawing.Size(156, 49);
+            this.groupBoxFPS.TabIndex = 21;
+            this.groupBoxFPS.TabStop = false;
+            this.groupBoxFPS.Text = "FPS";
             // 
             // panel4
             // 
@@ -895,12 +895,12 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSizeCustom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCustom)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxSpecs.ResumeLayout(false);
+            this.groupBoxSpecs.PerformLayout();
+            this.groupBoxType.ResumeLayout(false);
+            this.groupBoxType.PerformLayout();
+            this.groupBoxFPS.ResumeLayout(false);
+            this.groupBoxFPS.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -969,10 +969,10 @@
         private System.Windows.Forms.Button buttonSchedule;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem scheduleConfigurationToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxFPS;
         private System.Windows.Forms.CheckBox checkBoxSmoothmotion;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxSpecs;
+        private System.Windows.Forms.GroupBox groupBoxType;
         private System.Windows.Forms.Button buttonTheme;
     }
 }

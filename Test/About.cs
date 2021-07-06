@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace SNote
 {
-    partial class AboutBox2 : Form
+    partial class About : Form
     {
-        public AboutBox2()
+        public About()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
@@ -18,7 +18,6 @@ namespace SNote
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
         }
 
         #region Assembly Attribute Accessors

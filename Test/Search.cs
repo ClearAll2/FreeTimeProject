@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace MyNotepad
 {
     public partial class Form2 : Form
     {
-        RichTextBox _richTextBox;
+        private RichTextBox _richTextBox;
         
         public Form2( RichTextBox richTextBox)
         {
@@ -111,12 +106,12 @@ namespace MyNotepad
         public void ShowFind(bool replaceMode, string key)
         {
             this.Text = replaceMode ? "Replace" : "Find";
-            panel2.Visible = replaceMode;
+            panelReplace.Visible = replaceMode;
 
             if (!this.Visible)
                 this.Show(_richTextBox);
             // resize form
-            this.ClientSize = new Size(this.ClientSize.Width, panel3.Bottom);
+            this.ClientSize = new Size(this.ClientSize.Width, panelOption.Bottom);
             textBox1.Text = key;
             textBox1.Focus();
             textBox1.SelectAll();

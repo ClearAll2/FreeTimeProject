@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Win32;
@@ -13,24 +7,22 @@ using MyNotepad;
 using SNote;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-using System.Management;
-using System.Configuration;
 
 namespace Test
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        bool saved = true;
-        bool opened = false;
-        RegistryKey r;
-        AboutBox2 ab = new AboutBox2();
-        Form2 f;
+        private bool saved = true;
+        private bool opened = false;
+        private RegistryKey r;
+        private About ab = new About();
+        private Form2 f;
         
-        public Form1()
+        public Main()
         {
             InitializeComponent();
             
-            f = new Form2(richTextBox1);
+            f = new Form2(richTextBoxMain);
             f.Hide();
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
             if (r == null)
@@ -40,33 +32,35 @@ namespace Test
 
             if (r.GetValue("Wordwrap") != null)
             {
-                richTextBox1.WordWrap = true;
+                richTextBoxMain.WordWrap = true;
                 wordWrapToolStripMenuItem.Checked = true;
-                richTextBox1.WordWrap = true;
+                richTextBoxMain.WordWrap = true;
             }
             else
             {
-                richTextBox1.WordWrap = false;
+                richTextBoxMain.WordWrap = false;
                 wordWrapToolStripMenuItem.Checked = false;
-                richTextBox1.WordWrap = false;
+                richTextBoxMain.WordWrap = false;
             }
             if (r.GetValue("Dark") != null)
             {
                 darkBackgroundToolStripMenuItem.Checked = true;
-                richTextBox1.BackColor = Color.FromArgb(45, 45, 45);
-                richTextBox1.ForeColor = Color.White;
-                menuStrip1.BackColor = Color.FromArgb(45, 45, 45);
-                menuStrip1.ForeColor = Color.White;
+                richTextBoxMain.BackColor = Color.FromArgb(30, 30, 30);
+                richTextBoxMain.ForeColor = SystemColors.ControlDark;
+                menuStrip1.BackColor = richTextBoxMain.BackColor;
+                menuStrip1.ForeColor = richTextBoxMain.ForeColor;
+                labelStatus.BackColor = menuStrip1.BackColor;
+                labelStatus.ForeColor = menuStrip1.ForeColor;
                 whiteBackgroundToolStripMenuItem.Checked = false;
                 saved = true;
             }
            
             r.Close();
-            this.Text = "Untitled" + " - SNote"; 
-            richTextBox1.DetectUrls = true;
-            richTextBox1.AllowDrop = true;   
-            richTextBox1.DragEnter += new DragEventHandler(richText1_DragEnter);
-            richTextBox1.DragDrop += new DragEventHandler(richText1_DragDrop);
+            this.Text = "Untitled"; 
+            richTextBoxMain.DetectUrls = true;
+            richTextBoxMain.AllowDrop = true;   
+            richTextBoxMain.DragEnter += new DragEventHandler(richText1_DragEnter);
+            richTextBoxMain.DragDrop += new DragEventHandler(richText1_DragDrop);
             //this.Size = new Size(global::SNote.Properties.Settings.Default.W, global::SNote.Properties.Settings.Default.H);
         }
 
@@ -88,14 +82,14 @@ namespace Test
                 String s;
                 
                 // Get start position to drop the text.
-                i = richTextBox1.SelectionStart;
-                s = richTextBox1.Text.Substring(i);
-                richTextBox1.Text = richTextBox1.Text.Substring(0, i);
+                i = richTextBoxMain.SelectionStart;
+                s = richTextBoxMain.Text.Substring(i);
+                richTextBoxMain.Text = richTextBoxMain.Text.Substring(0, i);
 
                 // Drop the text on to the RichTextBox.
-                richTextBox1.Text = richTextBox1.Text +
+                richTextBoxMain.Text = richTextBoxMain.Text +
                    e.Data.GetData(DataFormats.Text).ToString();
-                richTextBox1.Text = richTextBox1.Text + s;
+                richTextBoxMain.Text = richTextBoxMain.Text + s;
                 saved = false;
             }
             else if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -150,7 +144,7 @@ namespace Test
                 MessageBox.Show(e.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            richTextBox1.Text = sr.ReadToEnd();
+            richTextBoxMain.Text = sr.ReadToEnd();
             sr.Close();
             fs.Close();
             opened = true;
@@ -162,10 +156,10 @@ namespace Test
             if (fi.IsReadOnly == true)
             {
                 MessageBox.Show(fileName2 + " is read only!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                richTextBox1.ReadOnly = true;
+                richTextBoxMain.ReadOnly = true;
             }
             else
-                richTextBox1.ReadOnly = false;
+                richTextBoxMain.ReadOnly = false;
 
             return true;
             
@@ -191,7 +185,7 @@ namespace Test
             op.Title = "Select file to open";
             if (op.ShowDialog() == DialogResult.OK)
             {
-                richTextBox1.Text = "";
+                richTextBoxMain.Text = "";
                 
                 filePath = op.FileName;
                 fileName = filePath;
@@ -206,7 +200,7 @@ namespace Test
             else
             {
                 if (opened != true)
-                    this.Text = "Untitled - SNote";
+                    this.Text = "Untitled";
             }
                 
             
@@ -226,7 +220,7 @@ namespace Test
                     fileName = filePath;
                     try
                     {
-                        File.WriteAllText(filePath, richTextBox1.Text);
+                        File.WriteAllText(filePath, richTextBoxMain.Text);
                         saved = true;
                         trueName = filePath.Substring(filePath.LastIndexOf("\\") + 1);
                         this.Text = trueName + " - SNote";
@@ -249,7 +243,7 @@ namespace Test
                 }
                 try
                 {
-                    File.WriteAllText(fileName, richTextBox1.Text);
+                    File.WriteAllText(fileName, richTextBoxMain.Text);
                     saved = true;
                 }
                 catch (Exception ex)
@@ -272,7 +266,7 @@ namespace Test
 
                 try
                 {
-                    File.WriteAllText(filePath, richTextBox1.Text);
+                    File.WriteAllText(filePath, richTextBoxMain.Text);
                     saved = false;
                 }
                 catch (Exception ex)
@@ -283,7 +277,7 @@ namespace Test
             else
             {
                 if (opened != true)
-                    this.Text = "Untitled - SNote";
+                    this.Text = "Untitled";
             }
                 
             
@@ -296,7 +290,7 @@ namespace Test
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Undo();
+            richTextBoxMain.Undo();
             
         }
 
@@ -309,16 +303,16 @@ namespace Test
                 Process.Start(Application.ExecutablePath);
                 return;
             }
-            richTextBox1.Text = "";
-            richTextBox1.ReadOnly = false;
+            richTextBoxMain.Text = "";
+            richTextBoxMain.ReadOnly = false;
             opened = false;
             saved = false;
-            this.Text = "Untitled" + " - SNote";
+            this.Text = "Untitled";
         }
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectAll();
+            richTextBoxMain.SelectAll();
         }
 
         private void wordWrapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -326,13 +320,13 @@ namespace Test
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
             if (wordWrapToolStripMenuItem.Checked != true)
             {
-                richTextBox1.WordWrap = true;
+                richTextBoxMain.WordWrap = true;
                 wordWrapToolStripMenuItem.Checked = true;
                 r.SetValue("Wordwrap", true);
             }
             else
             {
-                richTextBox1.WordWrap = false;
+                richTextBoxMain.WordWrap = false;
                 wordWrapToolStripMenuItem.Checked = false;
                 r.DeleteValue("Wordwrap", false);
             }
@@ -343,10 +337,10 @@ namespace Test
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog font = new FontDialog();
-            font.Font = richTextBox1.Font;
+            font.Font = richTextBoxMain.Font;
             if (font.ShowDialog() == DialogResult.OK)
             {
-                richTextBox1.Font = font.Font;
+                richTextBoxMain.Font = font.Font;
                 //richTextBox1.ForeColor = font.Color;
               
             }
@@ -371,7 +365,8 @@ namespace Test
             
             if (saved != true)
             {
-                if (MessageBox.Show("Do you want to save " + this.Text, "SNote", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                DialogResult dialogResult = MessageBox.Show("Do you want to save " + this.Text, "SNote", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
                 {
                     if (opened != true)
                     {
@@ -384,7 +379,7 @@ namespace Test
                             filePath = sf.FileName;
                             try
                             {
-                                File.WriteAllText(filePath, richTextBox1.Text);
+                                File.WriteAllText(filePath, richTextBoxMain.Text);
                             }
                             catch (Exception ex)
                             {
@@ -398,7 +393,7 @@ namespace Test
 
                         try
                         {
-                            File.WriteAllText(fileName, richTextBox1.Text);
+                            File.WriteAllText(fileName, richTextBoxMain.Text);
                         }
                         catch (Exception ex)
                         {
@@ -406,56 +401,62 @@ namespace Test
                         }
 
                     }
-                    
+                    saved = true;
                 }
-                saved = true;
+                else if  (dialogResult == DialogResult.No)
+                {
+                    saved = true;
+                }
+                else
+                {
+                    e.Cancel = true;
+                    return;
+                }
             }
-           
-            Application.Exit();
         }
 
       
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Copy();
+            richTextBoxMain.Copy();
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Cut();
+            richTextBoxMain.Cut();
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Paste();
+            richTextBoxMain.Paste();
             
         }
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Redo();
+            richTextBoxMain.Redo();
         }
         
         private void uPPERToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectedText = richTextBox1.SelectedText.ToUpper();
+            richTextBoxMain.SelectedText = richTextBoxMain.SelectedText.ToUpper();
           
         }
 
         private void lowerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectedText = richTextBox1.SelectedText.ToLower();
+            richTextBoxMain.SelectedText = richTextBoxMain.SelectedText.ToLower();
         }
 
 
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectedText != "")
-                richTextBox1.SelectedText = "";
+            if (richTextBoxMain.SelectedText != "")
+                richTextBoxMain.SelectedText = "";
             else
             {
-                richTextBox1.Select(richTextBox1.SelectionStart, 1);
-                richTextBox1.SelectedText = "";
+                richTextBoxMain.Select(richTextBoxMain.SelectionStart, 1);
+                richTextBoxMain.SelectedText = "";
             }
         }
 
@@ -469,55 +470,55 @@ namespace Test
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             f.ShowFind(false, richTextBox1.SelectedText);
+             f.ShowFind(false, richTextBoxMain.SelectedText);
         }
 
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
            
-            f.ShowFind(true, richTextBox1.SelectedText);
+            f.ShowFind(true, richTextBoxMain.SelectedText);
         }
 
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Copy();
+            richTextBoxMain.Copy();
         }
 
         private void cutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Cut();
+            richTextBoxMain.Cut();
         }
 
         private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Paste();
+            richTextBoxMain.Paste();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int line = 1 + richTextBox1.GetLineFromCharIndex(richTextBox1.GetFirstCharIndexOfCurrentLine());
-            int column = 1 + richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexOfCurrentLine();
-            label1.Text = "Line: " + line.ToString() + ", Column: " + column.ToString();
-            if (richTextBox1.CanUndo != true)
+            int line = 1 + richTextBoxMain.GetLineFromCharIndex(richTextBoxMain.GetFirstCharIndexOfCurrentLine());
+            int column = 1 + richTextBoxMain.SelectionStart - richTextBoxMain.GetFirstCharIndexOfCurrentLine();
+            labelStatus.Text = "Line: " + line.ToString() + ", Column: " + column.ToString();
+            if (richTextBoxMain.CanUndo != true)
             {
                 undoToolStripMenuItem.Enabled = false;
                 saved = true;
             }
             else
                 undoToolStripMenuItem.Enabled = true;
-            if (richTextBox1.CanRedo != true)
+            if (richTextBoxMain.CanRedo != true)
                 redoToolStripMenuItem.Enabled = false;
             else
                 redoToolStripMenuItem.Enabled = true;
 
             if (saved != true)
             {
-                label1.Text += " - Not save yet ";
+                labelStatus.Text += " - Not save yet ";
                 
             }
             else
             {
-                label1.Text += " - Saved ";
+                labelStatus.Text += " - Saved ";
                 
             }
             
@@ -544,10 +545,10 @@ namespace Test
         //shift+tab
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (richTextBox1.Focused && keyData == (Keys.Tab | Keys.Shift))
+            if (richTextBoxMain.Focused && keyData == (Keys.Tab | Keys.Shift))
             {
-                richTextBox1.Select(richTextBox1.SelectionStart, -1);
-                richTextBox1.SelectedText = "";
+                richTextBoxMain.Select(richTextBoxMain.SelectionStart, -1);
+                richTextBoxMain.SelectedText = "";
                 return true;
             }
             else
@@ -572,10 +573,12 @@ namespace Test
             if (whiteBackgroundToolStripMenuItem.Checked != true)
             {
                 whiteBackgroundToolStripMenuItem.Checked = true;
-                richTextBox1.BackColor = Color.White;
-                richTextBox1.ForeColor = Color.Black;
-                menuStrip1.BackColor = Color.White;
-                menuStrip1.ForeColor = Color.Black;
+                richTextBoxMain.BackColor = Color.White;
+                richTextBoxMain.ForeColor = Color.Black;
+                menuStrip1.BackColor = richTextBoxMain.BackColor;
+                menuStrip1.ForeColor = richTextBoxMain.ForeColor;
+                labelStatus.BackColor = menuStrip1.BackColor;
+                labelStatus.ForeColor = menuStrip1.ForeColor;
                 darkBackgroundToolStripMenuItem.Checked = false;
                 saved = true;
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
@@ -590,10 +593,12 @@ namespace Test
             if (darkBackgroundToolStripMenuItem.Checked != true)
             {
                 darkBackgroundToolStripMenuItem.Checked = true;
-                richTextBox1.BackColor = Color.FromArgb(45, 45, 45);
-                richTextBox1.ForeColor = Color.White;
-                menuStrip1.BackColor = Color.FromArgb(45, 45, 45);
-                menuStrip1.ForeColor = Color.White;
+                richTextBoxMain.BackColor = Color.FromArgb(30, 30, 30);
+                richTextBoxMain.ForeColor = SystemColors.ControlDark;
+                menuStrip1.BackColor = richTextBoxMain.BackColor;
+                menuStrip1.ForeColor = richTextBoxMain.ForeColor;
+                labelStatus.BackColor = menuStrip1.BackColor;
+                labelStatus.ForeColor = menuStrip1.ForeColor;
                 whiteBackgroundToolStripMenuItem.Checked = false;
                 saved = true;
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);

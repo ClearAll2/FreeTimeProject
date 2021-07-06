@@ -39,16 +39,16 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelSearch = new System.Windows.Forms.Panel();
+            this.panelReplace = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelOption = new System.Windows.Forms.Panel();
+            this.panelSearch.SuspendLayout();
+            this.panelReplace.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panelOption.SuspendLayout();
             this.SuspendLayout();
             // 
             // button2
@@ -148,28 +148,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel1
+            // panelSearch
             // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(428, 48);
-            this.panel1.TabIndex = 10;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panelSearch.Controls.Add(this.button1);
+            this.panelSearch.Controls.Add(this.label1);
+            this.panelSearch.Controls.Add(this.textBox1);
+            this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSearch.Location = new System.Drawing.Point(0, 0);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(420, 48);
+            this.panelSearch.TabIndex = 10;
+            this.panelSearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // panel2
+            // panelReplace
             // 
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Location = new System.Drawing.Point(0, 51);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(441, 69);
-            this.panel2.TabIndex = 11;
+            this.panelReplace.Controls.Add(this.button3);
+            this.panelReplace.Controls.Add(this.label2);
+            this.panelReplace.Controls.Add(this.textBox2);
+            this.panelReplace.Controls.Add(this.button4);
+            this.panelReplace.Location = new System.Drawing.Point(0, 54);
+            this.panelReplace.Name = "panelReplace";
+            this.panelReplace.Size = new System.Drawing.Size(424, 61);
+            this.panelReplace.TabIndex = 11;
             // 
             // groupBox1
             // 
@@ -205,17 +205,17 @@
             this.radioButton1.Text = "Up";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // panelOption
             // 
-            this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Controls.Add(this.checkBox2);
-            this.panel3.Controls.Add(this.checkBox1);
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 112);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(428, 57);
-            this.panel3.TabIndex = 13;
+            this.panelOption.Controls.Add(this.groupBox1);
+            this.panelOption.Controls.Add(this.checkBox2);
+            this.panelOption.Controls.Add(this.checkBox1);
+            this.panelOption.Controls.Add(this.button2);
+            this.panelOption.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelOption.Location = new System.Drawing.Point(0, 117);
+            this.panelOption.Name = "panelOption";
+            this.panelOption.Size = new System.Drawing.Size(420, 57);
+            this.panelOption.TabIndex = 13;
             // 
             // Form2
             // 
@@ -223,11 +223,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(428, 169);
+            this.ClientSize = new System.Drawing.Size(420, 174);
             this.ControlBox = false;
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelOption);
+            this.Controls.Add(this.panelSearch);
+            this.Controls.Add(this.panelReplace);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -239,14 +239,14 @@
             this.Text = "Find and Replace";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
             this.Load += new System.EventHandler(this.Form3_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelSearch.ResumeLayout(false);
+            this.panelSearch.PerformLayout();
+            this.panelReplace.ResumeLayout(false);
+            this.panelReplace.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panelOption.ResumeLayout(false);
+            this.panelOption.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -263,11 +263,11 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelSearch;
+        private System.Windows.Forms.Panel panelReplace;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelOption;
     }
 }

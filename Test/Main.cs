@@ -6,6 +6,7 @@ using Microsoft.Win32;
 using MyNotepad;
 using SNote;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace Test
 {
@@ -16,7 +17,8 @@ namespace Test
         private RegistryKey r;
         private About ab = new About();
         private Search f;
-        
+        private TypeConverter converter = TypeDescriptor.GetConverter(typeof(Font));
+        private string fileName, filePath, trueName;
         public Main()
         {
             InitializeComponent();
@@ -28,7 +30,11 @@ namespace Test
             {
                 r = Registry.CurrentUser.CreateSubKey("SOFTWARE\\ClearAll\\SNote\\Data");
             }
-
+            var font = r.GetValue("Font");
+            if (font != null)
+            {
+                richTextBoxMain.Font = (Font)converter.ConvertFromString(font.ToString());
+            }
             if (r.GetValue("Wordwrap") != null)
             {
                 richTextBoxMain.WordWrap = true;
@@ -63,6 +69,12 @@ namespace Test
             //this.Size = new Size(global::SNote.Properties.Settings.Default.W, global::SNote.Properties.Settings.Default.H);
         }
 
+        void GotoLine(int wantedLine_zero_based) // int wantedLine_zero_based = wanted line number; 1st line = 0
+        {
+            int index = this.richTextBoxMain.GetFirstCharIndexFromLine(wantedLine_zero_based);
+            this.richTextBoxMain.Select(index, 0);
+            this.richTextBoxMain.ScrollToCaret();
+        }
 
         private void richText1_DragEnter(object sender, DragEventArgs e)
         {
@@ -109,7 +121,7 @@ namespace Test
            
         }
 
-        string fileName, filePath, trueName;
+        
        
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -342,6 +354,10 @@ namespace Test
             if (font.ShowDialog() == DialogResult.OK)
             {
                 richTextBoxMain.Font = font.Font;
+                using (var r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true))
+                {
+                   r.SetValue("Font", converter.ConvertToString(richTextBoxMain.Font));
+                }
             }
         }
 
@@ -576,6 +592,20 @@ namespace Test
                 r.Close();
             }
             
+        }
+
+        private void goToLineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Goto go = new Goto(richTextBoxMain.Lines.Length);
+            go.FormClosed += Go_FormClosed;
+            go.ShowDialog();
+        }
+
+        private void Go_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Goto go = (Goto)sender;
+            if (go.line > 1)
+                GotoLine(go.line - 1);
         }
 
         private void darkBackgroundToolStripMenuItem_Click(object sender, EventArgs e)

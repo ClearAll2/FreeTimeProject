@@ -118,12 +118,10 @@
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxDescription.Size = new System.Drawing.Size(320, 126);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "contact@myfreedom.cf\r\n\r\nIcons made by Pixel Perfect\r\nwww.flaticon.com/authors/pix" +
-    "el-perfect";
+            this.textBoxDescription.Text = "contact@myfreedom.cf\r\n\r\nIcons made by Freepik\r\nwww.flaticon.com/authors/freepik";
             // 
             // okButton
             // 

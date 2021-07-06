@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -156,7 +155,7 @@
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearch.Location = new System.Drawing.Point(0, 0);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(420, 48);
+            this.panelSearch.Size = new System.Drawing.Size(416, 48);
             this.panelSearch.TabIndex = 10;
             this.panelSearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -212,9 +211,9 @@
             this.panelOption.Controls.Add(this.checkBox1);
             this.panelOption.Controls.Add(this.button2);
             this.panelOption.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelOption.Location = new System.Drawing.Point(0, 117);
+            this.panelOption.Location = new System.Drawing.Point(0, 113);
             this.panelOption.Name = "panelOption";
-            this.panelOption.Size = new System.Drawing.Size(420, 57);
+            this.panelOption.Size = new System.Drawing.Size(416, 57);
             this.panelOption.TabIndex = 13;
             // 
             // Form2
@@ -223,13 +222,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(420, 174);
+            this.ClientSize = new System.Drawing.Size(416, 170);
             this.ControlBox = false;
             this.Controls.Add(this.panelOption);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.panelReplace);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form2";

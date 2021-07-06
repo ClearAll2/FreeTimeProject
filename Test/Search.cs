@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace MyNotepad
 {
-    public partial class Form2 : Form
+    public partial class Search : Form
     {
         private RichTextBox _richTextBox;
         
-        public Form2( RichTextBox richTextBox)
+        public Search( RichTextBox richTextBox)
         {
             InitializeComponent();
             _richTextBox = richTextBox;
@@ -16,44 +16,29 @@ namespace MyNotepad
             
         }
 
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Find(_richTextBox, textBox1.Text, checkBox1.Checked, checkBox2.Checked, radioButton1.Checked);
+            Find(_richTextBox, textBoxFind.Text, checkBoxMatchCase.Checked, checkBoxWhole.Checked, radioButtonUp.Checked);
         }
         
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length > 0)
+            if (textBoxFind.Text.Length > 0)
             {
-                button1.Enabled = true;
-                if (textBox2.Text.Length > 0)
+                buttonFind.Enabled = true;
+                if (textBoxReplace.Text.Length > 0)
                 {
-                    button3.Enabled = true;
-                    button4.Enabled = true;
+                    buttonReplace.Enabled = true;
+                    buttonReplaceAll.Enabled = true;
                 }
             }
             else
             {
-                button1.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
+                buttonFind.Enabled = false;
+                buttonReplace.Enabled = false;
+                buttonReplaceAll.Enabled = false;
             }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,13 +48,13 @@ namespace MyNotepad
 
         private void button3_Click(object sender, EventArgs e)
         {
-            _richTextBox.SelectedText = textBox2.Text;
+            _richTextBox.SelectedText = textBoxReplace.Text;
                
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            _richTextBox.Text = _richTextBox.Text.Replace(textBox1.Text, textBox2.Text);
+            _richTextBox.Text = _richTextBox.Text.Replace(textBoxFind.Text, textBoxReplace.Text);
         }
 
         void Find(RichTextBox richText, string text, bool matchCase, bool matchWholeWord, bool upDirection)
@@ -112,31 +97,31 @@ namespace MyNotepad
                 this.Show(_richTextBox);
             // resize form
             this.ClientSize = new Size(this.ClientSize.Width, panelOption.Bottom);
-            textBox1.Text = key;
-            textBox1.Focus();
-            textBox1.SelectAll();
-            if (textBox1.Text.Length <= 0)
+            textBoxFind.Text = key;
+            textBoxFind.Focus();
+            textBoxFind.SelectAll();
+            if (textBoxFind.Text.Length <= 0)
             {
-                button1.Enabled = false;
+                buttonFind.Enabled = false;
             }
-            if (textBox2.Text.Length <=0)
+            if (textBoxReplace.Text.Length <=0)
             {
-                button3.Enabled = false;
-                button4.Enabled = false;
+                buttonReplace.Enabled = false;
+                buttonReplaceAll.Enabled = false;
             }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (textBox2.Text.Length > 0 && textBox1.Text.Length > 0)
+            if (textBoxReplace.Text.Length > 0 && textBoxFind.Text.Length > 0)
             {
-                button3.Enabled = true;
-                button4.Enabled = true;
+                buttonReplace.Enabled = true;
+                buttonReplaceAll.Enabled = true;
             }
             else
             {
-                button3.Enabled = false;
-                button4.Enabled = false;
+                buttonReplace.Enabled = false;
+                buttonReplaceAll.Enabled = false;
             }
         }
     }

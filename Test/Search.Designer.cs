@@ -1,6 +1,6 @@
 ﻿namespace MyNotepad
 {
-    partial class Form2
+    partial class Search
     {
         /// <summary>
         /// Required designer variable.
@@ -28,201 +28,201 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxReplace = new System.Windows.Forms.TextBox();
+            this.labelReplace = new System.Windows.Forms.Label();
+            this.buttonReplace = new System.Windows.Forms.Button();
+            this.buttonReplaceAll = new System.Windows.Forms.Button();
+            this.checkBoxMatchCase = new System.Windows.Forms.CheckBox();
+            this.checkBoxWhole = new System.Windows.Forms.CheckBox();
+            this.textBoxFind = new System.Windows.Forms.TextBox();
+            this.labelFind = new System.Windows.Forms.Label();
+            this.buttonFind = new System.Windows.Forms.Button();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.panelReplace = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.groupBoxDirection = new System.Windows.Forms.GroupBox();
+            this.radioButtonDown = new System.Windows.Forms.RadioButton();
+            this.radioButtonUp = new System.Windows.Forms.RadioButton();
             this.panelOption = new System.Windows.Forms.Panel();
             this.panelSearch.SuspendLayout();
             this.panelReplace.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxDirection.SuspendLayout();
             this.panelOption.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button2
+            // buttonCancel
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(333, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 25);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(333, 34);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(82, 25);
+            this.buttonCancel.TabIndex = 3;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox2
+            // textBoxReplace
             // 
-            this.textBox2.Location = new System.Drawing.Point(88, 5);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBoxReplace.Location = new System.Drawing.Point(88, 23);
+            this.textBoxReplace.Name = "textBoxReplace";
+            this.textBoxReplace.Size = new System.Drawing.Size(225, 20);
+            this.textBoxReplace.TabIndex = 4;
+            this.textBoxReplace.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // label2
+            // labelReplace
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Replace with:";
+            this.labelReplace.AutoSize = true;
+            this.labelReplace.Location = new System.Drawing.Point(11, 26);
+            this.labelReplace.Name = "labelReplace";
+            this.labelReplace.Size = new System.Drawing.Size(72, 13);
+            this.labelReplace.TabIndex = 5;
+            this.labelReplace.Text = "Replace with:";
             // 
-            // button3
+            // buttonReplace
             // 
-            this.button3.Location = new System.Drawing.Point(333, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(82, 25);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Replace";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonReplace.Location = new System.Drawing.Point(333, 2);
+            this.buttonReplace.Name = "buttonReplace";
+            this.buttonReplace.Size = new System.Drawing.Size(82, 25);
+            this.buttonReplace.TabIndex = 6;
+            this.buttonReplace.Text = "Replace";
+            this.buttonReplace.UseVisualStyleBackColor = true;
+            this.buttonReplace.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // buttonReplaceAll
             // 
-            this.button4.Location = new System.Drawing.Point(333, 33);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 25);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Replace All";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonReplaceAll.Location = new System.Drawing.Point(334, 37);
+            this.buttonReplaceAll.Name = "buttonReplaceAll";
+            this.buttonReplaceAll.Size = new System.Drawing.Size(82, 25);
+            this.buttonReplaceAll.TabIndex = 7;
+            this.buttonReplaceAll.Text = "Replace All";
+            this.buttonReplaceAll.UseVisualStyleBackColor = true;
+            this.buttonReplaceAll.Click += new System.EventHandler(this.button4_Click);
             // 
-            // checkBox1
+            // checkBoxMatchCase
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(17, 5);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(82, 17);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Match case";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxMatchCase.AutoSize = true;
+            this.checkBoxMatchCase.Checked = true;
+            this.checkBoxMatchCase.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMatchCase.Location = new System.Drawing.Point(14, 16);
+            this.checkBoxMatchCase.Name = "checkBoxMatchCase";
+            this.checkBoxMatchCase.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxMatchCase.TabIndex = 8;
+            this.checkBoxMatchCase.Text = "Match case";
+            this.checkBoxMatchCase.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkBoxWhole
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(17, 28);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(113, 17);
-            this.checkBox2.TabIndex = 9;
-            this.checkBox2.Text = "Match whole word";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxWhole.AutoSize = true;
+            this.checkBoxWhole.Location = new System.Drawing.Point(14, 39);
+            this.checkBoxWhole.Name = "checkBoxWhole";
+            this.checkBoxWhole.Size = new System.Drawing.Size(113, 17);
+            this.checkBoxWhole.TabIndex = 9;
+            this.checkBoxWhole.Text = "Match whole word";
+            this.checkBoxWhole.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxFind
             // 
-            this.textBox1.Location = new System.Drawing.Point(89, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(213, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxFind.Location = new System.Drawing.Point(88, 15);
+            this.textBoxFind.Name = "textBoxFind";
+            this.textBoxFind.Size = new System.Drawing.Size(224, 20);
+            this.textBoxFind.TabIndex = 0;
+            this.textBoxFind.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label1
+            // labelFind
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Find what:";
+            this.labelFind.AutoSize = true;
+            this.labelFind.Location = new System.Drawing.Point(11, 18);
+            this.labelFind.Name = "labelFind";
+            this.labelFind.Size = new System.Drawing.Size(30, 13);
+            this.labelFind.TabIndex = 1;
+            this.labelFind.Text = "Find:";
             // 
-            // button1
+            // buttonFind
             // 
-            this.button1.Location = new System.Drawing.Point(334, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 25);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Find Next";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonFind.Location = new System.Drawing.Point(333, 12);
+            this.buttonFind.Name = "buttonFind";
+            this.buttonFind.Size = new System.Drawing.Size(82, 25);
+            this.buttonFind.TabIndex = 2;
+            this.buttonFind.Text = "Find Next";
+            this.buttonFind.UseVisualStyleBackColor = true;
+            this.buttonFind.Click += new System.EventHandler(this.button1_Click);
             // 
             // panelSearch
             // 
-            this.panelSearch.Controls.Add(this.button1);
-            this.panelSearch.Controls.Add(this.label1);
-            this.panelSearch.Controls.Add(this.textBox1);
+            this.panelSearch.Controls.Add(this.buttonFind);
+            this.panelSearch.Controls.Add(this.labelFind);
+            this.panelSearch.Controls.Add(this.textBoxFind);
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearch.Location = new System.Drawing.Point(0, 0);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(416, 48);
+            this.panelSearch.Size = new System.Drawing.Size(427, 48);
             this.panelSearch.TabIndex = 10;
-            this.panelSearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panelReplace
             // 
-            this.panelReplace.Controls.Add(this.button3);
-            this.panelReplace.Controls.Add(this.label2);
-            this.panelReplace.Controls.Add(this.textBox2);
-            this.panelReplace.Controls.Add(this.button4);
+            this.panelReplace.Controls.Add(this.buttonReplace);
+            this.panelReplace.Controls.Add(this.labelReplace);
+            this.panelReplace.Controls.Add(this.textBoxReplace);
+            this.panelReplace.Controls.Add(this.buttonReplaceAll);
             this.panelReplace.Location = new System.Drawing.Point(0, 54);
             this.panelReplace.Name = "panelReplace";
-            this.panelReplace.Size = new System.Drawing.Size(424, 61);
+            this.panelReplace.Size = new System.Drawing.Size(427, 65);
             this.panelReplace.TabIndex = 11;
             // 
-            // groupBox1
+            // groupBoxDirection
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(189, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(124, 41);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Direction";
+            this.groupBoxDirection.Controls.Add(this.radioButtonDown);
+            this.groupBoxDirection.Controls.Add(this.radioButtonUp);
+            this.groupBoxDirection.Location = new System.Drawing.Point(167, 3);
+            this.groupBoxDirection.Name = "groupBoxDirection";
+            this.groupBoxDirection.Size = new System.Drawing.Size(146, 56);
+            this.groupBoxDirection.TabIndex = 12;
+            this.groupBoxDirection.TabStop = false;
+            this.groupBoxDirection.Text = "Direction";
             // 
-            // radioButton2
+            // radioButtonDown
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(53, 20);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(53, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Down";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonDown.AutoSize = true;
+            this.radioButtonDown.Checked = true;
+            this.radioButtonDown.Location = new System.Drawing.Point(78, 25);
+            this.radioButtonDown.Name = "radioButtonDown";
+            this.radioButtonDown.Size = new System.Drawing.Size(53, 17);
+            this.radioButtonDown.TabIndex = 1;
+            this.radioButtonDown.TabStop = true;
+            this.radioButtonDown.Text = "Down";
+            this.radioButtonDown.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButtonUp
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(8, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(39, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Up";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonUp.AutoSize = true;
+            this.radioButtonUp.Location = new System.Drawing.Point(16, 24);
+            this.radioButtonUp.Name = "radioButtonUp";
+            this.radioButtonUp.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonUp.TabIndex = 0;
+            this.radioButtonUp.TabStop = true;
+            this.radioButtonUp.Text = "Up";
+            this.radioButtonUp.UseVisualStyleBackColor = true;
             // 
             // panelOption
             // 
-            this.panelOption.Controls.Add(this.groupBox1);
-            this.panelOption.Controls.Add(this.checkBox2);
-            this.panelOption.Controls.Add(this.checkBox1);
-            this.panelOption.Controls.Add(this.button2);
+            this.panelOption.Controls.Add(this.groupBoxDirection);
+            this.panelOption.Controls.Add(this.checkBoxWhole);
+            this.panelOption.Controls.Add(this.checkBoxMatchCase);
+            this.panelOption.Controls.Add(this.buttonCancel);
             this.panelOption.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelOption.Location = new System.Drawing.Point(0, 113);
+            this.panelOption.Location = new System.Drawing.Point(0, 125);
             this.panelOption.Name = "panelOption";
-            this.panelOption.Size = new System.Drawing.Size(416, 57);
+            this.panelOption.Size = new System.Drawing.Size(427, 71);
             this.panelOption.TabIndex = 13;
             // 
-            // Form2
+            // Search
             // 
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.buttonFind;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(416, 170);
+            this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.buttonCancel;
+            this.ClientSize = new System.Drawing.Size(427, 196);
             this.ControlBox = false;
             this.Controls.Add(this.panelOption);
             this.Controls.Add(this.panelSearch);
@@ -230,19 +230,17 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form2";
+            this.Name = "Search";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Find and Replace";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
-            this.Load += new System.EventHandler(this.Form3_Load);
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             this.panelReplace.ResumeLayout(false);
             this.panelReplace.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxDirection.ResumeLayout(false);
+            this.groupBoxDirection.PerformLayout();
             this.panelOption.ResumeLayout(false);
             this.panelOption.PerformLayout();
             this.ResumeLayout(false);
@@ -251,21 +249,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.TextBox textBoxReplace;
+        private System.Windows.Forms.Label labelReplace;
+        private System.Windows.Forms.Button buttonReplace;
+        private System.Windows.Forms.Button buttonReplaceAll;
+        private System.Windows.Forms.CheckBox checkBoxMatchCase;
+        private System.Windows.Forms.CheckBox checkBoxWhole;
+        private System.Windows.Forms.TextBox textBoxFind;
+        private System.Windows.Forms.Label labelFind;
+        private System.Windows.Forms.Button buttonFind;
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.Panel panelReplace;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox groupBoxDirection;
+        private System.Windows.Forms.RadioButton radioButtonDown;
+        private System.Windows.Forms.RadioButton radioButtonUp;
         private System.Windows.Forms.Panel panelOption;
     }
 }

@@ -15,13 +15,13 @@ namespace Test
         private bool opened = false;
         private RegistryKey r;
         private About ab = new About();
-        private Form2 f;
+        private Search f;
         
         public Main()
         {
             InitializeComponent();
             
-            f = new Form2(richTextBoxMain);
+            f = new Search(richTextBoxMain);
             f.Hide();
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
             if (r == null)

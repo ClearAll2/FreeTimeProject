@@ -22,7 +22,6 @@ namespace Test
         public Main()
         {
             InitializeComponent();
-            
             f = new Search(richTextBoxMain);
             f.Hide();
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
@@ -59,21 +58,22 @@ namespace Test
                 whiteBackgroundToolStripMenuItem.Checked = false;
                 saved = true;
             }
-           
             r.Close();
-            this.Text = "Untitled"; 
             richTextBoxMain.DetectUrls = true;
             richTextBoxMain.AllowDrop = true;   
             richTextBoxMain.DragEnter += new DragEventHandler(richText1_DragEnter);
             richTextBoxMain.DragDrop += new DragEventHandler(richText1_DragDrop);
-            //this.Size = new Size(global::SNote.Properties.Settings.Default.W, global::SNote.Properties.Settings.Default.H);
         }
 
         void GotoLine(int wantedLine_zero_based) // int wantedLine_zero_based = wanted line number; 1st line = 0
         {
-            int index = this.richTextBoxMain.GetFirstCharIndexFromLine(wantedLine_zero_based);
-            this.richTextBoxMain.Select(index, 0);
-            this.richTextBoxMain.ScrollToCaret();
+            try
+            {
+                int index = this.richTextBoxMain.GetFirstCharIndexFromLine(wantedLine_zero_based);
+                this.richTextBoxMain.Select(index, 0);
+                this.richTextBoxMain.ScrollToCaret();
+            }
+            catch { }
         }
 
         private void richText1_DragEnter(object sender, DragEventArgs e)
@@ -135,6 +135,11 @@ namespace Test
                     trueName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
                     this.Text = trueName + " - SNote";
                 }
+            }
+            else
+            {
+                filePath = String.Empty;
+                fileName = "Untittled";
             }
             
         }

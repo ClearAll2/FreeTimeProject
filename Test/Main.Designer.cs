@@ -63,6 +63,7 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whiteBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,10 +73,9 @@
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBoxMain = new System.Windows.Forms.RichTextBox();
             this.labelStatus = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.goToLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.richTextBoxMain = new Ionic.WinForms.RichTextBoxEx();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -360,6 +360,14 @@
             this.replaceToolStripMenuItem.Text = "Replace";
             this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
             // 
+            // goToLineToolStripMenuItem
+            // 
+            this.goToLineToolStripMenuItem.Name = "goToLineToolStripMenuItem";
+            this.goToLineToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.goToLineToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.goToLineToolStripMenuItem.Text = "Go to line";
+            this.goToLineToolStripMenuItem.Click += new System.EventHandler(this.goToLineToolStripMenuItem_Click);
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -375,7 +383,7 @@
             this.whiteBackgroundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.whiteBackgroundToolStripMenuItem.Name = "whiteBackgroundToolStripMenuItem";
             this.whiteBackgroundToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.whiteBackgroundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.whiteBackgroundToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.whiteBackgroundToolStripMenuItem.Text = "Light Mode";
             this.whiteBackgroundToolStripMenuItem.Click += new System.EventHandler(this.whiteBackgroundToolStripMenuItem_Click);
             // 
@@ -383,7 +391,7 @@
             // 
             this.darkBackgroundToolStripMenuItem.Name = "darkBackgroundToolStripMenuItem";
             this.darkBackgroundToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.darkBackgroundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darkBackgroundToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.darkBackgroundToolStripMenuItem.Text = "Dark Mode";
             this.darkBackgroundToolStripMenuItem.Click += new System.EventHandler(this.darkBackgroundToolStripMenuItem_Click);
             // 
@@ -433,22 +441,6 @@
             this.aboutToolStripMenuItem.Text = "About SNote";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // richTextBoxMain
-            // 
-            this.richTextBoxMain.AcceptsTab = true;
-            this.richTextBoxMain.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxMain.ContextMenuStrip = this.contextMenuStrip1;
-            this.richTextBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxMain.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMain.HideSelection = false;
-            this.richTextBoxMain.Location = new System.Drawing.Point(0, 24);
-            this.richTextBoxMain.Name = "richTextBoxMain";
-            this.richTextBoxMain.Size = new System.Drawing.Size(678, 364);
-            this.richTextBoxMain.TabIndex = 4;
-            this.richTextBoxMain.Text = "";
-            this.richTextBoxMain.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
-            this.richTextBoxMain.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
             // labelStatus
             // 
             this.labelStatus.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -466,13 +458,29 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // goToLineToolStripMenuItem
+            // richTextBoxMain
             // 
-            this.goToLineToolStripMenuItem.Name = "goToLineToolStripMenuItem";
-            this.goToLineToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.goToLineToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.goToLineToolStripMenuItem.Text = "Go to line";
-            this.goToLineToolStripMenuItem.Click += new System.EventHandler(this.goToLineToolStripMenuItem_Click);
+            this.richTextBoxMain.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxMain.EnableAutoDragDrop = true;
+            this.richTextBoxMain.Location = new System.Drawing.Point(0, 24);
+            this.richTextBoxMain.Name = "richTextBoxMain";
+            this.richTextBoxMain.NumberAlignment = System.Drawing.StringAlignment.Near;
+            this.richTextBoxMain.NumberBackground1 = System.Drawing.Color.White;
+            this.richTextBoxMain.NumberBackground2 = System.Drawing.Color.Transparent;
+            this.richTextBoxMain.NumberBorder = System.Drawing.Color.Transparent;
+            this.richTextBoxMain.NumberBorderThickness = 0F;
+            this.richTextBoxMain.NumberColor = System.Drawing.SystemColors.ControlDark;
+            this.richTextBoxMain.NumberFont = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMain.NumberLeadingZeroes = false;
+            this.richTextBoxMain.NumberLineCounting = Ionic.WinForms.RichTextBoxEx.LineCounting.AsDisplayed;
+            this.richTextBoxMain.NumberPadding = 1;
+            this.richTextBoxMain.ShowLineNumbers = true;
+            this.richTextBoxMain.Size = new System.Drawing.Size(678, 364);
+            this.richTextBoxMain.TabIndex = 6;
+            this.richTextBoxMain.Text = "";
+            this.richTextBoxMain.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
+            this.richTextBoxMain.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // Main
             // 
@@ -529,7 +537,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox richTextBoxMain;
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
@@ -546,6 +553,7 @@
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem goToLineToolStripMenuItem;
+        private Ionic.WinForms.RichTextBoxEx richTextBoxMain;
     }
 }
 

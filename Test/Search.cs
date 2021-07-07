@@ -16,6 +16,7 @@ namespace MyNotepad
             
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             Find(_richTextBox, textBoxFind.Text, checkBoxMatchCase.Checked, checkBoxWhole.Checked, radioButtonUp.Checked);
@@ -55,6 +56,9 @@ namespace MyNotepad
         private void button4_Click(object sender, EventArgs e)
         {
             _richTextBox.Text = _richTextBox.Text.Replace(textBoxFind.Text, textBoxReplace.Text);
+            MessageBox.Show(Application.ProductName + " has finished replacing text in the document.",
+                               Application.ProductName, MessageBoxButtons.OK,
+                               MessageBoxIcon.Information);
         }
 
         void Find(RichTextBox richText, string text, bool matchCase, bool matchWholeWord, bool upDirection)

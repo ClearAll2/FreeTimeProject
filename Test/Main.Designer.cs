@@ -462,7 +462,7 @@
             // 
             this.richTextBoxMain.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxMain.EnableAutoDragDrop = true;
+            this.richTextBoxMain.HideSelection = false;
             this.richTextBoxMain.Location = new System.Drawing.Point(0, 24);
             this.richTextBoxMain.Name = "richTextBoxMain";
             this.richTextBoxMain.NumberAlignment = System.Drawing.StringAlignment.Near;

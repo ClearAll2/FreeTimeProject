@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SNote
@@ -6,13 +7,10 @@ namespace SNote
     public partial class Goto : Form
     {
         public int line = -1;
-        private int maxLine;
-        public Goto(int maxLineNo)
+        public Goto()
         {
             InitializeComponent();
             textBoxInput.Select();
-            labelInfo.Text = String.Format("Line Number (1 - {0})", maxLineNo);
-            maxLine = maxLineNo;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

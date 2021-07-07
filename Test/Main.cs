@@ -33,6 +33,7 @@ namespace Test
             if (font != null)
             {
                 richTextBoxMain.Font = (Font)converter.ConvertFromString(font.ToString());
+                richTextBoxMain.NumberFont = richTextBoxMain.Font;
             }
             if (r.GetValue("Wordwrap") != null)
             {
@@ -51,6 +52,9 @@ namespace Test
                 darkBackgroundToolStripMenuItem.Checked = true;
                 richTextBoxMain.BackColor = Color.FromArgb(30, 30, 30);
                 richTextBoxMain.ForeColor = SystemColors.ControlDark;
+                richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
+                richTextBoxMain.NumberBackground2 = richTextBoxMain.BackColor;
+                richTextBoxMain.NumberBorder = Color.Transparent;
                 menuStrip1.BackColor = richTextBoxMain.BackColor;
                 menuStrip1.ForeColor = richTextBoxMain.ForeColor;
                 labelStatus.BackColor = menuStrip1.BackColor;
@@ -359,6 +363,7 @@ namespace Test
             if (font.ShowDialog() == DialogResult.OK)
             {
                 richTextBoxMain.Font = font.Font;
+                richTextBoxMain.NumberFont = richTextBoxMain.Font;
                 using (var r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true))
                 {
                    r.SetValue("Font", converter.ConvertToString(richTextBoxMain.Font));
@@ -586,6 +591,9 @@ namespace Test
                 whiteBackgroundToolStripMenuItem.Checked = true;
                 richTextBoxMain.BackColor = Color.White;
                 richTextBoxMain.ForeColor = Color.Black;
+                richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
+                richTextBoxMain.NumberBackground2 = Color.Transparent;
+                richTextBoxMain.NumberBorder = Color.Transparent;
                 menuStrip1.BackColor = richTextBoxMain.BackColor;
                 menuStrip1.ForeColor = richTextBoxMain.ForeColor;
                 labelStatus.BackColor = menuStrip1.BackColor;
@@ -601,7 +609,8 @@ namespace Test
 
         private void goToLineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Goto go = new Goto(richTextBoxMain.Lines.Length);
+            
+            Goto go = new Goto();
             go.FormClosed += Go_FormClosed;
             go.ShowDialog();
         }
@@ -620,6 +629,9 @@ namespace Test
                 darkBackgroundToolStripMenuItem.Checked = true;
                 richTextBoxMain.BackColor = Color.FromArgb(30, 30, 30);
                 richTextBoxMain.ForeColor = SystemColors.ControlDark;
+                richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
+                richTextBoxMain.NumberBackground2 = richTextBoxMain.BackColor;
+                richTextBoxMain.NumberBorder = Color.Transparent;
                 menuStrip1.BackColor = richTextBoxMain.BackColor;
                 menuStrip1.ForeColor = richTextBoxMain.ForeColor;
                 labelStatus.BackColor = menuStrip1.BackColor;

@@ -18,7 +18,7 @@ namespace Test
         private About ab = new About();
         private Search f;
         private TypeConverter converter = TypeDescriptor.GetConverter(typeof(Font));
-        private string fileName, filePath, trueName;
+        private string fileName, filePath;
         public Main()
         {
             InitializeComponent();
@@ -113,12 +113,10 @@ namespace Test
                 string[] docPath = (string[])e.Data.GetData(DataFormats.FileDrop);
                 if (File.Exists(docPath[0]))
                 {
-                    
-                    fileName = docPath[0];          //do not delete this
-                    if (OpenFile(docPath[0]) == true)
-                    {
-                        saved = true;
-                    }
+                    filePath = docPath[0];
+                    fileName = new FileInfo(filePath).Name;          //do not delete this
+                    OpenFile(filePath);
+  
                       
                 }
             }
@@ -131,32 +129,28 @@ namespace Test
         {
             if (Program.FileName != "")
             {
-                if (OpenFile(Program.FileName) == true)
-                {
-                    opened = true;
-                    filePath = Program.FileName;
-                    fileName = filePath;
-                    trueName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
-                    this.Text = trueName + " - SNote";
-                }
+                filePath = Program.FileName;
+                fileName = new FileInfo(filePath).Name;
+                OpenFile(filePath);
             }
             else
             {
                 filePath = String.Empty;
                 fileName = "Untittled";
+                this.Text = fileName;
             }
             
         }
 
        
 
-        private bool OpenFile(string fileName2)
+        private bool OpenFile(string path)
         {
             FileStream fs;
             StreamReader sr;
             try
             {
-                fs = new FileStream(fileName2, FileMode.Open, FileAccess.Read);
+                fs = new FileStream(path, FileMode.Open, FileAccess.Read);
                 sr = new StreamReader(fs);
             }
             catch (Exception e)
@@ -167,15 +161,14 @@ namespace Test
             richTextBoxMain.Text = sr.ReadToEnd();
             sr.Close();
             fs.Close();
+            //
+            this.Text = fileName;
             opened = true;
             saved = true;
-            fileName = fileName2;
-            trueName = fileName2.Substring(fileName2.LastIndexOf("\\")+1);
-            this.Text = trueName + " - SNote";
-            FileInfo fi = new FileInfo(fileName2);
-            if (fi.IsReadOnly == true)
+            //
+            if (new FileInfo(path).IsReadOnly == true)
             {
-                MessageBox.Show(fileName2 + " is read only!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(path + " is read only!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 richTextBoxMain.ReadOnly = true;
             }
             else
@@ -208,22 +201,10 @@ namespace Test
                 richTextBoxMain.Text = "";
                 
                 filePath = op.FileName;
-                fileName = filePath;
-
-                if (OpenFile(filePath) == true)
-                {
-                    trueName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
-                    this.Text = trueName + " - SNote";
-                }
-
+                fileName = op.SafeFileName;
+                OpenFile(filePath);
             }
-            else
-            {
-                if (opened != true)
-                    this.Text = "Untitled";
-            }
-                
-            
+           
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -237,14 +218,13 @@ namespace Test
                 sf.RestoreDirectory = true;
                 if (sf.ShowDialog() == DialogResult.OK)
                 {
-                    filePath = sf.FileName;
-                    fileName = filePath;
                     try
                     {
+                        filePath = sf.FileName;
+                        fileName = new FileInfo(filePath).Name;
+                        this.Text = fileName;
                         File.WriteAllText(filePath, richTextBoxMain.Text);
                         saved = true;
-                        trueName = filePath.Substring(filePath.LastIndexOf("\\") + 1);
-                        this.Text = trueName + " - SNote";
                         opened = true;
                     }
                     catch (Exception ex)
@@ -255,16 +235,9 @@ namespace Test
             }
             else
             {
-                FileInfo fi = new FileInfo(fileName);
-                if (fi.IsReadOnly == true)
-                {
-                    saved = true;
-                    MessageBox.Show(fileName + " is read only!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 try
                 {
-                    File.WriteAllText(fileName, richTextBoxMain.Text);
+                    File.WriteAllText(filePath, richTextBoxMain.Text);
                     saved = true;
                 }
                 catch (Exception ex)
@@ -284,11 +257,9 @@ namespace Test
             sf.RestoreDirectory = true;
             if (sf.ShowDialog() == DialogResult.OK)
             {
-                filePath = sf.FileName;
-
                 try
                 {
-                    File.WriteAllText(filePath, richTextBoxMain.Text);
+                    File.WriteAllText(sf.FileName, richTextBoxMain.Text);
                     saved = false;
                 }
                 catch (Exception ex)
@@ -296,13 +267,7 @@ namespace Test
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-                if (opened != true)
-                    this.Text = "Untitled";
-            }
-                
-            
+           
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -325,11 +290,13 @@ namespace Test
                 Process.Start(Application.ExecutablePath);
                 return;
             }
-            richTextBoxMain.Text = "";
+            richTextBoxMain.Text = String.Empty;
             richTextBoxMain.ReadOnly = false;
             opened = false;
-            saved = false;
-            this.Text = "Untitled";
+            saved = true;
+            filePath = String.Empty;
+            fileName = "Untittled";
+            this.Text = fileName;
         }
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
@@ -378,10 +345,9 @@ namespace Test
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.Text.Contains("Untitled") != true)
+            if (fileName != "Untittled" && filePath != String.Empty)
             {
-                FileInfo fi = new FileInfo(fileName);
-                if (fi.IsReadOnly == true)
+                if (new FileInfo(filePath).IsReadOnly == true)
                 {
                     saved = true;
                     Application.Exit();
@@ -390,7 +356,7 @@ namespace Test
             
             if (saved != true)
             {
-                DialogResult dialogResult = MessageBox.Show("Do you want to save " + this.Text, "SNote", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Do you want to save " + fileName, "Save?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     if (opened != true)
@@ -403,6 +369,7 @@ namespace Test
                         if (sf.ShowDialog() == DialogResult.OK)
                         {
                             filePath = sf.FileName;
+                            fileName = new FileInfo(filePath).Name;
                             try
                             {
                                 File.WriteAllText(filePath, richTextBoxMain.Text);
@@ -419,7 +386,7 @@ namespace Test
 
                         try
                         {
-                            File.WriteAllText(fileName, richTextBoxMain.Text);
+                            File.WriteAllText(filePath, richTextBoxMain.Text);
                         }
                         catch (Exception ex)
                         {

@@ -65,8 +65,6 @@
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.whiteBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wordWrapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,6 +74,10 @@
             this.labelStatus = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.richTextBoxMain = new Ionic.WinForms.RichTextBoxEx();
+            this.lineNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whiteBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -371,29 +373,11 @@
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.whiteBackgroundToolStripMenuItem,
-            this.darkBackgroundToolStripMenuItem});
+            this.themeToolStripMenuItem,
+            this.lineNumberToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
-            // 
-            // whiteBackgroundToolStripMenuItem
-            // 
-            this.whiteBackgroundToolStripMenuItem.Checked = true;
-            this.whiteBackgroundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.whiteBackgroundToolStripMenuItem.Name = "whiteBackgroundToolStripMenuItem";
-            this.whiteBackgroundToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.whiteBackgroundToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.whiteBackgroundToolStripMenuItem.Text = "Light Mode";
-            this.whiteBackgroundToolStripMenuItem.Click += new System.EventHandler(this.whiteBackgroundToolStripMenuItem_Click);
-            // 
-            // darkBackgroundToolStripMenuItem
-            // 
-            this.darkBackgroundToolStripMenuItem.Name = "darkBackgroundToolStripMenuItem";
-            this.darkBackgroundToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.darkBackgroundToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.darkBackgroundToolStripMenuItem.Text = "Dark Mode";
-            this.darkBackgroundToolStripMenuItem.Click += new System.EventHandler(this.darkBackgroundToolStripMenuItem_Click);
             // 
             // formatToolStripMenuItem
             // 
@@ -409,19 +393,19 @@
             // 
             this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
             this.wordWrapToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wordWrapToolStripMenuItem.Text = "Word Wrap";
             this.wordWrapToolStripMenuItem.Click += new System.EventHandler(this.wordWrapToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(176, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fontToolStripMenuItem.Text = "Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
@@ -473,14 +457,48 @@
             this.richTextBoxMain.NumberColor = System.Drawing.SystemColors.ControlDark;
             this.richTextBoxMain.NumberFont = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxMain.NumberLeadingZeroes = false;
-            this.richTextBoxMain.NumberLineCounting = Ionic.WinForms.RichTextBoxEx.LineCounting.AsDisplayed;
+            this.richTextBoxMain.NumberLineCounting = Ionic.WinForms.RichTextBoxEx.LineCounting.CRLF;
             this.richTextBoxMain.NumberPadding = 1;
-            this.richTextBoxMain.ShowLineNumbers = true;
+            this.richTextBoxMain.ShowLineNumbers = false;
             this.richTextBoxMain.Size = new System.Drawing.Size(678, 364);
             this.richTextBoxMain.TabIndex = 6;
             this.richTextBoxMain.Text = "";
             this.richTextBoxMain.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
             this.richTextBoxMain.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // lineNumberToolStripMenuItem
+            // 
+            this.lineNumberToolStripMenuItem.Name = "lineNumberToolStripMenuItem";
+            this.lineNumberToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lineNumberToolStripMenuItem.Text = "Line Number";
+            this.lineNumberToolStripMenuItem.Click += new System.EventHandler(this.lineNumberToolStripMenuItem_Click);
+            // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.whiteBackgroundToolStripMenuItem,
+            this.darkBackgroundToolStripMenuItem});
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themeToolStripMenuItem.Text = "Theme";
+            // 
+            // whiteBackgroundToolStripMenuItem
+            // 
+            this.whiteBackgroundToolStripMenuItem.Checked = true;
+            this.whiteBackgroundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.whiteBackgroundToolStripMenuItem.Name = "whiteBackgroundToolStripMenuItem";
+            this.whiteBackgroundToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.whiteBackgroundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.whiteBackgroundToolStripMenuItem.Text = "Light Mode";
+            this.whiteBackgroundToolStripMenuItem.Click += new System.EventHandler(this.whiteBackgroundToolStripMenuItem_Click);
+            // 
+            // darkBackgroundToolStripMenuItem
+            // 
+            this.darkBackgroundToolStripMenuItem.Name = "darkBackgroundToolStripMenuItem";
+            this.darkBackgroundToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.darkBackgroundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darkBackgroundToolStripMenuItem.Text = "Dark Mode";
+            this.darkBackgroundToolStripMenuItem.Click += new System.EventHandler(this.darkBackgroundToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -548,12 +566,14 @@
         private System.Windows.Forms.ToolStripMenuItem uPPERCASEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lowerCaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem whiteBackgroundToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem darkBackgroundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem goToLineToolStripMenuItem;
         private Ionic.WinForms.RichTextBoxEx richTextBoxMain;
+        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whiteBackgroundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkBackgroundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lineNumberToolStripMenuItem;
     }
 }
 

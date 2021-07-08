@@ -39,13 +39,16 @@ namespace Test
             {
                 richTextBoxMain.WordWrap = true;
                 wordWrapToolStripMenuItem.Checked = true;
-                richTextBoxMain.WordWrap = true;
             }
             else
             {
                 richTextBoxMain.WordWrap = false;
                 wordWrapToolStripMenuItem.Checked = false;
-                richTextBoxMain.WordWrap = false;
+            }
+            if (r.GetValue("LineNumber") != null)
+            {
+                lineNumberToolStripMenuItem.Checked = true;
+                richTextBoxMain.ShowLineNumbers = true;
             }
             if (r.GetValue("Dark") != null)
             {
@@ -608,6 +611,28 @@ namespace Test
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
                 r.SetValue("Dark", true);
                 r.Close();
+            }
+        }
+
+        private void lineNumberToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lineNumberToolStripMenuItem.Checked != true)
+            {
+                lineNumberToolStripMenuItem.Checked = true;
+                richTextBoxMain.ShowLineNumbers = true;
+                using (var r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true))
+                {
+                    r.SetValue("LineNumber", true);
+                }
+            }
+            else
+            {
+                lineNumberToolStripMenuItem.Checked = false;
+                richTextBoxMain.ShowLineNumbers = false;
+                using (var r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true))
+                {
+                    r.DeleteValue("LineNumber", false);
+                }
             }
         }
 

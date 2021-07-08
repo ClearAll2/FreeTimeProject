@@ -62,7 +62,6 @@ namespace Test
                 menuStrip1.ForeColor = richTextBoxMain.ForeColor;
                 labelStatus.BackColor = menuStrip1.BackColor;
                 labelStatus.ForeColor = menuStrip1.ForeColor;
-                whiteBackgroundToolStripMenuItem.Checked = false;
                 saved = true;
             }
             r.Close();
@@ -553,30 +552,6 @@ namespace Test
             }
         }
 
-
-        private void whiteBackgroundToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (whiteBackgroundToolStripMenuItem.Checked != true)
-            {
-                whiteBackgroundToolStripMenuItem.Checked = true;
-                richTextBoxMain.BackColor = Color.White;
-                richTextBoxMain.ForeColor = Color.Black;
-                richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
-                richTextBoxMain.NumberBackground2 = Color.Transparent;
-                richTextBoxMain.NumberBorder = Color.Transparent;
-                menuStrip1.BackColor = richTextBoxMain.BackColor;
-                menuStrip1.ForeColor = richTextBoxMain.ForeColor;
-                labelStatus.BackColor = menuStrip1.BackColor;
-                labelStatus.ForeColor = menuStrip1.ForeColor;
-                darkBackgroundToolStripMenuItem.Checked = false;
-                saved = true;
-                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
-                r.DeleteValue("Dark", false);
-                r.Close();
-            }
-            
-        }
-
         private void goToLineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -606,10 +581,26 @@ namespace Test
                 menuStrip1.ForeColor = richTextBoxMain.ForeColor;
                 labelStatus.BackColor = menuStrip1.BackColor;
                 labelStatus.ForeColor = menuStrip1.ForeColor;
-                whiteBackgroundToolStripMenuItem.Checked = false;
                 saved = true;
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
                 r.SetValue("Dark", true);
+                r.Close();
+            }
+            else
+            {
+                darkBackgroundToolStripMenuItem.Checked = false;
+                richTextBoxMain.BackColor = Color.White;
+                richTextBoxMain.ForeColor = Color.Black;
+                richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
+                richTextBoxMain.NumberBackground2 = Color.Transparent;
+                richTextBoxMain.NumberBorder = Color.Transparent;
+                menuStrip1.BackColor = richTextBoxMain.BackColor;
+                menuStrip1.ForeColor = richTextBoxMain.ForeColor;
+                labelStatus.BackColor = menuStrip1.BackColor;
+                labelStatus.ForeColor = menuStrip1.ForeColor;
+                saved = true;
+                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true);
+                r.DeleteValue("Dark", false);
                 r.Close();
             }
         }

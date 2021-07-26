@@ -138,7 +138,6 @@
             // buttonUpdate
             // 
             this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUpdate.Location = new System.Drawing.Point(262, 85);

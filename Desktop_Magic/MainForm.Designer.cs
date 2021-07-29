@@ -69,8 +69,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label17 = new System.Windows.Forms.Label();
             this.tipsLabel = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelCustomizeSetting = new System.Windows.Forms.Panel();
+            this.panelCustomSizeSetting = new System.Windows.Forms.Panel();
             this.buttonCancelCustom = new System.Windows.Forms.Button();
             this.labelSizeCustom = new System.Windows.Forms.Label();
             this.trackBarSizeCustom = new System.Windows.Forms.TrackBar();
@@ -90,7 +90,7 @@
             this.leafButton = new System.Windows.Forms.RadioButton();
             this.snowButton = new System.Windows.Forms.RadioButton();
             this.groupBoxFPS = new System.Windows.Forms.GroupBox();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelHeader = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
@@ -98,14 +98,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNumber)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panelCustomizeSetting.SuspendLayout();
+            this.panelCustomSizeSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSizeCustom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCustom)).BeginInit();
             this.groupBoxSpecs.SuspendLayout();
             this.groupBoxType.SuspendLayout();
             this.groupBoxFPS.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,10 +189,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.IsBalloon = true;
             // 
             // checkBoxRunatStartup
             // 
@@ -336,7 +332,6 @@
             this.buttonMinimize.BackColor = System.Drawing.Color.Transparent;
             this.buttonMinimize.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonMinimize.FlatAppearance.BorderSize = 0;
-            this.buttonMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMinimize.ForeColor = System.Drawing.SystemColors.Control;
@@ -376,9 +371,9 @@
             this.labelAbout.ForeColor = System.Drawing.SystemColors.Control;
             this.labelAbout.Location = new System.Drawing.Point(151, 9);
             this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(116, 39);
+            this.labelAbout.Size = new System.Drawing.Size(118, 39);
             this.labelAbout.TabIndex = 0;
-            this.labelAbout.Text = "Desktop Magic v2x\r\nCopyright ©  2021\r\nFreedom Software";
+            this.labelAbout.Text = "Desktop Magic v2X\r\nCopyright ©  2021\r\nFreedom Software";
             this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip1.SetToolTip(this.labelAbout, "About");
             this.labelAbout.Click += new System.EventHandler(this.label1_Click);
@@ -387,7 +382,6 @@
             // 
             this.buttonRandomConfig.BackColor = System.Drawing.Color.Transparent;
             this.buttonRandomConfig.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonRandomConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonRandomConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRandomConfig.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonRandomConfig.ImageIndex = 0;
@@ -411,7 +405,6 @@
             // 
             this.buttonSchedule.BackColor = System.Drawing.Color.Transparent;
             this.buttonSchedule.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonSchedule.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSchedule.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonSchedule.ImageIndex = 1;
@@ -441,7 +434,6 @@
             this.buttonTheme.BackColor = System.Drawing.Color.Transparent;
             this.buttonTheme.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonTheme.FlatAppearance.BorderSize = 0;
-            this.buttonTheme.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTheme.ForeColor = System.Drawing.SystemColors.Control;
@@ -571,37 +563,37 @@
             this.tipsLabel.TabIndex = 19;
             this.tipsLabel.Text = "Loading...";
             // 
-            // panel2
+            // panelCustomizeSetting
             // 
-            this.panel2.AllowDrop = true;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.backButton);
-            this.panel2.Controls.Add(this.applyButton);
-            this.panel2.Controls.Add(this.libraryButton);
-            this.panel2.Controls.Add(this.groupBoxSpecs);
-            this.panel2.Controls.Add(this.groupBoxType);
-            this.panel2.Controls.Add(this.groupBoxFPS);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 58);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(382, 199);
-            this.panel2.TabIndex = 7;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            this.panelCustomizeSetting.AllowDrop = true;
+            this.panelCustomizeSetting.Controls.Add(this.panelCustomSizeSetting);
+            this.panelCustomizeSetting.Controls.Add(this.backButton);
+            this.panelCustomizeSetting.Controls.Add(this.applyButton);
+            this.panelCustomizeSetting.Controls.Add(this.libraryButton);
+            this.panelCustomizeSetting.Controls.Add(this.groupBoxSpecs);
+            this.panelCustomizeSetting.Controls.Add(this.groupBoxType);
+            this.panelCustomizeSetting.Controls.Add(this.groupBoxFPS);
+            this.panelCustomizeSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCustomizeSetting.Location = new System.Drawing.Point(0, 58);
+            this.panelCustomizeSetting.Name = "panelCustomizeSetting";
+            this.panelCustomizeSetting.Size = new System.Drawing.Size(382, 199);
+            this.panelCustomizeSetting.TabIndex = 7;
+            this.panelCustomizeSetting.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
-            // panel3
+            // panelCustomSizeSetting
             // 
-            this.panel3.Controls.Add(this.buttonCancelCustom);
-            this.panel3.Controls.Add(this.labelSizeCustom);
-            this.panel3.Controls.Add(this.trackBarSizeCustom);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.buttonOKCustom);
-            this.panel3.Controls.Add(this.pictureBoxCustom);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(382, 199);
-            this.panel3.TabIndex = 17;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            this.panelCustomSizeSetting.Controls.Add(this.buttonCancelCustom);
+            this.panelCustomSizeSetting.Controls.Add(this.labelSizeCustom);
+            this.panelCustomSizeSetting.Controls.Add(this.trackBarSizeCustom);
+            this.panelCustomSizeSetting.Controls.Add(this.label12);
+            this.panelCustomSizeSetting.Controls.Add(this.buttonOKCustom);
+            this.panelCustomSizeSetting.Controls.Add(this.pictureBoxCustom);
+            this.panelCustomSizeSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCustomSizeSetting.Location = new System.Drawing.Point(0, 0);
+            this.panelCustomSizeSetting.Name = "panelCustomSizeSetting";
+            this.panelCustomSizeSetting.Size = new System.Drawing.Size(382, 199);
+            this.panelCustomSizeSetting.TabIndex = 17;
+            this.panelCustomSizeSetting.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // buttonCancelCustom
             // 
@@ -817,23 +809,23 @@
             this.groupBoxFPS.TabStop = false;
             this.groupBoxFPS.Text = "FPS";
             // 
-            // panel4
+            // panelHeader
             // 
-            this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Controls.Add(this.buttonTheme);
-            this.panel4.Controls.Add(this.buttonMinimize);
-            this.panel4.Controls.Add(this.buttonClose);
-            this.panel4.Controls.Add(this.labelAbout);
-            this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(382, 58);
-            this.panel4.TabIndex = 14;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
-            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
-            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
+            this.panelHeader.BackColor = System.Drawing.Color.Black;
+            this.panelHeader.Controls.Add(this.buttonTheme);
+            this.panelHeader.Controls.Add(this.buttonMinimize);
+            this.panelHeader.Controls.Add(this.buttonClose);
+            this.panelHeader.Controls.Add(this.labelAbout);
+            this.panelHeader.Controls.Add(this.pictureBox1);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.ForeColor = System.Drawing.SystemColors.Control;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(382, 58);
+            this.panelHeader.TabIndex = 14;
+            this.panelHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            this.panelHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
+            this.panelHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
             // 
             // pictureBox1
             // 
@@ -862,9 +854,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(382, 257);
             this.ControlBox = false;
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelCustomizeSetting);
             this.Controls.Add(this.startButton);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.musicButton);
             this.Controls.Add(this.customizeButton);
@@ -890,9 +882,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNumber)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panelCustomizeSetting.ResumeLayout(false);
+            this.panelCustomSizeSetting.ResumeLayout(false);
+            this.panelCustomSizeSetting.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSizeCustom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCustom)).EndInit();
             this.groupBoxSpecs.ResumeLayout(false);
@@ -901,8 +893,8 @@
             this.groupBoxType.PerformLayout();
             this.groupBoxFPS.ResumeLayout(false);
             this.groupBoxFPS.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -931,14 +923,14 @@
         private System.Windows.Forms.CheckBox checkBoxAllrandom;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label tipsLabel;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelCustomizeSetting;
+        private System.Windows.Forms.Panel panelCustomSizeSetting;
         private System.Windows.Forms.Button buttonCancelCustom;
         private System.Windows.Forms.Label labelSizeCustom;
         private System.Windows.Forms.TrackBar trackBarSizeCustom;

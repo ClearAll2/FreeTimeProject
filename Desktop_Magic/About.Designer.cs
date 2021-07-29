@@ -112,14 +112,12 @@
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(313, 117);
             this.textBox1.TabIndex = 25;
-            this.textBox1.Text = "Changelog v2.8.0.1:\r\n-Small changes.\r\n\r\nChangelog v2.8:\r\n-We added Color Theme.\r\n" +
-    "-We improved some features.\r\n-We updated DM Updater, now you can open manually.";
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // buttonOK
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.ForeColor = System.Drawing.Color.Black;
             this.buttonOK.Location = new System.Drawing.Point(235, 404);

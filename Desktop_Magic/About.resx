@@ -120,12 +120,26 @@
   <data name="textBoxDescription.Text" xml:space="preserve">
     <value>contact@myfreedom.cf
 
-Freedom Sofware is always getting better. We always try to deliver greatest products.
+Freedom Sofware is always getting better. We always try to deliver greatest products
 
 Icons made by Freepik
 www.flaticon.com/authors/freepik
 
-Thanks for all the support given!</value>
+This app is made possible by WMPLib component.</value>
+  </data>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Changelog v2.8.0.2
+-Fixed a but related to updater.
+-Changed snow image.
+-DM should now run properly on old Windows version.
+
+Changelog v2.8.0.1
+-Small changes.
+
+Changelog v2.8
+-We added Color Theme.
+-We improved some features.
+-We updated DM Updater, now you can open manually.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

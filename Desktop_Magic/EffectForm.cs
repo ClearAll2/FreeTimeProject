@@ -87,7 +87,7 @@ namespace DM
             else if (type == 2)
             {
                 pic.Image = pictureBox2.Image;
-                size = rnd.Next(8) + 5;
+                size = rnd.Next(3) + 5;
                 pic.Size = new System.Drawing.Size(size, size);
             }
             else if (type == 3)
@@ -122,7 +122,7 @@ namespace DM
                 else if (o == 3)
                 {
                     pic.Image = pictureBox2.Image;
-                    size = rnd.Next(8) + 5;
+                    size = rnd.Next(3) + 5;
                     pic.Size = new System.Drawing.Size(size, size);
                 }
                 else
@@ -152,7 +152,7 @@ namespace DM
                         else if (o1 == 3)
                         {
                             pic.Image = pictureBox2.Image;
-                            size = rnd.Next(8) + 5;
+                            size = rnd.Next(3) + 5;
                             pic.Size = new System.Drawing.Size(size, size);
                         }
                     }
@@ -179,7 +179,7 @@ namespace DM
             }
             else if (type == 2)
             {
-                size = rnd.Next(8) + 5;
+                size = rnd.Next(3) + 5;
                 pic.Size = new System.Drawing.Size(size, size);
             }
             else if (type == 3)
@@ -210,7 +210,7 @@ namespace DM
                 else if (o == 3)
                 {
                     pic.Image = pictureBox2.Image;
-                    size = rnd.Next(8) + 5;
+                    size = rnd.Next(3) + 5;
                     pic.Size = new System.Drawing.Size(size, size);
                 }
                 else
@@ -239,7 +239,7 @@ namespace DM
                         else if (o1 == 3)
                         {
                             pic.Image = pictureBox2.Image;
-                            size = rnd.Next(8) + 5;
+                            size = rnd.Next(3) + 5;
                             pic.Size = new System.Drawing.Size(size, size);
                         }
                     }

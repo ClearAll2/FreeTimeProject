@@ -125,7 +125,6 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(46, 152);
@@ -165,7 +164,6 @@
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Location = new System.Drawing.Point(159, 152);

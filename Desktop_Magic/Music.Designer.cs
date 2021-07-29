@@ -61,7 +61,6 @@
             // importButton
             // 
             this.importButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.importButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.importButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.importButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.importButton.Location = new System.Drawing.Point(12, 31);
@@ -137,7 +136,6 @@
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.Control;
@@ -166,10 +164,6 @@
             this.toolTip1.SetToolTip(this.button5, "Close");
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.IsBalloon = true;
             // 
             // groupBox1
             // 
@@ -218,7 +212,7 @@
             // 
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "DM Music Player\r\nClick to hide/show";
+            this.notifyIcon1.Text = "DM Music Player";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 

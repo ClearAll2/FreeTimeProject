@@ -88,8 +88,8 @@ namespace DM
             CGlob g = new CGlob();
             notifyIcon1.Icon = this.Icon;
             notifyIcon1.Text = "Desktop Magic v" + Application.ProductVersion + "\n" + "Click to pause/resume effect";
-            panel2.Hide();
-            panel3.Hide();
+            panelCustomizeSetting.Hide();
+            panelCustomSizeSetting.Hide();
             trackBarSizeCustom.Value = CGlob.Size;
             labelSizeCustom.Text = trackBarSizeCustom.Value.ToString();
             value = trackBarSizeCustom.Value;
@@ -288,7 +288,8 @@ namespace DM
             }
             else if (o == 3)
             {
-                tipsLabel.Text = "You can open only one instance of this app";
+                tipsLabel.Text = "Please don't go out if not necessary!";
+                tipsLabel.ForeColor = Color.Red;
             }
             else if (o == 4)
             {
@@ -355,8 +356,9 @@ namespace DM
             updateButton.Text = "Checking updater...";
             //update new version for the updater
             string ver = "https://download-cas.000webhostapp.com/download/DM/uversion"; //version on the internet
+            string u_size = "https://download-cas.000webhostapp.com/download/DM/usize";
             string curr_ver;
-            if (System.IO.File.Exists(Application.StartupPath + "\\DM Updater.exe") && new FileInfo(Application.StartupPath + "\\DM Updater.exe").Length > 1000000)
+            if (System.IO.File.Exists(Application.StartupPath + "\\DM Updater.exe") && new FileInfo(Application.StartupPath + "\\DM Updater.exe").Length > Int32.Parse(wc.DownloadString(u_size)))
                 curr_ver = GetProductVersion(Application.StartupPath + "\\DM Updater.exe"); //version of updater
             else
                 curr_ver = "0.0.0.0";
@@ -504,8 +506,8 @@ namespace DM
         {
             this.Show();
 
-            panel2.Show();
-            panel3.Hide();
+            panelCustomizeSetting.Show();
+            panelCustomSizeSetting.Hide();
             WindowState = FormWindowState.Normal;
         }
 
@@ -543,7 +545,7 @@ namespace DM
         private void button3_Click(object sender, EventArgs e)
         {
             this.Show();
-            panel2.Show();
+            panelCustomizeSetting.Show();
             WindowState = FormWindowState.Normal;
         }
 
@@ -579,8 +581,8 @@ namespace DM
                 {
                     if (MessageBox.Show("Warning: Using custom image with high number may cause lag and ram overload!" + "\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     {
-                        panel2.Hide();
-                        panel3.Hide();
+                        panelCustomizeSetting.Hide();
+                        panelCustomSizeSetting.Hide();
                         button8_Click(null, null);
                         this.Show();
                         return;
@@ -612,8 +614,8 @@ namespace DM
                         return;
                     }
 
-                    panel2.Show();
-                    panel3.Show();
+                    panelCustomizeSetting.Show();
+                    panelCustomSizeSetting.Show();
                 }
                 else
                 {
@@ -638,14 +640,14 @@ namespace DM
                 button8_Click(null, null);
             this.Show();
 
-            panel2.Hide();
+            panelCustomizeSetting.Hide();
 
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             notifyIcon1.Visible = true;
-            panel2.Hide();
+            panelCustomizeSetting.Hide();
             r1 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
             if (r1.GetValue("DM3") == null)
             {
@@ -828,8 +830,8 @@ namespace DM
                 button8_Click(null, null);
             this.Show();
 
-            panel2.Hide();
-            panel3.Hide();
+            panelCustomizeSetting.Hide();
+            panelCustomSizeSetting.Hide();
         }
 
         private void trackBar4_Scroll(object sender, EventArgs e)
@@ -849,8 +851,8 @@ namespace DM
             if (MessageBox.Show("Are you sure?", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
 
-                panel2.Hide();
-                panel3.Hide();
+                panelCustomizeSetting.Hide();
+                panelCustomSizeSetting.Hide();
             }
         }
 
@@ -1147,8 +1149,8 @@ namespace DM
             if (started)
             {
                 DialogResult dialogResult = new DialogResult();
-                dialogResult = MessageBox.Show("You just want to hide this window, right?", "Wait a second!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                dialogResult = MessageBox.Show("Are you sure want to close this application?", "Sure?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.No)
                 {
                     button1_Click(null, null);
                     return;

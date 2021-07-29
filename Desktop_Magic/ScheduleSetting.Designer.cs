@@ -55,7 +55,6 @@
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.ForeColor = System.Drawing.Color.Black;
             this.buttonCancel.Location = new System.Drawing.Point(283, 165);
@@ -70,7 +69,6 @@
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.ForeColor = System.Drawing.Color.Black;
             this.buttonOK.Location = new System.Drawing.Point(168, 165);

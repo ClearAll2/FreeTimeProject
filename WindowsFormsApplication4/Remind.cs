@@ -10,13 +10,13 @@ using System.Media;
 
 namespace AS
 {
-    public partial class Form2 : Form
+    public partial class Remind : Form
     {
         string text = "";
         int count = 0;
         int newx, newy;
         SoundPlayer sound;
-        public Form2()
+        public Remind()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -158,16 +158,6 @@ namespace AS
         {
             sound.Dispose();
             sound.Stop();
-        }
-
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-           
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)

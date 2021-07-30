@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace AS
 {
-    partial class AboutBox1 : Form
+    partial class About : Form
     {
         
-        public AboutBox1()
+        public About()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);

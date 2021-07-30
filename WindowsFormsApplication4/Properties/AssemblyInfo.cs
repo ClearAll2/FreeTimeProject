@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AS")]
-[assembly: AssemblyDescription("Thanks for all the support given!")]
+[assembly: AssemblyDescription("Icon made by Freepik\nhttps://www.flaticon.com/authors/freepik")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Clear All Soft (CAS)")]
+[assembly: AssemblyCompany("Freedom Software (CAS)")]
 [assembly: AssemblyProduct("AS")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © 2018 - 2021")]
+[assembly: AssemblyTrademark("Clear All Soft")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.4.629")]
-[assembly: AssemblyFileVersion("1.2.4.629")]
+[assembly: AssemblyVersion("1.3.0.0")]
+[assembly: AssemblyFileVersion("1.3.0.0")]

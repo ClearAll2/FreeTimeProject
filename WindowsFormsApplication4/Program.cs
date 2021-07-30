@@ -25,14 +25,14 @@ namespace WindowsFormsApplication4
 
             if (m_Mutex.WaitOne(0, false))
             {
-                Application.Run(new Form1(1));
+                Application.Run(new Main(1));
             }
             else
             {
                 RegistryKey r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\AS\\Data", true);
                 if (r == null)
                 {
-                    Application.Run(new Form1(1));
+                    Application.Run(new Main(1));
                 }
                 else
                 {
@@ -42,7 +42,7 @@ namespace WindowsFormsApplication4
                         {
                             if (MessageBox.Show("AutoRun Option is now active! \nAutoRun Option can not be used in this instance. \nDo you want to run?", "Did you know", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                             {
-                                Application.Run(new Form1(2));
+                                Application.Run(new Main(2));
                             }
                             else
                             {
@@ -53,12 +53,12 @@ namespace WindowsFormsApplication4
                         }
                         else
                         {
-                            Application.Run(new Form1(1));
+                            Application.Run(new Main(1));
                         }
                     }
                     else
                     {
-                        Application.Run(new Form1(1));
+                        Application.Run(new Main(1));
                     }
                 }
                 r.Close();

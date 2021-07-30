@@ -1,19 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.Net;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media;
 using AS;
-using System.IO;
 using Microsoft.Win32;
 using System.Speech.Synthesis;
 using System.Diagnostics;
 
 namespace WindowsFormsApplication4
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         int setting = 1 * 60 * 1000;
         int count = 0;
@@ -28,7 +24,7 @@ namespace WindowsFormsApplication4
         bool check = false;
         string ver = "";
         string changelog = "";
-        Form2 f;
+        Remind f;
         RegistryKey r;
         //string password = "";
         bool showed = false;
@@ -38,17 +34,17 @@ namespace WindowsFormsApplication4
         bool click = false;
         int newx, newy;
         int tfa;
-        AboutBox1 ab = new AboutBox1();
+        About ab = new About();
         //SpeechRecognitionEngine speech = new SpeechRecognitionEngine();
         SpeechSynthesizer jarvis = new SpeechSynthesizer();
         //string[] lines = { "Set Mode", "Shutdown", "Hibernate", "Sleep", "Remind", "Safe Mode", "Show Notification", "AutoRun", "Start", "Stop", "1", "2", "3", "4", "5", "6", "7", "8", "9", "minute", "hour", "exit" };
-        public Form1(int type)
+        public Main(int type)
         {
             InitializeComponent();
             //StartPosition = FormStartPosition.CenterScreen;
             //
             //tb.Description = "AS";
-            panel1.Hide();
+            //panel1.Hide();
             panel2.Hide();
             panelShowNoti.Hide();
             checkBox4.Hide();
@@ -59,12 +55,12 @@ namespace WindowsFormsApplication4
             jarvis.SelectVoiceByHints(VoiceGender.Female);
             //LoadGrammar(); 
             //
-            bw = new BackgroundWorker();
-            bw.DoWork += bw_DoWork;
-            bw.RunWorkerAsync();
+            //bw = new BackgroundWorker();
+            //bw.DoWork += bw_DoWork;
+            //bw.RunWorkerAsync();
             progressBar1.Enabled = false;
             progressBar1.Hide();
-            f = new Form2();
+            f = new Remind();
             if (type == 1)
             {
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\AS\\Data", true);
@@ -326,9 +322,9 @@ namespace WindowsFormsApplication4
                     }
                     started = true;
                     //notifyIcon1.ShowBalloonTip(2000, "Auto Shutdown", "Auto Shutdown is running in background", ToolTipIcon.Info);
-                    button1.Text = "Minimize";
-                    button2.Text = "Stop";
-                    button5.Enabled = false;
+                    buttonStart.Text = "Minimize";
+                    buttonClose.Text = "Stop";
+                    buttonTime.Enabled = false;
                 }
                 else
                 {
@@ -402,7 +398,7 @@ namespace WindowsFormsApplication4
         //Stop timer
         private void Stop()
         {
-            button5.Enabled = true;
+            buttonTime.Enabled = true;
             numericUpDown1.Enabled = true;
             numericUpDown2.Enabled = true;
             if (started == false)
@@ -411,11 +407,11 @@ namespace WindowsFormsApplication4
                     Application.Exit();
                 else
                 {
-                    panel1.Show();
-                    textBox1.Text = "";
-                    button3.Text = "Ok";
-                    label6.Hide();
-                    textBox2.Hide();
+                    //panel1.Show();
+                    //textBox1.Text = "";
+                    //button3.Text = "Ok";
+                    //label6.Hide();
+                    //textBox2.Hide();
                 }
             }
             else
@@ -429,7 +425,7 @@ namespace WindowsFormsApplication4
                     f.EndSound();
                     f.Dispose();
                     f.Close();
-                    f = new Form2();
+                    f = new Remind();
                 }
                 timer1.Stop();
                 setting = trackBar1.Value * 60 * 1000;
@@ -443,8 +439,8 @@ namespace WindowsFormsApplication4
                 progressBar1.Hide();
                 progressBar1.Value = 0;
                 progressBar1.Enabled = false;
-                button1.Text = "Start";
-                button2.Text = "Exit";
+                buttonStart.Text = "Start";
+                buttonClose.Text = "Exit";
                 count = 0;
                 notifyIcon1.Text = "Auto Shutdown";
 
@@ -477,11 +473,11 @@ namespace WindowsFormsApplication4
             if (checkBox3.Checked)
             {
                 click = true;
-                panel1.Show();
-                textBox1.Text = "";
-                button3.Text = "Ok";
-                label6.Hide();
-                textBox2.Hide();
+                //panel1.Show();
+                //textBox1.Text = "";
+                //button3.Text = "Ok";
+                //label6.Hide();
+                //textBox2.Hide();
             }
             else
             {
@@ -835,8 +831,8 @@ namespace WindowsFormsApplication4
 
         private void label4_Click(object sender, EventArgs e)
         {
-            if (bw.IsBusy != true)
-                bw.RunWorkerAsync();
+            //if (bw.IsBusy != true)
+            //    bw.RunWorkerAsync();
             if (ab.Visible != true)
                 ab.ShowDialog();
             
@@ -915,7 +911,7 @@ namespace WindowsFormsApplication4
             }
             else
             {
-                f = new Form2();
+                f = new Remind();
                 f.Show();
             }
         }
@@ -1011,18 +1007,18 @@ namespace WindowsFormsApplication4
                         r.Dispose();
                         if (MessageBox.Show("Do you want to change your password?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            panel1.Show();
-                            label6.Show();
-                            textBox2.Show();
-                            button3.Text = "Save";
-                            textBox1.Text = "";
-                            textBox2.Text = "";
+                            //panel1.Show();
+                            //label6.Show();
+                            //textBox2.Show();
+                            //button3.Text = "Save";
+                            //textBox1.Text = "";
+                            //textBox2.Text = "";
                             showed = true;
                         }
                     }
                     else
                     {
-                        panel1.Show();
+                        //panel1.Show();
                         showed = true;
                     }
                 }
@@ -1032,11 +1028,11 @@ namespace WindowsFormsApplication4
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\AS\\Data", true);
                 if (r.GetValue("Pass") != null)
                 {
-                    panel1.Show();
-                    textBox1.Text = "";
-                    button3.Text = "Ok";
-                    label6.Hide();
-                    textBox2.Hide();
+                    //panel1.Show();
+                    //textBox1.Text = "";
+                    //button3.Text = "Ok";
+                    //label6.Hide();
+                    //textBox2.Hide();
                 }
                 r.Close();
                 r.Dispose();
@@ -1183,18 +1179,18 @@ namespace WindowsFormsApplication4
                         r.Dispose();
                         if (MessageBox.Show("Do you want to change your password?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            panel1.Show();
-                            label6.Show();
-                            textBox2.Show();
-                            button3.Text = "Save";
-                            textBox1.Text = "";
-                            textBox2.Text = "";
+                            //panel1.Show();
+                            //label6.Show();
+                            //textBox2.Show();
+                            //button3.Text = "Save";
+                            //textBox1.Text = "";
+                            //textBox2.Text = "";
                             showed = true;
                         }
                     }
                     else
                     {
-                        panel1.Show();
+                        //panel1.Show();
                         showed = true;
                     }
                 }
@@ -1204,11 +1200,11 @@ namespace WindowsFormsApplication4
                 r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\AS\\Data", true);
                 if (r.GetValue("Pass") != null)
                 {
-                    panel1.Show();
-                    textBox1.Text = "";
-                    button3.Text = "Ok";
-                    label6.Hide();
-                    textBox2.Hide();
+                    //panel1.Show();
+                    //textBox1.Text = "";
+                    //button3.Text = "Ok";
+                    //label6.Hide();
+                    //textBox2.Hide();
                 }
                 r.Close();
                 r.Dispose();
@@ -1222,7 +1218,7 @@ namespace WindowsFormsApplication4
             {
                 real = false;
                 panel2.Hide();
-                button5.Text = "Real Time";
+                buttonTime.Text = "Real Time";
             }
             else
             {
@@ -1236,7 +1232,7 @@ namespace WindowsFormsApplication4
                 else
                     numericUpDown2.Value = DateTime.Now.Minute + 1;
                 panel2.Show();
-                button5.Text = "Raw Time";
+                buttonTime.Text = "Raw Time";
             }
         }
 

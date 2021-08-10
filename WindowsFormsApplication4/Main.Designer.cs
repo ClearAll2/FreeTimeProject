@@ -44,49 +44,49 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
+            this.radioButtonHibernate = new System.Windows.Forms.RadioButton();
+            this.radioButtonSleep = new System.Windows.Forms.RadioButton();
+            this.labelAbout = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.radioButtonRemind = new System.Windows.Forms.RadioButton();
+            this.progressBarTime = new System.Windows.Forms.ProgressBar();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.radioButtonShutdown = new System.Windows.Forms.RadioButton();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.buttonStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.panelRealTime = new System.Windows.Forms.Panel();
+            this.numericUpDownMinute = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownHour = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelCurrentTime = new System.Windows.Forms.Label();
+            this.labelCurrentTimeInfo = new System.Windows.Forms.Label();
             this.buttonTime = new System.Windows.Forms.Button();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxModes = new System.Windows.Forms.GroupBox();
+            this.groupBoxOption = new System.Windows.Forms.GroupBox();
             this.panelShowNoti = new System.Windows.Forms.Panel();
             this.checkBox30sec = new System.Windows.Forms.CheckBox();
             this.checkBox1min = new System.Windows.Forms.CheckBox();
             this.checkBox5min = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonStart = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.panelRealTime.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinute)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHour)).BeginInit();
+            this.groupBoxModes.SuspendLayout();
+            this.groupBoxOption.SuspendLayout();
             this.panelShowNoti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -147,29 +147,29 @@
             // shutdownToolStripMenuItem
             // 
             this.shutdownToolStripMenuItem.Name = "shutdownToolStripMenuItem";
-            this.shutdownToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.shutdownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shutdownToolStripMenuItem.Text = "Shutdown";
             this.shutdownToolStripMenuItem.Click += new System.EventHandler(this.shutdownToolStripMenuItem_Click);
             // 
             // hibernateToolStripMenuItem
             // 
             this.hibernateToolStripMenuItem.Name = "hibernateToolStripMenuItem";
-            this.hibernateToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.hibernateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hibernateToolStripMenuItem.Text = "Hibernate";
             this.hibernateToolStripMenuItem.Click += new System.EventHandler(this.hibernateToolStripMenuItem_Click);
             // 
             // sleepToolStripMenuItem
             // 
             this.sleepToolStripMenuItem.Name = "sleepToolStripMenuItem";
-            this.sleepToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.sleepToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sleepToolStripMenuItem.Text = "Sleep";
             this.sleepToolStripMenuItem.Click += new System.EventHandler(this.sleepToolStripMenuItem_Click);
             // 
             // noticeSomethingToolStripMenuItem
             // 
             this.noticeSomethingToolStripMenuItem.Name = "noticeSomethingToolStripMenuItem";
-            this.noticeSomethingToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.noticeSomethingToolStripMenuItem.Text = "Notice Something";
+            this.noticeSomethingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noticeSomethingToolStripMenuItem.Text = "Remind Something";
             this.noticeSomethingToolStripMenuItem.Click += new System.EventHandler(this.noticeSomethingToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
@@ -199,60 +199,60 @@
             // 
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
-            // radioButton2
+            // radioButtonHibernate
             // 
-            this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.radioButtonHibernate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.radioButton2.Location = new System.Drawing.Point(13, 49);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(88, 19);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Hibernate";
-            this.toolTip1.SetToolTip(this.radioButton2, "Turn off the PC but apps stay open.\r\nWhen the PC is turned on, you\'re back to whe" +
+            this.radioButtonHibernate.AutoSize = true;
+            this.radioButtonHibernate.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButtonHibernate.Location = new System.Drawing.Point(13, 49);
+            this.radioButtonHibernate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.radioButtonHibernate.Name = "radioButtonHibernate";
+            this.radioButtonHibernate.Size = new System.Drawing.Size(88, 19);
+            this.radioButtonHibernate.TabIndex = 3;
+            this.radioButtonHibernate.TabStop = true;
+            this.radioButtonHibernate.Text = "Hibernate";
+            this.toolTip1.SetToolTip(this.radioButtonHibernate, "Turn off the PC but apps stay open.\r\nWhen the PC is turned on, you\'re back to whe" +
         "re you left off.");
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButtonHibernate.UseVisualStyleBackColor = true;
+            this.radioButtonHibernate.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton3
+            // radioButtonSleep
             // 
-            this.radioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.radioButtonSleep.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.radioButton3.Location = new System.Drawing.Point(13, 74);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(62, 19);
-            this.radioButton3.TabIndex = 5;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Sleep";
-            this.toolTip1.SetToolTip(this.radioButton3, "The PC stays on but uses low power. Apps stay open.\r\nWhen the PC wakes up, you\'re" +
+            this.radioButtonSleep.AutoSize = true;
+            this.radioButtonSleep.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButtonSleep.Location = new System.Drawing.Point(13, 74);
+            this.radioButtonSleep.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.radioButtonSleep.Name = "radioButtonSleep";
+            this.radioButtonSleep.Size = new System.Drawing.Size(62, 19);
+            this.radioButtonSleep.TabIndex = 5;
+            this.radioButtonSleep.TabStop = true;
+            this.radioButtonSleep.Text = "Sleep";
+            this.toolTip1.SetToolTip(this.radioButtonSleep, "The PC stays on but uses low power. Apps stay open.\r\nWhen the PC wakes up, you\'re" +
         " instantly back to where you left off.");
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.radioButtonSleep.UseVisualStyleBackColor = true;
+            this.radioButtonSleep.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // label4
+            // labelAbout
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(143, 7);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 45);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "AS v1.3\r\nCopyright © 2021\r\nFreedom Software";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.toolTip1.SetToolTip(this.label4, "About");
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.labelAbout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelAbout.AutoSize = true;
+            this.labelAbout.BackColor = System.Drawing.Color.Transparent;
+            this.labelAbout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelAbout.ForeColor = System.Drawing.Color.White;
+            this.labelAbout.Location = new System.Drawing.Point(143, 7);
+            this.labelAbout.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAbout.Name = "labelAbout";
+            this.labelAbout.Size = new System.Drawing.Size(124, 45);
+            this.labelAbout.TabIndex = 15;
+            this.labelAbout.Text = "AS v1.3\r\nCopyright © 2021\r\nFreedom Software";
+            this.labelAbout.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTip1.SetToolTip(this.labelAbout, "About");
+            this.labelAbout.Click += new System.EventHandler(this.label4_Click);
             // 
             // checkBox1
             // 
@@ -271,37 +271,37 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // radioButton4
+            // radioButtonRemind
             // 
-            this.radioButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.radioButtonRemind.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButton4.Location = new System.Drawing.Point(13, 99);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(146, 19);
-            this.radioButton4.TabIndex = 4;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Remind something";
-            this.toolTip1.SetToolTip(this.radioButton4, "Just remind something");
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.radioButtonRemind.AutoSize = true;
+            this.radioButtonRemind.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonRemind.Location = new System.Drawing.Point(13, 99);
+            this.radioButtonRemind.Name = "radioButtonRemind";
+            this.radioButtonRemind.Size = new System.Drawing.Size(146, 19);
+            this.radioButtonRemind.TabIndex = 4;
+            this.radioButtonRemind.TabStop = true;
+            this.radioButtonRemind.Text = "Remind something";
+            this.toolTip1.SetToolTip(this.radioButtonRemind, "Just remind something");
+            this.radioButtonRemind.UseVisualStyleBackColor = true;
+            this.radioButtonRemind.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
-            // progressBar1
+            // progressBarTime
             // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.progressBarTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Enabled = false;
-            this.progressBar1.Location = new System.Drawing.Point(29, 282);
-            this.progressBar1.Maximum = 1000000000;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(313, 10);
-            this.progressBar1.Step = 1000;
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 22;
-            this.toolTip1.SetToolTip(this.progressBar1, "Eslaped Time");
+            this.progressBarTime.Enabled = false;
+            this.progressBarTime.Location = new System.Drawing.Point(12, 282);
+            this.progressBarTime.Maximum = 1000000000;
+            this.progressBarTime.Name = "progressBarTime";
+            this.progressBarTime.Size = new System.Drawing.Size(347, 10);
+            this.progressBarTime.Step = 1000;
+            this.progressBarTime.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBarTime.TabIndex = 22;
+            this.toolTip1.SetToolTip(this.progressBarTime, "Elapsed Time");
             // 
             // checkBox3
             // 
@@ -355,39 +355,39 @@
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
-            // button6
+            // buttonBack
             // 
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(49, 82);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(72, 29);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "&Back";
-            this.toolTip1.SetToolTip(this.button6, "Back to options");
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBack.ForeColor = System.Drawing.Color.Black;
+            this.buttonBack.Location = new System.Drawing.Point(49, 82);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(72, 29);
+            this.buttonBack.TabIndex = 3;
+            this.buttonBack.Text = "&Back";
+            this.toolTip1.SetToolTip(this.buttonBack, "Back to options");
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.button6_Click);
             // 
-            // radioButton1
+            // radioButtonShutdown
             // 
-            this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.radioButtonShutdown.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.radioButton1.Location = new System.Drawing.Point(13, 24);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(92, 19);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Shut down";
-            this.toolTip1.SetToolTip(this.radioButton1, "Close all apps and turn off the PC");
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButtonShutdown.AutoSize = true;
+            this.radioButtonShutdown.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButtonShutdown.Location = new System.Drawing.Point(13, 24);
+            this.radioButtonShutdown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.radioButtonShutdown.Name = "radioButtonShutdown";
+            this.radioButtonShutdown.Size = new System.Drawing.Size(92, 19);
+            this.radioButtonShutdown.TabIndex = 2;
+            this.radioButtonShutdown.TabStop = true;
+            this.radioButtonShutdown.Text = "Shut down";
+            this.toolTip1.SetToolTip(this.radioButtonShutdown, "Close all apps and turn off the PC");
+            this.radioButtonShutdown.UseVisualStyleBackColor = true;
+            this.radioButtonShutdown.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // buttonMinimize
             // 
@@ -442,21 +442,6 @@
             this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
-            // buttonStart
-            // 
-            this.buttonStart.AutoSize = true;
-            this.buttonStart.FlatAppearance.BorderSize = 0;
-            this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStart.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonStart.Location = new System.Drawing.Point(132, 305);
-            this.buttonStart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(107, 38);
-            this.buttonStart.TabIndex = 8;
-            this.buttonStart.Text = "Start";
-            this.buttonStart.UseVisualStyleBackColor = false;
-            this.buttonStart.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -496,31 +481,31 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel2
+            // panelRealTime
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.numericUpDown2);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.numericUpDown1);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(0, 58);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(372, 66);
-            this.panel2.TabIndex = 26;
+            this.panelRealTime.BackColor = System.Drawing.Color.White;
+            this.panelRealTime.Controls.Add(this.numericUpDownMinute);
+            this.panelRealTime.Controls.Add(this.label10);
+            this.panelRealTime.Controls.Add(this.numericUpDownHour);
+            this.panelRealTime.Controls.Add(this.label9);
+            this.panelRealTime.Controls.Add(this.labelCurrentTime);
+            this.panelRealTime.Controls.Add(this.labelCurrentTimeInfo);
+            this.panelRealTime.Location = new System.Drawing.Point(0, 58);
+            this.panelRealTime.Name = "panelRealTime";
+            this.panelRealTime.Size = new System.Drawing.Size(372, 66);
+            this.panelRealTime.TabIndex = 26;
             // 
-            // numericUpDown2
+            // numericUpDownMinute
             // 
-            this.numericUpDown2.BackColor = System.Drawing.Color.White;
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(218, 39);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(57, 21);
-            this.numericUpDown2.TabIndex = 5;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.numericUpDownMinute.BackColor = System.Drawing.Color.White;
+            this.numericUpDownMinute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDownMinute.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownMinute.Location = new System.Drawing.Point(218, 39);
+            this.numericUpDownMinute.Name = "numericUpDownMinute";
+            this.numericUpDownMinute.Size = new System.Drawing.Size(57, 21);
+            this.numericUpDownMinute.TabIndex = 5;
+            this.numericUpDownMinute.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownMinute.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // label10
             // 
@@ -533,17 +518,17 @@
             this.label10.TabIndex = 4;
             this.label10.Text = ":";
             // 
-            // numericUpDown1
+            // numericUpDownHour
             // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.White;
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(146, 39);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(57, 21);
-            this.numericUpDown1.TabIndex = 3;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.numericUpDownHour.BackColor = System.Drawing.Color.White;
+            this.numericUpDownHour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDownHour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownHour.Location = new System.Drawing.Point(146, 39);
+            this.numericUpDownHour.Name = "numericUpDownHour";
+            this.numericUpDownHour.Size = new System.Drawing.Size(57, 21);
+            this.numericUpDownHour.TabIndex = 3;
+            this.numericUpDownHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownHour.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label9
             // 
@@ -556,27 +541,27 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Setting:";
             // 
-            // label8
+            // labelCurrentTime
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(200, 11);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 15);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "hh:mm:ss";
+            this.labelCurrentTime.AutoSize = true;
+            this.labelCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrentTime.ForeColor = System.Drawing.Color.Black;
+            this.labelCurrentTime.Location = new System.Drawing.Point(200, 11);
+            this.labelCurrentTime.Name = "labelCurrentTime";
+            this.labelCurrentTime.Size = new System.Drawing.Size(61, 15);
+            this.labelCurrentTime.TabIndex = 1;
+            this.labelCurrentTime.Text = "hh:mm:ss";
             // 
-            // label7
+            // labelCurrentTimeInfo
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(113, 11);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 15);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Current Time:";
+            this.labelCurrentTimeInfo.AutoSize = true;
+            this.labelCurrentTimeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrentTimeInfo.ForeColor = System.Drawing.Color.Black;
+            this.labelCurrentTimeInfo.Location = new System.Drawing.Point(113, 11);
+            this.labelCurrentTimeInfo.Name = "labelCurrentTimeInfo";
+            this.labelCurrentTimeInfo.Size = new System.Drawing.Size(81, 15);
+            this.labelCurrentTimeInfo.TabIndex = 0;
+            this.labelCurrentTimeInfo.Text = "Current Time:";
             // 
             // buttonTime
             // 
@@ -599,35 +584,35 @@
             this.timer3.Interval = 1000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // groupBox1
+            // groupBoxModes
             // 
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 130);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(174, 142);
-            this.groupBox1.TabIndex = 28;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Main Modes";
+            this.groupBoxModes.Controls.Add(this.radioButtonSleep);
+            this.groupBoxModes.Controls.Add(this.radioButtonHibernate);
+            this.groupBoxModes.Controls.Add(this.radioButtonShutdown);
+            this.groupBoxModes.Controls.Add(this.radioButtonRemind);
+            this.groupBoxModes.Location = new System.Drawing.Point(12, 130);
+            this.groupBoxModes.Name = "groupBoxModes";
+            this.groupBoxModes.Size = new System.Drawing.Size(174, 142);
+            this.groupBoxModes.TabIndex = 28;
+            this.groupBoxModes.TabStop = false;
+            this.groupBoxModes.Text = "Main Modes";
             // 
-            // groupBox2
+            // groupBoxOption
             // 
-            this.groupBox2.Controls.Add(this.panelShowNoti);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Location = new System.Drawing.Point(192, 130);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(168, 143);
-            this.groupBox2.TabIndex = 29;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Options";
+            this.groupBoxOption.Controls.Add(this.panelShowNoti);
+            this.groupBoxOption.Controls.Add(this.checkBox2);
+            this.groupBoxOption.Controls.Add(this.checkBox3);
+            this.groupBoxOption.Controls.Add(this.checkBox1);
+            this.groupBoxOption.Location = new System.Drawing.Point(192, 130);
+            this.groupBoxOption.Name = "groupBoxOption";
+            this.groupBoxOption.Size = new System.Drawing.Size(168, 143);
+            this.groupBoxOption.TabIndex = 29;
+            this.groupBoxOption.TabStop = false;
+            this.groupBoxOption.Text = "Options";
             // 
             // panelShowNoti
             // 
-            this.panelShowNoti.Controls.Add(this.button6);
+            this.panelShowNoti.Controls.Add(this.buttonBack);
             this.panelShowNoti.Controls.Add(this.checkBox30sec);
             this.panelShowNoti.Controls.Add(this.checkBox1min);
             this.panelShowNoti.Controls.Add(this.checkBox5min);
@@ -699,7 +684,7 @@
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Controls.Add(this.buttonMinimize);
             this.panel3.Controls.Add(this.buttonExit);
-            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.labelAbout);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -709,27 +694,42 @@
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
             this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
             // 
+            // buttonStart
+            // 
+            this.buttonStart.AutoSize = true;
+            this.buttonStart.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonStart.FlatAppearance.BorderSize = 0;
+            this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStart.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonStart.Location = new System.Drawing.Point(132, 305);
+            this.buttonStart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(107, 38);
+            this.buttonStart.TabIndex = 32;
+            this.buttonStart.Text = "Start";
+            this.buttonStart.UseVisualStyleBackColor = false;
+            this.buttonStart.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
-            this.AcceptButton = this.buttonStart;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.buttonClose;
             this.ClientSize = new System.Drawing.Size(371, 355);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.groupBoxModes);
+            this.Controls.Add(this.panelRealTime);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.buttonTime);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.progressBarTime);
+            this.Controls.Add(this.groupBoxOption);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Blue;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -745,14 +745,14 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.panelRealTime.ResumeLayout(false);
+            this.panelRealTime.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinute)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHour)).EndInit();
+            this.groupBoxModes.ResumeLayout(false);
+            this.groupBoxModes.PerformLayout();
+            this.groupBoxOption.ResumeLayout(false);
+            this.groupBoxOption.PerformLayout();
             this.panelShowNoti.ResumeLayout(false);
             this.panelShowNoti.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -781,40 +781,40 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton radioButtonShutdown;
+        private System.Windows.Forms.RadioButton radioButtonHibernate;
+        private System.Windows.Forms.RadioButton radioButtonSleep;
+        private System.Windows.Forms.Label labelAbout;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButtonRemind;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBarTime;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Panel panelRealTime;
+        private System.Windows.Forms.NumericUpDown numericUpDownMinute;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDownHour;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelCurrentTime;
+        private System.Windows.Forms.Label labelCurrentTimeInfo;
         private System.Windows.Forms.Button buttonTime;
         private System.Windows.Forms.Timer timer3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxModes;
+        private System.Windows.Forms.GroupBox groupBoxOption;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panelShowNoti;
         private System.Windows.Forms.CheckBox checkBox30sec;
         private System.Windows.Forms.CheckBox checkBox1min;
         private System.Windows.Forms.CheckBox checkBox5min;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonStart;
     }
 }
 

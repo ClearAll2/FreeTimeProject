@@ -45,7 +45,7 @@ namespace WindowsFormsApplication4
             //
             //tb.Description = "AS";
             //panel1.Hide();
-            panel2.Hide();
+            panelRealTime.Hide();
             panelShowNoti.Hide();
             checkBox4.Hide();
             //
@@ -58,8 +58,8 @@ namespace WindowsFormsApplication4
             //bw = new BackgroundWorker();
             //bw.DoWork += bw_DoWork;
             //bw.RunWorkerAsync();
-            progressBar1.Enabled = false;
-            progressBar1.Hide();
+            progressBarTime.Enabled = false;
+            progressBarTime.Hide();
             f = new Remind();
             if (type == 1)
             {
@@ -81,31 +81,31 @@ namespace WindowsFormsApplication4
                             else
                                 label3.Text = (trackBar1.Value / 60).ToString() + "h " + (trackBar1.Value - (60 * (trackBar1.Value / 60))).ToString() + " min";
                             setting = trackBar1.Value * 60 * 1000;
-                            progressBar1.Maximum = setting;
+                            progressBarTime.Maximum = setting;
                             if (r.GetValue("Rm") != null)
                             {
                                 remain = (int)r.GetValue("Rm");
                                 if (remain > 0)
                                 {
                                     count = setting - remain;
-                                    progressBar1.Value = count;
+                                    progressBarTime.Value = count;
                                 }
                             }
                         }
                         else
                         {
                             real = true;
-                            panel2.Show();
-                            numericUpDown1.Value = (int)r.GetValue("SH");
-                            numericUpDown2.Value = (int)r.GetValue("SM");
+                            panelRealTime.Show();
+                            numericUpDownHour.Value = (int)r.GetValue("SH");
+                            numericUpDownMinute.Value = (int)r.GetValue("SM");
                         }
                         //
                         if ((int)r.GetValue("Mode") == 1)
-                            radioButton1.Checked = true;
+                            radioButtonShutdown.Checked = true;
                         else if ((int)r.GetValue("Mode") == 2)
-                            radioButton2.Checked = true;
+                            radioButtonHibernate.Checked = true;
                         else
-                            radioButton3.Checked = true;
+                            radioButtonSleep.Checked = true;
 
                         if ((int)r.GetValue("Safe") == 1)
                             checkBox1.Checked = true;
@@ -301,9 +301,9 @@ namespace WindowsFormsApplication4
                     timer1.Start();
                     if (real != true)
                     {
-                        progressBar1.Maximum = setting;
-                        progressBar1.Enabled = true;
-                        progressBar1.Show();  
+                        progressBarTime.Maximum = setting;
+                        progressBarTime.Enabled = true;
+                        progressBarTime.Show();  
                         
                     }
                     else
@@ -353,7 +353,7 @@ namespace WindowsFormsApplication4
                 else
                     label3.Text = (trackBar1.Value / 60).ToString() + "h " + (trackBar1.Value - (60 * (trackBar1.Value / 60))).ToString() + " min";
                 setting = trackBar1.Value * 60 * 1000;
-                progressBar1.Maximum = setting;
+                progressBarTime.Maximum = setting;
             }
             else
             {
@@ -364,7 +364,7 @@ namespace WindowsFormsApplication4
                     else
                         label3.Text = (trackBar1.Value / 60).ToString() + "h " + (trackBar1.Value - (60 * (trackBar1.Value / 60))).ToString() + " min";
                     setting = trackBar1.Value * 60 * 1000;
-                    progressBar1.Maximum = setting;
+                    progressBarTime.Maximum = setting;
                 }
                 else
                 {
@@ -376,11 +376,11 @@ namespace WindowsFormsApplication4
                     else
                         label3.Text = (trackBar1.Value / 60).ToString() + "h " + (trackBar1.Value - (60 * (trackBar1.Value / 60))).ToString() + " min";
                     setting = trackBar1.Value * 60 * 1000;
-                    progressBar1.Maximum = setting;
+                    progressBarTime.Maximum = setting;
                     
                     MessageBox.Show("Your new time is lower than counted time!" + "\nTimer has been restarted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     count = 0;
-                    progressBar1.Value = 0;
+                    progressBarTime.Value = 0;
                 }
             }
         }
@@ -399,8 +399,8 @@ namespace WindowsFormsApplication4
         private void Stop()
         {
             buttonTime.Enabled = true;
-            numericUpDown1.Enabled = true;
-            numericUpDown2.Enabled = true;
+            numericUpDownHour.Enabled = true;
+            numericUpDownMinute.Enabled = true;
             if (started == false)
             {
                 if (checkBox4.Checked != true)
@@ -436,28 +436,28 @@ namespace WindowsFormsApplication4
                 ns = false;
                 //label5.Text = (trackBar1.Value * 60).ToString();
                 //label6.Text = "----";
-                progressBar1.Hide();
-                progressBar1.Value = 0;
-                progressBar1.Enabled = false;
+                progressBarTime.Hide();
+                progressBarTime.Value = 0;
+                progressBarTime.Enabled = false;
                 buttonStart.Text = "Start";
                 buttonClose.Text = "Exit";
                 count = 0;
                 notifyIcon1.Text = "Auto Shutdown";
 
-                radioButton1.Enabled = true;
-                radioButton2.Enabled = true;
-                radioButton3.Enabled = true;
-                radioButton4.Enabled = true;
+                radioButtonShutdown.Enabled = true;
+                radioButtonHibernate.Enabled = true;
+                radioButtonSleep.Enabled = true;
+                radioButtonRemind.Enabled = true;
 
                 checkBox1.Enabled = true;
                 checkBox2.Enabled = true;
                 checkBox3.Enabled = true;
                 trackBar1.Enabled = true;
                 //
-                radioButton1.Checked = false;
-                radioButton2.Checked = false;
-                radioButton3.Checked = false;
-                radioButton4.Checked = false;
+                radioButtonShutdown.Checked = false;
+                radioButtonHibernate.Checked = false;
+                radioButtonSleep.Checked = false;
+                radioButtonRemind.Checked = false;
                 //
 
                 //
@@ -549,8 +549,8 @@ namespace WindowsFormsApplication4
                 {
                     count = count + 1000;
                     remain = setting - count;
-                    progressBar1.Maximum = setting;
-                    progressBar1.PerformStep();
+                    progressBarTime.Maximum = setting;
+                    progressBarTime.PerformStep();
                    
                     if (safe != true)
                     {
@@ -611,9 +611,9 @@ namespace WindowsFormsApplication4
                         {
                             timer1.Stop();
                             f.CloseForm();
-                            radioButton1.Enabled = false;
-                            radioButton2.Enabled = false;
-                            radioButton3.Enabled = false;
+                            radioButtonShutdown.Enabled = false;
+                            radioButtonHibernate.Enabled = false;
+                            radioButtonSleep.Enabled = false;
                             trackBar1.Enabled = false;
                         }
                     }
@@ -625,36 +625,36 @@ namespace WindowsFormsApplication4
                     //progressBar1.PerformStep();
                     if (safe != true)
                     {
-                        notifyIcon1.Text = "AS\n" + "Setting Time: " + Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) + ":" + Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) + "\n" + "Safe Mode is Off";
+                        notifyIcon1.Text = "AS\n" + "Setting Time: " + Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) + ":" + Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) + "\n" + "Safe Mode is Off";
                     }
                     else
                     {
-                        notifyIcon1.Text = "AS\n" + "Setting Time: " + Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) + ":" + Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) + "\n" + "Safe Mode is On";
+                        notifyIcon1.Text = "AS\n" + "Setting Time: " + Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) + ":" + Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) + "\n" + "Safe Mode is On";
                     }
                     if (ns != true && checkBox2.Checked)//show noti
                     {
                         //cung h
-                        if ((Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) == DateTime.Now.Hour) && (Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) - DateTime.Now.Minute == 5) && DateTime.Now.Second == 0)
+                        if ((Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) == DateTime.Now.Hour) && (Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) - DateTime.Now.Minute == 5) && DateTime.Now.Second == 0)
                         {
                             if (checkBox5min.Checked)
                                 fiveNoti();
                         }
 
-                        if ((Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) == DateTime.Now.Hour) && (Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) - DateTime.Now.Minute == 1) && DateTime.Now.Second == 0)
+                        if ((Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) == DateTime.Now.Hour) && (Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) - DateTime.Now.Minute == 1) && DateTime.Now.Second == 0)
                         {
                             if (checkBox1min.Checked)
                                 oneNoti();
                         }
 
-                        if ((Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) == DateTime.Now.Hour) && (Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) - DateTime.Now.Minute == 1) && DateTime.Now.Second == 30)
+                        if ((Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) == DateTime.Now.Hour) && (Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) - DateTime.Now.Minute == 1) && DateTime.Now.Second == 30)
                         {
                             if (checkBox30sec.Checked)
                                 Noti();
                         }
                         //khac h
-                        if (Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) != 0 && Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) - DateTime.Now.Hour == 1)//h cai dat khong phai 0
+                        if (Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) != 0 && Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) - DateTime.Now.Hour == 1)//h cai dat khong phai 0
                         {
-                            if ((Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) == 0))//8:55 -> 9:00
+                            if ((Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) == 0))//8:55 -> 9:00
                             {
                                 if ((60 - DateTime.Now.Minute == 5) && DateTime.Now.Second == 0)
                                 {
@@ -669,11 +669,11 @@ namespace WindowsFormsApplication4
                                 }
                             }
                         }
-                        else if (Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) == 0)//khi cai dat thoi gian la 0, truowng hop dac cmn biet
+                        else if (Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) == 0)//khi cai dat thoi gian la 0, truowng hop dac cmn biet
                         {
                             if (24 - DateTime.Now.Hour == 1)
                             {
-                                if ((Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) == 0))//8:55 -> 9:00
+                                if ((Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) == 0))//8:55 -> 9:00
                                 {
                                     if ((60 - DateTime.Now.Minute == 5) && DateTime.Now.Second == 0)
                                     {
@@ -690,7 +690,7 @@ namespace WindowsFormsApplication4
                             }
                         }
                     }
-                    if (DateTime.Now.Hour == Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) && DateTime.Now.Minute == Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)))
+                    if (DateTime.Now.Hour == Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) && DateTime.Now.Minute == Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)))
                     {
                         if (sd == true)
                         {
@@ -723,9 +723,9 @@ namespace WindowsFormsApplication4
                         {
                             timer1.Stop();
                             f.CloseForm();
-                            radioButton1.Enabled = false;
-                            radioButton2.Enabled = false;
-                            radioButton3.Enabled = false;
+                            radioButtonShutdown.Enabled = false;
+                            radioButtonHibernate.Enabled = false;
+                            radioButtonSleep.Enabled = false;
                             trackBar1.Enabled = false;
                         }
                     }
@@ -735,7 +735,7 @@ namespace WindowsFormsApplication4
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            if (radioButtonShutdown.Checked)
             {
                 sd = true;
                 sl = false;
@@ -753,7 +753,7 @@ namespace WindowsFormsApplication4
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked)
+            if (radioButtonHibernate.Checked)
             {
                 hn = true;
                 sd = false;
@@ -771,7 +771,7 @@ namespace WindowsFormsApplication4
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton3.Checked)
+            if (radioButtonSleep.Checked)
             {
                 sl = true;
                 sd = false;
@@ -791,9 +791,15 @@ namespace WindowsFormsApplication4
         {
             
             //
-            if (radioButton4.Checked == true)
+            if (radioButtonRemind.Checked == true)
             {
-                f.Show();
+                if (f != null && !f.IsDisposed)
+                    f.Show();
+                else
+                {
+                    f = new Remind();
+                    f.Show();
+                }
                 sl = false;
                 sd = false;
                 hn = false;
@@ -865,7 +871,7 @@ namespace WindowsFormsApplication4
             sl = false;
             hn = false;
             ns = false;
-            radioButton1.Select();
+            radioButtonShutdown.Select();
         }
 
         private void hibernateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -878,7 +884,7 @@ namespace WindowsFormsApplication4
             sl = false;
             sd = false;
             ns = false;
-            radioButton2.Select();
+            radioButtonHibernate.Select();
         }
 
         private void sleepToolStripMenuItem_Click(object sender, EventArgs e)
@@ -891,7 +897,7 @@ namespace WindowsFormsApplication4
             sd = false;
             hn = false;
             ns = false;
-            radioButton3.Select();
+            radioButtonSleep.Select();
         }
 
         private void noticeSomethingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -904,8 +910,8 @@ namespace WindowsFormsApplication4
             sd = false;
             hn = false;
             ns = true;
-            radioButton4.Select();
-            if (f != null)
+            radioButtonRemind.Select();
+            if (f != null && !f.IsDisposed)
             {
                 f.Show();
             }
@@ -1103,8 +1109,8 @@ namespace WindowsFormsApplication4
                         {
                             r.DeleteValue("Time", false);
                             r.DeleteValue("Rm", false);
-                            r.SetValue("SH", Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)));
-                            r.SetValue("SM", Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)));
+                            r.SetValue("SH", Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)));
+                            r.SetValue("SM", Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)));
                         }
                         if (sd == true)
                             r.SetValue("Mode", 1);
@@ -1141,8 +1147,8 @@ namespace WindowsFormsApplication4
                         {
                             r.DeleteValue("Time", false);
                             r.DeleteValue("Rm", false);
-                            r.SetValue("SH", Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)));
-                            r.SetValue("SM", Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)));
+                            r.SetValue("SH", Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)));
+                            r.SetValue("SM", Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)));
                         }
                         if (sd == true)
                             r.SetValue("Mode", 1);
@@ -1217,31 +1223,31 @@ namespace WindowsFormsApplication4
             if(real == true)
             {
                 real = false;
-                panel2.Hide();
+                panelRealTime.Hide();
                 buttonTime.Text = "Real Time";
             }
             else
             {
                 real = true;
-                numericUpDown1.Value = DateTime.Now.Hour;
+                numericUpDownHour.Value = DateTime.Now.Hour;
                 if (DateTime.Now.Minute == 59)
                 {
-                    numericUpDown1.Value = DateTime.Now.Hour + 1;
-                    numericUpDown2.Value = 0;
+                    numericUpDownHour.Value = DateTime.Now.Hour + 1;
+                    numericUpDownMinute.Value = 0;
                 }
                 else
-                    numericUpDown2.Value = DateTime.Now.Minute + 1;
-                panel2.Show();
+                    numericUpDownMinute.Value = DateTime.Now.Minute + 1;
+                panelRealTime.Show();
                 buttonTime.Text = "Raw Time";
             }
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown1.Value > 23)
-                numericUpDown1.Value = 0;
-            if (numericUpDown1.Value < 0)
-                numericUpDown1.Value = 23;
+            if (numericUpDownHour.Value > 23)
+                numericUpDownHour.Value = 0;
+            if (numericUpDownHour.Value < 0)
+                numericUpDownHour.Value = 23;
             //if (Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) < DateTime.Now.Hour)
             //{
             //    numericUpDown1.Value = DateTime.Now.Hour;
@@ -1252,10 +1258,10 @@ namespace WindowsFormsApplication4
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown2.Value > 59)
-                numericUpDown2.Value = 0;
-            if (numericUpDown2.Value < 0)
-                numericUpDown2.Value = 59;
+            if (numericUpDownMinute.Value > 59)
+                numericUpDownMinute.Value = 0;
+            if (numericUpDownMinute.Value < 0)
+                numericUpDownMinute.Value = 59;
             //if (Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) <= DateTime.Now.Minute && Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) == DateTime.Now.Hour)
             //{
             //    if (DateTime.Now.Minute != 59)
@@ -1269,7 +1275,7 @@ namespace WindowsFormsApplication4
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-            label8.Text = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString();
+            labelCurrentTime.Text = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString();
             //if (Convert.ToInt32(Math.Round(numericUpDown2.Value, 0)) < DateTime.Now.Minute && Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) == DateTime.Now.Hour)
             //    numericUpDown2.Value = DateTime.Now.Minute;
             //if (Convert.ToInt32(Math.Round(numericUpDown1.Value, 0)) < DateTime.Now.Hour)

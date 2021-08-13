@@ -6,6 +6,7 @@ using AS;
 using Microsoft.Win32;
 using System.Speech.Synthesis;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace WindowsFormsApplication4
 {
@@ -71,7 +72,7 @@ namespace WindowsFormsApplication4
                     if ((int)r.GetValue("Kid") == 1)
                     {
                         tick = true;//check = code
-                        checkBox3.Checked = true;
+                        checkBoxAutoRun.Checked = true;
                         tick = false;
                         if (r.GetValue("Time") != null)
                         {
@@ -108,10 +109,10 @@ namespace WindowsFormsApplication4
                             radioButtonSleep.Checked = true;
 
                         if ((int)r.GetValue("Safe") == 1)
-                            checkBox1.Checked = true;
+                            checkBoxSafeMode.Checked = true;
 
                         if ((int)r.GetValue("Sn") == 1)
-                            checkBox2.Checked = true;
+                            checkBoxNoti.Checked = true;
 
                        
                         button1_Click(null, null);
@@ -133,7 +134,7 @@ namespace WindowsFormsApplication4
             }
             else
             {
-                checkBox3.Enabled = false;
+                checkBoxAutoRun.Enabled = false;
                 //SoundPlayer sound = new SoundPlayer(global::AS.Properties.Resources.welcome);
                 //sound.Play();
                 tfa = 2;
@@ -233,7 +234,7 @@ namespace WindowsFormsApplication4
         }*/
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (checkBox3.Checked)
+            if (checkBoxAutoRun.Checked)
             {
                 BeginInvoke(new MethodInvoker(delegate { Hide(); }));
 
@@ -449,9 +450,9 @@ namespace WindowsFormsApplication4
                 radioButtonSleep.Enabled = true;
                 radioButtonRemind.Enabled = true;
 
-                checkBox1.Enabled = true;
-                checkBox2.Enabled = true;
-                checkBox3.Enabled = true;
+                checkBoxSafeMode.Enabled = true;
+                checkBoxNoti.Enabled = true;
+                checkBoxAutoRun.Enabled = true;
                 trackBar1.Enabled = true;
                 //
                 radioButtonShutdown.Checked = false;
@@ -470,7 +471,7 @@ namespace WindowsFormsApplication4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (checkBox3.Checked)
+            if (checkBoxAutoRun.Checked)
             {
                 click = true;
                 //panel1.Show();
@@ -560,7 +561,7 @@ namespace WindowsFormsApplication4
                     {
                         notifyIcon1.Text = "AS\n" + "Eslaped Time: " + (count / 1000).ToString() + "/" + (setting / 1000).ToString() + "s\n" + "Safe Mode is On";
                     }
-                    if (ns != true && checkBox2.Checked)
+                    if (ns != true && checkBoxNoti.Checked)
                     {
                         if ((setting - count) / 1000 == 300)
                         {
@@ -631,7 +632,7 @@ namespace WindowsFormsApplication4
                     {
                         notifyIcon1.Text = "AS\n" + "Setting Time: " + Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) + ":" + Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) + "\n" + "Safe Mode is On";
                     }
-                    if (ns != true && checkBox2.Checked)//show noti
+                    if (ns != true && checkBoxNoti.Checked)//show noti
                     {
                         //cung h
                         if ((Convert.ToInt32(Math.Round(numericUpDownHour.Value, 0)) == DateTime.Now.Hour) && (Convert.ToInt32(Math.Round(numericUpDownMinute.Value, 0)) - DateTime.Now.Minute == 5) && DateTime.Now.Second == 0)
@@ -741,13 +742,13 @@ namespace WindowsFormsApplication4
                 sl = false;
                 hn = false;
                 ns = false;
-                checkBox1.Enabled = false;
-                checkBox2.Enabled = true;
+                checkBoxSafeMode.Enabled = false;
+                checkBoxNoti.Enabled = true;
                 shutdownToolStripMenuItem.Checked = true;
                 hibernateToolStripMenuItem.Checked = false;
                 sleepToolStripMenuItem.Checked = false;
                 noticeSomethingToolStripMenuItem.Checked = false;
-                checkBox3.Enabled = true;
+                checkBoxAutoRun.Enabled = true;
             }
         }
 
@@ -759,13 +760,13 @@ namespace WindowsFormsApplication4
                 sd = false;
                 sl = false;
                 ns = false;
-                checkBox1.Enabled = true;
-                checkBox2.Enabled = true;
+                checkBoxSafeMode.Enabled = true;
+                checkBoxNoti.Enabled = true;
                 shutdownToolStripMenuItem.Checked = false;
                 hibernateToolStripMenuItem.Checked = true;
                 sleepToolStripMenuItem.Checked = false;
                 noticeSomethingToolStripMenuItem.Checked = false;
-                checkBox3.Enabled = true;
+                checkBoxAutoRun.Enabled = true;
             }
         }
 
@@ -777,13 +778,13 @@ namespace WindowsFormsApplication4
                 sd = false;
                 hn = false;
                 ns = false;
-                checkBox1.Enabled = true;
-                checkBox2.Enabled = true;
+                checkBoxSafeMode.Enabled = true;
+                checkBoxNoti.Enabled = true;
                 shutdownToolStripMenuItem.Checked = false;
                 hibernateToolStripMenuItem.Checked = false;
                 sleepToolStripMenuItem.Checked = true;
                 noticeSomethingToolStripMenuItem.Checked = false;
-                checkBox3.Enabled = true;
+                checkBoxAutoRun.Enabled = true;
             }
         }
 
@@ -804,13 +805,13 @@ namespace WindowsFormsApplication4
                 sd = false;
                 hn = false;
                 ns = true;
-                checkBox1.Enabled = false;
-                checkBox2.Enabled = false;
+                checkBoxSafeMode.Enabled = false;
+                checkBoxNoti.Enabled = false;
                 shutdownToolStripMenuItem.Checked = false;
                 hibernateToolStripMenuItem.Checked = false;
                 sleepToolStripMenuItem.Checked = false;
                 noticeSomethingToolStripMenuItem.Checked = true;
-                checkBox3.Enabled = false;
+                checkBoxAutoRun.Enabled = false;
             }
         }
 
@@ -846,7 +847,7 @@ namespace WindowsFormsApplication4
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (checkBoxSafeMode.Checked)
             {
                 safe = true;
             }
@@ -974,7 +975,7 @@ namespace WindowsFormsApplication4
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
+            if (checkBoxNoti.Checked)
             {
                 if (tfa == 1)
                 {
@@ -1002,7 +1003,7 @@ namespace WindowsFormsApplication4
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked)
+            if (checkBoxAutoRun.Checked)
             {
                 if (tick != true)//kiem tra neu check = code
                 {
@@ -1077,9 +1078,9 @@ namespace WindowsFormsApplication4
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (checkBox3.Enabled)
+            if (checkBoxAutoRun.Enabled)
             {
-                if (checkBox3.Checked)
+                if (checkBoxAutoRun.Checked)
                 {
                     if (remain > 0 || real == true)//real time also works
                     {
@@ -1090,9 +1091,9 @@ namespace WindowsFormsApplication4
         }
         private void Save()
         {
-            if (checkBox3.Enabled)
+            if (checkBoxAutoRun.Enabled)
             {
-                if (checkBox3.Checked)
+                if (checkBoxAutoRun.Checked)
                 {
                     if (hn == true || sl == true || sd == true)
                     {
@@ -1118,7 +1119,7 @@ namespace WindowsFormsApplication4
                             r.SetValue("Mode", 3);
                         else if (hn == true)
                             r.SetValue("Mode", 2);
-                        if (checkBox1.Checked)
+                        if (checkBoxSafeMode.Checked)
                             r.SetValue("Safe", 1);
                         else
                             r.SetValue("Safe", 0);
@@ -1156,7 +1157,7 @@ namespace WindowsFormsApplication4
                             r.SetValue("Mode", 3);
                         else if (hn == true)
                             r.SetValue("Mode", 2);
-                        if (checkBox1.Checked)
+                        if (checkBoxSafeMode.Checked)
                             r.SetValue("Safe", 1);
                         else
                             r.SetValue("Safe", 0);
@@ -1331,7 +1332,7 @@ namespace WindowsFormsApplication4
         private void button6_Click(object sender, EventArgs e)
         {
             if (checkBox1min.Checked != true && checkBox5min.Checked != true && checkBox30sec.Checked != true)
-                checkBox2.Checked = false;
+                checkBoxNoti.Checked = false;
             panelShowNoti.Hide();
         }
 
@@ -1343,7 +1344,7 @@ namespace WindowsFormsApplication4
                 {
                     if (checkBox30sec.Checked != true)
                     {
-                        checkBox2.Checked = false;
+                        checkBoxNoti.Checked = false;
                         //panelShowNoti.Hide();
                         //MessageBox.Show("Show Notification is now off!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -1360,12 +1361,22 @@ namespace WindowsFormsApplication4
                 {
                     if (checkBox30sec.Checked != true)
                     {
-                        checkBox2.Checked = false;
+                        checkBoxNoti.Checked = false;
                         //panelShowNoti.Hide();
                         //MessageBox.Show("Show Notification is now off!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
+        }
+
+        private void Main_Paint(object sender, PaintEventArgs e)
+        {
+            Form frm = (Form)sender;
+            ControlPaint.DrawBorder(e.Graphics, frm.ClientRectangle,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid,
+            Color.LightBlue, 1, ButtonBorderStyle.Solid);
         }
 
         private void checkBox30sec_CheckedChanged(object sender, EventArgs e)
@@ -1376,7 +1387,7 @@ namespace WindowsFormsApplication4
                 {
                     if (checkBox1min.Checked != true)
                     {
-                        checkBox2.Checked = false;
+                        checkBoxNoti.Checked = false;
                         //panelShowNoti.Hide();
                         //MessageBox.Show("Show Notification is now off!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }

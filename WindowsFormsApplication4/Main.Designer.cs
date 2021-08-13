@@ -47,11 +47,11 @@
             this.radioButtonHibernate = new System.Windows.Forms.RadioButton();
             this.radioButtonSleep = new System.Windows.Forms.RadioButton();
             this.labelAbout = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxSafeMode = new System.Windows.Forms.CheckBox();
             this.radioButtonRemind = new System.Windows.Forms.RadioButton();
             this.progressBarTime = new System.Windows.Forms.ProgressBar();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxAutoRun = new System.Windows.Forms.CheckBox();
+            this.checkBoxNoti = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.buttonBack = new System.Windows.Forms.Button();
             this.radioButtonShutdown = new System.Windows.Forms.RadioButton();
@@ -147,28 +147,28 @@
             // shutdownToolStripMenuItem
             // 
             this.shutdownToolStripMenuItem.Name = "shutdownToolStripMenuItem";
-            this.shutdownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shutdownToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.shutdownToolStripMenuItem.Text = "Shutdown";
             this.shutdownToolStripMenuItem.Click += new System.EventHandler(this.shutdownToolStripMenuItem_Click);
             // 
             // hibernateToolStripMenuItem
             // 
             this.hibernateToolStripMenuItem.Name = "hibernateToolStripMenuItem";
-            this.hibernateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hibernateToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.hibernateToolStripMenuItem.Text = "Hibernate";
             this.hibernateToolStripMenuItem.Click += new System.EventHandler(this.hibernateToolStripMenuItem_Click);
             // 
             // sleepToolStripMenuItem
             // 
             this.sleepToolStripMenuItem.Name = "sleepToolStripMenuItem";
-            this.sleepToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sleepToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.sleepToolStripMenuItem.Text = "Sleep";
             this.sleepToolStripMenuItem.Click += new System.EventHandler(this.sleepToolStripMenuItem_Click);
             // 
             // noticeSomethingToolStripMenuItem
             // 
             this.noticeSomethingToolStripMenuItem.Name = "noticeSomethingToolStripMenuItem";
-            this.noticeSomethingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noticeSomethingToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.noticeSomethingToolStripMenuItem.Text = "Remind Something";
             this.noticeSomethingToolStripMenuItem.Click += new System.EventHandler(this.noticeSomethingToolStripMenuItem_Click);
             // 
@@ -254,22 +254,22 @@
             this.toolTip1.SetToolTip(this.labelAbout, "About");
             this.labelAbout.Click += new System.EventHandler(this.label4_Click);
             // 
-            // checkBox1
+            // checkBoxSafeMode
             // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.checkBoxSafeMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.Red;
-            this.checkBox1.Location = new System.Drawing.Point(26, 25);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 19);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Safe Mode";
-            this.toolTip1.SetToolTip(this.checkBox1, "Allows the computer to hibernate and sleep safer.\r\nDoes not work with shutdown.");
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxSafeMode.AutoSize = true;
+            this.checkBoxSafeMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSafeMode.Location = new System.Drawing.Point(26, 25);
+            this.checkBoxSafeMode.Name = "checkBoxSafeMode";
+            this.checkBoxSafeMode.Size = new System.Drawing.Size(86, 19);
+            this.checkBoxSafeMode.TabIndex = 6;
+            this.checkBoxSafeMode.Text = "Safe Mode";
+            this.toolTip1.SetToolTip(this.checkBoxSafeMode, "Enabled to force the suspended mode immediately, disabled to cause Windows to sen" +
+        "d a suspend request to every application.");
+            this.checkBoxSafeMode.UseVisualStyleBackColor = true;
+            this.checkBoxSafeMode.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // radioButtonRemind
             // 
@@ -303,39 +303,39 @@
             this.progressBarTime.TabIndex = 22;
             this.toolTip1.SetToolTip(this.progressBarTime, "Elapsed Time");
             // 
-            // checkBox3
+            // checkBoxAutoRun
             // 
-            this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.checkBoxAutoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.checkBox3.Location = new System.Drawing.Point(26, 99);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(73, 19);
-            this.checkBox3.TabIndex = 23;
-            this.checkBox3.Text = "AutoRun";
-            this.toolTip1.SetToolTip(this.checkBox3, "Load at Windows startup and run with last settings.");
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.checkBoxAutoRun.AutoSize = true;
+            this.checkBoxAutoRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAutoRun.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.checkBoxAutoRun.Location = new System.Drawing.Point(26, 99);
+            this.checkBoxAutoRun.Name = "checkBoxAutoRun";
+            this.checkBoxAutoRun.Size = new System.Drawing.Size(73, 19);
+            this.checkBoxAutoRun.TabIndex = 23;
+            this.checkBoxAutoRun.Text = "AutoRun";
+            this.toolTip1.SetToolTip(this.checkBoxAutoRun, "Load at Windows startup and run with last settings.");
+            this.checkBoxAutoRun.UseVisualStyleBackColor = true;
+            this.checkBoxAutoRun.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
-            // checkBox2
+            // checkBoxNoti
             // 
-            this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.checkBoxNoti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.checkBox2.Location = new System.Drawing.Point(26, 63);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(119, 19);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.Text = "Show notification";
-            this.toolTip1.SetToolTip(this.checkBox2, "Show notification");
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBoxNoti.AutoSize = true;
+            this.checkBoxNoti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxNoti.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.checkBoxNoti.Location = new System.Drawing.Point(26, 63);
+            this.checkBoxNoti.Name = "checkBoxNoti";
+            this.checkBoxNoti.Size = new System.Drawing.Size(119, 19);
+            this.checkBoxNoti.TabIndex = 7;
+            this.checkBoxNoti.Text = "Show notification";
+            this.toolTip1.SetToolTip(this.checkBoxNoti, "Show notification");
+            this.checkBoxNoti.UseVisualStyleBackColor = true;
+            this.checkBoxNoti.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBox4
             // 
@@ -431,12 +431,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar1.LargeChange = 10;
-            this.trackBar1.Location = new System.Drawing.Point(52, 86);
+            this.trackBar1.Location = new System.Drawing.Point(60, 86);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.trackBar1.Maximum = 480;
+            this.trackBar1.Maximum = 2880;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(248, 45);
+            this.trackBar1.Size = new System.Drawing.Size(208, 45);
             this.trackBar1.TabIndex = 1;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar1.Value = 1;
@@ -446,7 +446,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(11, 87);
+            this.label1.Location = new System.Drawing.Point(9, 87);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 15);
@@ -457,7 +457,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(297, 87);
+            this.label3.Location = new System.Drawing.Point(276, 87);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 15);
@@ -600,9 +600,9 @@
             // groupBoxOption
             // 
             this.groupBoxOption.Controls.Add(this.panelShowNoti);
-            this.groupBoxOption.Controls.Add(this.checkBox2);
-            this.groupBoxOption.Controls.Add(this.checkBox3);
-            this.groupBoxOption.Controls.Add(this.checkBox1);
+            this.groupBoxOption.Controls.Add(this.checkBoxNoti);
+            this.groupBoxOption.Controls.Add(this.checkBoxAutoRun);
+            this.groupBoxOption.Controls.Add(this.checkBoxSafeMode);
             this.groupBoxOption.Location = new System.Drawing.Point(192, 130);
             this.groupBoxOption.Name = "groupBoxOption";
             this.groupBoxOption.Size = new System.Drawing.Size(168, 143);
@@ -616,9 +616,10 @@
             this.panelShowNoti.Controls.Add(this.checkBox30sec);
             this.panelShowNoti.Controls.Add(this.checkBox1min);
             this.panelShowNoti.Controls.Add(this.checkBox5min);
-            this.panelShowNoti.Location = new System.Drawing.Point(6, 20);
+            this.panelShowNoti.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelShowNoti.Location = new System.Drawing.Point(3, 17);
             this.panelShowNoti.Name = "panelShowNoti";
-            this.panelShowNoti.Size = new System.Drawing.Size(161, 117);
+            this.panelShowNoti.Size = new System.Drawing.Size(162, 123);
             this.panelShowNoti.TabIndex = 24;
             // 
             // checkBox30sec
@@ -742,6 +743,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Main_Paint);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -788,11 +790,11 @@
         private System.Windows.Forms.RadioButton radioButtonSleep;
         private System.Windows.Forms.Label labelAbout;
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxSafeMode;
         private System.Windows.Forms.RadioButton radioButtonRemind;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBoxNoti;
         private System.Windows.Forms.ProgressBar progressBarTime;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBoxAutoRun;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.Panel panelRealTime;
         private System.Windows.Forms.NumericUpDown numericUpDownMinute;

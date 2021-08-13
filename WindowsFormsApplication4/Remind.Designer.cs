@@ -112,7 +112,7 @@
             // 
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown1.Location = new System.Drawing.Point(155, 159);
+            this.numericUpDown1.Location = new System.Drawing.Point(155, 162);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             60,
             0,
@@ -126,6 +126,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(39, 16);
             this.numericUpDown1.TabIndex = 4;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
             0,
@@ -139,7 +140,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ImageIndex = 0;
             this.button4.ImageList = this.imageList1;
-            this.button4.Location = new System.Drawing.Point(392, 0);
+            this.button4.Location = new System.Drawing.Point(384, 0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(28, 28);
             this.button4.TabIndex = 5;

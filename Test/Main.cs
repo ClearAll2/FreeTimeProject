@@ -695,41 +695,46 @@ namespace Test
                 onToolStripMenuItem.Checked = false;
                 offToolStripMenuItem.Checked = false;
                 useSystemSettingToolStripMenuItem.Checked = true;
-                r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", true);
-                if (r.GetValue("SystemUsesLightTheme") != null)
+                ChangeThemeAsSystem();
+            }
+        }
+
+        private void ChangeThemeAsSystem()
+        {
+            r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", true);
+            if (r.GetValue("SystemUsesLightTheme") != null)
+            {
+                int current = (int)r.GetValue("SystemUsesLightTheme");
+                if (current != 0)
                 {
-                    int current = (int)r.GetValue("SystemUsesLightTheme");
-                    if (current != 0)
-                    {
-                        richTextBoxMain.BackColor = Color.White;
-                        richTextBoxMain.ForeColor = Color.Black;
-                        richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
-                        richTextBoxMain.NumberBackground2 = Color.Transparent;
-                        richTextBoxMain.NumberBorder = Color.Transparent;
-                        menuStrip1.BackColor = richTextBoxMain.BackColor;
-                        menuStrip1.ForeColor = richTextBoxMain.ForeColor;
-                        labelStatus.BackColor = menuStrip1.BackColor;
-                        labelStatus.ForeColor = menuStrip1.ForeColor;
-                    }
-                    else
-                    {
-                        richTextBoxMain.BackColor = Color.FromArgb(30, 30, 30);
-                        richTextBoxMain.ForeColor = SystemColors.ControlDark;
-                        richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
-                        richTextBoxMain.NumberBackground2 = richTextBoxMain.BackColor;
-                        richTextBoxMain.NumberBorder = Color.Transparent;
-                        menuStrip1.BackColor = richTextBoxMain.BackColor;
-                        menuStrip1.ForeColor = richTextBoxMain.ForeColor;
-                        labelStatus.BackColor = menuStrip1.BackColor;
-                        labelStatus.ForeColor = menuStrip1.ForeColor;
-                    }
-                    saved = true;
+                    richTextBoxMain.BackColor = Color.White;
+                    richTextBoxMain.ForeColor = Color.Black;
+                    richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
+                    richTextBoxMain.NumberBackground2 = Color.Transparent;
+                    richTextBoxMain.NumberBorder = Color.Transparent;
+                    menuStrip1.BackColor = richTextBoxMain.BackColor;
+                    menuStrip1.ForeColor = richTextBoxMain.ForeColor;
+                    labelStatus.BackColor = menuStrip1.BackColor;
+                    labelStatus.ForeColor = menuStrip1.ForeColor;
                 }
-                r.Close();
-                using (RegistryKey r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true))
+                else
                 {
-                    r.SetValue("Dark", 2);
+                    richTextBoxMain.BackColor = Color.FromArgb(30, 30, 30);
+                    richTextBoxMain.ForeColor = SystemColors.ControlDark;
+                    richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
+                    richTextBoxMain.NumberBackground2 = richTextBoxMain.BackColor;
+                    richTextBoxMain.NumberBorder = Color.Transparent;
+                    menuStrip1.BackColor = richTextBoxMain.BackColor;
+                    menuStrip1.ForeColor = richTextBoxMain.ForeColor;
+                    labelStatus.BackColor = menuStrip1.BackColor;
+                    labelStatus.ForeColor = menuStrip1.ForeColor;
                 }
+                saved = true;
+            }
+            r.Close();
+            using (RegistryKey r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true))
+            {
+                r.SetValue("Dark", 2);
             }
         }
 
@@ -782,41 +787,7 @@ namespace Test
                     // you code here
                     if (useSystemSettingToolStripMenuItem.Checked)
                     {
-                        r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", true);
-                        if (r.GetValue("SystemUsesLightTheme") != null)
-                        {
-                            int current = (int)r.GetValue("SystemUsesLightTheme");
-                            if (current != 0)
-                            {
-                                richTextBoxMain.BackColor = Color.White;
-                                richTextBoxMain.ForeColor = Color.Black;
-                                richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
-                                richTextBoxMain.NumberBackground2 = Color.Transparent;
-                                richTextBoxMain.NumberBorder = Color.Transparent;
-                                menuStrip1.BackColor = richTextBoxMain.BackColor;
-                                menuStrip1.ForeColor = richTextBoxMain.ForeColor;
-                                labelStatus.BackColor = menuStrip1.BackColor;
-                                labelStatus.ForeColor = menuStrip1.ForeColor;
-                            }
-                            else
-                            {
-                                richTextBoxMain.BackColor = Color.FromArgb(30, 30, 30);
-                                richTextBoxMain.ForeColor = SystemColors.ControlDark;
-                                richTextBoxMain.NumberBackground1 = richTextBoxMain.BackColor;
-                                richTextBoxMain.NumberBackground2 = richTextBoxMain.BackColor;
-                                richTextBoxMain.NumberBorder = Color.Transparent;
-                                menuStrip1.BackColor = richTextBoxMain.BackColor;
-                                menuStrip1.ForeColor = richTextBoxMain.ForeColor;
-                                labelStatus.BackColor = menuStrip1.BackColor;
-                                labelStatus.ForeColor = menuStrip1.ForeColor;
-                            }
-                            saved = true;
-                        }
-                        r.Close();
-                        using (RegistryKey r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\SNote\\Data", true))
-                        {
-                            r.SetValue("Dark", 2);
-                        }
+                        ChangeThemeAsSystem();
                     }
                     break;
                 default:

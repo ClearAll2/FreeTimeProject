@@ -67,6 +67,7 @@
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lineNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wordWrapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +78,9 @@
             this.labelStatus = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.richTextBoxMain = new Ionic.WinForms.RichTextBoxEx();
-            this.darkBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.useSystemSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -394,6 +397,16 @@
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
             // 
+            // darkBackgroundToolStripMenuItem
+            // 
+            this.darkBackgroundToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.onToolStripMenuItem,
+            this.offToolStripMenuItem,
+            this.useSystemSettingToolStripMenuItem});
+            this.darkBackgroundToolStripMenuItem.Name = "darkBackgroundToolStripMenuItem";
+            this.darkBackgroundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darkBackgroundToolStripMenuItem.Text = "Dark Mode";
+            // 
             // lineNumberToolStripMenuItem
             // 
             this.lineNumberToolStripMenuItem.Name = "lineNumberToolStripMenuItem";
@@ -489,12 +502,26 @@
             this.richTextBoxMain.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
             this.richTextBoxMain.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // darkBackgroundToolStripMenuItem
+            // onToolStripMenuItem
             // 
-            this.darkBackgroundToolStripMenuItem.Name = "darkBackgroundToolStripMenuItem";
-            this.darkBackgroundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.darkBackgroundToolStripMenuItem.Text = "Dark Mode";
-            this.darkBackgroundToolStripMenuItem.Click += new System.EventHandler(this.darkBackgroundToolStripMenuItem_Click);
+            this.onToolStripMenuItem.Name = "onToolStripMenuItem";
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.onToolStripMenuItem.Text = "On";
+            this.onToolStripMenuItem.Click += new System.EventHandler(this.onToolStripMenuItem_Click);
+            // 
+            // offToolStripMenuItem
+            // 
+            this.offToolStripMenuItem.Name = "offToolStripMenuItem";
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.offToolStripMenuItem.Text = "Off";
+            this.offToolStripMenuItem.Click += new System.EventHandler(this.offToolStripMenuItem_Click);
+            // 
+            // useSystemSettingToolStripMenuItem
+            // 
+            this.useSystemSettingToolStripMenuItem.Name = "useSystemSettingToolStripMenuItem";
+            this.useSystemSettingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.useSystemSettingToolStripMenuItem.Text = "Use system setting";
+            this.useSystemSettingToolStripMenuItem.Click += new System.EventHandler(this.useSystemSettingToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -570,6 +597,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem darkBackgroundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem onToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem offToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem useSystemSettingToolStripMenuItem;
     }
 }
 

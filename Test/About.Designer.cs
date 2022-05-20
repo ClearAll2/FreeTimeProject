@@ -121,9 +121,8 @@
             this.textBoxDescription.Size = new System.Drawing.Size(243, 93);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "contact@myfreedom.cf\r\n\r\nIcons made by Freepik\r\nwww.flaticon.com/authors/freepik\r\n" +
-    "\r\nThis tool is made possible by CustomControls component from XPathVisualizer pr" +
-    "oject.";
+            this.textBoxDescription.Text = "Icons made by Freepik\r\nwww.flaticon.com/authors/freepik\r\n\r\nThis tool is made poss" +
+    "ible by CustomControls component from XPathVisualizer project.";
             // 
             // okButton
             // 

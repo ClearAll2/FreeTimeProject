@@ -191,7 +191,7 @@ namespace Test
             else
             {
                 filePath = String.Empty;
-                fileName = "Untittled";
+                fileName = "Untitled";
                 this.Text = fileName;
             }
             
@@ -350,7 +350,7 @@ namespace Test
             opened = false;
             saved = true;
             filePath = String.Empty;
-            fileName = "Untittled";
+            fileName = "Untitled";
             this.Text = fileName;
         }
 
@@ -400,7 +400,7 @@ namespace Test
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (fileName != "Untittled" && filePath != String.Empty)
+            if (fileName != "Untitled" && filePath != String.Empty)
             {
                 if (new FileInfo(filePath).IsReadOnly == true)
                 {

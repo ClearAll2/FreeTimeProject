@@ -16,7 +16,6 @@ namespace MyNotepad
             
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             Find(_richTextBox, textBoxFind.Text, checkBoxMatchCase.Checked, checkBoxWhole.Checked, radioButtonUp.Checked);

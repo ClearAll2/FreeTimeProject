@@ -63,16 +63,16 @@
             // 
             // textBoxReplace
             // 
-            this.textBoxReplace.Location = new System.Drawing.Point(88, 23);
+            this.textBoxReplace.Location = new System.Drawing.Point(88, 5);
             this.textBoxReplace.Name = "textBoxReplace";
-            this.textBoxReplace.Size = new System.Drawing.Size(225, 20);
+            this.textBoxReplace.Size = new System.Drawing.Size(224, 20);
             this.textBoxReplace.TabIndex = 4;
             this.textBoxReplace.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // labelReplace
             // 
             this.labelReplace.AutoSize = true;
-            this.labelReplace.Location = new System.Drawing.Point(11, 26);
+            this.labelReplace.Location = new System.Drawing.Point(11, 8);
             this.labelReplace.Name = "labelReplace";
             this.labelReplace.Size = new System.Drawing.Size(72, 13);
             this.labelReplace.TabIndex = 5;
@@ -155,7 +155,7 @@
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearch.Location = new System.Drawing.Point(0, 0);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(427, 48);
+            this.panelSearch.Size = new System.Drawing.Size(423, 48);
             this.panelSearch.TabIndex = 10;
             // 
             // panelReplace
@@ -210,9 +210,9 @@
             this.panelOption.Controls.Add(this.checkBoxMatchCase);
             this.panelOption.Controls.Add(this.buttonCancel);
             this.panelOption.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelOption.Location = new System.Drawing.Point(0, 125);
+            this.panelOption.Location = new System.Drawing.Point(0, 121);
             this.panelOption.Name = "panelOption";
-            this.panelOption.Size = new System.Drawing.Size(427, 71);
+            this.panelOption.Size = new System.Drawing.Size(423, 71);
             this.panelOption.TabIndex = 13;
             // 
             // Search
@@ -222,7 +222,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(427, 196);
+            this.ClientSize = new System.Drawing.Size(423, 192);
             this.ControlBox = false;
             this.Controls.Add(this.panelOption);
             this.Controls.Add(this.panelSearch);

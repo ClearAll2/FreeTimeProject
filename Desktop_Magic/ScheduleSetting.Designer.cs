@@ -57,7 +57,7 @@
             this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.ForeColor = System.Drawing.Color.Black;
-            this.buttonCancel.Location = new System.Drawing.Point(283, 165);
+            this.buttonCancel.Location = new System.Drawing.Point(178, 165);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(99, 27);
             this.buttonCancel.TabIndex = 10;
@@ -71,7 +71,7 @@
             this.buttonOK.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.ForeColor = System.Drawing.Color.Black;
-            this.buttonOK.Location = new System.Drawing.Point(168, 165);
+            this.buttonOK.Location = new System.Drawing.Point(283, 165);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(99, 27);
             this.buttonOK.TabIndex = 9;

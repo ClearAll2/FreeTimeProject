@@ -38,7 +38,6 @@
             this.numbercheckBox = new System.Windows.Forms.CheckBox();
             this.directioncheckBox = new System.Windows.Forms.CheckBox();
             this.speedcheckBox = new System.Windows.Forms.CheckBox();
-            this.timecheckBox = new System.Windows.Forms.CheckBox();
             this.TypecheckBox = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -127,7 +126,7 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(46, 152);
+            this.button1.Location = new System.Drawing.Point(197, 165);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 27);
             this.button1.TabIndex = 7;
@@ -166,7 +165,7 @@
             this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(159, 152);
+            this.button2.Location = new System.Drawing.Point(92, 165);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 27);
             this.button2.TabIndex = 8;
@@ -213,23 +212,10 @@
             this.speedcheckBox.UseVisualStyleBackColor = true;
             this.speedcheckBox.CheckedChanged += new System.EventHandler(this.speedcheckBox_CheckedChanged);
             // 
-            // timecheckBox
-            // 
-            this.timecheckBox.AutoSize = true;
-            this.timecheckBox.Checked = true;
-            this.timecheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.timecheckBox.Location = new System.Drawing.Point(238, 96);
-            this.timecheckBox.Name = "timecheckBox";
-            this.timecheckBox.Size = new System.Drawing.Size(45, 17);
-            this.timecheckBox.TabIndex = 12;
-            this.timecheckBox.Text = "Use";
-            this.timecheckBox.UseVisualStyleBackColor = true;
-            this.timecheckBox.CheckedChanged += new System.EventHandler(this.timecheckBox_CheckedChanged);
-            // 
             // TypecheckBox
             // 
             this.TypecheckBox.AutoSize = true;
-            this.TypecheckBox.Location = new System.Drawing.Point(98, 126);
+            this.TypecheckBox.Location = new System.Drawing.Point(71, 126);
             this.TypecheckBox.Name = "TypecheckBox";
             this.TypecheckBox.Size = new System.Drawing.Size(110, 17);
             this.TypecheckBox.TabIndex = 13;
@@ -252,9 +238,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(308, 191);
+            this.ClientSize = new System.Drawing.Size(308, 204);
             this.Controls.Add(this.TypecheckBox);
-            this.Controls.Add(this.timecheckBox);
             this.Controls.Add(this.speedcheckBox);
             this.Controls.Add(this.directioncheckBox);
             this.Controls.Add(this.numbercheckBox);
@@ -294,7 +279,6 @@
         private System.Windows.Forms.CheckBox numbercheckBox;
         private System.Windows.Forms.CheckBox directioncheckBox;
         private System.Windows.Forms.CheckBox speedcheckBox;
-        private System.Windows.Forms.CheckBox timecheckBox;
         private System.Windows.Forms.CheckBox TypecheckBox;
         private System.Windows.Forms.Label label4;
     }

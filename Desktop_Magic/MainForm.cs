@@ -279,7 +279,7 @@ namespace DM
             int o = r.Next(1, 10);
             if (o == 1)
             {
-                tipsLabel.Text = "Remember to wear mask and wash your hands";
+                tipsLabel.Text = "This application is just a free time project";
                 tipsLabel.ForeColor = Color.Red;
             }
             else if (o == 2)
@@ -288,7 +288,7 @@ namespace DM
             }
             else if (o == 3)
             {
-                tipsLabel.Text = "Please don't go out if not necessary!";
+                tipsLabel.Text = "Have a good day! (づ￣ 3￣)づ";
                 tipsLabel.ForeColor = Color.Red;
             }
             else if (o == 4)
@@ -316,7 +316,7 @@ namespace DM
             }
             else
             {
-                tipsLabel.Text = "Protect yourself and your family from Covid-19!";
+                tipsLabel.Text = "Smooth Motion applies immediately";
                 tipsLabel.ForeColor = Color.Red;
             }
             
@@ -355,8 +355,8 @@ namespace DM
             }
             updateButton.Text = "Checking updater...";
             //update new version for the updater
-            string ver = "https://download-cas.000webhostapp.com/download/DM/uversion"; //version on the internet
-            string u_size = "https://download-cas.000webhostapp.com/download/DM/usize";
+            string ver = "https://fdsrepo.cf/download/dm/uversion"; //version on the internet
+            string u_size = "https://fdsrepo.cf/download/dm/usize";
             string curr_ver;
             if (System.IO.File.Exists(Application.StartupPath + "\\DM Updater.exe") && new FileInfo(Application.StartupPath + "\\DM Updater.exe").Length > Int32.Parse(wc.DownloadString(u_size)))
                 curr_ver = GetProductVersion(Application.StartupPath + "\\DM Updater.exe"); //version of updater
@@ -367,15 +367,15 @@ namespace DM
             if (curr_ver.CompareTo(sver) < 0)
             {
                 updateButton.Text = "Updating updater...";
-                wc.DownloadFile(new Uri("https://download-cas.000webhostapp.com/download/DM/DM%20Updater.exe"), Application.StartupPath + "\\DM Updater.exe");
+                wc.DownloadFile(new Uri("https://fdsrepo.cf/download/dm/DM%20Updater.exe"), Application.StartupPath + "\\DM Updater.exe");
             }
 
             updateButton.Text = "Checking version...";
-            var ui = wc.DownloadString("https://download-cas.000webhostapp.com/download/DM/version");//check version
+            var ui = wc.DownloadString("https://fdsrepo.cf/download/dm/version");//check version
 
             if (Application.ProductVersion.CompareTo(ui) < 0)
             {
-                changelog = wc.DownloadString("https://download-cas.000webhostapp.com/download/DM/changelog");
+                changelog = wc.DownloadString("https://fdsrepo.cf/download/dm/changelog");
                 wc.Dispose();
                 tmp = ui;
                 updateButton.Text = "Update available";
@@ -1341,11 +1341,6 @@ namespace DM
             {
                 f.ApplyTheme(color);
             }
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(linkLabel1.Text);
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)

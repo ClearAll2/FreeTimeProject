@@ -65,10 +65,6 @@
             this.musicButton = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.tipsLabel = new System.Windows.Forms.Label();
             this.panelCustomizeSetting = new System.Windows.Forms.Panel();
             this.panelCustomSizeSetting = new System.Windows.Forms.Panel();
             this.buttonCancelCustom = new System.Windows.Forms.Button();
@@ -93,6 +89,8 @@
             this.panelHeader = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label17 = new System.Windows.Forms.Label();
+            this.tipsLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
@@ -211,7 +209,7 @@
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.updateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.updateButton.Location = new System.Drawing.Point(228, 157);
+            this.updateButton.Location = new System.Drawing.Point(228, 148);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(142, 26);
             this.updateButton.TabIndex = 10;
@@ -371,9 +369,9 @@
             this.labelAbout.ForeColor = System.Drawing.SystemColors.Control;
             this.labelAbout.Location = new System.Drawing.Point(151, 9);
             this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(118, 39);
+            this.labelAbout.Size = new System.Drawing.Size(123, 39);
             this.labelAbout.TabIndex = 0;
-            this.labelAbout.Text = "Desktop Magic v2X\r\nCopyright ©  2021\r\nFreedom Software";
+            this.labelAbout.Text = "Desktop Magic v2X\r\nCopyright © 2022\r\nBuilt by Đức Nguyễn";
             this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip1.SetToolTip(this.labelAbout, "About");
             this.labelAbout.Click += new System.EventHandler(this.label1_Click);
@@ -453,7 +451,7 @@
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.startButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.startButton.Location = new System.Drawing.Point(228, 92);
+            this.startButton.Location = new System.Drawing.Point(228, 83);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(142, 26);
             this.startButton.TabIndex = 1;
@@ -480,7 +478,7 @@
             this.customizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customizeButton.ForeColor = System.Drawing.Color.DodgerBlue;
             this.customizeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.customizeButton.Location = new System.Drawing.Point(228, 124);
+            this.customizeButton.Location = new System.Drawing.Point(228, 115);
             this.customizeButton.Name = "customizeButton";
             this.customizeButton.Size = new System.Drawing.Size(142, 26);
             this.customizeButton.TabIndex = 2;
@@ -494,7 +492,7 @@
             this.musicButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.musicButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.musicButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.musicButton.Location = new System.Drawing.Point(228, 189);
+            this.musicButton.Location = new System.Drawing.Point(228, 180);
             this.musicButton.Name = "musicButton";
             this.musicButton.Size = new System.Drawing.Size(142, 26);
             this.musicButton.TabIndex = 12;
@@ -515,53 +513,12 @@
             this.groupBox1.Controls.Add(this.checkBoxHideatStartup);
             this.groupBox1.Controls.Add(this.checkBoxRunatStartup);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(10, 92);
+            this.groupBox1.Location = new System.Drawing.Point(10, 83);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(212, 123);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(94, 68);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 13);
-            this.label16.TabIndex = 16;
-            this.label16.Text = "Homepage:";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(162, 68);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(105, 13);
-            this.linkLabel1.TabIndex = 17;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://clearallsoft.cf";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(27, 227);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(38, 15);
-            this.label17.TabIndex = 18;
-            this.label17.Text = "Tips:";
-            // 
-            // tipsLabel
-            // 
-            this.tipsLabel.AutoSize = true;
-            this.tipsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipsLabel.ForeColor = System.Drawing.Color.Blue;
-            this.tipsLabel.Location = new System.Drawing.Point(71, 227);
-            this.tipsLabel.Name = "tipsLabel";
-            this.tipsLabel.Size = new System.Drawing.Size(61, 15);
-            this.tipsLabel.TabIndex = 19;
-            this.tipsLabel.Text = "Loading...";
             // 
             // panelCustomizeSetting
             // 
@@ -846,6 +803,27 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(27, 218);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(38, 15);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "Tips:";
+            // 
+            // tipsLabel
+            // 
+            this.tipsLabel.AutoSize = true;
+            this.tipsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipsLabel.ForeColor = System.Drawing.Color.Blue;
+            this.tipsLabel.Location = new System.Drawing.Point(71, 218);
+            this.tipsLabel.Name = "tipsLabel";
+            this.tipsLabel.Size = new System.Drawing.Size(61, 15);
+            this.tipsLabel.TabIndex = 19;
+            this.tipsLabel.Text = "Loading...";
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -861,8 +839,6 @@
             this.Controls.Add(this.musicButton);
             this.Controls.Add(this.customizeButton);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.tipsLabel);
             this.Controls.Add(this.label17);
             this.DoubleBuffered = true;
@@ -925,10 +901,6 @@
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label tipsLabel;
         private System.Windows.Forms.Panel panelCustomizeSetting;
         private System.Windows.Forms.Panel panelCustomSizeSetting;
         private System.Windows.Forms.Button buttonCancelCustom;
@@ -966,5 +938,7 @@
         private System.Windows.Forms.GroupBox groupBoxSpecs;
         private System.Windows.Forms.GroupBox groupBoxType;
         private System.Windows.Forms.Button buttonTheme;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label tipsLabel;
     }
 }

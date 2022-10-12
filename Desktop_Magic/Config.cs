@@ -18,7 +18,6 @@ namespace DM
         public Config(Color color)
         {
             InitializeComponent();
-            timecheckBox.Hide();
             CheckConfig();
             button1.ForeColor = color;
             button2.ForeColor = color;
@@ -38,7 +37,6 @@ namespace DM
                 else
                 {
                     numericUpDown4.Enabled = false;
-                    timecheckBox.Checked = false;
                 }
 
                 tmp = (int)r.GetValue("Speed");
@@ -127,12 +125,8 @@ namespace DM
         {
             r = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ClearAll\\DesktopMagic\\Data", true);
             
-            if (timecheckBox.Checked)
-                r.SetValue("TTC", (int)numericUpDown4.Value);
-            else
-            {
-                r.SetValue("TTC", -9999);
-            }
+            r.SetValue("TTC", (int)numericUpDown4.Value);
+
             if (speedcheckBox.Checked)
                 r.SetValue("Speed", (int)numericUpDown3.Value);
             else
@@ -195,13 +189,6 @@ namespace DM
                 numericUpDown3.Enabled = false;
         }
 
-        private void timecheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (timecheckBox.Checked)
-                numericUpDown4.Enabled = true;
-            else
-                numericUpDown4.Enabled = false;
-        }
 
         private void Form4_FormClosing(object sender, FormClosingEventArgs e)
         {

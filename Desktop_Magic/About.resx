@@ -117,19 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>contact@myfreedom.cf
-
-Freedom Sofware is always getting better. We always try to deliver greatest products
-
-Icons made by Freepik
-www.flaticon.com/authors/freepik
-
-This app is made possible by WMPLib component.</value>
-  </data>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>Changelog v2.8.0.2
--Fixed a but related to updater.
+    <value>Changelog v2.8.0.4
+-Minor changes.
+
+Changelog v2.8.0.3
+-Minor changes.
+
+Changelog v2.8.0.2
+-Fixed a bug related to updater.
 -Changed snow image.
 -DM should now run properly on old Windows version.
 

@@ -546,7 +546,7 @@ namespace Test
         {
             int line = 1 + richTextBoxMain.GetLineFromCharIndex(richTextBoxMain.GetFirstCharIndexOfCurrentLine());
             int column = 1 + richTextBoxMain.SelectionStart - richTextBoxMain.GetFirstCharIndexOfCurrentLine();
-            labelStatus.Text = "Line: " + line.ToString() + ", Column: " + column.ToString();
+            labelStatus.Text = "Ln: " + line.ToString() + ", Col: " + column.ToString();
             if (richTextBoxMain.CanUndo != true)
             {
                 undoToolStripMenuItem.Enabled = false;

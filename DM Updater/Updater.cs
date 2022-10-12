@@ -28,7 +28,7 @@ namespace DM_Updater
             else
                 labellocalVer.Text = "N/A";
             WebClient wc = new WebClient();
-            labellatestVer.Text = wc.DownloadString("https://download-cas.000webhostapp.com/download/DM/version");//check version
+            labellatestVer.Text = wc.DownloadString("https://fdsrepo.cf/download/dm/version");//check version
         }
 
         private void Bw_DoWork(object sender, DoWorkEventArgs e)
@@ -39,7 +39,7 @@ namespace DM_Updater
                 WebClient wc = new WebClient();
                 wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
                 wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadCompleted);
-                wc.DownloadFileAsync(new Uri("https://download-cas.000webhostapp.com/download/DM/Release.zip"), Application.StartupPath + "\\Release.zip");
+                wc.DownloadFileAsync(new Uri("https://fdsrepo.cf/download/dm/Release.zip"), Application.StartupPath + "\\Release.zip");
                 wc.Dispose();
             }
             catch

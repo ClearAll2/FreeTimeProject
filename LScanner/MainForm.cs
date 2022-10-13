@@ -15,22 +15,16 @@ using System.Management;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.IO;
-using SharpPcap;
-using SharpPcap.WinPcap;
-using SharpPcap.LibPcap;
-using PacketDotNet;
+
 
 namespace LScanner
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         List<bool> done = new List<bool>();
         List<string> list = new List<string>();
-
-        string localIP;
         string host;
         bool stop = false;
-        bool stop2 = false;
         BackgroundWorker bw;
         BackgroundWorker bw2;
         BackgroundWorker bw3;
@@ -40,16 +34,14 @@ namespace LScanner
        
         NetworkInterface[] nics;
 
-        int newx, newy;
-        public Form1()
+        public MainForm()
         {
             
             InitializeComponent();
             InitializeNetworkInterface();
-            localIP = GetLocalIPAddress();
-            textBox1.Text = localIP;
-            label14.ForeColor = Color.Red;
-            //label16.Text = "LAN Scanner - v" + Application.ProductVersion;
+            GetLocalIPAddress();
+            GetLocalIPAddress2();
+            labelNetInterfaceStatus.ForeColor = Color.Red;
 
             bw = new BackgroundWorker();
             bw.DoWork += bw_DoWork;
@@ -58,9 +50,9 @@ namespace LScanner
 
             bw3 = new BackgroundWorker();
             bw3.DoWork += bw3_DoWork;
-            label4.Text = "LScanner v" + Application.ProductVersion + "\nCopyright ©  2017 \nClear All Soft";
+            labelAbout.Text = "Simple Network Scanner v" + Application.ProductVersion + "\nCopyright © 2017 - 2022 \nBuilt by Duc Nguyen";
             wc = new WebClient();
-            label6.Text = "This computer internet IP: " + GetLocalIPAddress2();
+           
 
             bw4 = new BackgroundWorker();
             bw4.DoWork +=bw4_DoWork;
@@ -78,13 +70,13 @@ namespace LScanner
             string subnet;
             try
             {
-                subnet = textBox1.Text.Substring(0, textBox1.Text.LastIndexOf("."));
+                subnet = comboBoxPrivateIP.Text.Substring(0, comboBoxPrivateIP.Text.LastIndexOf("."));
             }
             catch (Exception)
             {
                 MessageBox.Show("Please enter a valid IP address!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                button1.Enabled = true;
-                button2.Enabled = false;
+                buttonScan.Enabled = true;
+                buttonStop.Enabled = false;
                 return;
             }
             PingReply reply;
@@ -92,7 +84,7 @@ namespace LScanner
             IPAddress addr;
             IPHostEntry host;
             string mac = "?-?-?-?-?-?";
-            listView1.Items.Clear();
+            listViewMain.Items.Clear();
 
             for (int i = 1; i < 255; i++)
             {
@@ -104,8 +96,8 @@ namespace LScanner
                 try
                 {
                     reply = myPing.Send(subnet + subnetn, 900);
-                    label3.ForeColor = System.Drawing.Color.Green;
-                    label3.Text = "Scanning " + subnetn +"/.254";
+                    labelRealStatus.ForeColor = System.Drawing.Color.Green;
+                    labelRealStatus.Text = "Scanning " + subnetn +"/.254";
                     if (reply.Status == IPStatus.Success)
                     {
                         try
@@ -113,7 +105,7 @@ namespace LScanner
                             addr = IPAddress.Parse(subnet + subnetn);
                             host = Dns.GetHostEntry(addr);
                             mac = GetMacAddress(subnet + subnetn);
-                            listView1.Items.Add(new ListViewItem(new String[] { subnet + subnetn, host.HostName, mac }));
+                            listViewMain.Items.Add(new ListViewItem(new String[] { subnet + subnetn, host.HostName, mac }));
                            
                         }
                         catch (Exception)
@@ -128,105 +120,14 @@ namespace LScanner
                 }
                 myPing.Dispose();
             }
-            button1.Enabled = true;
-            button2.Enabled = false;
-            label3.Text = "Done";
+            buttonScan.Enabled = true;
+            buttonStop.Enabled = false;
+            labelRealStatus.Text = "Done";
 
-            int count = listView1.Items.Count;
+            int count = listViewMain.Items.Count;
             MessageBox.Show("Scanning done!\nFound " + count.ToString() + " hosts.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public void spoof(string dstIp, string dstMac)
-        {
-           // LibPcapLiveDevice tmp = null;
-           // var devices = LibPcapLiveDeviceList.Instance;
-           // tmp = devices[3];
-           //// LibPcapLiveDevice device = getDevice();
-           // IPAddress ip = IPAddress.Parse(host);
-            
-            
-           // // Create a new ARP resolver
-           // ARP arp = new ARP(tmp);
-           // arp.Timeout = new System.TimeSpan(1200000 * 2); // 100ms
-
-            
-           // // Preparar ip y mac fake, solo para spoofing
-           // IPAddress local_ip;
-           // IPAddress.TryParse("192.168.1.1", out local_ip);
-
-           // PhysicalAddress mac;
-           // mac = PhysicalAddress.Parse("11-22-33-44-55-66");
-
-           // // Enviar ARP
-
-           // for (int i = 0; i < 10000; i++)
-           // {
-                
-           //     try
-           //     {
-           //         arp.Resolve(ip, local_ip, mac);
-           //         //arp.Resolve(ip, ip, mac);
-           //     }
-           //     catch (Exception e)
-           //     {
-           //         MessageBox.Show(ip + " stopped responding: " + e.Message);
-           //         return;
-           //     }
-                
-           //     System.Threading.Thread.Sleep(3000); // 5 sec
-           //     if (stop2 == true)
-           //         break;
-           // }
-
-           // return;
-            
-            //for (int i = 0; i < 10000; i++)
-            //{
-            dstMac = dstMac.ToUpper();
-            //MessageBox.Show(dstIp + " " + dstMac, "info");
-            try
-            {
-                ARPPacket arp = new ARPPacket(ARPOperation.Request, PhysicalAddress.Parse(dstMac), IPAddress.Parse(dstIp), PhysicalAddress.Parse("11-22-33-44-55-66"), IPAddress.Parse("192.168.1.1"));
-                LibPcapLiveDevice tmp = null;
-                var devices = LibPcapLiveDeviceList.Instance;
-                foreach(var div in devices)
-                {
-                    for (int i=0;i<div.Addresses.Count - 1;i++)
-                    {
-                        var ip = div.Addresses[i].Addr.ipAddress;
-                        if (ip != null)
-                        {
-                            if (ip.ToString() == textBox1.Text)
-                            {
-                                tmp = div;
-                                break;
-                            }
-                        }
-                        
-                    }
-                }
-                tmp.Open();
-                for (int i = 0; i < 10000; i++)
-                {
-                    tmp.SendPacket(arp);
-                    Thread.Sleep(3000);
-                    if (stop2 == true)
-                        break;
-                }
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.ToString(), "info");
-            }
-            //    Thread.Sleep(3000);
-            //    if (stop2 == true)
-            //        break;
-            //}
-
-            
-        }
-
-      
 
         private void InitializeNetworkInterface()
         {
@@ -264,7 +165,7 @@ namespace LScanner
             lblBytesSent.Text = interfaceStats.BytesSent.ToString();
             lblUpload.Text = bytesSentSpeed.ToString() + " KB/s";
             lblDownload.Text = bytesReceivedSpeed.ToString() + " KB/s";
-            label14.Text = nic.OperationalStatus.ToString();
+            labelNetInterfaceStatus.Text = nic.OperationalStatus.ToString();
             
 
         }
@@ -337,8 +238,8 @@ namespace LScanner
         //check for update
         private void bw3_DoWork(object sender, DoWorkEventArgs e)
         {
-            button4.Enabled = false;
-            button4.Text = "Checking Internet...";
+            buttonCheckUpdate.Enabled = false;
+            buttonCheckUpdate.Text = "Checking Internet...";
             try
             {
                 var tmp = wc.DownloadString("https://www.google.com.vn");
@@ -346,11 +247,11 @@ namespace LScanner
             catch (Exception)
             {
                 MessageBox.Show("Make sure you have a valid internet connection!", "Fail to connect", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                button4.Enabled = true;
-                button4.Text = "Check for Update";
+                buttonCheckUpdate.Enabled = true;
+                buttonCheckUpdate.Text = "Check for Update";
                 return;
             }
-            button4.Text = "Checking version...";
+            buttonCheckUpdate.Text = "Checking version...";
             string version = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsZDdmbHcwQWVHY00");
             string changelog = wc.DownloadString("https://drive.google.com/uc?export=download&id=0B-QP4eT8oLdsci1IRldyUkx4YXc");
             if (version != Application.ProductVersion)
@@ -364,8 +265,8 @@ namespace LScanner
             {
                 MessageBox.Show("You are running latest version!", "Congratulation!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            button4.Text = "Check for Update";
-            button4.Enabled = true;
+            buttonCheckUpdate.Text = "Check for Update";
+            buttonCheckUpdate.Enabled = true;
         }
 
         //query info
@@ -379,32 +280,32 @@ namespace LScanner
             string[] _searchClass = { "Win32_ComputerSystem", "Win32_OperatingSystem", "Win32_BaseBoard", "Win32_BIOS" };
             string[] param = { "UserName", "Caption", "Product", "Description" };
 
-            label3.ForeColor = System.Drawing.Color.Green;
+            labelRealStatus.ForeColor = System.Drawing.Color.Green;
 
             for (int i = 0; i <= _searchClass.Length - 1; i++)
             {
-                label3.Text = "Getting information.";
+                labelRealStatus.Text = "Getting information.";
                 try
                 {
                     ManagementObjectSearcher searcher = new ManagementObjectSearcher("\\\\" + host + "\\root\\CIMV2", "SELECT *FROM " + _searchClass[i]);
                     foreach (ManagementObject obj in searcher.Get())
                     {
-                        label3.Text = "Getting information. .";
+                        labelRealStatus.Text = "Getting information. .";
 
                         temp += obj.GetPropertyValue(param[i]).ToString() + "\n";
                         if (i == _searchClass.Length - 1)
                         {
-                            label3.Text = "Done";
+                            labelRealStatus.Text = "Done";
                             MessageBox.Show(temp, "Hostinfo: " + host, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
                         }
-                        label3.Text = "Getting information. . .";
+                        labelRealStatus.Text = "Getting information. . .";
                     }
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Can not get information!?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    label3.Text = "Idle";
+                    labelRealStatus.Text = "Ready";
                     break;
                 }
             }
@@ -419,18 +320,18 @@ namespace LScanner
             string subnet;
             try
             {
-                subnet = textBox1.Text.Substring(0, textBox1.Text.LastIndexOf("."));
+                subnet = comboBoxPrivateIP.Text.Substring(0, comboBoxPrivateIP.Text.LastIndexOf("."));
             }
             catch (Exception)
             {
                 MessageBox.Show("Please enter a valid IP address!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                button1.Enabled = true;
-                button2.Enabled = false;
+                buttonScan.Enabled = true;
+                buttonStop.Enabled = false;
                 return;
             }
             
             
-            listView1.Items.Clear();
+            listViewMain.Items.Clear();
            
             for (int i = 1; i < 255; i++)
             {
@@ -443,8 +344,8 @@ namespace LScanner
                 try
                 {
                     myPing.SendAsync(subnet + subnetn, 10000, subnet+subnetn);
-                    label3.ForeColor = System.Drawing.Color.Green;
-                    label3.Text = "Scanning " + subnetn +"/.254";
+                    labelRealStatus.ForeColor = System.Drawing.Color.Green;
+                    labelRealStatus.Text = "Scanning " + subnetn +"/.254";
                 }
                 catch (Exception)
                 {
@@ -456,9 +357,9 @@ namespace LScanner
             { }
             bw4.RunWorkerAsync();
             
-            button1.Enabled = true;
-            button2.Enabled = false;
-            label3.Text = "Done";
+            buttonScan.Enabled = true;
+            buttonStop.Enabled = false;
+            labelRealStatus.Text = "Done";
 
             MessageBox.Show("Scanning done!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -475,7 +376,7 @@ namespace LScanner
                         return;
                     }
                 }
-                listView1.Items.Add(new ListViewItem(new String[] { ip, "Getting hostname", "Getting MAC" }));
+                listViewMain.Items.Add(new ListViewItem(new String[] { ip, "Getting hostname", "Getting MAC" }));
                 list.Add(ip);
                 done.Add(false);
             }
@@ -485,9 +386,8 @@ namespace LScanner
 
         private void bw4_DoWork(object sender, DoWorkEventArgs e)
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
+            buttonScan.Enabled = false;
+            buttonStop.Enabled = false;
             
                 for (int j = 0; j < list.Count; j++)
                 {
@@ -507,28 +407,28 @@ namespace LScanner
                         }
                         catch (Exception)
                         {
-                            for (int i = 0; i < listView1.Items.Count; i++)
+                            for (int i = 0; i < listViewMain.Items.Count; i++)
                             {
-                                if (listView1.Items[i].SubItems[0].Text == list[j])
+                                if (listViewMain.Items[i].SubItems[0].Text == list[j])
                                 {
-                                    listView1.Items[i].SubItems[1].ForeColor = Color.Red;
-                                    listView1.Items[i].SubItems[1].Text = "Unknown";
-                                    listView1.Items[i].SubItems[2].ForeColor = Color.Red;
-                                    listView1.Items[i].SubItems[2].Text = "Unknown";
+                                    listViewMain.Items[i].SubItems[1].ForeColor = Color.Red;
+                                    listViewMain.Items[i].SubItems[1].Text = "Unknown";
+                                    listViewMain.Items[i].SubItems[2].ForeColor = Color.Red;
+                                    listViewMain.Items[i].SubItems[2].Text = "Unknown";
                                     done[j] = false;
                                     break;
                                 }
                             }
                             continue;
                         }
-                        for (int i = 0; i < listView1.Items.Count; i++)
+                        for (int i = 0; i < listViewMain.Items.Count; i++)
                         {
-                            if (listView1.Items[i].SubItems[0].Text == list[j])
+                            if (listViewMain.Items[i].SubItems[0].Text == list[j])
                             {
-                                listView1.Items[i].SubItems[1].ForeColor = Color.White;
-                                listView1.Items[i].SubItems[2].ForeColor = Color.White;
-                                listView1.Items[i].SubItems[1].Text = host.HostName;
-                                listView1.Items[i].SubItems[2].Text = mac;
+                                listViewMain.Items[i].SubItems[1].ForeColor = Color.White;
+                                listViewMain.Items[i].SubItems[2].ForeColor = Color.White;
+                                listViewMain.Items[i].SubItems[1].Text = host.HostName;
+                                listViewMain.Items[i].SubItems[2].Text = mac;
                                 done[j] = true;
                                 break;
                             }
@@ -536,8 +436,7 @@ namespace LScanner
                     }
                 }
             
-            button1.Enabled = true;
-            button3.Enabled = true;
+            buttonScan.Enabled = true;
 
         }
 
@@ -574,48 +473,43 @@ namespace LScanner
             catch (UnauthorizedAccessException unaccex) { MessageBox.Show("Authorized?\n\n" + unaccex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        public static string GetLocalIPAddress()
+        public void GetLocalIPAddress()
         {
             IPHostEntry host;
-            string localIP = "?";
             host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (IPAddress ip in host.AddressList)
             {
-                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                {
-                    localIP = ip.ToString();
-                }
+                comboBoxPrivateIP.Items.Add(ip.ToString());
             }
-            return localIP;
+            comboBoxPrivateIP.SelectedIndex = 0;
         }
 
-        public static string GetLocalIPAddress2()
+        public void GetLocalIPAddress2()
         {
-            string externalip = "?.?.?.?";
             try
             {
-                externalip = new WebClient().DownloadString("http://icanhazip.com");
+                comboBoxPublicIP.Items.Add(new WebClient().DownloadString("http://icanhazip.com"));
+                comboBoxPublicIP.SelectedIndex = 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                externalip = "?.?.?.?";
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return externalip;
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonScan_Click(object sender, EventArgs e)
         {
-            localIP = GetLocalIPAddress();
             list.Clear();
             done.Clear();
-            if (radioButton2.Checked)
+            if (radioButtonFastScan.Checked)
             {
                 if (!bw.IsBusy)
                 {
                     stop = true;
                     stop = false;
-                    button1.Enabled = false;
-                    button2.Enabled = true;
+                    buttonScan.Enabled = false;
+                    buttonStop.Enabled = true;
                     bw.RunWorkerAsync();
                 }
             }
@@ -625,21 +519,21 @@ namespace LScanner
                 {
                     stop = true;
                     stop = false;
-                    button1.Enabled = false;
-                    button2.Enabled = true;
+                    buttonScan.Enabled = false;
+                    buttonStop.Enabled = true;
                     bw5.RunWorkerAsync();
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonStop_Click(object sender, EventArgs e)
         {
             stop = true;
-            button1.Enabled = true;
-            button2.Text = "&Stop";
+            buttonScan.Enabled = true;
+            buttonStop.Text = "&Stop";
             //txtIP.Enabled = true;
-            label3.ForeColor = System.Drawing.Color.Red;
-            label3.Text = "&Idle";
+            labelRealStatus.ForeColor = System.Drawing.Color.Red;
+            labelRealStatus.Text = "&Ready";
             
 
         }
@@ -651,7 +545,7 @@ namespace LScanner
 
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            host = listView1.SelectedItems[0].Text.ToString();
+            host = listViewMain.SelectedItems[0].Text.ToString();
             if (!bw2.IsBusy)
             {
                 bw2.RunWorkerAsync();
@@ -662,10 +556,10 @@ namespace LScanner
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (listView1.FocusedItem.Bounds.Contains(e.Location) == true)
+                if (listViewMain.FocusedItem.Bounds.Contains(e.Location) == true)
                 {
                     contextMenuStrip1.Show(Cursor.Position);
-                    if (button1.Enabled)
+                    if (buttonScan.Enabled)
                     { 
                         resolveToolStripMenuItem.Enabled = true;
                     }
@@ -678,7 +572,7 @@ namespace LScanner
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonCheckForUpdate_Click(object sender, EventArgs e)
         {
             if (!bw3.IsBusy)
             {
@@ -687,29 +581,18 @@ namespace LScanner
         }
 
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://www.whatismyip.com/");
-        }
-
         private void pingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string ip = listView1.SelectedItems[0].Text.ToString();
+            string ip = listViewMain.SelectedItems[0].Text.ToString();
             string cmd = "/c " +  "ping "  + ip + " -t";
             Process.Start("cmd.exe", cmd);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void buttonHomePage_Click(object sender, EventArgs e)
         {
-            Process.Start("https://mini102.wordpress.com");
+            Process.Start("https://www.pling.com/u/clearall2");
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            localIP = GetLocalIPAddress();
-            textBox1.Text = localIP;
-            //label6.Text = "This computer internet IP: " + GetLocalIPAddress2();
-        }
 
         private int sortColumn = -1;
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -719,23 +602,23 @@ namespace LScanner
                 // Set the sort column to the new column.
                 sortColumn = e.Column;
                 // Set the sort order to ascending by default.
-                listView1.Sorting = SortOrder.Ascending;
+                listViewMain.Sorting = SortOrder.Ascending;
             }
             else
             {
                 // Determine what the last sort order was and change it.
-                if (listView1.Sorting == SortOrder.Ascending)
-                    listView1.Sorting = SortOrder.Descending;
+                if (listViewMain.Sorting == SortOrder.Ascending)
+                    listViewMain.Sorting = SortOrder.Descending;
                 else
-                    listView1.Sorting = SortOrder.Ascending;
+                    listViewMain.Sorting = SortOrder.Ascending;
             }
 
             // Call the sort method to manually sort.
-            listView1.Sort();
+            listViewMain.Sort();
             // Set the ListViewItemSorter property to a new ListViewItemComparer
             // object.
-            listView1.ListViewItemSorter = new ListViewItemComparer(e.Column,
-                                                              listView1.Sorting);
+            listViewMain.ListViewItemSorter = new ListViewItemComparer(e.Column,
+                                                              listViewMain.Sorting);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -757,11 +640,11 @@ namespace LScanner
             {
                 if (list.Count > 0)
                 {
-                    for (int i = 0; i < listView1.Items.Count; i++)
+                    for (int i = 0; i < listViewMain.Items.Count; i++)
                     {
                         for (int j = 0; j < list.Count; j++)
                         {
-                            if (listView1.Items[i].SubItems[0].Text == list[j])
+                            if (listViewMain.Items[i].SubItems[0].Text == list[j])
                             {
                                 if (done[j] != true)
                                 {
@@ -787,73 +670,6 @@ namespace LScanner
             else
             {
                 MessageBox.Show("This process is running, try again later!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void panel4_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                newx = e.X;
-                newy = e.Y;
-            }
-        }
-
-        private void panel4_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Left = Left + (e.X - newx);
-                Top = Top + (e.Y - newy);
-            }
-        }
-
-        private void label16_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                newx = e.X;
-                newy = e.Y;
-            }
-        }
-
-        private void label16_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Left = Left + (e.X - newx);
-                Top = Top + (e.Y - newy);
-            }
-        }
-
-        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                newx = e.X;
-                newy = e.Y;
-            }
-        }
-
-       
-        
-
-        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Left = Left + (e.X - newx);
-                Top = Top + (e.Y - newy);
             }
         }
     }

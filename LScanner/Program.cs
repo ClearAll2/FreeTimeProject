@@ -20,7 +20,7 @@ namespace LScanner
             m_Mutex = new Mutex(true, "LScanner");
 
             if (m_Mutex.WaitOne(0, false))
-                Application.Run(new Form1());
+                Application.Run(new MainForm());
             else
             {
                 MessageBox.Show("LScanner is already running!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DM", "Desktop_Magic\DM.csproj", "{04951B6C-59C6-4F26-9910-1278A021372F}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SNote", "Test\SNote.csproj", "{358F3C21-3C3D-42BC-8339-C6ED247F7C0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS", "WindowsFormsApplication4\AS.csproj", "{F98F506A-B140-4386-B6EE-4690C322701D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LScanner", "LScanner\LScanner.csproj", "{F7CB0B1D-5317-4F94-B28C-306984DF2E87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -182,6 +184,36 @@ Global
 		{F98F506A-B140-4386-B6EE-4690C322701D}.SingleImage|x64.Build.0 = Debug|Any CPU
 		{F98F506A-B140-4386-B6EE-4690C322701D}.SingleImage|x86.ActiveCfg = Debug|Any CPU
 		{F98F506A-B140-4386-B6EE-4690C322701D}.SingleImage|x86.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.CD_ROM|Any CPU.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.CD_ROM|x64.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.CD_ROM|x64.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.CD_ROM|x86.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.CD_ROM|x86.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Debug|x64.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Debug|x86.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.DVD-5|x64.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.DVD-5|x64.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.DVD-5|x86.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Release|x64.ActiveCfg = Release|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Release|x64.Build.0 = Release|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.Release|x86.Build.0 = Release|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.SingleImage|Any CPU.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.SingleImage|x64.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.SingleImage|x64.Build.0 = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.SingleImage|x86.ActiveCfg = Debug|Any CPU
+		{F7CB0B1D-5317-4F94-B28C-306984DF2E87}.SingleImage|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
